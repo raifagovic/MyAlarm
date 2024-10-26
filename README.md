@@ -1,4 +1,4 @@
-
+MyAlarm is an ios app built with SwiftUI.
 
 ## Author
 [Raif Agović](https://x.com/raifagovic)
