@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlarmView: View {
-    @State private var isAlarmOn = true
+    @State private var isAlarmOn = false
     @State private var showDelete = false
 
     var body: some View {
