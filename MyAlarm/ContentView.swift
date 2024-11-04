@@ -77,9 +77,28 @@ struct AlarmView: View {
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            AlarmView()
-            Spacer()
+        ZStack {
+            VStack {
+                AlarmView()
+                Spacer()
+            }
+
+            // Plus button at the bottom-right corner
+            VStack {
+                Spacer() // Push the button to the bottom
+                HStack {
+                    Spacer() // Push the button to the right
+                    Button(action: {
+                        // Action to add a new alarm
+                        print("Add new alarm")
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 50))
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                }
+            }
         }
     }
 }
