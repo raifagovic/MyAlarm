@@ -81,7 +81,6 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack {
-                // Loop to display each AlarmView
                 ForEach(alarms, id: \.self) { _ in
                     AlarmView()
                 }
@@ -90,11 +89,10 @@ struct ContentView: View {
 
             // Plus button at the bottom-right corner
             VStack {
-                Spacer() // Push the button to the bottom
+                Spacer()
                 HStack {
-                    Spacer() // Push the button to the right
+                    Spacer()
                     Button(action: {
-                        // Action to add a new alarm
                         alarms.append(UUID()) // Add a new unique identifier
                     }) {
                         Image(systemName: "plus.circle.fill")
