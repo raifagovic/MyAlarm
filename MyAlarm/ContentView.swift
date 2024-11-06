@@ -95,7 +95,7 @@ struct ContentView: View {
                     Spacer() // Push the button to the right
                     Button(action: {
                         // Action to add a new alarm
-                        print("Add new alarm")
+                        alarms.append(UUID()) // Add a new unique identifier
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 50))
