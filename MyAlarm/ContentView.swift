@@ -81,7 +81,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack {
-                AlarmView()
+                // Loop to display each AlarmView
+                ForEach(alarms, id: \.self) { _ in
+                    AlarmView()
+                }
                 Spacer()
             }
 
