@@ -76,6 +76,8 @@ struct AlarmView: View {
 }
 
 struct ContentView: View {
+    @State private var alarms = [UUID()] // Array to store unique identifiers for each AlarmView
+    
     var body: some View {
         ZStack {
             VStack {
