@@ -80,6 +80,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            // Display all alarms
             VStack {
                 ForEach(alarms, id: \.self) { _ in
                     AlarmView()
