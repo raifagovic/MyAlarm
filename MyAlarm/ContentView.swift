@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct Alarm: Identifiable, Hashable {
+    let id = UUID()
+    var time: String
+}
+
 struct AlarmView: View {
     @State private var isAlarmOn = false
     @State private var showDelete = false
