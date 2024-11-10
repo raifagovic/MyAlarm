@@ -91,8 +91,8 @@ struct ContentView: View {
         ZStack {
             // Display all alarms
             VStack {
-                ForEach(alarms, id: \.self) { _ in
-                    AlarmView()
+                ForEach(alarms) { alarm in
+                    AlarmView(alarms: $alarms, alarm: alarm)
                 }
                 Spacer()
             }
