@@ -13,6 +13,8 @@ struct Alarm: Identifiable, Hashable {
 }
 
 struct AlarmView: View {
+    @Binding var alarms: [Alarm]
+    var alarm: Alarm
     @State private var isAlarmOn = false
     @State private var showDelete = false
 
@@ -24,7 +26,9 @@ struct AlarmView: View {
                     Spacer()
                     Button(action: {
                         // Action to delete the alarm
-                        print("Alarm deleted")
+                        if let index = alarms.firstIndex(of: alarm) {
+                            alarms.remove(at: index)
+                        }
                     }) {
                         Text("Delete")
                             .foregroundColor(.white)
