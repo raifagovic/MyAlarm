@@ -105,9 +105,12 @@ struct ContentView: View {
                     Button(action: {
                         alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
                     }) {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 50))
-                            .foregroundColor(.blue)
+                        Image(systemName: "plus")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                        
                     }
                     .padding()
                 }
