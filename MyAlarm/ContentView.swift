@@ -43,7 +43,7 @@ struct AlarmView: View {
             // Main alarm view
             HStack {
                 VStack(alignment: .leading) {
-                    Text("00:50")
+                    Text(alarm.time)
                         .font(.largeTitle)
                         .bold()
                     Text("Label")
@@ -85,7 +85,7 @@ struct AlarmView: View {
 }
 
 struct ContentView: View {
-    @State private var alarms = [UUID()] // Array to store unique identifiers for each AlarmView
+    @State private var alarms = [Alarm(time: "00:50")]
     
     var body: some View {
         ZStack {
@@ -103,7 +103,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        alarms.append(UUID()) // Add a new unique identifier
+                        alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 50))
