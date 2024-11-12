@@ -107,10 +107,9 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus")
                             .padding()
-                            .background(Color.blue)
+                            .background(Color.green)
                             .foregroundColor(.white)
                             .clipShape(Circle())
-                        
                     }
                     .padding()
                 }
