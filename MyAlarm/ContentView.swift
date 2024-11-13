@@ -125,6 +125,34 @@ struct ContentView: View {
     }
 }
 
+// New view for the alarm editor
+struct AlarmEditorView: View {
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                // Add your alarm editing UI here (e.g., time picker, repeat options)
+                Text("Alarm Editor")
+                    .font(.title)
+                    .padding()
+                
+                Spacer()
+            }
+            .navigationBarItems(
+                leading: Button("Cancel") {
+                    isPresented = false
+                },
+                trailing: Button("Save") {
+                    isPresented = false
+                    // Add save functionality here
+                }
+            )
+            .navigationBarTitle("Title", displayMode: .inline)
+        }
+    }
+}
+
 #Preview {
     ContentView()
 }
