@@ -81,6 +81,12 @@ struct AlarmView: View {
             )
             .frame(maxWidth: .infinity, maxHeight: 100)
             .padding()
+            .onTapGesture {
+                showEditor = true  // Show the alarm editor when tapped
+            }
+            .sheet(isPresented: $showEditor) {
+                AlarmEditorView(isPresented: $showEditor)
+            }
         }
     }
 }
