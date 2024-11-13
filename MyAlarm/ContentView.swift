@@ -133,7 +133,11 @@ struct AlarmEditorView: View {
     var body: some View {
         NavigationView {
             VStack {
-               
+                DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()  // Hide the default "Select Time" label
+                    .padding()
+                
                 Spacer()
             }
             .navigationBarItems(
