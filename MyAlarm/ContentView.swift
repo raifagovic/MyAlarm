@@ -98,6 +98,9 @@ struct ContentView: View {
         ZStack {
             // Display all alarms
             VStack {
+                Text("Rings in ...")
+                    .font(.headline)
+                    .padding(.top)
                 ForEach(alarms) { alarm in
                     AlarmView(alarms: $alarms, alarm: alarm)
                 }
