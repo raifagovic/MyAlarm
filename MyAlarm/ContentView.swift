@@ -148,7 +148,7 @@ struct AlarmEditorView: View {
                     // Add save functionality here
                 }
             )
-            .navigationBarTitle("Title", displayMode: .inline)
+            .navigationBarTitle("Edit Alarm", displayMode: .inline)
         }
     }
 }
