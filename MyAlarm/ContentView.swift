@@ -132,11 +132,7 @@ struct AlarmEditorView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Add your alarm editing UI here (e.g., time picker, repeat options)
-                Text("Alarm Editor")
-                    .font(.title)
-                    .padding()
-                
+               
                 Spacer()
             }
             .navigationBarItems(
