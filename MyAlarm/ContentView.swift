@@ -145,7 +145,33 @@ struct AlarmEditorView: View {
                 Text("Rings in ...")
                     .font(.headline)
                     .foregroundColor(.gray)
-                    .padding(.top, 1)
+                    .padding(.top, 3)
+                
+                // Standard alarm settings area
+                Form {
+                    Section {
+                        // Label row
+                        HStack {
+                            Text("Label")
+                            Spacer()
+                            Text("Alarm")
+                                .foregroundColor(.gray)
+                        }
+                        
+                        // Sound row
+                        HStack {
+                            Text("Sound")
+                            Spacer()
+                            Text("Radar")
+                                .foregroundColor(.gray)
+                        }
+                        
+                        // Snooze toggle
+                        Toggle("Snooze", isOn: .constant(true))
+                    }
+                }
+                .frame(height: 180) // Adjust height as needed
+                .padding(.top, 10)   // Space between "Rings in ..." and the standard section
                 
                 Spacer()
             }
