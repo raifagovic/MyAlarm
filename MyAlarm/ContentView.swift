@@ -141,13 +141,11 @@ struct AlarmEditorView: View {
                 DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
                     .labelsHidden()  // Hide the default "Select Time" label
-                    .padding()
                 
-                // Message below the DatePicker
                 Text("Rings in ...")
                     .font(.headline)
                     .foregroundColor(.gray)
-                    .padding(.top)
+                    .padding(.top, 1)
                 
                 Spacer()
             }
