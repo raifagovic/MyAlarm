@@ -143,6 +143,12 @@ struct AlarmEditorView: View {
                     .labelsHidden()  // Hide the default "Select Time" label
                     .padding()
                 
+                // Message below the DatePicker
+                Text("Rings in ...")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .padding(.top)
+                
                 Spacer()
             }
             .navigationBarItems(
