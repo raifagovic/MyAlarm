@@ -101,6 +101,8 @@ struct ContentView: View {
                 Text("Rings in ...")
                     .font(.headline)
                     .padding(.top)
+                    .padding(.leading)
+                
                 ForEach(alarms) { alarm in
                     AlarmView(alarms: $alarms, alarm: alarm)
                 }
