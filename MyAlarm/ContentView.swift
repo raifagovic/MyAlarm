@@ -97,7 +97,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             // Display all alarms
-            VStack {
+            VStack(alignment: .leading) {
                 Text("Rings in ...")
                     .font(.headline)
                     .padding(.top)
