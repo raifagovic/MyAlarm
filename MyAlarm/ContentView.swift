@@ -130,6 +130,38 @@ struct ContentView: View {
     }
 }
 
+struct RepeatView: View {
+    @Binding var selectedDays: [String]
+    let weekdays = ["Every Sunday", "Every Monday", "Every Tuesday", "Every Wednesday", "Every Thursday", "Every Friday", "Every Saturday"]
+    
+    var body: some View {
+        List {
+            ForEach(weekdays, id: \.self) { day in
+                HStack {
+                    Text(day)
+                    Spacer()
+                    if selectedDays.contains(day) {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.blue)
+                    }
+                }
+                .contentShape(Rectangle()) // Make the whole row tappable
+                .onTapGesture {
+                    if let index = selectedDays.firstIndex(of: day) {
+                        selectedDays.remove(at: index) // Deselect if already selected
+                    } else {
+                        selectedDays.append(day) // Select if not already selected
+                    }
+                }
+            }
+        }
+        .navigationTitle("Repeat")
+        .navigationBarItems(leading: Button("< Back") {
+            // Handle back action if needed
+        })
+    }
+}
+
 // New view for the alarm editor
 struct AlarmEditorView: View {
     @Binding var isPresented: Bool
