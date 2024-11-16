@@ -166,6 +166,7 @@ struct RepeatView: View {
 struct AlarmEditorView: View {
     @Binding var isPresented: Bool
     @State private var selectedTime = Date()
+    @State private var selectedDays: [String] = []
     
     var body: some View {
         NavigationView {
