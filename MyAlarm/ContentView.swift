@@ -183,12 +183,14 @@ struct AlarmEditorView: View {
                 // Standard alarm settings area
                 Form {
                     Section {
-                        // Repeat row
-                        HStack {
-                            Text("Repeat")
-                            Spacer()
-                            Text("Never")
-                                .foregroundColor(.gray)
+                        // Repeat row with NavigationLink
+                        NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+                            HStack {
+                                Text("Repeat")
+                                Spacer()
+                                Text(selectedDays.isEmpty ? "Never" : selectedDays.joined(separator: ", "))
+                                    .foregroundColor(.gray)
+                            }
                         }
                         
                         // Label row
