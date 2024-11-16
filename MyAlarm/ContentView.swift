@@ -178,7 +178,7 @@ struct AlarmEditorView: View {
                         Toggle("Snooze", isOn: .constant(true))
                     }
                 }
-                .frame(height: 180) // Adjust height as needed
+                .frame(height: 250) // Adjust height as needed
                 .padding(.top, 10)   // Space between "Rings in ..." and the standard section
                 
                 Spacer()
