@@ -150,6 +150,14 @@ struct AlarmEditorView: View {
                 // Standard alarm settings area
                 Form {
                     Section {
+                        // Repeat row
+                        HStack {
+                            Text("Repeat")
+                            Spacer()
+                            Text("Never")
+                                .foregroundColor(.gray)
+                        }
+                        
                         // Label row
                         HStack {
                             Text("Label")
