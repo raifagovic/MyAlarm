@@ -156,9 +156,6 @@ struct RepeatView: View {
             }
         }
         .navigationTitle("Repeat")
-        .navigationBarItems(leading: Button("< Back") {
-            // Handle back action if needed
-        })
     }
 }
 
