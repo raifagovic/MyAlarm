@@ -228,10 +228,6 @@ struct AlarmEditorView: View {
     }
     
     private func getAbbreviatedDays() -> String {
-        if selectedDays.isEmpty {
-            return "Never"
-        }
-        
         let dayAbbreviations: [String: String] = [
             "Every Sunday": "Sun",
             "Every Monday": "Mon",
@@ -242,9 +238,30 @@ struct AlarmEditorView: View {
             "Every Saturday": "Sat"
         ]
         
-        return selectedDays
+        let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        let sortedDays = selectedDays
             .compactMap { dayAbbreviations[$0] }
-            .joined(separator: ", ")
+            .sorted { daysOfWeek.firstIndex(of: $0)! < daysOfWeek.firstIndex(of: $1)! }
+        
+        // If no days are selected, return "Never"
+        if sortedDays.isEmpty {
+            return "Never"
+        }
+        
+        // If all days are selected, return "Every"
+        if sortedDays.count == daysOfWeek.count {
+            return "Every"
+        }
+        
+        // If only one day is selected, return the abbreviation for that day
+        if sortedDays.count == 1 {
+            return sortedDays.first!
+        }
+        
+        // For multiple selected days, format as "Mon, Tue and Wed"
+        let allButLast = sortedDays.dropLast()
+        let lastDay = sortedDays.last!
+        return "\(allButLast.joined(separator: ", ")) and \(lastDay)"
     }
 }
 
