@@ -227,6 +227,26 @@ struct AlarmEditorView: View {
             .navigationBarTitle("Edit Alarm", displayMode: .inline)
         }
     }
+    
+    private func getAbbreviatedDays() -> String {
+        if selectedDays.isEmpty {
+            return "Never"
+        }
+        
+        let dayAbbreviations: [String: String] = [
+            "Every Sunday": "Sun",
+            "Every Monday": "Mon",
+            "Every Tuesday": "Tue",
+            "Every Wednesday": "Wed",
+            "Every Thursday": "Thu",
+            "Every Friday": "Fri",
+            "Every Saturday": "Sat"
+        ]
+        
+        return selectedDays
+            .compactMap { dayAbbreviations[$0] }
+            .joined(separator: ", ")
+    }
 }
 
 #Preview {
