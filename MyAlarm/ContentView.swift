@@ -239,7 +239,7 @@ struct AlarmEditorView: View {
             "Every Sunday": "Sun",
         ]
         
-        let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         let sortedDays = selectedDays
             .compactMap { dayAbbreviations[$0] }
             .sorted { daysOfWeek.firstIndex(of: $0)! < daysOfWeek.firstIndex(of: $1)! }
