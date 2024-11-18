@@ -132,7 +132,7 @@ struct ContentView: View {
 
 struct RepeatView: View {
     @Binding var selectedDays: [String]
-    let weekdays = ["Every Sunday", "Every Monday", "Every Tuesday", "Every Wednesday", "Every Thursday", "Every Friday", "Every Saturday"]
+    let weekdays = ["Every Monday", "Every Tuesday", "Every Wednesday", "Every Thursday", "Every Friday", "Every Saturday", "Every Sunday"]
     
     var body: some View {
         List {
@@ -169,7 +169,7 @@ struct AlarmEditorView: View {
             VStack {
                 DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .labelsHidden()  
+                    .labelsHidden()
                 
                 Text("Rings in ...")
                     .font(.headline)
@@ -209,8 +209,8 @@ struct AlarmEditorView: View {
                         Toggle("Snooze", isOn: .constant(true))
                     }
                 }
-                .frame(height: 250) 
-                .padding(.top, 10)  
+                .frame(height: 250)
+                .padding(.top, 10)
                 
                 Spacer()
             }
