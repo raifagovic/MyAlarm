@@ -169,7 +169,7 @@ struct AlarmEditorView: View {
             VStack {
                 DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .labelsHidden()  // Hide the default "Select Time" label
+                    .labelsHidden()  
                 
                 Text("Rings in ...")
                     .font(.headline)
@@ -209,8 +209,8 @@ struct AlarmEditorView: View {
                         Toggle("Snooze", isOn: .constant(true))
                     }
                 }
-                .frame(height: 250) // Adjust height as needed
-                .padding(.top, 10)   // Space between "Rings in ..." and the standard section
+                .frame(height: 250) 
+                .padding(.top, 10)  
                 
                 Spacer()
             }
