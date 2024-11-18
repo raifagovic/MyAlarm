@@ -185,7 +185,7 @@ struct AlarmEditorView: View {
                             HStack {
                                 Text("Repeat")
                                 Spacer()
-                                Text(selectedDays.isEmpty ? "Never" : selectedDays.joined(separator: ", "))
+                                Text(getAbbreviatedDays())
                                     .foregroundColor(.gray)
                             }
                         }
