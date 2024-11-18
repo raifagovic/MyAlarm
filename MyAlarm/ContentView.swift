@@ -183,11 +183,12 @@ struct AlarmEditorView: View {
                         NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                             HStack {
                                 Text("Repeat")
-                                Spacer()
+                                    .padding(.trailing, 0)
+                                Spacer(minLength: 1) // Adjust this to control space between Repeat and the days text
                                 Text(getAbbreviatedDays())
                                     .foregroundColor(.gray)
                                     .lineLimit(1)
-                                    .fixedSize()
+                                
                             }
                         }
                         
