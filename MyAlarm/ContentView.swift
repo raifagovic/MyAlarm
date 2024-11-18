@@ -186,6 +186,7 @@ struct AlarmEditorView: View {
                                 Spacer()
                                 Text(getAbbreviatedDays())
                                     .foregroundColor(.gray)
+                                    .fixedSize()
                             }
                         }
                         
