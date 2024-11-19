@@ -264,7 +264,7 @@ struct AlarmEditorView: View {
         }
         
         // Check if weekends are selected
-        if sortedDays.contains("Sat") && sortedDays.contains("Sun") && sortedDays.count == 2 {
+        if sortedDays == ["Sat", "Sun"] {
             return "Weekends"
         }
         
