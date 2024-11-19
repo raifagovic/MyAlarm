@@ -188,7 +188,7 @@ struct AlarmEditorView: View {
                                 Text(getAbbreviatedDays())
                                     .foregroundColor(.gray)
                                     .lineLimit(1)
-                                    .font(.system(size: 16.5))
+                                    .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
                                     .padding(.leading, -4)
                             }
                         }
