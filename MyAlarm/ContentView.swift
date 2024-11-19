@@ -255,12 +255,17 @@ struct AlarmEditorView: View {
         
         // If all days are selected, return "Every"
         if sortedDays.count == daysOfWeek.count {
-            return "Every"
+            return "Every day"
         }
         
         // If only one day is selected, return the abbreviation for that day
         if sortedDays.count == 1 {
             return sortedDays.first!
+        }
+        
+        // Check if weekends are selected
+        if sortedDays.contains("Sat") && sortedDays.contains("Sun") && sortedDays.count == 2 {
+            return "Weekends"
         }
         
         // For multiple selected days, format as "Mon, Tue and Wed"
