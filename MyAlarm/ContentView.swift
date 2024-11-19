@@ -263,6 +263,10 @@ struct AlarmEditorView: View {
             return sortedDays.first!
         }
         
+        if sortedDays == ["Mon", "Tue", "Wed", "Thu", "Fri"] {
+            return "Weekdays"
+        }
+        
         // Check if weekends are selected
         if sortedDays == ["Sat", "Sun"] {
             return "Weekends"
