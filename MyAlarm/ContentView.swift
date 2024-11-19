@@ -188,6 +188,7 @@ struct AlarmEditorView: View {
                                 Text(getAbbreviatedDays())
                                     .foregroundColor(.gray)
                                     .lineLimit(1)
+                                    .font(.subheadline)
                                     .padding(.leading, 0)
                             }
                         }
