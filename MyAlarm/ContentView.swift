@@ -201,7 +201,7 @@ struct AlarmEditorView: View {
 //                            TextField("Alarm", text: $labelText)
 //                                .foregroundColor(.gray)
 //                                .multilineTextAlignment(.trailing)
-                            ZStack() {
+                            HStack() {
                                 TextField("Alarm", text: $labelText)
                                     .foregroundColor(.gray)
                                     .multilineTextAlignment(.trailing)
