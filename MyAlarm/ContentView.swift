@@ -198,9 +198,24 @@ struct AlarmEditorView: View {
                         HStack {
                             Text("Label")
                             Spacer()
-                            TextField("Alarm", text: $labelText)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.trailing)
+//                            TextField("Alarm", text: $labelText)
+//                                .foregroundColor(.gray)
+//                                .multilineTextAlignment(.trailing)
+                            ZStack() {
+                                TextField("Alarm", text: $labelText)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.trailing)
+                                
+                                if !labelText.isEmpty {
+                                    Button(action: {
+                                        labelText = "" // Clear the text
+                                    }) {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.trailing, 4) // Add padding to the right of the button
+                                }
+                            }
                         }
                         
                         // Sound row
