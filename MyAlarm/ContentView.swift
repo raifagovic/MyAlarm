@@ -163,6 +163,7 @@ struct AlarmEditorView: View {
     @Binding var isPresented: Bool
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
+    @State private var labelText: String = "Alarm"
     
     var body: some View {
         NavigationView {
@@ -193,12 +194,13 @@ struct AlarmEditorView: View {
                             }
                         }
                         
-                        // Label row
+                        // Label row with editable text
                         HStack {
                             Text("Label")
                             Spacer()
-                            Text("Alarm")
+                            TextField("Alarm", text: $labelText)
                                 .foregroundColor(.gray)
+                                .multilineTextAlignment(.trailing)
                         }
                         
                         // Sound row
