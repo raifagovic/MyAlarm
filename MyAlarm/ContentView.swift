@@ -213,7 +213,6 @@ struct AlarmEditorView: View {
                                         Image(systemName: "xmark.circle.fill")
                                             .foregroundColor(.gray)
                                     }
-                                    .padding(.trailing, 4) // Add padding to the right of the button
                                 }
                             }
                         }
