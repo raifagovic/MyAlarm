@@ -49,8 +49,8 @@ struct AlarmView: View {
                         .bold()
                     Text("Label")
                     HStack {
-                        ForEach(["S", "M", "T", "W", "T", "F", "S"], id: \.self) { day in
-                            Text(day)
+                        ForEach(orderedDayLetters(), id: \.self) { letter in
+                            Text(letter)
                         }
                     }
                     .font(.caption)
