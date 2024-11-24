@@ -18,7 +18,7 @@ struct AlarmView: View {
     @State private var isAlarmOn = false
     @State private var showDelete = false
     @State private var showEditor = false
-
+    
     var body: some View {
         ZStack {
             // Background showing delete button when swiped
@@ -89,6 +89,22 @@ struct AlarmView: View {
             }
         }
     }
+    
+    // Function to get ordered first letters of days
+    private func orderedDayLetters() -> [String] {
+        // Mapping of day symbols to their abbreviations
+        let dayAbbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        
+        // Get the first weekday from the current calendar
+        let calendar = Calendar.current
+        let firstWeekdayIndex = calendar.firstWeekday - 1 // `firstWeekday` is 1-based
+        
+        // Reorder days starting from the first weekday
+        let orderedDays = Array(dayAbbreviations[firstWeekdayIndex...]) + Array(dayAbbreviations[..<firstWeekdayIndex])
+        
+        // Extract the first letter of each day abbreviation
+        return orderedDays.map { String($0.prefix(1)) }
+    }
 }
 
 struct ContentView: View {
@@ -108,7 +124,7 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-
+            
             // Plus button at the bottom-right corner
             VStack {
                 Spacer()
@@ -244,42 +260,42 @@ struct AlarmEditorView: View {
         }
     }
     
-//    Calculate the remaining time and return a formatted string
-        private func remainingTimeMessage() -> String {
-            let calendar = Calendar.current
-            
-            // Get the current time in Sarajevo
-            let now = Date()
-            let currentTimeInSarajevo = now
-            
-            // Calculate the difference
-            let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
-            
-            // Create a new Date with today's date and selected time
-            var combinedComponents = DateComponents()
-            combinedComponents.year = calendar.component(.year, from: now)
-            combinedComponents.month = calendar.component(.month, from: now)
-            combinedComponents.day = calendar.component(.day, from: now)
-            combinedComponents.hour = selectedComponents.hour
-            combinedComponents.minute = selectedComponents.minute
-            
-            let selectedDate = calendar.date(from: combinedComponents)!
-            
-            let differenceInSeconds = selectedDate.timeIntervalSince(currentTimeInSarajevo)
-            let hours = Int(differenceInSeconds) / 3600
-            let minutes = (Int(differenceInSeconds) % 3600) / 60
-            
-            if differenceInSeconds < 0 {
-                // If the selected time has already passed, show time for the next day
-                let nextDayDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
-                let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
-                let nextDayHours = Int(nextDayDifference) / 3600
-                let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
-                return "Rings in \(nextDayHours) h \(nextDayMinutes) min"
-            }
-            
-            return "Rings in \(hours) h \(minutes) min"
+    //    Calculate the remaining time and return a formatted string
+    private func remainingTimeMessage() -> String {
+        let calendar = Calendar.current
+        
+        // Get the current time in Sarajevo
+        let now = Date()
+        let currentTimeInSarajevo = now
+        
+        // Calculate the difference
+        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
+        
+        // Create a new Date with today's date and selected time
+        var combinedComponents = DateComponents()
+        combinedComponents.year = calendar.component(.year, from: now)
+        combinedComponents.month = calendar.component(.month, from: now)
+        combinedComponents.day = calendar.component(.day, from: now)
+        combinedComponents.hour = selectedComponents.hour
+        combinedComponents.minute = selectedComponents.minute
+        
+        let selectedDate = calendar.date(from: combinedComponents)!
+        
+        let differenceInSeconds = selectedDate.timeIntervalSince(currentTimeInSarajevo)
+        let hours = Int(differenceInSeconds) / 3600
+        let minutes = (Int(differenceInSeconds) % 3600) / 60
+        
+        if differenceInSeconds < 0 {
+            // If the selected time has already passed, show time for the next day
+            let nextDayDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
+            let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
+            let nextDayHours = Int(nextDayDifference) / 3600
+            let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
+            return "Rings in \(nextDayHours) h \(nextDayMinutes) min"
         }
+        
+        return "Rings in \(hours) h \(minutes) min"
+    }
     
     private func getAbbreviatedDays() -> String {
         let dayAbbreviations: [String: String] = [
