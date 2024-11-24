@@ -270,6 +270,15 @@ struct AlarmEditorView: View {
             let hours = Int(differenceInSeconds) / 3600
             let minutes = (Int(differenceInSeconds) % 3600) / 60
             
+            if differenceInSeconds < 0 {
+                // If the selected time has already passed, show time for the next day
+                let nextDayDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
+                let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
+                let nextDayHours = Int(nextDayDifference) / 3600
+                let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
+                return "Rings in \(nextDayHours) h \(nextDayMinutes) min"
+            }
+            
             return "Rings in \(hours) h \(minutes) min"
         }
     
