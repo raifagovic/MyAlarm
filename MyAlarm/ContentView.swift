@@ -247,6 +247,35 @@ struct AlarmEditorView: View {
         }
     }
     
+//    Calculate the remaining time and return a formatted string
+        private func remainingTimeMessage() -> String {
+            let calendar = Calendar.current
+            
+            // Get the current time in Sarajevo
+            let now = Date()
+            let currentTimeInSarajevo = now // Add timezone handling if necessary
+            
+            // Calculate the difference
+            let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
+            let nowComponents = calendar.dateComponents([.hour, .minute], from: currentTimeInSarajevo)
+            
+            // Create a new Date with today's date and selected time
+            var combinedComponents = DateComponents()
+            combinedComponents.year = calendar.component(.year, from: now)
+            combinedComponents.month = calendar.component(.month, from: now)
+            combinedComponents.day = calendar.component(.day, from: now)
+            combinedComponents.hour = selectedComponents.hour
+            combinedComponents.minute = selectedComponents.minute
+            
+            let selectedDate = calendar.date(from: combinedComponents)!
+            
+            let differenceInSeconds = selectedDate.timeIntervalSince(currentTimeInSarajevo)
+            let hours = Int(differenceInSeconds) / 3600
+            let minutes = (Int(differenceInSeconds) % 3600) / 60
+            
+            return "Rings in \(hours) h \(minutes) min"
+        }
+    
     private func getAbbreviatedDays() -> String {
         let dayAbbreviations: [String: String] = [
             
