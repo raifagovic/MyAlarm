@@ -172,7 +172,7 @@ struct AlarmEditorView: View {
                     .datePickerStyle(.wheel)
                     .labelsHidden()
                 
-                Text("Rings in ...")
+                Text(remainingTimeMessage())
                     .font(.headline)
                     .foregroundColor(.gray)
                     .padding(.top, 3)
