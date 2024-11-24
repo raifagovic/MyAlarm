@@ -250,11 +250,10 @@ struct AlarmEditorView: View {
             
             // Get the current time in Sarajevo
             let now = Date()
-            let currentTimeInSarajevo = now // Add timezone handling if necessary
+            let currentTimeInSarajevo = now
             
             // Calculate the difference
             let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
-            let nowComponents = calendar.dateComponents([.hour, .minute], from: currentTimeInSarajevo)
             
             // Create a new Date with today's date and selected time
             var combinedComponents = DateComponents()
