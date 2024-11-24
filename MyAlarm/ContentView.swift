@@ -198,9 +198,6 @@ struct AlarmEditorView: View {
                         HStack {
                             Text("Label")
                             Spacer()
-//                            TextField("Alarm", text: $labelText)
-//                                .foregroundColor(.gray)
-//                                .multilineTextAlignment(.trailing)
                             HStack() {
                                 TextField("Alarm", text: $labelText)
                                     .foregroundColor(.gray)
