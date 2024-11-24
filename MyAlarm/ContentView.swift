@@ -148,8 +148,7 @@ struct ContentView: View {
 
 struct RepeatView: View {
     @Binding var selectedDays: [String]
-    let weekdays = ["Every Monday", "Every Tuesday", "Every Wednesday", "Every Thursday", "Every Friday", "Every Saturday", "Every Sunday"]
-    
+
     var body: some View {
         List {
             ForEach(weekdays, id: \.self) { day in
