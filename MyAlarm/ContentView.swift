@@ -109,6 +109,8 @@ struct AlarmView: View {
 
 struct ContentView: View {
     @State private var alarms = [Alarm(time: "00:50")]
+    @State private var isEditing = false
+    @State private var selectedAlarm: Alarm?
     
     var body: some View {
         ZStack {
