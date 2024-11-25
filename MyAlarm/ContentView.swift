@@ -123,6 +123,10 @@ struct ContentView: View {
                 
                 ForEach(alarms) { alarm in
                     AlarmView(alarms: $alarms, alarm: alarm)
+                        .onTapGesture {
+                            selectedAlarm = alarm
+                            isEditing = true
+                        }
                 }
                 Spacer()
             }
@@ -143,6 +147,20 @@ struct ContentView: View {
                     }
                     .padding()
                 }
+            }
+        }
+        .sheet(isPresented: $isEditing) {
+            if let alarmToEdit = selectedAlarm {
+                AlarmEditorView(
+                    isPresented: $isEditing,
+                    selectedAlarm: alarmToEdit, // Pass the selected alarm
+                    onDelete: {
+                        if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
+                            alarms.remove(at: index)
+                        }
+                        selectedAlarm = nil // Clear the selected alarm
+                    }
+                )
             }
         }
     }
@@ -204,6 +222,7 @@ struct AlarmEditorView: View {
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
     
+    var selectedAlarm: Alarm // Receive the alarm to edit
     // Callback to handle deletion
     var onDelete: (() -> Void)?
     
