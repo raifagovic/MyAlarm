@@ -151,7 +151,7 @@ struct RepeatView: View {
 
     var body: some View {
         List {
-            ForEach(weekdays, id: \.self) { day in
+            ForEach(orderedWeekdays(), id: \.self) { day in
                 HStack {
                     Text(day)
                     Spacer()
@@ -201,6 +201,9 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
+    
+    // Callback to handle deletion
+    var onDelete: (() -> Void)?
     
     var body: some View {
         NavigationView {
@@ -266,7 +269,20 @@ struct AlarmEditorView: View {
                 .frame(height: 250)
                 .padding(.top, 10)
                 
-                Spacer()
+                // Delete Alarm button (always visible)
+                Button(action: {
+                    onDelete?() // Call onDelete if it's set
+                    isPresented = false // Dismiss the editor after deletion
+                }) {
+                    Text("Delete Alarm")
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color(UIColor.systemGray6))
+                        .cornerRadius(8)
+                }
+                .padding(.top, 5)
             }
             .navigationBarItems(
                 leading: Button("Cancel") {
