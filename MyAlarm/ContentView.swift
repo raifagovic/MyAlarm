@@ -105,6 +105,9 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            Color(.systemGroupedBackground) // Background color
+                .edgesIgnoringSafeArea(.all) // Extend to edges
+            
             // Display all alarms with "Rings in ..." message at the top
             VStack(alignment: .leading) {
                 Text("Rings in ...")
