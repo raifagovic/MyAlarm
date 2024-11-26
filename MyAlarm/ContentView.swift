@@ -17,7 +17,8 @@ struct AlarmView: View {
     var alarm: Alarm
     @State private var isAlarmOn = false
     @State private var showDelete = false
-    @State private var showEditor = false
+    
+    var onEdit: () -> Void // Callback to trigger editing
     
     var body: some View {
         ZStack {
