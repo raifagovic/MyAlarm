@@ -63,7 +63,7 @@ struct AlarmView: View {
                 .labelsHidden()
             }
             .padding()
-            .background(Color(.systemGray5))
+            .background(Color(#colorLiteral(red: 0.17, green: 0.17, blue: 0.18, alpha: 1))) // #2C2C2E)
             .cornerRadius(10)
             .offset(x: showDelete ? -150 : 0) // Add an offset when swiped
             .gesture(
@@ -105,8 +105,8 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color(.systemGroupedBackground) // Background color
-                .edgesIgnoringSafeArea(.all) // Extend to edges
+//            Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1))
+//                .edgesIgnoringSafeArea(.all) // Extend to edges
             
             // Display all alarms with "Rings in ..." message at the top
             VStack(alignment: .leading) {
