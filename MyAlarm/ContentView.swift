@@ -83,18 +83,7 @@ struct AlarmView: View {
             .frame(maxWidth: .infinity, maxHeight: 100)
             .padding()
             .onTapGesture {
-                showEditor = true  // Show the alarm editor when tapped
-            }
-            .sheet(isPresented: $showEditor) {
-                AlarmEditorView(
-                    isPresented: $showEditor,
-                    selectedAlarm: alarm,
-                    onDelete: {
-                        if let index = alarms.firstIndex(of: alarm) {
-                            alarms.remove(at: index) // Remove the alarm
-                        }
-                    } // Pass the current alarm
-                )
+                onEdit() // Notify parent view (ContentView) to start editing
             }
         }
     }
