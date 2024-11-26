@@ -105,8 +105,8 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-//            Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1))
-//                .edgesIgnoringSafeArea(.all) // Extend to edges
+            Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1))
+                .edgesIgnoringSafeArea(.all) // Extend to edges
             
             // Display all alarms with "Rings in ..." message at the top
             VStack(alignment: .leading) {
