@@ -113,11 +113,14 @@ struct ContentView: View {
                     .padding(.leading)
                 
                 ForEach(alarms) { alarm in
-                    AlarmView(alarms: $alarms, alarm: alarm)
-                        .onTapGesture {
+                    AlarmView(
+                        alarms: $alarms,
+                        alarm: alarm,
+                        onEdit: {
                             selectedAlarm = alarm
                             isEditing = true
                         }
+                    )
                 }
                 Spacer()
             }
