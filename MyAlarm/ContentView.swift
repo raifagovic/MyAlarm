@@ -90,17 +90,10 @@ struct AlarmView: View {
     
     // Function to get ordered first letters of days
     private func orderedDayLetters() -> [String] {
-        // Mapping of day symbols to their abbreviations
         let dayAbbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        
-        // Get the first weekday from the current calendar
         let calendar = Calendar.current
         let firstWeekdayIndex = calendar.firstWeekday - 1 // `firstWeekday` is 1-based
-        
-        // Reorder days starting from the first weekday
         let orderedDays = Array(dayAbbreviations[firstWeekdayIndex...]) + Array(dayAbbreviations[..<firstWeekdayIndex])
-        
-        // Extract the first letter of each day abbreviation
         return orderedDays.map { String($0.prefix(1)) }
     }
 }
