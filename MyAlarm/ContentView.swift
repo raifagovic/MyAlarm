@@ -47,7 +47,7 @@ struct AlarmView: View {
                 VStack(alignment: .leading) {
                     Text(alarm.time)
                         .font(.largeTitle)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color(hex: "#E8E8E8"))
                         .bold()
                     Text("Label")
                     HStack {
@@ -114,7 +114,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text("Rings in ...")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(hex: "#F1F1F1"))
                     .padding(.top)
                     .padding(.leading)
                 
