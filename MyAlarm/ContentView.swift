@@ -61,7 +61,7 @@ struct AlarmView: View {
                 Toggle(isOn: $isAlarmOn) {
                 }
                 .labelsHidden()
-                .tint(Color(#colorLiteral(red: 1.0, green: 0.843, blue: 0.0, alpha: 1.0)))
+                .tint(Color(#colorLiteral(red: 1.0, green: 0.843, blue: 0.0, alpha: 1.0))) // #FFD700
             }
             .padding()
             .background(Color(#colorLiteral(red: 0.17, green: 0.17, blue: 0.18, alpha: 1))) // #2C2C2E)
