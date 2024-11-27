@@ -139,7 +139,7 @@ struct ContentView: View {
                         Image(systemName: "plus")
                             .padding()
                             .background(Color(#colorLiteral(red: 1.0, green: 0.843, blue: 0.0, alpha: 1.0))) // #FFD700
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1))) // #1C1C1E
                             .clipShape(Rectangle())
                             .cornerRadius(15)
                     }
