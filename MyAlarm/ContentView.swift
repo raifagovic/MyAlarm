@@ -113,6 +113,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text("Rings in ...")
                     .font(.headline)
+                    .foregroundColor(.white)
                     .padding(.top)
                     .padding(.leading)
                 
