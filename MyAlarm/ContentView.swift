@@ -108,7 +108,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color(hex: "#1C1C1E") // #1C1C1E
+            Color(hex: "#1C1C1E")
                 .edgesIgnoringSafeArea(.all) // Extend to edges
             
             // Display all alarms with "Rings in ..." message at the top
@@ -142,8 +142,8 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus")
                             .padding()
-                            .background(Color(hex: "#FFD700")) // #FFD700
-                            .foregroundColor(Color(hex: "#1C1C1E")) // #1C1C1E
+                            .background(Color(hex: "#FFD700"))
+                            .foregroundColor(Color(hex: "#1C1C1E"))
                             .clipShape(Rectangle())
                             .cornerRadius(15)
                     }
