@@ -50,6 +50,7 @@ struct AlarmView: View {
                         .foregroundColor(Color(hex: "#E8E8E8"))
                         .bold()
                     Text("Label")
+                        .foregroundColor(.gray)
                     HStack {
                         ForEach(orderedDayLetters(), id: \.self) { letter in
                             Text(letter)
@@ -107,14 +108,14 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1)) // #1C1C1E
+            Color(hex: "#1C1C1E") // #1C1C1E
                 .edgesIgnoringSafeArea(.all) // Extend to edges
             
             // Display all alarms with "Rings in ..." message at the top
             VStack(alignment: .leading) {
                 Text("Rings in ...")
                     .font(.headline)
-                    .foregroundColor(Color(hex: "#F1F1F1"))
+                    .foregroundColor(Color(hex: "#FFD700"))
                     .padding(.top)
                     .padding(.leading)
                 
@@ -141,8 +142,8 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus")
                             .padding()
-                            .background(Color(#colorLiteral(red: 1.0, green: 0.843, blue: 0.0, alpha: 1.0))) // #FFD700
-                            .foregroundColor(Color(#colorLiteral(red: 0.11, green: 0.11, blue: 0.12, alpha: 1))) // #1C1C1E
+                            .background(Color(hex: "#FFD700")) // #FFD700
+                            .foregroundColor(Color(hex: "#1C1C1E")) // #1C1C1E
                             .clipShape(Rectangle())
                             .cornerRadius(15)
                     }
