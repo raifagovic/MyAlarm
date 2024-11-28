@@ -14,6 +14,7 @@
 		DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB22CF796910039F6CC /* Color+Extensions.swift */; };
 		DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB42CF87AB80039F6CC /* AlarmView.swift */; };
 		DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */; };
+		DC661BB92CF87E360039F6CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DC661BB22CF796910039F6CC /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		DC661BB42CF87AB80039F6CC /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditorView.swift; sourceTree = "<group>"; };
+		DC661BB82CF87E360039F6CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
 				DC661BB42CF87AB80039F6CC /* AlarmView.swift */,
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
+				DC661BB82CF87E360039F6CC /* Models.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
+				DC661BB92CF87E360039F6CC /* Models.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
 				DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */,
 			);

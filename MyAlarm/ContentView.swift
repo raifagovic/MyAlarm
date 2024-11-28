@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-struct Alarm: Identifiable, Hashable {
-    let id = UUID()
-    var time: String
-}
-
 struct ContentView: View {
     @State private var alarms = [Alarm(time: "00:50")]
     @State private var isEditing = false
