@@ -1,0 +1,89 @@
+//
+//  AlarmView.swift
+//  MyAlarm
+//
+//  Created by Raif Agovic on 28. 11. 2024..
+//
+
+import SwiftUI
+
+struct AlarmView: View {
+    @Binding var alarms: [Alarm]
+    var alarm: Alarm
+    @State private var isAlarmOn = false
+    @State private var showDelete = false
+    
+    var onEdit: () -> Void // Callback to trigger editing
+    
+    var body: some View {
+        ZStack {
+            // Background showing delete button when swiped
+            if showDelete {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        // Action to delete the alarm
+                        if let index = alarms.firstIndex(of: alarm) {
+                            alarms.remove(at: index)
+                        }
+                    }) {
+                        Text("Delete")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(8)
+                    }
+                    .padding(.trailing)
+                }
+            }
+            
+            // Main alarm view
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(alarm.time)
+                        .font(.largeTitle)
+                        .foregroundColor(Color(hex: "#E8E8E8"))
+                        .bold()
+                    HStack {
+//                        Text("Label")
+                        Text("♥︎")
+                    }
+                        .foregroundColor(.gray)
+                    HStack {
+                        Text("Weekdays")
+                    }
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                }
+                Spacer()
+                Toggle(isOn: $isAlarmOn) {
+                }
+                .labelsHidden()
+                .tint(Color(hex: "#FFD700"))
+            }
+            .padding()
+            .background(Color(hex: "#2C2C2E"))
+            .cornerRadius(10)
+            .offset(x: showDelete ? -150 : 0) // Add an offset when swiped
+            .gesture(
+                DragGesture()
+                    .onEnded { value in
+                        if value.translation.width < -100 { // Swipe left to show delete
+                            withAnimation {
+                                showDelete = true
+                            }
+                        } else if value.translation.width > 100 { // Swipe right to hide delete
+                            withAnimation {
+                                showDelete = false
+                            }
+                        }
+                    }
+            )
+            .frame(maxWidth: .infinity, maxHeight: 100)
+            .padding()
+            .onTapGesture {
+                onEdit() // Notify parent view (ContentView) to start editing
+            }
+        }
+    }
+}
