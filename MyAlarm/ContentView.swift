@@ -63,10 +63,10 @@ struct AlarmView: View {
                 Toggle(isOn: $isAlarmOn) {
                 }
                 .labelsHidden()
-                .tint(Color(hex: "#FFD700")) // #FFD700
+                .tint(Color(hex: "#FFD700"))
             }
             .padding()
-            .background(Color(hex: "#2C2C2E")) // #2C2C2E)
+            .background(Color(hex: "#2C2C2E"))
             .cornerRadius(10)
             .offset(x: showDelete ? -150 : 0) // Add an offset when swiped
             .gesture(
