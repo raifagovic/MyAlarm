@@ -15,6 +15,7 @@
 		DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB42CF87AB80039F6CC /* AlarmView.swift */; };
 		DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */; };
 		DC661BB92CF87E360039F6CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Models.swift */; };
+		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		DC661BB42CF87AB80039F6CC /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditorView.swift; sourceTree = "<group>"; };
 		DC661BB82CF87E360039F6CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +62,14 @@
 			isa = PBXGroup;
 			children = (
 				DC661B852CC566E50039F6CC /* MyAlarmApp.swift */,
-				DC661B872CC566E50039F6CC /* ContentView.swift */,
-				DC661B892CC566E60039F6CC /* Assets.xcassets */,
-				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
-				DC661B8B2CC566E60039F6CC /* Preview Content */,
+				DC661BB82CF87E360039F6CC /* Models.swift */,
 				DC661BB42CF87AB80039F6CC /* AlarmView.swift */,
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
-				DC661BB82CF87E360039F6CC /* Models.swift */,
+				DC661B872CC566E50039F6CC /* ContentView.swift */,
+				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
+				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
+				DC661B892CC566E60039F6CC /* Assets.xcassets */,
+				DC661B8B2CC566E60039F6CC /* Preview Content */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
+				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
 				DC661BB92CF87E360039F6CC /* Models.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
