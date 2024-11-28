@@ -22,9 +22,8 @@ struct ContentView: View {
                 Text("No alarms set")
                     .font(.headline)
 //                    .foregroundColor(Color(hex: "#FFD700"))
-//                    .foregroundColor(Color(hex: "#F1F1F1"))
                     .foregroundColor(Color.gray)
-//                    .foregroundColor(Color(UIColor.systemOrange))
+
                     .padding(.top)
                     .padding(.leading)
                 
@@ -51,11 +50,7 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus")
                             .padding()
-                            .background(Color(hex: "#FFD700"))
-                            .foregroundColor(Color(hex: "#1C1C1E"))
-//                            .background(Color(UIColor.systemOrange))
-                            .clipShape(Rectangle())
-                            .cornerRadius(15)
+                            .foregroundColor(Color(hex: "#F1F1F1"))
                     }
                     .padding()
                 }
