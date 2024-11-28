@@ -50,14 +50,12 @@ struct AlarmView: View {
                         .foregroundColor(Color(hex: "#E8E8E8"))
                         .bold()
                     HStack {
-                        Text("Label")
+//                        Text("Label")
                         Text("♥︎")
                     }
                         .foregroundColor(.gray)
                     HStack {
-                        ForEach(orderedDayLetters(), id: \.self) { letter in
-                            Text(letter)
-                        }
+                        Text("Weekdays")
                     }
                     .font(.caption)
                     .foregroundColor(.gray)
