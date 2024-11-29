@@ -17,16 +17,27 @@ struct ContentView: View {
             Color(hex: "#1C1C1E")
                 .edgesIgnoringSafeArea(.all) // Extend to edges
             
-            // Display all alarms with "Rings in ..." message at the top
+            // Main content
             VStack(alignment: .leading) {
-                Text("No alarms set")
-                    .font(.headline)
-//                    .foregroundColor(Color(hex: "#FFD700"))
-                    .foregroundColor(Color.gray)
-
-                    .padding(.top)
-                    .padding(.leading)
+                // Top row with text and plus button
+                HStack {
+                    Text("No alarms set")
+                        .font(.headline)
+                        .foregroundColor(Color.gray)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(Color(hex: "#F1F1F1"))
+                    }
+                }
+                .padding(.top)
+                .padding(.horizontal) // Horizontal padding for both text and button
                 
+                // List of alarms
                 ForEach(alarms) { alarm in
                     AlarmView(
                         alarms: $alarms,
@@ -37,23 +48,8 @@ struct ContentView: View {
                         }
                     )
                 }
+                
                 Spacer()
-            }
-            
-            // Plus button at the bottom-right corner
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
-                    }) {
-                        Image(systemName: "plus")
-                            .padding()
-                            .foregroundColor(Color(hex: "#F1F1F1"))
-                    }
-                    .padding()
-                }
             }
         }
         .sheet(isPresented: $isEditing) {
