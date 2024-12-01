@@ -42,7 +42,9 @@ struct AlarmView: View {
                 VStack(alignment: .leading) {
                     Text(alarm.time)
                         .font(.largeTitle)
-                        .foregroundColor(Color(hex: "#E8E8E8"))
+//                        .foregroundColor(Color(hex: "#E8E8E8"))
+//                        .foregroundColor(Color(hex: ""))
+                        .foregroundColor(Color.gray)
                         .bold()
                     HStack {
 //                        Text("Label")
