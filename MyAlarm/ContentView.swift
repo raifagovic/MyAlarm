@@ -22,6 +22,7 @@ struct ContentView: View {
                 // Top row with text and plus button
                 HStack {
                     Text("No alarms set")
+                        .padding(.leading, 10)
                         .font(.headline)
                         .foregroundColor(Color.gray)
                     Spacer()
