@@ -56,10 +56,22 @@ struct AlarmView: View {
                     .foregroundColor(.gray)
                 }
                 Spacer()
-                Toggle(isOn: $isAlarmOn) {
+//                Toggle(isOn: $isAlarmOn) {
+//                }
+//                .labelsHidden()
+//                .tint(Color(hex: "#FFD700"))
+                
+                // Custom Toggle with gray background when off
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(isAlarmOn ? Color.clear : Color.gray) // Gray when off, clear when on
+                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                    
+                    Toggle(isOn: $isAlarmOn) {
+                    }
+                    .labelsHidden()
+                    .tint(Color(hex: "#FFD700")) // Yellow tint when on
                 }
-                .labelsHidden()
-                .tint(Color(hex: "#FFD700"))
             }
             .padding()
             .background(Color(hex: "#2C2C2E"))
