@@ -43,7 +43,6 @@ struct AlarmView: View {
                     Text(alarm.time)
                         .font(.largeTitle)
 //                        .foregroundColor(Color(hex: "#E8E8E8"))
-//                        .foregroundColor(Color(hex: ""))
                         .foregroundColor(Color.gray)
                         .bold()
                     HStack {

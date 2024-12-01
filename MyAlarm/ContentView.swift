@@ -24,13 +24,12 @@ struct ContentView: View {
                     Text("No alarms set")
                         .font(.headline)
                         .foregroundColor(Color.gray)
-                    
                     Spacer()
-                    
                     Button(action: {
                         alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
                     }) {
                         Image(systemName: "plus")
+                            .padding(.trailing, 10)
                             .foregroundColor(Color(hex: "#F1F1F1"))
                     }
                 }
@@ -48,7 +47,6 @@ struct ContentView: View {
                         }
                     )
                 }
-                
                 Spacer()
             }
         }
