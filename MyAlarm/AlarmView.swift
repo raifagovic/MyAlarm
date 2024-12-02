@@ -36,17 +36,16 @@ struct AlarmView: View {
                     .padding(.trailing)
                 }
             }
-            
+
             // Main alarm view
             HStack {
                 VStack(alignment: .leading) {
                     Text(alarm.time)
                         .font(.largeTitle)
-//                        .foregroundColor(Color(hex: "#E8E8E8"))
                         .foregroundColor(Color.gray)
                         .bold()
                     HStack {
-//                        Text("Label")
+                        Text("Label")
                         Text("♥︎")
                     }
                         .foregroundColor(.gray)
@@ -57,10 +56,6 @@ struct AlarmView: View {
                     .foregroundColor(.gray)
                 }
                 Spacer()
-//                Toggle(isOn: $isAlarmOn) {
-//                }
-//                .labelsHidden()
-//                .tint(Color(hex: "#FFD700"))
                 
                 // Custom Toggle with gray background when off
                 ZStack {

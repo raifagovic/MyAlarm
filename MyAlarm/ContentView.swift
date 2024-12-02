@@ -25,6 +25,7 @@ struct ContentView: View {
                         .padding(.leading, 10)
                         .font(.headline)
                         .foregroundColor(Color.gray)
+//                        .foregroundColor(Color(hex: "#FFD700"))
                     Spacer()
                     Button(action: {
                         alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
