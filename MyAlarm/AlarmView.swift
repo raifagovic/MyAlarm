@@ -42,7 +42,7 @@ struct AlarmView: View {
                 VStack(alignment: .leading) {
                     Text(alarm.time)
                         .font(.largeTitle)
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color.gray) // Change color based on toggle state
                         .bold()
                     HStack {
                         Text("Label")
