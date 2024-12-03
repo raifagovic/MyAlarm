@@ -82,7 +82,9 @@ struct AlarmEditorView: View {
                             Toggle("Snooze", isOn: .constant(true))
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)                    .padding(.top, 10)
+                    .scrollContentBackground(.hidden)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.top, 10)
                     .background(Color.clear) // Ensure form blends with background color
                     
                     // Delete Alarm button (always visible)
