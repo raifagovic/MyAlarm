@@ -24,14 +24,22 @@ struct AlarmEditorView: View {
                     .edgesIgnoringSafeArea(.all) // Extend background color to cover entire view
                 
                 VStack {
-                    DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                        .datePickerStyle(.wheel)
-                        .labelsHidden()
+                    // DatePicker with aligned width
+                    VStack {
+                        DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                    }
+                    .frame(maxWidth: 350) // Match the width of rows and "Delete Alarm" button
+                    .padding(.horizontal)
+                    .background(Color(hex: "#2C2C2E")) // Optional: Add background to blend with the view
+                    .cornerRadius(10)
                     
                     Text(remainingTimeMessage())
                         .font(.headline)
                         .foregroundColor(.gray)
                         .padding(.top, 3)
+                        .frame(maxWidth: 350) // Match the width as well
                     
                     // Standard alarm settings area
                     Form {
