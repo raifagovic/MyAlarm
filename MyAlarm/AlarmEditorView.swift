@@ -19,93 +19,99 @@ struct AlarmEditorView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
+            ZStack {
+                Color(hex: "#2C2C2E")
+                    .edgesIgnoringSafeArea(.all) // Extend background color to cover entire view
                 
-                Text(remainingTimeMessage())
-                    .font(.headline)
-                    .foregroundColor(.gray)
-                    .padding(.top, 3)
-                
-                // Standard alarm settings area
-                Form {
-                    Section {
-                        // Repeat row with NavigationLink
-                        NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
-                            HStack {
-                                Text("Repeat")
-                                    .padding(.trailing, 0)
-                                Spacer()
-                                Text(getAbbreviatedDays())
-                                    .foregroundColor(.gray)
-                                    .lineLimit(1)
-                                    .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-                                    .padding(.leading, -4)
+                VStack {
+                    DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                    
+                    Text(remainingTimeMessage())
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                        .padding(.top, 3)
+                    
+                    // Standard alarm settings area
+                    Form {
+                        Section {
+                            // Repeat row with NavigationLink
+                            NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+                                HStack {
+                                    Text("Repeat")
+                                        .padding(.trailing, 0)
+                                    Spacer()
+                                    Text(getAbbreviatedDays())
+                                        .foregroundColor(.gray)
+                                        .lineLimit(1)
+                                        .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
+                                        .padding(.leading, -4)
+                                }
                             }
-                        }
-                        
-                        // Label row with editable text
-                        HStack {
-                            Text("Label")
-                            Spacer()
-                            HStack() {
-                                TextField("Alarm", text: $labelText)
-                                    .foregroundColor(.gray)
-                                    .multilineTextAlignment(.trailing)
-                                
-                                if !labelText.isEmpty {
-                                    Button(action: {
-                                        labelText = "" // Clear the text
-                                    }) {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .foregroundColor(.gray)
+                            
+                            // Label row with editable text
+                            HStack {
+                                Text("Label")
+                                Spacer()
+                                HStack {
+                                    TextField("Alarm", text: $labelText)
+                                        .foregroundColor(.gray)
+                                        .multilineTextAlignment(.trailing)
+                                    
+                                    if !labelText.isEmpty {
+                                        Button(action: {
+                                            labelText = "" // Clear the text
+                                        }) {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .foregroundColor(.gray)
+                                        }
                                     }
                                 }
                             }
+                            
+                            // Sound row
+                            HStack {
+                                Text("Sound")
+                                Spacer()
+                                Text("Radar")
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            // Snooze toggle
+                            Toggle("Snooze", isOn: .constant(true))
                         }
-                        
-                        // Sound row
-                        HStack {
-                            Text("Sound")
-                            Spacer()
-                            Text("Radar")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        // Snooze toggle
-                        Toggle("Snooze", isOn: .constant(true))
                     }
+                    .frame(height: 250)
+                    .padding(.top, 10)
+                    .background(Color.clear) // Ensure form blends with background color
+                    
+                    // Delete Alarm button (always visible)
+                    Button(action: {
+                        onDelete?() // Call onDelete if it's set
+                        isPresented = false // Dismiss the editor after deletion
+                    }) {
+                        Text("Delete Alarm")
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(8)
+                    }
+                    .padding(.top, 5)
                 }
-                .frame(height: 250)
-                .padding(.top, 10)
-                
-                // Delete Alarm button (always visible)
-                Button(action: {
-                    onDelete?() // Call onDelete if it's set
-                    isPresented = false // Dismiss the editor after deletion
-                }) {
-                    Text("Delete Alarm")
-                        .fontWeight(.bold)
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(UIColor.systemGray6))
-                        .cornerRadius(8)
-                }
-                .padding(.top, 5)
+                .navigationBarItems(
+                    leading: Button("Cancel") {
+                        isPresented = false
+                    },
+                    trailing: Button("Save") {
+                        isPresented = false
+                        // Add save functionality here
+                    }
+                )
+                .navigationBarTitle("Edit Alarm", displayMode: .inline)
             }
-            .navigationBarItems(
-                leading: Button("Cancel") {
-                    isPresented = false
-                },
-                trailing: Button("Save") {
-                    isPresented = false
-                    // Add save functionality here
-                }
-            )
-            .navigationBarTitle("Edit Alarm", displayMode: .inline)
         }
     }
     
