@@ -100,6 +100,8 @@ struct AlarmEditorView: View {
                             .background(Color(UIColor.systemGray6))
                             .cornerRadius(8)
                     }
+                    .frame(maxWidth: .infinity) // Match the width of the Form
+                    .padding(.horizontal, 16) // Add horizontal padding to align with Form
                     .padding(.top, 5)
                 }
                 .navigationBarItems(
