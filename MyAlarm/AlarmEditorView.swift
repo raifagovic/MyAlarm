@@ -26,20 +26,28 @@ struct AlarmEditorView: View {
                 VStack {
                     // DatePicker with aligned width
                     VStack {
-                        DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                            .datePickerStyle(.wheel)
-                            .labelsHidden()
+                        // Custom DatePicker container with a wider highlight
+                        ZStack {
+                            // Wider highlight rectangle
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.gray.opacity(0.2)) // Match your desired highlight color
+                                .frame(width: 350, height: 44) // Adjust width for your desired highlight area
+                            
+                            DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                                .datePickerStyle(.wheel)
+                                .labelsHidden()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
+                        .background(Color(hex: "#2C2C2E")) // Match your background color
+                        .cornerRadius(10)
+                        
+                        Text(remainingTimeMessage())
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .padding(.top, 3)
+                            .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: 350) // Match the width of rows and "Delete Alarm" button
-                    .padding(.horizontal)
-                    .background(Color(hex: "#2C2C2E")) // Optional: Add background to blend with the view
-                    .cornerRadius(10)
-                    
-                    Text(remainingTimeMessage())
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                        .padding(.top, 3)
-                        .frame(maxWidth: 350) // Match the width as well
                     
                     // Standard alarm settings area
                     Form {
