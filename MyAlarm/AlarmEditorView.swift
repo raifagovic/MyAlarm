@@ -31,6 +31,7 @@ struct AlarmEditorView: View {
                             .labelsHidden()
                             .frame(maxWidth: .infinity) // Ensures alignment with other elements
                             .background(Color.clear) // No added layers, purely default
+                            .environment(\.colorScheme, .dark) // Enforces dark mode styling
                         
                         Text(remainingTimeMessage())
                             .font(.headline)
