@@ -26,21 +26,11 @@ struct AlarmEditorView: View {
                 VStack {
                     // DatePicker with aligned width
                     VStack {
-                        // Custom DatePicker container with a wider highlight
-                        ZStack {
-                            // Wider highlight rectangle
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray.opacity(0.2)) // Match your desired highlight color
-                                .frame(width: 350, height: 44) // Adjust width for your desired highlight area
-                            
-                            DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                                .datePickerStyle(.wheel)
-                                .labelsHidden()
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                        .background(Color(hex: "#2C2C2E")) // Match your background color
-                        .cornerRadius(10)
+                        DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            .frame(maxWidth: .infinity) // Ensures alignment with other elements
+                            .background(Color.clear) // No added layers, purely default
                         
                         Text(remainingTimeMessage())
                             .font(.headline)
@@ -48,6 +38,9 @@ struct AlarmEditorView: View {
                             .padding(.top, 3)
                             .frame(maxWidth: .infinity)
                     }
+                    .padding(.horizontal)
+                    .background(Color(hex: "#2C2C2E")) // Ensures the background matches the overall view
+                    .cornerRadius(10)
                     
                     // Standard alarm settings area
                     Form {
@@ -130,6 +123,13 @@ struct AlarmEditorView: View {
                     }
                 )
                 .navigationBarTitle("Edit Alarm", displayMode: .inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Edit Alarm")
+                            .font(.headline)
+                            .foregroundColor(Color(hex: "#F1F1F1")) // Change color here
+                    }
+                }
             }
         }
     }
