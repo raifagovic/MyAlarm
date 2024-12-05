@@ -89,6 +89,7 @@ struct AlarmEditorView: View {
                             // Snooze toggle
                             Toggle("Snooze", isOn: .constant(true))
                         }
+                        .listRowBackground(Color(hex: "#39393D"))
                         
                         // Add "Delete Alarm" button as a row in the form
                         Section {
