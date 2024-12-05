@@ -107,7 +107,7 @@ struct AlarmEditorView: View {
                     .scrollContentBackground(.hidden)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.top, 10)
-                    .background(Color.clear) // Ensure form blends with background color
+                    .background(Color(hex: "#2C2C2E")) // Ensure form blends with background color
                 }
                 .navigationBarItems(
                     leading: Button("Cancel") {
