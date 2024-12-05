@@ -32,16 +32,14 @@ struct AlarmEditorView: View {
                             .frame(maxWidth: .infinity) // Ensures alignment with other elements
                             .background(Color.clear) // No added layers, purely default
                             .environment(\.colorScheme, .dark) // Enforces dark mode styling
-                        
+                            .padding(.horizontal, -16)
+                           
                         Text(remainingTimeMessage())
                             .font(.headline)
                             .foregroundColor(.gray)
                             .padding(.top, 3)
                             .frame(maxWidth: .infinity)
                     }
-                    .padding(.horizontal)
-                    .background(Color(hex: "#2C2C2E")) // Ensures the background matches the overall view
-                    .cornerRadius(10)
                     
                     // Standard alarm settings area
                     Form {
