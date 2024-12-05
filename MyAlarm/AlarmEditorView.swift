@@ -91,28 +91,25 @@ struct AlarmEditorView: View {
                             // Snooze toggle
                             Toggle("Snooze", isOn: .constant(true))
                         }
+                        
+                        // Add "Delete Alarm" button as a row in the form
+                        Section {
+                            Button(action: {
+                                onDelete?() // Call onDelete if it's set
+                                isPresented = false // Dismiss the editor after deletion
+                            }) {
+                                Text("Delete Alarm")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.red)
+                                    .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
+                            }
+                        }
+                        .listRowBackground(Color(hex: "#39393D"))
                     }
                     .scrollContentBackground(.hidden)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.top, 10)
                     .background(Color.clear) // Ensure form blends with background color
-                    
-                    // Delete Alarm button (always visible)
-                    Button(action: {
-                        onDelete?() // Call onDelete if it's set
-                        isPresented = false // Dismiss the editor after deletion
-                    }) {
-                        Text("Delete Alarm")
-                            .fontWeight(.bold)
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color(hex: "#39393D"))
-                            .cornerRadius(8)
-                    }
-                    .frame(maxWidth: .infinity) // Match the width of the Form
-                    .padding(.horizontal, 16) // Add horizontal padding to align with Form
-                    .padding(.top, 5)
                 }
                 .navigationBarItems(
                     leading: Button("Cancel") {
