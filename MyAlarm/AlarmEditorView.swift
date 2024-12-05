@@ -107,7 +107,7 @@ struct AlarmEditorView: View {
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color(UIColor.systemGray6))
+                            .background(Color(hex: "#39393D"))
                             .cornerRadius(8)
                     }
                     .frame(maxWidth: .infinity) // Match the width of the Form
