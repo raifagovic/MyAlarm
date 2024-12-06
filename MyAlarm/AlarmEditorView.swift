@@ -12,6 +12,7 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
+    @State private var isNavigating = false
     
     var selectedAlarm: Alarm // Receive the alarm to edit
     // Callback to handle deletion
