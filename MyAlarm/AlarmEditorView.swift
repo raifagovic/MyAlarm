@@ -45,24 +45,37 @@ struct AlarmEditorView: View {
                     // Standard alarm settings area
                     Form {
                         Section {
-                            // Repeat row with NavigationLink
-                            NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+                            // Repeat row
+                            Button(action: {
+                                // Trigger navigation by changing the state
+                                isNavigating = true
+                            }) {
                                 HStack {
                                     Text("Repeat")
                                         .foregroundColor(Color(hex: "#E5E5E7"))
                                         .padding(.trailing, 0)
                                     Spacer()
-                                    HStack(spacing: 5) {
-                                        Text(getAbbreviatedDays())
-                                            .foregroundColor(Color(hex: "#8E8E93"))
-                                            .lineLimit(1)
-                                            .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-                                        Image(systemName: "chevron.right") // Custom arrow icon
-                                            .foregroundColor(Color(hex: "#8E8E93")) // Match the desired color
-                                    }
+                                    Text(getAbbreviatedDays())
+                                        .foregroundColor(Color(hex: "#8E8E93"))
+                                        .lineLimit(1)
+                                        .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
+                                        .padding(.leading, -4)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(Color(hex: "#8E8E93")) // Custom arrow color
                                 }
                             }
-                            .buttonStyle(PlainButtonStyle())
+                            .buttonStyle(PlainButtonStyle()) // Disable default button styling
+                            
+                            // Use NavigationLink outside of the button to handle navigation
+                            NavigationLink("", destination: RepeatView(selectedDays: $selectedDays))
+                                .opacity(0) // Hide the NavigationLink as it's only used for navigation
+                                .frame(width: 0, height: 0) // Remove any space it might take up
+                                .onChange(of: isNavigating) { oldValue, newValue in
+                                    if newValue {
+                                        // Reset the state once navigation occurs
+                                        isNavigating = false
+                                    }
+                                }
                             
                             // Label row with editable text
                             HStack {
