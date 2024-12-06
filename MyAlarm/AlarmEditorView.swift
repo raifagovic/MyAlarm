@@ -52,7 +52,7 @@ struct AlarmEditorView: View {
                                         .padding(.trailing, 0)
                                     Spacer()
                                     Text(getAbbreviatedDays())
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(Color(hex: "#8E8E93"))
                                         .lineLimit(1)
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
                                         .padding(.leading, -4)
@@ -66,7 +66,7 @@ struct AlarmEditorView: View {
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(Color(hex: "#8E8E93"))
                                         .multilineTextAlignment(.trailing)
                                     
                                     if !labelText.isEmpty {
@@ -74,7 +74,7 @@ struct AlarmEditorView: View {
                                             labelText = "" // Clear the text
                                         }) {
                                             Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(.gray)
+                                                .foregroundColor(Color(hex: "#8E8E93"))
                                         }
                                     }
                                 }
@@ -86,7 +86,7 @@ struct AlarmEditorView: View {
                                     .foregroundColor(Color(hex: "#E5E5E7"))
                                 Spacer()
                                 Text("Radar")
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(Color(hex: "#8E8E93"))
                             }
                             
                             // Snooze toggle
