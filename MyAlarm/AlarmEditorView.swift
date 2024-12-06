@@ -61,6 +61,7 @@ struct AlarmEditorView: View {
                                     }
                                 }
                             }
+                            .buttonStyle(PlainButtonStyle())
                             
                             // Label row with editable text
                             HStack {
