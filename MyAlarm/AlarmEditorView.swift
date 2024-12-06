@@ -162,10 +162,10 @@ struct AlarmEditorView: View {
             let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
             let nextDayHours = Int(nextDayDifference) / 3600
             let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
-            return "Rings in \(nextDayHours) h \(nextDayMinutes) min"
+            return "In \(nextDayHours) h \(nextDayMinutes) min"
         }
         
-        return "Rings in \(hours) h \(minutes) min"
+        return "In \(hours) h \(minutes) min"
     }
     
     private func getAbbreviatedDays() -> String {
