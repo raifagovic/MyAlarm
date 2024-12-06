@@ -51,11 +51,14 @@ struct AlarmEditorView: View {
                                         .foregroundColor(Color(hex: "#E5E5E7"))
                                         .padding(.trailing, 0)
                                     Spacer()
-                                    Text(getAbbreviatedDays())
-                                        .foregroundColor(Color(hex: "#8E8E93"))
-                                        .lineLimit(1)
-                                        .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-                                        .padding(.leading, -4)
+                                    HStack(spacing: 5) {
+                                        Text(getAbbreviatedDays())
+                                            .foregroundColor(Color(hex: "#8E8E93"))
+                                            .lineLimit(1)
+                                            .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
+                                        Image(systemName: "chevron.right") // Custom arrow icon
+                                            .foregroundColor(Color(hex: "#8E8E93")) // Match the desired color
+                                    }
                                 }
                             }
                             
