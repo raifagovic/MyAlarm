@@ -48,6 +48,7 @@ struct AlarmEditorView: View {
                             NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                                 HStack {
                                     Text("Repeat")
+                                        .foregroundColor(Color(hex: "#E5E5E7"))
                                         .padding(.trailing, 0)
                                     Spacer()
                                     Text(getAbbreviatedDays())
@@ -61,6 +62,7 @@ struct AlarmEditorView: View {
                             // Label row with editable text
                             HStack {
                                 Text("Label")
+                                    .foregroundColor(Color(hex: "#E5E5E7"))
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
@@ -81,13 +83,17 @@ struct AlarmEditorView: View {
                             // Sound row
                             HStack {
                                 Text("Sound")
+                                    .foregroundColor(Color(hex: "#E5E5E7"))
                                 Spacer()
                                 Text("Radar")
                                     .foregroundColor(.gray)
                             }
                             
                             // Snooze toggle
-                            Toggle("Snooze", isOn: .constant(true))
+                            Toggle(isOn: .constant(true)) {
+                                Text("Snooze")
+                                    .foregroundColor(Color(hex: "#E5E5E7"))
+                            }
                         }
                         .listRowBackground(Color(hex: "#39393D"))
                         
