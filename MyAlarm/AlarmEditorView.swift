@@ -45,37 +45,22 @@ struct AlarmEditorView: View {
                     // Standard alarm settings area
                     Form {
                         Section {
-                            // Repeat row
-                            Button(action: {
-                                // Trigger navigation by changing the state
-                                isNavigating = true
-                            }) {
+                            // Repeat row with NavigationLink
+                            NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                                 HStack {
                                     Text("Repeat")
                                         .foregroundColor(Color(hex: "#E5E5E7"))
-                                        .padding(.trailing, 0)
                                     Spacer()
                                     Text(getAbbreviatedDays())
                                         .foregroundColor(Color(hex: "#8E8E93"))
                                         .lineLimit(1)
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-                                        .padding(.leading, -4)
+                                    // Custom chevron arrow
                                     Image(systemName: "chevron.right")
-                                        .foregroundColor(Color(hex: "#8E8E93")) // Custom arrow color
+                                        .foregroundColor(Color(hex: "#8E8E93")) // Set the color for the arrow
                                 }
                             }
-                            .buttonStyle(PlainButtonStyle()) // Disable default button styling
-                            
-                            // Use NavigationLink outside of the button to handle navigation
-                            NavigationLink("", destination: RepeatView(selectedDays: $selectedDays))
-                                .opacity(0) // Hide the NavigationLink as it's only used for navigation
-                                .frame(width: 0, height: 0) // Remove any space it might take up
-                                .onChange(of: isNavigating) { oldValue, newValue in
-                                    if newValue {
-                                        // Reset the state once navigation occurs
-                                        isNavigating = false
-                                    }
-                                }
+                            .buttonStyle(PlainButtonStyle()) // Disable the default button style
                             
                             // Label row with editable text
                             HStack {
