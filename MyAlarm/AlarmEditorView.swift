@@ -46,7 +46,7 @@ struct AlarmEditorView: View {
                     // Standard alarm settings area
                     Form {
                         Section {
-                            // Repeat row with NavigationLink
+                            // Repeat row
                             NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                                 HStack {
                                     Text("Repeat")
@@ -59,7 +59,7 @@ struct AlarmEditorView: View {
                                 }
                             }
 
-                            // Label row with editable text
+                            // Label row
                             HStack {
                                 Text("Label")
                                     .foregroundColor(Color(hex: "#E5E5E7"))
