@@ -47,49 +47,22 @@ struct AlarmEditorView: View {
                     Form {
                         Section {
                             // Repeat row with NavigationLink
-//                            NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
-//                                HStack {
-//                                    Text("Repeat")
-//                                        .foregroundColor(Color(hex: "#E5E5E7"))
-//                                    Spacer()
-//                                    Text(getAbbreviatedDays())
-//                                        .foregroundColor(Color(hex: "#8E8E93"))
-//                                        .lineLimit(1)
-//                                        .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-//                                    // Custom chevron arrow
-//                                    Image(systemName: "chevron.right")
-//                                        .foregroundColor(Color(hex: "#8E8E93")) // Set the color for the arrow
-//                                }
-//                            }
-//                            .tint(Color(hex: "#F1F1F1"))
-                            
-                            NavigationStack {
-                                        Form {
-                                            Section {
-                                                // Custom row with manual navigation
-                                                HStack {
-                                                    Text("Repeat")
-                                                        .foregroundColor(Color(hex: "#E5E5E7")) // Label color
-                                                    Spacer()
-                                                    Text(getAbbreviatedDays())
-                                                        .foregroundColor(Color(hex: "#8E8E93")) // Secondary text color
-                                                    Image(systemName: "chevron.right")
-                                                        .foregroundColor(Color(hex: "#8E8E93")) // Custom arrow color
-                                                }
-                                                .contentShape(Rectangle()) // Makes the entire row tappable
-                                                .onTapGesture {
-                                                    showRepeatView = true // Trigger navigation
-                                                }
-                                            }
-                                            .listRowBackground(Color(hex: "#39393D")) // Background color
-                                        }
-                                        .navigationDestination(isPresented: $showRepeatView) {
-                                            RepeatView(selectedDays: $selectedDays)
-                                        }
-                                        .scrollContentBackground(.hidden)
-                                        .background(Color(hex: "#2C2C2E"))
-                                    }
-                            
+                            NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+                                HStack {
+                                    Text("Repeat")
+                                        .foregroundColor(Color.primary)
+                                    Spacer()
+                                    Text(getAbbreviatedDays())
+                                        .foregroundColor(Color.secondary)
+                                        .lineLimit(1)
+                                        .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
+                                    // Custom chevron arrow
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(Color(hex: "#8E8E93")) // Set the color for the arrow
+                                }
+                            }
+                            .tint(Color(hex: "#F1F1F1"))
+
                             // Label row with editable text
                             HStack {
                                 Text("Label")
@@ -97,7 +70,7 @@ struct AlarmEditorView: View {
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
-                                        .foregroundColor(Color(hex: "#8E8E93"))
+                                        .foregroundColor(Color(hex: "#F1F1F1"))
                                         .multilineTextAlignment(.trailing)
                                     
                                     if !labelText.isEmpty {
@@ -105,7 +78,7 @@ struct AlarmEditorView: View {
                                             labelText = "" // Clear the text
                                         }) {
                                             Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(Color(hex: "#8E8E93"))
+                                                .foregroundColor(Color(hex: "#F1F1F1"))
                                         }
                                     }
                                 }
