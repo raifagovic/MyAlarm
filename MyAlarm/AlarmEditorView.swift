@@ -114,8 +114,6 @@ struct AlarmEditorView: View {
                     .scrollContentBackground(.hidden)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.top, 10)
-//                    .background(Color(hex: "#2C2C2E"))
-//                    .background(Color(uiColor: .systemGroupedBackground))
                     .background(Color.clear)
                     .environment(\.colorScheme, .dark)
                 }
