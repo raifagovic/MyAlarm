@@ -56,9 +56,6 @@ struct AlarmEditorView: View {
                                         .foregroundColor(Color.secondary)
                                         .lineLimit(1)
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
-                                    // Custom chevron arrow
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(Color(hex: "#8E8E93")) // Set the color for the arrow
                                 }
                             }
                             .tint(Color(hex: "#F1F1F1"))
