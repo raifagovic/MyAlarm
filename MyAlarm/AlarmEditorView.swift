@@ -62,11 +62,11 @@ struct AlarmEditorView: View {
                             // Label row
                             HStack {
                                 Text("Label")
-                                    .foregroundColor(Color(hex: "#E5E5E7"))
+                                    .foregroundColor(Color.primary)
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
-                                        .foregroundColor(Color(hex: "#F1F1F1"))
+                                        .foregroundColor(Color.secondary)
                                         .multilineTextAlignment(.trailing)
                                     
                                     if !labelText.isEmpty {
@@ -74,7 +74,7 @@ struct AlarmEditorView: View {
                                             labelText = "" // Clear the text
                                         }) {
                                             Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(Color(hex: "#F1F1F1"))
+                                                .foregroundColor(Color.secondary)
                                         }
                                     }
                                 }
