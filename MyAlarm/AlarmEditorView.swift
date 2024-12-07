@@ -97,7 +97,7 @@ struct AlarmEditorView: View {
                         }
                         .listRowBackground(Color.clear)
                         
-                        // Add "Delete Alarm" button as a row in the form
+                        // Delete Alarm Button
                         Section {
                             Button(action: {
                                 onDelete?() // Call onDelete if it's set
