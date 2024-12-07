@@ -95,7 +95,7 @@ struct AlarmEditorView: View {
                                     .foregroundColor(Color(hex: "#E5E5E7"))
                             }
                         }
-                        .listRowBackground(Color(hex: "#39393D"))
+                        .listRowBackground(Color.clear)
                         
                         // Add "Delete Alarm" button as a row in the form
                         Section {
