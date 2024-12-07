@@ -71,7 +71,7 @@ struct AlarmEditorView: View {
                                     
                                     if !labelText.isEmpty {
                                         Button(action: {
-                                            labelText = "" // Clear the text
+                                            labelText = ""
                                         }) {
                                             Image(systemName: "xmark.circle.fill")
                                                 .foregroundColor(Color.secondary)
