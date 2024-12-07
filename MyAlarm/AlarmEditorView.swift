@@ -58,7 +58,6 @@ struct AlarmEditorView: View {
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize)) // Dynamic font size
                                 }
                             }
-                            .tint(Color(hex: "#F1F1F1"))
 
                             // Label row with editable text
                             HStack {
