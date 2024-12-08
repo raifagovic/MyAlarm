@@ -51,7 +51,7 @@ struct AlarmEditorView: View {
                                         .foregroundColor(Color(hex: "#F1F1F1"))
                                     Spacer()
                                     Text(getAbbreviatedDays())
-                                        .foregroundColor(Color.secondary)
+                                        .foregroundColor(Color(hex: "#A1A1A6"))
                                         .lineLimit(1)
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
                                 }
@@ -64,7 +64,7 @@ struct AlarmEditorView: View {
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
-                                        .foregroundColor(Color.secondary)
+                                        .foregroundColor(Color(hex: "#A1A1A6"))
                                         .multilineTextAlignment(.trailing)
                                     
                                     if !labelText.isEmpty {
@@ -72,7 +72,7 @@ struct AlarmEditorView: View {
                                             labelText = ""
                                         }) {
                                             Image(systemName: "xmark.circle.fill")
-                                                .foregroundColor(Color.secondary)
+                                                .foregroundColor(Color(hex: "#A1A1A6"))
                                         }
                                     }
                                 }
@@ -84,7 +84,7 @@ struct AlarmEditorView: View {
                                     .foregroundColor(Color(hex: "#F1F1F1"))
                                 Spacer()
                                 Text("Radar")
-                                    .foregroundColor(Color.secondary)
+                                    .foregroundColor(Color(hex: "#A1A1A6"))
                             }
                             
                             // Snooze toggle
@@ -103,7 +103,7 @@ struct AlarmEditorView: View {
                             }) {
                                 Text("Delete Alarm")
                                     .fontWeight(.bold)
-                                    .foregroundColor(Color(.systemRed))
+                                    .foregroundColor(Color.red)
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
                         }
