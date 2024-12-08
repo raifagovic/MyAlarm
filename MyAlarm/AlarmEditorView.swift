@@ -48,7 +48,7 @@ struct AlarmEditorView: View {
                             NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                                 HStack {
                                     Text("Repeat")
-                                        .foregroundColor(Color.primary)
+                                        .foregroundColor(Color(hex: "#F1F1F1"))
                                     Spacer()
                                     Text(getAbbreviatedDays())
                                         .foregroundColor(Color.secondary)
@@ -60,7 +60,7 @@ struct AlarmEditorView: View {
                             // Label row
                             HStack {
                                 Text("Label")
-                                    .foregroundColor(Color.primary)
+                                    .foregroundColor(Color(hex: "#F1F1F1"))
                                 Spacer()
                                 HStack {
                                     TextField("Alarm", text: $labelText)
@@ -81,7 +81,7 @@ struct AlarmEditorView: View {
                             // Sound row
                             HStack {
                                 Text("Sound")
-                                    .foregroundColor(Color.primary)
+                                    .foregroundColor(Color(hex: "#F1F1F1"))
                                 Spacer()
                                 Text("Radar")
                                     .foregroundColor(Color.secondary)
@@ -90,7 +90,7 @@ struct AlarmEditorView: View {
                             // Snooze toggle
                             Toggle(isOn: .constant(true)) {
                                 Text("Snooze")
-                                    .foregroundColor(Color.primary)
+                                    .foregroundColor(Color(hex: "#F1F1F1"))
                             }
                         }
                         .listRowBackground(Color(hex: "#39393D"))
@@ -129,7 +129,7 @@ struct AlarmEditorView: View {
                     ToolbarItem(placement: .principal) {
                         Text("Edit Alarm")
                             .font(.headline)
-                            .foregroundColor(Color(hex: "#F1F1F1")) // Change color here
+                            .foregroundColor(Color(hex: "#F1F1F1"))
                     }
                 }
             }
