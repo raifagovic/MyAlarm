@@ -12,8 +12,6 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
-    @State private var isNavigating = false
-    @State private var showRepeatView = false
     
     var selectedAlarm: Alarm // Receive the alarm to edit
     // Callback to handle deletion
@@ -95,7 +93,7 @@ struct AlarmEditorView: View {
                                     .foregroundColor(Color(hex: "#E5E5E7"))
                             }
                         }
-                        .listRowBackground(Color.clear)
+                        .listRowBackground(Color(hex: "#39393D"))
                         
                         // Delete Alarm Button
                         Section {
