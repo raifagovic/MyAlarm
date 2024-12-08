@@ -103,7 +103,7 @@ struct AlarmEditorView: View {
                             }) {
                                 Text("Delete Alarm")
                                     .fontWeight(.bold)
-                                    .foregroundColor(.red)
+                                    .foregroundColor(Color(.systemRed))
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
                         }
