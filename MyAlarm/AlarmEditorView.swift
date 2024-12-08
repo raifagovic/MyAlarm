@@ -84,7 +84,7 @@ struct AlarmEditorView: View {
                                     .foregroundColor(Color.primary)
                                 Spacer()
                                 Text("Radar")
-                                    .foregroundColor(Color(hex: "#8E8E93"))
+                                    .foregroundColor(Color.secondary)
                             }
                             
                             // Snooze toggle
