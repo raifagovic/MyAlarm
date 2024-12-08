@@ -81,7 +81,7 @@ struct AlarmEditorView: View {
                             // Sound row
                             HStack {
                                 Text("Sound")
-                                    .foregroundColor(Color(hex: "#E5E5E7"))
+                                    .foregroundColor(Color.primary)
                                 Spacer()
                                 Text("Radar")
                                     .foregroundColor(Color(hex: "#8E8E93"))
@@ -90,7 +90,7 @@ struct AlarmEditorView: View {
                             // Snooze toggle
                             Toggle(isOn: .constant(true)) {
                                 Text("Snooze")
-                                    .foregroundColor(Color(hex: "#E5E5E7"))
+                                    .foregroundColor(Color.primary)
                             }
                         }
                         .listRowBackground(Color(hex: "#39393D"))
