@@ -32,7 +32,7 @@ struct AlarmEditorView: View {
                             .frame(maxWidth: .infinity) // Ensures alignment with other elements
                             .background(Color.clear) // No added layers, purely default
                             .environment(\.colorScheme, .dark) // Enforces dark mode styling
-                           
+                        
                         Text(remainingTimeMessage())
                             .font(.headline)
                             .foregroundColor(Color(hex: "#A1A1A6"))
@@ -55,7 +55,7 @@ struct AlarmEditorView: View {
                                         .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
                                 }
                             }
-
+                            
                             // Label row
                             HStack {
                                 Text("Label")
