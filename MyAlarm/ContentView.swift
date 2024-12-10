@@ -25,7 +25,6 @@ struct ContentView: View {
                         .padding(.leading, 10)
                         .font(.headline)
                         .foregroundColor(Color(hex: "#A1A1A6"))
-
 //                        .foregroundColor(Color(hex: "#FFD700"))
                     Spacer()
                     Button(action: {

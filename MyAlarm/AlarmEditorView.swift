@@ -35,7 +35,8 @@ struct AlarmEditorView: View {
                         
                         Text(remainingTimeMessage())
                             .font(.headline)
-                            .foregroundColor(Color(hex: "#A1A1A6"))
+//                            .foregroundColor(Color(hex: "#FFD700"))
+                            .foregroundColor(Color(hex: "#F1F1F1"))
                             .padding(.top, 3)
                             .frame(maxWidth: .infinity)
                     }
@@ -101,7 +102,7 @@ struct AlarmEditorView: View {
                                 isPresented = false // Dismiss the editor after deletion
                             }) {
                                 Text("Delete Alarm")
-                                    .fontWeight(.bold)
+//                                    .fontWeight(.bold)
                                     .foregroundColor(Color.red)
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
@@ -117,11 +118,13 @@ struct AlarmEditorView: View {
                 .navigationBarItems(
                     leading: Button("Cancel") {
                         isPresented = false
-                    },
+                    }
+                        .tint(Color(hex: "#FFD700")),
                     trailing: Button("Save") {
                         isPresented = false
                         // Add save functionality here
                     }
+                        .tint(Color(hex: "#FFD700"))
                 )
                 .navigationBarTitle("Edit Alarm", displayMode: .inline)
                 .toolbar {
@@ -166,10 +169,10 @@ struct AlarmEditorView: View {
             let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
             let nextDayHours = Int(nextDayDifference) / 3600
             let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
-            return "In \(nextDayHours) h \(nextDayMinutes) min"
+            return "Rings in \(nextDayHours) h \(nextDayMinutes) min"
         }
         
-        return "In \(hours) h \(minutes) min"
+        return "Rings in \(hours) h \(minutes) min"
     }
     
     private func getAbbreviatedDays() -> String {
