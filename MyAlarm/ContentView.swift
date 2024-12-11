@@ -64,7 +64,7 @@ struct ContentView: View {
                         selectedAlarm = nil // Clear the selected alarm
                     }
                 )
-                .environment(\.colorScheme, .dark)
+                .darkSheetBackground()
             }
         }
     }
