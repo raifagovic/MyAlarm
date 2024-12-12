@@ -9,10 +9,7 @@ import SwiftUI
 
 @main
 struct MyAlarmApp: App {
-    init() {
-        UIWindow.setRootBackgroundColor(.black)
-    }
-    
+   
     var body: some Scene {
         WindowGroup {
             ContentView()
