@@ -9,10 +9,10 @@ import SwiftUI
 
 @main
 struct MyAlarmApp: App {
-   
-    var body: some Scene {
+   var body: some Scene {
         WindowGroup {
             ContentView()
+                .appBackground(color: .black)
                 .environment(\.colorScheme, .dark) // Enforce dark mode globally
         }
     }

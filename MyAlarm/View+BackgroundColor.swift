@@ -14,4 +14,11 @@ extension View {
                 .ignoresSafeArea() // Extend to edges
         )
     }
+    
+    func appBackground(color: Color) -> some View {
+            self.background(
+                color
+                    .ignoresSafeArea() // Ensures the background extends to the safe area
+            )
+        }
 }
