@@ -11,8 +11,10 @@ import SwiftUI
 struct MyAlarmApp: App {
     init() {
         // Set the app-wide window background color
-        if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            window.windows.forEach { $0.backgroundColor = UIColor.black }
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            for window in windowScene.windows {
+                window.backgroundColor = UIColor.black
+            }
         }
     }
     
