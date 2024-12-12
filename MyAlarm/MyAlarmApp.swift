@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct MyAlarmApp: App {
-   var body: some Scene {
+    init() {
+        // Set the app-wide window background color
+        if let window = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            window.windows.forEach { $0.backgroundColor = UIColor.black }
+        }
+    }
+    
+    var body: some Scene {
         WindowGroup {
             ContentView()
-                .appBackground(color: .black)
+                .appBackground(color: Color.black)
                 .environment(\.colorScheme, .dark) // Enforce dark mode globally
         }
     }
