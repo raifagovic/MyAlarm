@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct MyAlarmApp: App {
     init() {
+        UIWindow.setRootBackgroundColor(.black)
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.colorScheme, .dark) // Enforce dark mode globally
-                .background(Color.black.ignoresSafeArea()) // Ensure the root view has a black background
         }
     }
 }
