@@ -17,8 +17,6 @@
 		DC661BB92CF87E360039F6CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Models.swift */; };
 		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 		DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */; };
-		DC667B202D0BB88D00833F41 /* CustomHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B1F2D0BB88D00833F41 /* CustomHostingController.swift */; };
-		DC667B222D0BB96A00833F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B212D0BB96A00833F41 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +31,6 @@
 		DC661BB82CF87E360039F6CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
-		DC667B1F2D0BB88D00833F41 /* CustomHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostingController.swift; sourceTree = "<group>"; };
-		DC667B212D0BB96A00833F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +73,6 @@
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
-				DC667B1F2D0BB88D00833F41 /* CustomHostingController.swift */,
-				DC667B212D0BB96A00833F41 /* AppDelegate.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -161,7 +155,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC667B202D0BB88D00833F41 /* CustomHostingController.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */,
@@ -169,7 +162,6 @@
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
 				DC661BB92CF87E360039F6CC /* Models.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
-				DC667B222D0BB96A00833F41 /* AppDelegate.swift in Sources */,
 				DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

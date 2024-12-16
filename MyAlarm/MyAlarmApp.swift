@@ -11,9 +11,7 @@ import SwiftUI
 struct MyAlarmApp: App {
     var body: some Scene {
         WindowGroup {
-            CustomHostingController(rootView: ContentView()
-                .environment(\.colorScheme, .dark) // Enforce dark mode globally
-            )
+            ContentView() // A placeholder because the app's window is managed by AppDelegate
         }
     }
 }
