@@ -67,6 +67,16 @@ struct ContentView: View {
                 .darkSheetBackground()
             }
         }
+        .onAppear {
+            setRootBackgroundColor()
+        }
+    }
+    
+    // Helper function to set root background color to black
+    private func setRootBackgroundColor() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            windowScene.windows.first?.backgroundColor = UIColor.black
+        }
     }
 }
 
