@@ -52,23 +52,22 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .sheet(isPresented: $isEditing, onDismiss: {
-            // Clear selection when dismissed
+        .sheet(item: $selectedAlarm, onDismiss: {
+            // Clear the selected alarm when the sheet is dismissed
             selectedAlarm = nil
-        }) {
-            if let alarmToEdit = selectedAlarm {
-                AlarmEditorView(
-                    isPresented: $isEditing, // Pass the binding here
-                    selectedAlarm: alarmToEdit,
-                    onDelete: {
-                        if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-                            alarms.remove(at: index)
-                        }
-                        selectedAlarm = nil // Clear the selected alarm
+        }) { alarmToEdit in
+            // Use `alarmToEdit` because it's guaranteed to be non-nil when the sheet is presented
+            AlarmEditorView(
+                isPresented: $isEditing, // Pass the binding here
+                selectedAlarm: alarmToEdit,
+                onDelete: {
+                    if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
+                        alarms.remove(at: index)
                     }
-                )
-                .darkSheetBackground()
-            }
+                    selectedAlarm = nil // Clear the selected alarm
+                }
+            )
+            .darkSheetBackground()
         }
         .onAppear {
             setRootBackgroundColor()
