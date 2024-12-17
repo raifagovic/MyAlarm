@@ -52,19 +52,18 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .sheet(item: $selectedAlarm, onDismiss: {
-            // Clear the selected alarm when the sheet is dismissed
-            selectedAlarm = nil
-        }) { alarmToEdit in
-            // Use `alarmToEdit` because it's guaranteed to be non-nil when the sheet is presented
+        .sheet(item: $selectedAlarm) { alarmToEdit in
             AlarmEditorView(
-                isPresented: $isEditing, // Pass the binding here
+                isPresented: $isEditing,
                 selectedAlarm: alarmToEdit,
                 onDelete: {
                     if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
                         alarms.remove(at: index)
                     }
-                    selectedAlarm = nil // Clear the selected alarm
+                    selectedAlarm = nil // Clear the selected alarm when the sheet is dismissed
+                },
+                onCancel: {
+                    selectedAlarm = nil // Dismiss the sheet when cancel is pressed
                 }
             )
             .darkSheetBackground()
