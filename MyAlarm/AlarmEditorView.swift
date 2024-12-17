@@ -16,6 +16,7 @@ struct AlarmEditorView: View {
     var selectedAlarm: Alarm // Receive the alarm to edit
     // Callback to handle deletion
     var onDelete: (() -> Void)?
+    var onCancel: () -> Void // New cancel action closure
     
     var body: some View {
         NavigationView {
@@ -116,7 +117,7 @@ struct AlarmEditorView: View {
                 }
                 .navigationBarItems(
                     leading: Button("Cancel") {
-                        isPresented = false
+                        onCancel() // Call the onCancel closure
                     }
                         .tint(Color(hex: "#FFD700")),
                     trailing: Button("Save") {
