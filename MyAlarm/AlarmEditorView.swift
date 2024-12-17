@@ -121,8 +121,8 @@ struct AlarmEditorView: View {
                     }
                         .tint(Color(hex: "#FFD700")),
                     trailing: Button("Save") {
-                        isPresented = false
-                        // Add save functionality here
+                        // Save functionality (not implemented here)
+                        onCancel() // Optionally dismiss after saving
                     }
                         .tint(Color(hex: "#FFD700"))
                 )
