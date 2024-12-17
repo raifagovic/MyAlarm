@@ -101,7 +101,7 @@ struct AlarmEditorView: View {
                                 isPresented = false // Dismiss the editor after deletion
                             }) {
                                 Text("Delete Alarm")
-//                                    .fontWeight(.bold)
+                                    .fontWeight(.bold)
                                     .foregroundColor(Color.red)
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
