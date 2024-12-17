@@ -11,7 +11,6 @@ struct ContentView: View {
     @State private var alarms = [Alarm(time: "00:50")]
     @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
-    @State private var isFirstLaunch = true
     
     var body: some View {
         ZStack {
@@ -53,7 +52,10 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .sheet(isPresented: $isEditing) {
+        .sheet(isPresented: $isEditing, onDismiss: {
+            // Clear selection when dismissed
+            selectedAlarm = nil
+        }) {
             if let alarmToEdit = selectedAlarm {
                 AlarmEditorView(
                     isPresented: $isEditing, // Pass the binding here
@@ -62,17 +64,14 @@ struct ContentView: View {
                         if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
                             alarms.remove(at: index)
                         }
-                        selectedAlarm = nil
+                        selectedAlarm = nil // Clear the selected alarm
                     }
                 )
                 .darkSheetBackground()
             }
         }
         .onAppear {
-            if isFirstLaunch {
-                setRootBackgroundColor() // Ensures the background is black on first launch
-                isFirstLaunch = false // Prevent this from happening on subsequent launches
-            }
+            setRootBackgroundColor()
         }
     }
     
