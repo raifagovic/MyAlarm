@@ -52,18 +52,20 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .sheet(item: $selectedAlarm) { alarmToEdit in
-            AlarmEditorView(
-                isPresented: $isEditing,
-                selectedAlarm: alarmToEdit,
-                onDelete: {
-                    if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-                        alarms.remove(at: index)
+        .sheet(isPresented: $isEditing) {
+            if let alarmToEdit = selectedAlarm {
+                AlarmEditorView(
+                    isPresented: $isEditing, // Pass the binding here
+                    selectedAlarm: alarmToEdit,
+                    onDelete: {
+                        if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
+                            alarms.remove(at: index)
+                        }
+                        selectedAlarm = nil
                     }
-                    selectedAlarm = nil // Clear the selected alarm
-                }
-            )
-            .darkSheetBackground()
+                )
+                .darkSheetBackground()
+            }
         }
         .onAppear {
             setRootBackgroundColor()
