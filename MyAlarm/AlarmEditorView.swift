@@ -35,7 +35,7 @@ struct AlarmEditorView: View {
                         
                         Text(remainingTimeMessage())
                             .font(.headline)
-                            .foregroundColor(Color(hex: "#F1F1F1"))
+                            .foregroundColor(Color(hex: "#A1A1A6"))
                             .padding(.top, 3)
                             .frame(maxWidth: .infinity)
                     }
