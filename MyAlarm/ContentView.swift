@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var alarms = [Alarm(time: "00:50")]
     @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
+    @State private var isFirstLaunch = true
     
     var body: some View {
         ZStack {
@@ -68,7 +69,10 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            setRootBackgroundColor()
+            if isFirstLaunch {
+                setRootBackgroundColor() // Ensures the background is black on first launch
+                isFirstLaunch = false // Prevent this from happening on subsequent launches
+            }
         }
     }
     
