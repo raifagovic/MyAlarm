@@ -13,10 +13,9 @@ struct AlarmEditorView: View {
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
     
-    var selectedAlarm: Alarm // Receive the alarm to edit
-    // Callback to handle deletion
+    var selectedAlarm: Alarm
     var onDelete: (() -> Void)?
-    var onCancel: () -> Void // New cancel action closure
+    var onCancel: () -> Void
     
     var body: some View {
         NavigationView {
