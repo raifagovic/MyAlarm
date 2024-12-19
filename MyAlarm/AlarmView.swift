@@ -50,26 +50,28 @@ struct AlarmView: View {
                         Text("♥︎")
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
-                        .foregroundColor(.gray)
-                    HStack {
-                        Text("Weekdays")
-                            .foregroundColor(Color(hex: "#A1A1A6"))
-                    }
-                    .font(.caption)
                     .foregroundColor(.gray)
                 }
+                
                 Spacer()
                 
-                // Custom Toggle with gray background when off
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
-                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                // Weekdays and Toggle
+                HStack {
+                    Text("Weekdays")
+                        .font(.caption)
+                        .foregroundColor(Color(hex: "#A1A1A6"))
                     
-                    Toggle(isOn: $isAlarmOn) {
+                    // Custom Toggle with gray background when off
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
+                            .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                        
+                        Toggle(isOn: $isAlarmOn) {
+                        }
+                        .labelsHidden()
+                        .tint(Color(hex: "#FFD700")) // Yellow tint when on
                     }
-                    .labelsHidden()
-                    .tint(Color(hex: "#FFD700")) // Yellow tint when on
                 }
             }
             .padding()
