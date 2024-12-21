@@ -60,6 +60,7 @@ struct AlarmView: View {
                     Text("Weekdays")
                         .font(.caption)
                         .foregroundColor(Color(hex: "#A1A1A6"))
+                        .padding(.trailing, 8)
                     
                     // Custom Toggle with gray background when off
                     ZStack {
