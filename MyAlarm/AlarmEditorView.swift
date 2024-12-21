@@ -25,14 +25,12 @@ struct AlarmEditorView: View {
                 
                 VStack {
                     // DatePicker with aligned width
-                    VStack {
-                        DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                            .datePickerStyle(.wheel)
-                            .labelsHidden()
-                            .frame(maxWidth: .infinity) // Ensures alignment with other elements
-                            .background(Color.clear) // No added layers, purely default
-                            .environment(\.colorScheme, .dark) // Enforces dark mode styling
-                    }
+                    DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .frame(maxWidth: .infinity) // Ensures alignment with other elements
+                        .background(Color.clear) // No added layers, purely default
+                        .environment(\.colorScheme, .dark) // Enforces dark mode styling
                     
                     // Standard alarm settings area
                     Form {
