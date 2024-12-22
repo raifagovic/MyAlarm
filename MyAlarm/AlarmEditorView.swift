@@ -79,10 +79,9 @@ struct AlarmEditorView: View {
                             }
                             
                             // Snooze toggle
-                            Toggle(isOn: .constant(true)) {
-                                Text("Snooze")
-                                    .foregroundColor(Color(hex: "#F1F1F1"))
-                            }
+                            Text("Snooze")
+                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            
                         }
                         .listRowBackground(Color(hex: "#39393D"))
                         
