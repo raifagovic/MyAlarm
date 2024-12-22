@@ -61,7 +61,7 @@ struct AlarmView: View {
                         .font(.subheadline)
                         .bold()
                         .foregroundColor(Color(hex: "#A1A1A6"))
-                        .padding(.trailing, 8)
+                        .padding(.trailing, 10)
                     
                     // Custom Toggle with gray background when off
                     ZStack {
