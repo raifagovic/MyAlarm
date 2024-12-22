@@ -58,7 +58,8 @@ struct AlarmView: View {
                 // Weekdays and Toggle
                 HStack {
                     Text("Weekdays")
-                        .font(.caption)
+                        .font(.subheadline)
+                        .bold()
                         .foregroundColor(Color(hex: "#A1A1A6"))
                         .padding(.trailing, 8)
                     
