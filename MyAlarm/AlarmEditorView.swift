@@ -12,7 +12,7 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
-    @State private var snoozeTime: Int = 5
+    @State private var snoozeTime: Int = 10
     
     var selectedAlarm: Alarm
     var onDelete: (() -> Void)?
