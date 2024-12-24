@@ -71,6 +71,15 @@ struct AlarmEditorView: View {
                                 }
                             }
                             
+                            // Sound row
+                            HStack {
+                                Text("Sound")
+                                    .foregroundColor(Color(hex: "#F1F1F1"))
+                                Spacer()
+                                Text("Radar")
+                                    .foregroundColor(Color(hex: "#A1A1A6"))
+                            }
+                            
                             // Snooze row
                             Button(action: {
                                 showSnoozeSelection = true
