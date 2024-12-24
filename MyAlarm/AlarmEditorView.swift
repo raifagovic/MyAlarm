@@ -81,21 +81,13 @@ struct AlarmEditorView: View {
                             }
                             
                             // Snooze row
-                            Button(action: {
-                                showSnoozeSelection = true
-                            }) {
+                            NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
                                 HStack {
                                     Text("Snooze")
                                         .foregroundColor(Color(hex: "#F1F1F1"))
                                     Spacer()
                                     Text("\(selectedSnooze) minutes")
                                         .foregroundColor(Color(hex: "#A1A1A6"))
-                                }
-                            }
-                            .foregroundColor(.white)
-                            .sheet(isPresented: $showSnoozeSelection) {
-                                NavigationView {
-                                    SnoozeSelectionView(selectedSnooze: $selectedSnooze)
                                 }
                             }
                             
