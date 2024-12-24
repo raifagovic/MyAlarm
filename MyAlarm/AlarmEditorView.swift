@@ -86,7 +86,7 @@ struct AlarmEditorView: View {
                                     Text("Snooze")
                                         .foregroundColor(Color(hex: "#F1F1F1"))
                                     Spacer()
-                                    Text("\(selectedSnooze) minutes")
+                                    Text("\(selectedSnooze) min")
                                         .foregroundColor(Color(hex: "#A1A1A6"))
                                 }
                             }
