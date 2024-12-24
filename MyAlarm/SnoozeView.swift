@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SnoozeSelectionView: View {
+struct SnoozeView: View {
     @Binding var selectedSnooze: Int
     @Environment(\.presentationMode) var presentationMode // For dismissing the view
     

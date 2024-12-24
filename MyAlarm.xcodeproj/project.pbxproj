@@ -17,7 +17,7 @@
 		DC661BB92CF87E360039F6CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Models.swift */; };
 		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 		DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */; };
-		DC667B242D1AAC8A00833F41 /* SnoozeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeSelectionView.swift */; };
+		DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		DC661BB82CF87E360039F6CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
-		DC667B232D1AAC8A00833F41 /* SnoozeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeSelectionView.swift; sourceTree = "<group>"; };
+		DC667B232D1AAC8A00833F41 /* SnoozeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
-				DC667B232D1AAC8A00833F41 /* SnoozeSelectionView.swift */,
+				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
 				DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */,
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
@@ -163,7 +163,7 @@
 				DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
-				DC667B242D1AAC8A00833F41 /* SnoozeSelectionView.swift in Sources */,
+				DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */,
 				DC661BB92CF87E360039F6CC /* Models.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
 				DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */,
