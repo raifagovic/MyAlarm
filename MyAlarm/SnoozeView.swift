@@ -27,6 +27,7 @@ struct SnoozeView: View {
             .onTapGesture {
                 selectedSnooze = option // Update the selected snooze duration
             }
+            .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
         }
         .scrollContentBackground(.hidden)
         .background(Color(hex: "#1C1C1E")) // Matches dark mode style
