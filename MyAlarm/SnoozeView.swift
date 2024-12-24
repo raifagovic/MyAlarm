@@ -28,6 +28,7 @@ struct SnoozeView: View {
                 selectedSnooze = option // Update the selected snooze duration
             }
         }
+        .scrollContentBackground(.hidden)
         .background(Color(hex: "#1C1C1E")) // Matches dark mode style
         .navigationTitle("Snooze Duration")
         .navigationBarTitleDisplayMode(.inline)
