@@ -29,9 +29,13 @@ struct RepeatView: View {
                         selectedDays.append(day) // Select if not already selected
                     }
                 }
+                .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color(hex: "#1C1C1E"))
         .navigationTitle("Repeat")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     // Function to order weekdays based on locale
