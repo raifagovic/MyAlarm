@@ -12,6 +12,7 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
+    @State private var snoozeTime: Int = 5
     
     var selectedAlarm: Alarm
     var onDelete: (() -> Void)?
@@ -79,8 +80,24 @@ struct AlarmEditorView: View {
                             }
                             
                             // Snooze toggle
-                            Text("Snooze")
-                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            HStack {
+                                Text("Snooze")
+                                    .foregroundColor(Color(hex: "#F1F1F1"))
+                                
+                                Spacer()
+                                
+                                Menu {
+                                    ForEach([5, 10, 15, 20, 25, 30], id: \.self) { time in
+                                        Button("\(time) min") {
+                                            snoozeTime = time
+                                        }
+                                    }
+                                } label: {
+                                    Text("\(snoozeTime) min")
+                                        .foregroundColor(Color(hex: "#A1A1A6"))
+                                }
+                            }
+                            .padding(.vertical, 10)
                             
                         }
                         .listRowBackground(Color(hex: "#39393D"))
