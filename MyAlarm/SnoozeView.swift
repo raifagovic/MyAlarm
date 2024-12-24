@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SnoozeView: View {
-    @Binding var selectedSnooze: Int
-    @Environment(\.presentationMode) var presentationMode // For dismissing the view
+    @Binding var selectedSnooze: Int // Tracks the selected snooze duration
     
     let snoozeOptions = [5, 10, 15, 20, 25, 30]
     
@@ -17,18 +16,19 @@ struct SnoozeView: View {
         List(snoozeOptions, id: \.self) { option in
             HStack {
                 Text("\(option) minutes")
+                    .foregroundColor(.white)
                 Spacer()
                 if option == selectedSnooze {
                     Image(systemName: "checkmark")
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color(hex: "#FFD700"))
                 }
             }
             .contentShape(Rectangle()) // Makes the entire row tappable
             .onTapGesture {
-                selectedSnooze = option
-                presentationMode.wrappedValue.dismiss() // Dismiss when tapped
+                selectedSnooze = option // Update the selected snooze duration
             }
         }
+        .background(Color(hex: "#1C1C1E")) // Matches dark mode style
         .navigationTitle("Snooze Duration")
         .navigationBarTitleDisplayMode(.inline)
     }
