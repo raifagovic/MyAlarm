@@ -71,34 +71,24 @@ struct AlarmEditorView: View {
                                 }
                             }
                             
-                            // Sound row
-                            HStack {
-                                Text("Sound")
-                                    .foregroundColor(Color(hex: "#F1F1F1"))
-                                Spacer()
-                                Text("Radar")
-                                    .foregroundColor(Color(hex: "#A1A1A6"))
-                            }
-                            
-                            // Snooze toggle
-                            HStack {
-                                Text("Snooze")
-                                    .foregroundColor(Color(hex: "#F1F1F1"))
-                                
-                                Spacer()
-                                
-                                Menu {
-                                    ForEach([5, 10, 15, 20, 25, 30], id: \.self) { time in
-                                        Button("\(time) min") {
-                                            snoozeTime = time
-                                        }
-                                    }
-                                } label: {
-                                    Text("\(snoozeTime) min")
+                            // Snooze row
+                            Button(action: {
+                                showSnoozeSelection = true
+                            }) {
+                                HStack {
+                                    Text("Snooze")
+                                        .foregroundColor(Color(hex: "#F1F1F1"))
+                                    Spacer()
+                                    Text("\(selectedSnooze) minutes")
                                         .foregroundColor(Color(hex: "#A1A1A6"))
                                 }
                             }
-                            .padding(.vertical, 10)
+                            .foregroundColor(.white)
+                            .sheet(isPresented: $showSnoozeSelection) {
+                                NavigationView {
+                                    SnoozeSelectionView(selectedSnooze: $selectedSnooze)
+                                }
+                            }
                             
                         }
                         .listRowBackground(Color(hex: "#39393D"))
