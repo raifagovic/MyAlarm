@@ -46,7 +46,7 @@ struct AlarmView: View {
                         .bold()
                     HStack {
                         Text("Label")
-                            .foregroundColor(Color(hex: "#A1A1A6"))
+                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
                         Text("♥︎")
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
