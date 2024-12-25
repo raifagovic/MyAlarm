@@ -31,7 +31,13 @@ struct SnoozeView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Color(hex: "#1C1C1E")) // Matches dark mode style
-        .navigationTitle("Snooze Duration")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Snooze") // Replace with your title
+                    .foregroundColor(Color(hex: "#F1F1F1"))
+                    .font(.headline) // Optional: Adjust font style
+            }
+        }
     }
 }
