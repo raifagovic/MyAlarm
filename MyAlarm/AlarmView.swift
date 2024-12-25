@@ -73,8 +73,7 @@ struct AlarmView: View {
                         Toggle(isOn: $isAlarmOn) {
                         }
                         .labelsHidden()
-//                        .tint(Color(hex: "#FFD700")) // Yellow tint when on
-                        .tint(.green)
+                        .tint(Color(hex: "#FFD700"))
                     }
                 }
             }
