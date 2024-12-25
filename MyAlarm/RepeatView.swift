@@ -20,7 +20,6 @@ struct RepeatView: View {
                     if selectedDays.contains(day) {
                         Image(systemName: "checkmark")
                             .foregroundColor(Color(hex: "#FFD700"))
-//                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     }
                 }
                 .contentShape(Rectangle()) // Make the whole row tappable
@@ -40,9 +39,9 @@ struct RepeatView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("Repeat") // Replace with your title
+                Text("Repeat")
                     .foregroundColor(Color(hex: "#F1F1F1"))
-                    .font(.headline) // Optional: Adjust font style
+                    .font(.headline)
             }
         }
     }

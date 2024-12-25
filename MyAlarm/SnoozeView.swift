@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SnoozeView: View {
-    @Binding var selectedSnooze: Int // Tracks the selected snooze duration
+    @Binding var selectedSnooze: Int
     
     let snoozeOptions = [5, 10, 15, 20, 25, 30]
     
@@ -30,13 +30,13 @@ struct SnoozeView: View {
             .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
         }
         .scrollContentBackground(.hidden)
-        .background(Color(hex: "#1C1C1E")) // Matches dark mode style
+        .background(Color(hex: "#1C1C1E"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("Snooze") // Replace with your title
+                Text("Snooze")
                     .foregroundColor(Color(hex: "#F1F1F1"))
-                    .font(.headline) // Optional: Adjust font style
+                    .font(.headline)
             }
         }
     }
