@@ -37,8 +37,14 @@ struct RepeatView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Color(hex: "#1C1C1E"))
-        .navigationTitle("Repeat")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Repeat") // Replace with your title
+                    .foregroundColor(Color(hex: "#F1F1F1"))
+                    .font(.headline) // Optional: Adjust font style
+            }
+        }
     }
     
     // Function to order weekdays based on locale
