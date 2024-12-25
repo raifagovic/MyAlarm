@@ -15,10 +15,12 @@ struct RepeatView: View {
             ForEach(orderedWeekdays(), id: \.self) { day in
                 HStack {
                     Text(day)
+                        .foregroundColor(Color(hex: "#F1F1F1"))
                     Spacer()
                     if selectedDays.contains(day) {
                         Image(systemName: "checkmark")
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color(hex: "#FFD700"))
+//                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                     }
                 }
                 .contentShape(Rectangle()) // Make the whole row tappable
@@ -29,8 +31,9 @@ struct RepeatView: View {
                         selectedDays.append(day) // Select if not already selected
                     }
                 }
-                .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
+                
             }
+            .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
         }
         .scrollContentBackground(.hidden)
         .background(Color(hex: "#1C1C1E"))
