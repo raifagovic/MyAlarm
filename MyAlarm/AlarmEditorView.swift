@@ -134,6 +134,7 @@ struct AlarmEditorView: View {
                 }
             }
         }
+        .tint(Color(hex: "#FFD700"))
     }
     
     //    Calculate the remaining time and return a formatted string
