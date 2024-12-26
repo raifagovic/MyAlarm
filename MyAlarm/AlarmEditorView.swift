@@ -22,7 +22,7 @@ struct AlarmEditorView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "#2C2C2E")
+                Color(hex: "#1C1C1E")
                     .edgesIgnoringSafeArea(.all) // Extend background color to cover entire view
                 
                 VStack {
@@ -92,7 +92,7 @@ struct AlarmEditorView: View {
                             }
                             
                         }
-                        .listRowBackground(Color(hex: "#39393D"))
+                        .listRowBackground(Color(hex: "#2C2C2E"))
                         
                         // Delete Alarm Button
                         Section {
@@ -105,7 +105,7 @@ struct AlarmEditorView: View {
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
                         }
-                        .listRowBackground(Color(hex: "#39393D"))
+                        .listRowBackground(Color(hex: "#2C2C2E"))
                     }
                     .scrollContentBackground(.hidden)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
