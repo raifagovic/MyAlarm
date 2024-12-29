@@ -56,6 +56,8 @@ struct SnoozeView: View {
         
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        print("Transparent NavBar applied")
     }
     
     private func resetNavigationBarAppearance() {

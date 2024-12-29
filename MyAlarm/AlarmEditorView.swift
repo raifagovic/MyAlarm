@@ -20,7 +20,7 @@ struct AlarmEditorView: View {
     var onCancel: () -> Void
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color(hex: "#1C1C1E")
                     .edgesIgnoringSafeArea(.all) // Extend background color to cover entire view
