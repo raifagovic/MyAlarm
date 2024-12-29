@@ -39,6 +39,12 @@ struct SnoozeView: View {
                     .font(.headline)
             }
         }
+        .onAppear {
+            setTransparentNavigationBar()
+        }
+        .onDisappear {
+            resetNavigationBarAppearance()
+        }
     }
     
     private func setTransparentNavigationBar() {
