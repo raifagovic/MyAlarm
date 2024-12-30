@@ -117,13 +117,11 @@ struct AlarmEditorView: View {
                 .navigationBarItems(
                     leading: Button("Cancel") {
                         onCancel() // Call the onCancel closure
-                    }
-                        .tint(Color(hex: "#FFD700")),
+                    },
                     trailing: Button("Save") {
                         // Save functionality (not implemented here)
                         onCancel() // Optionally dismiss after saving
                     }
-                        .tint(Color(hex: "#FFD700"))
                 )
                 .navigationBarTitle("Edit Alarm", displayMode: .inline)
                 .toolbar {
