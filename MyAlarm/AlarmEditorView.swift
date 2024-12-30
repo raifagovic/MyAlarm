@@ -123,7 +123,6 @@ struct AlarmEditorView: View {
                         onCancel() // Optionally dismiss after saving
                     }
                 )
-                .navigationBarTitle("Edit Alarm", displayMode: .inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Edit Alarm")
