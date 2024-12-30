@@ -107,9 +107,7 @@ struct AlarmEditorView: View {
                         .listRowBackground(Color(hex: "#2C2C2E"))
                     }
                     .scrollContentBackground(.hidden)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .scrollDisabled(true)
-                    .background(Color.clear)
                     .environment(\.colorScheme, .dark)
                 }
                 .toolbar {
