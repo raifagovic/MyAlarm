@@ -91,7 +91,6 @@ struct AlarmEditorView: View {
                             }
                             
                         }
-                        .listRowBackground(Color(hex: "#2C2C2E"))
                         
                         // Delete Alarm Button
                         Section {
@@ -104,9 +103,8 @@ struct AlarmEditorView: View {
                                     .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
                             }
                         }
-                        .listRowBackground(Color(hex: "#2C2C2E"))
                     }
-                    .scrollContentBackground(.hidden)
+                    .listRowBackground(Color(hex: "#2C2C2E"))
                     .scrollDisabled(true)
                     .environment(\.colorScheme, .dark)
                 }
