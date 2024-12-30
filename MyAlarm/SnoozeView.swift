@@ -39,32 +39,5 @@ struct SnoozeView: View {
                     .font(.headline)
             }
         }
-        .onAppear {
-            setTransparentNavigationBar()
-        }
-        .onDisappear {
-            resetNavigationBarAppearance()
-        }
-    }
-    
-    private func setTransparentNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor.black.withAlphaComponent(0.5) // Dark and semi-transparent
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
-        print("Transparent NavBar applied")
-    }
-    
-    private func resetNavigationBarAppearance() {
-        let defaultAppearance = UINavigationBarAppearance()
-        defaultAppearance.configureWithDefaultBackground()
-        
-        UINavigationBar.appearance().standardAppearance = defaultAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = defaultAppearance
     }
 }
