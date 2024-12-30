@@ -18,7 +18,6 @@
 		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 		DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */; };
 		DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeView.swift */; };
-		DC667B262D233AD000833F41 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B252D233AD000833F41 /* NavigationBarModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
 		DC667B232D1AAC8A00833F41 /* SnoozeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeView.swift; sourceTree = "<group>"; };
-		DC667B252D233AD000833F41 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +72,6 @@
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
 				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
-				DC667B252D233AD000833F41 /* NavigationBarModifier.swift */,
 				DC661BBC2D09B0700039F6CC /* View+BackgroundColor.swift */,
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
@@ -161,7 +158,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC667B262D233AD000833F41 /* NavigationBarModifier.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC661BBD2D09B0700039F6CC /* View+BackgroundColor.swift in Sources */,

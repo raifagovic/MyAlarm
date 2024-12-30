@@ -73,9 +73,5 @@ struct SnoozeView: View {
             .navigationTitle("Snooze")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .modifier(NavigationBarModifier(
-            backgroundColor: Color(Color(hex: "#1C1C1E")),
-            foregroundColor: UIColor.white
-        ))    }
+    }
 }
