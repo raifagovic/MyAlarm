@@ -110,7 +110,6 @@ struct AlarmEditorView: View {
                     .scrollContentBackground(.hidden)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .scrollDisabled(true)
-                    .padding(.top, 10)
                     .background(Color.clear)
                     .environment(\.colorScheme, .dark)
                 }
