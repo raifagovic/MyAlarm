@@ -70,7 +70,6 @@ struct SnoozeView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Color(hex: "#1C1C1E"))
-            .navigationTitle("Snooze")
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Snooze")
