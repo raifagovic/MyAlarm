@@ -71,7 +71,16 @@ struct SnoozeView: View {
             .scrollContentBackground(.hidden)
             .background(Color(hex: "#1C1C1E"))
             .navigationTitle("Snooze")
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Snooze")
+                        .font(.headline)
+                        .foregroundColor(Color(hex: "#F1F1F1")) // White color for the title
+                }
+            }
+            .toolbarBackground(Color.black.opacity(0.8), for: .navigationBar) // Dark and semi-transparent
+            .toolbarBackground(.visible, for: .navigationBar) // Ensures the toolbar is visible
+            .toolbarColorScheme(.dark, for: .navigationBar) // Enforces dark theme
         }
     }
 }
