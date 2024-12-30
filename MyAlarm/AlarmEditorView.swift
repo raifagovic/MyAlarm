@@ -113,16 +113,17 @@ struct AlarmEditorView: View {
                     .background(Color.clear)
                     .environment(\.colorScheme, .dark)
                 }
-                .navigationBarItems(
-                    leading: Button("Cancel") {
-                        onCancel() // Call the onCancel closure
-                    },
-                    trailing: Button("Save") {
-                        // Save functionality (not implemented here)
-                        onCancel() // Optionally dismiss after saving
-                    }
-                )
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Cancel") {
+                            onCancel()
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Save") {
+                            onCancel()
+                        }
+                    }
                     ToolbarItem(placement: .principal) {
                         Text("Edit Alarm")
                             .font(.headline)
