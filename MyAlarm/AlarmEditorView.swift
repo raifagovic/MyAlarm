@@ -31,7 +31,6 @@ struct AlarmEditorView: View {
                         .datePickerStyle(.wheel)
                         .labelsHidden()
                         .frame(maxWidth: .infinity) // Ensures alignment with other elements
-                        .background(Color.clear) // No added layers, purely default
                         .environment(\.colorScheme, .dark) // Enforces dark mode styling
                     
                     // Standard alarm settings area
