@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct NavigationBarModifier: ViewModifier {
-    var backgroundColor: Color
-    var foregroundColor: Color
+    var backgroundColor: UIColor
+    var foregroundColor: UIColor
 
-    init(backgroundColor: Color, foregroundColor: Color) {
-        self.backgroundColor = backgroundColor
+    init(backgroundColor: Color, foregroundColor: UIColor) {
+        self.backgroundColor = UIColor(backgroundColor)
         self.foregroundColor = foregroundColor
 
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(backgroundColor)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(foregroundColor)]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(foregroundColor)]
+        appearance.backgroundColor = self.backgroundColor
+        appearance.titleTextAttributes = [.foregroundColor: self.foregroundColor]
+        appearance.largeTitleTextAttributes = [.foregroundColor: self.foregroundColor]
 
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().tintColor = UIColor(foregroundColor)
+
+        // Force dark mode for the navigation bar
+        UINavigationBar.appearance().overrideUserInterfaceStyle = .dark
     }
 
     func body(content: Content) -> some View {

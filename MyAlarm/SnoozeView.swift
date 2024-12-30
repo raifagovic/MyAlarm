@@ -62,46 +62,20 @@ struct SnoozeView: View {
                             .foregroundColor(Color(hex: "#FFD700"))
                     }
                 }
-                .contentShape(Rectangle()) // Makes the entire row tappable
+                .contentShape(Rectangle())
                 .onTapGesture {
-                    selectedSnooze = option // Update the selected snooze duration
+                    selectedSnooze = option
                 }
-                .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
+                .listRowBackground(Color(hex: "#2C2C2E"))
             }
             .scrollContentBackground(.hidden)
             .background(Color(hex: "#1C1C1E"))
             .navigationTitle("Snooze")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Snooze")
-                        .foregroundColor(Color(hex: "#F1F1F1"))
-                        .font(.headline)
-                }
-            }
         }
-        .tint(Color(hex: "#FFD700")) // Set the tint color for navigation elements
-        .onAppear {
-            setTransparentNavigationBar()
-        }
-        .onDisappear {
-            resetNavigationBarAppearance()
-        }
-    }
-
-    private func setTransparentNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor(Color(hex: "#1C1C1E").opacity(0.9))
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-
-    private func resetNavigationBarAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
+        .navigationBarTitleDisplayMode(.inline)
+        .modifier(NavigationBarModifier(
+            backgroundColor: Color(Color(hex: "#1C1C1E")),
+            foregroundColor: UIColor.white
+        ))    }
 }
