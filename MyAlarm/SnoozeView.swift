@@ -77,8 +77,7 @@ struct SnoozeView: View {
                         .foregroundColor(Color(hex: "#F1F1F1")) // White color for the title
                 }
             }
-            .toolbarBackground(Color.black.opacity(0.8), for: .navigationBar) // Dark and semi-transparent
-            .toolbarBackground(.visible, for: .navigationBar) // Ensures the toolbar is visible
+            .toolbarBackground(Color.clear, for: .navigationBar) // Dark and semi-transparent
             .toolbarColorScheme(.dark, for: .navigationBar) // Enforces dark theme
         }
     }
