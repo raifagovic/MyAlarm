@@ -5,46 +5,6 @@
 //  Created by Raif Agovic on 24. 12. 2024..
 //
 
-//import SwiftUI
-//
-//struct SnoozeView: View {
-//    @Binding var selectedSnooze: Int
-//
-//    let snoozeOptions = [5, 10, 15, 20, 25, 30]
-//
-//    var body: some View {
-//        NavigationStack {
-//            List(snoozeOptions, id: \.self) { option in
-//                HStack {
-//                    Text("\(option) minutes")
-//                        .foregroundColor(.white)
-//                    Spacer()
-//                    if option == selectedSnooze {
-//                        Image(systemName: "checkmark")
-//                            .foregroundColor(Color(hex: "#FFD700"))
-//                    }
-//                }
-//                .contentShape(Rectangle())
-//                .onTapGesture {
-//                    selectedSnooze = option
-//                }
-//                .listRowBackground(Color(hex: "#2C2C2E"))
-//            }
-//            .scrollContentBackground(.hidden)
-//            .background(Color(hex: "#1C1C1E"))
-//            .toolbar {
-//                ToolbarItem(placement: .principal) {
-//                    Text("Snooze")
-//                        .font(.headline)
-//                        .foregroundColor(Color(hex: "#F1F1F1"))
-//                }
-//            }
-//            .toolbarBackground(Color.clear, for: .navigationBar)
-//            .toolbarColorScheme(.dark, for: .navigationBar)
-//        }
-//    }
-//}
-
 import SwiftUI
 
 struct SnoozeView: View {
