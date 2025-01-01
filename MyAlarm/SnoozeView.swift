@@ -68,14 +68,12 @@ struct SnoozeView: View {
                     .onTapGesture {
                         selectedSnooze = option
                     }
-                    .listRowBackground(Color(hex: "#2C2C2E"))
                 }
             }
         }
         .listRowBackground(Color(hex: "#2C2C2E"))
         .environment(\.colorScheme, .dark)
         .background(Color(hex: "#1C1C1E"))
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Snooze")
@@ -83,5 +81,7 @@ struct SnoozeView: View {
                     .font(.headline)
             }
         }
+        .toolbarBackground(Color.clear, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 }
