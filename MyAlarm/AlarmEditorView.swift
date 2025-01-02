@@ -101,7 +101,6 @@ struct AlarmEditorView: View {
                         }
                     }
                     .listRowBackground(Color(hex: "#2C2C2E"))
-                    .scrollDisabled(true)
                     .environment(\.colorScheme, .dark)
                 }
                 .background(Color(hex: "#1C1C1E"))
@@ -124,7 +123,6 @@ struct AlarmEditorView: View {
                 }
         }
         .tint(Color(hex: "#FFD700"))
-        .background(Color(hex: "#1C1C1E"))
     }
     
     //    Calculate the remaining time and return a formatted string
