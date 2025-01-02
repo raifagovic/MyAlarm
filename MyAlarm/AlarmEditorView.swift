@@ -86,7 +86,6 @@ struct AlarmEditorView: View {
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
-                    
                 }
                 
                 // Delete Button
@@ -101,6 +100,7 @@ struct AlarmEditorView: View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
             .listRowBackground(Color(hex: "#2C2C2E"))
             .environment(\.colorScheme, .dark)
             .background(Color(hex: "#1C1C1E"))
