@@ -22,14 +22,13 @@ struct AlarmEditorView: View {
     var body: some View {
         NavigationStack {
                 VStack {
-                    // DatePicker with aligned width
                     DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel)
                         .labelsHidden()
-                        .frame(maxWidth: .infinity) // Ensures alignment with other elements
-                        .environment(\.colorScheme, .dark) // Enforces dark mode styling
+                        .frame(maxWidth: .infinity)
+                        .environment(\.colorScheme, .dark)
                     
-                    // Standard alarm settings area
+                    // Settings area
                     Form {
                         Section {
                             // Repeat row
@@ -96,7 +95,7 @@ struct AlarmEditorView: View {
                             }) {
                                 Text("Delete Alarm")
                                     .foregroundColor(Color.red)
-                                    .frame(maxWidth: .infinity, alignment: .center) // Center-align the text
+                                    .frame(maxWidth: .infinity, alignment: .center)
                             }
                         }
                     }
