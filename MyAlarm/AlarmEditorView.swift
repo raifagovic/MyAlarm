@@ -21,10 +21,6 @@ struct AlarmEditorView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(hex: "#1C1C1E")
-                    .edgesIgnoringSafeArea(.all) // Extend background color to cover entire view
-                
                 VStack {
                     // DatePicker with aligned width
                     DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
@@ -125,7 +121,6 @@ struct AlarmEditorView: View {
                             .foregroundColor(Color(hex: "#F1F1F1"))
                     }
                 }
-            }
         }
         .tint(Color(hex: "#FFD700"))
     }
