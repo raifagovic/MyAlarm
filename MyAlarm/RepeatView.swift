@@ -49,9 +49,8 @@ struct RepeatView: View {
         .toolbarColorScheme(.dark, for: .navigationBar)
     }
     
-    // Function to order weekdays based on locale
+    // Order the weekdays based on the calendar's first weekday
     private func orderedWeekdays() -> [String] {
-        // Mapping weekdays to their full names
         let fullWeekdayNames = [
             "Every Sunday",
             "Every Monday",
@@ -61,12 +60,8 @@ struct RepeatView: View {
             "Every Friday",
             "Every Saturday"
         ]
-        
-        // Get the first weekday index from the current calendar
         let calendar = Calendar.current
-        let firstWeekdayIndex = calendar.firstWeekday - 1 // 1-based index, so subtract 1
-        
-        // Reorder the weekdays to start from the localized first day
+        let firstWeekdayIndex = calendar.firstWeekday - 1
         let orderedWeekdays = Array(fullWeekdayNames[firstWeekdayIndex...]) + Array(fullWeekdayNames[..<firstWeekdayIndex])
         return orderedWeekdays
     }
