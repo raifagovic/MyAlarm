@@ -33,7 +33,8 @@ struct SnoozeView: View {
         }
         .listRowBackground(Color(hex: "#2C2C2E"))
         .environment(\.colorScheme, .dark)
-        .background(Color(hex: "#1C1C1E"))
+        .background(Color(hex: "#1C1C1E").edgesIgnoringSafeArea(.all))
+        .padding(.top, 5) // Adjust this value as needed
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Snooze")
