@@ -22,13 +22,14 @@ struct AlarmEditorView: View {
     var body: some View {
         NavigationStack {
                 VStack {
+                    // Time Picker
                     DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel)
                         .labelsHidden()
                         .frame(maxWidth: .infinity)
                         .environment(\.colorScheme, .dark)
                     
-                    // Settings area
+                    // Settings Form
                     Form {
                         Section {
                             // Repeat row
@@ -103,6 +104,7 @@ struct AlarmEditorView: View {
                     .scrollDisabled(true)
                     .environment(\.colorScheme, .dark)
                 }
+                .background(Color(hex: "#1C1C1E"))
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Cancel") {
@@ -122,6 +124,7 @@ struct AlarmEditorView: View {
                 }
         }
         .tint(Color(hex: "#FFD700"))
+        .background(Color(hex: "#1C1C1E"))
     }
     
     //    Calculate the remaining time and return a formatted string
