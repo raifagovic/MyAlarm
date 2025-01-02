@@ -9,42 +9,6 @@ import SwiftUI
 
 struct RepeatView: View {
     @Binding var selectedDays: [String]
-
-//    var body: some View {
-//        List {
-//            ForEach(orderedWeekdays(), id: \.self) { day in
-//                HStack {
-//                    Text(day)
-//                        .foregroundColor(Color(hex: "#F1F1F1"))
-//                    Spacer()
-//                    if selectedDays.contains(day) {
-//                        Image(systemName: "checkmark")
-//                            .foregroundColor(Color(hex: "#FFD700"))
-//                    }
-//                }
-//                .contentShape(Rectangle()) // Make the whole row tappable
-//                .onTapGesture {
-//                    if let index = selectedDays.firstIndex(of: day) {
-//                        selectedDays.remove(at: index) // Deselect if already selected
-//                    } else {
-//                        selectedDays.append(day) // Select if not already selected
-//                    }
-//                }
-//                
-//            }
-//            .listRowBackground(Color(hex: "#2C2C2E")) // Set row background color
-//        }
-//        .scrollContentBackground(.hidden)
-//        .background(Color(hex: "#1C1C1E"))
-//        .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//            ToolbarItem(placement: .principal) {
-//                Text("Repeat")
-//                    .foregroundColor(Color(hex: "#F1F1F1"))
-//                    .font(.headline)
-//            }
-//        }
-//    }
     
     var body: some View {
         Form {
@@ -59,12 +23,12 @@ struct RepeatView: View {
                                 .foregroundColor(Color(hex: "#FFD700"))
                         }
                     }
-                    .contentShape(Rectangle()) // Make the whole row tappable
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         if let index = selectedDays.firstIndex(of: day) {
-                            selectedDays.remove(at: index) // Deselect if already selected
+                            selectedDays.remove(at: index)
                         } else {
-                            selectedDays.append(day) // Select if not already selected
+                            selectedDays.append(day)
                         }
                     }
                 }
