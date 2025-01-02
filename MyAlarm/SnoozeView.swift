@@ -31,7 +31,6 @@ struct SnoozeView: View {
                 }
             }
         }
-        .scrollContentBackground(.hidden) 
         .navigationBarTitleDisplayMode(.inline)
         .listRowBackground(Color(hex: "#2C2C2E"))
         .environment(\.colorScheme, .dark)
