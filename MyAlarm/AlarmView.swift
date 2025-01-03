@@ -50,7 +50,6 @@ struct AlarmView: View {
                         Text("♥︎")
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
-                    .foregroundColor(.gray)
                 }
                 
                 Spacer()
