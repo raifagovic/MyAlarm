@@ -72,6 +72,7 @@ struct AlarmView: View {
                         }
                         .labelsHidden()
                         .tint(Color(hex: "#FFD700"))
+                        .onTapGesture {}
                     }
                 }
             }
