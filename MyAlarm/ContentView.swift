@@ -58,15 +58,13 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    //                    if alarms.isEmpty {
-                    Text("No alarms set")
+                    Text(alarms.isEmpty ? "No alarms set" : "Alarms Active")
                         .font(.headline)
                         .foregroundColor(Color(hex: "#A1A1A6"))
-                    //                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
+                        alarms.append(Alarm(time: "00:50"))
                     }) {
                         Image(systemName: "plus")
                             .foregroundColor(Color(hex: "#F1F1F1"))
