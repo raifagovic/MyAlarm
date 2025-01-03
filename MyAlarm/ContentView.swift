@@ -12,66 +12,6 @@ struct ContentView: View {
     @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
     
-    //    var body: some View {
-    //        ZStack {
-    //            Color(hex: "#1C1C1E")
-    //                .edgesIgnoringSafeArea(.all) // Extend to edges
-    //            
-    //            // Main content
-    //            VStack(alignment: .leading) {
-    //                // Top row with text and plus button
-    //                HStack {
-    //                    Text("No alarms set")
-    //                        .padding(.leading, 10)
-    //                        .font(.headline)
-    //                        .foregroundColor(Color(hex: "#A1A1A6"))
-    //                    Spacer()
-    //                    Button(action: {
-    //                        alarms.append(Alarm(time: "00:50")) // Add a new unique identifier
-    //                    }) {
-    //                        Image(systemName: "plus")
-    //                            .padding(.trailing, 10)
-    //                            .foregroundColor(Color(hex: "#F1F1F1"))
-    //                    }
-    //                }
-    //                .padding(.top)
-    //                .padding(.horizontal) // Horizontal padding for both text and button
-    //                
-    //                // List of alarms
-    //                ForEach(alarms) { alarm in
-    //                    AlarmView(
-    //                        alarms: $alarms,
-    //                        alarm: alarm,
-    //                        onEdit: {
-    //                            selectedAlarm = alarm
-    //                            isEditing = true
-    //                        }
-    //                    )
-    //                }
-    //                Spacer()
-    //            }
-    //        }
-    //        .sheet(item: $selectedAlarm) { alarmToEdit in
-    //            AlarmEditorView(
-    //                isPresented: $isEditing,
-    //                selectedAlarm: alarmToEdit,
-    //                onDelete: {
-    //                    if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-    //                        alarms.remove(at: index)
-    //                    }
-    //                    selectedAlarm = nil // Clear the selected alarm when the sheet is dismissed
-    //                },
-    //                onCancel: {
-    //                    selectedAlarm = nil // Dismiss the sheet when cancel is pressed
-    //                }
-    //            )
-    //            .darkSheetBackground()
-    //        }
-    //        .onAppear {
-    //            setRootBackgroundColor()
-    //        }
-    //    }
-    
     var body: some View {
         NavigationStack {
             VStack {
