@@ -11,7 +11,7 @@ import SwiftUI
 struct MyAlarmApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView() // A placeholder because the app's window is managed by AppDelegate
+            ContentView()
         }
     }
 }
