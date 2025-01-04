@@ -8,13 +8,6 @@
 import SwiftUI
 
 extension View {
-    func darkSheetBackground() -> some View {
-        self.background(
-            Color.black
-                .ignoresSafeArea() // Extend to edges
-        )
-    }
-    
     func appBackground(color: Color) -> some View {
             self.background(
                 color

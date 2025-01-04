@@ -51,7 +51,6 @@ struct ContentView: View {
                         selectedAlarm = nil // Dismiss the sheet when cancel is pressed
                     }
                 )
-                .darkSheetBackground()
             }
             .onAppear {
                 setRootBackgroundColor()
