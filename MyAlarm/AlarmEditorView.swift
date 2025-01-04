@@ -28,7 +28,6 @@ struct AlarmEditorView: View {
                         .datePickerStyle(.wheel)
                         .labelsHidden()
                         .frame(maxWidth: .infinity)
-                        .environment(\.colorScheme, .dark)
                 }
                 
                 // Other Settings
