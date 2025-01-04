@@ -71,8 +71,15 @@ struct ContentView: View {
                 }
             }
             .toolbarBackground(Color.clear, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+//            .toolbarColorScheme(.dark, for: .navigationBar)
         }
+    }
+    
+    private func createTransparentAppearance() -> UINavigationBarAppearance {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIColor.black // Ensures consistency
+        return appearance
     }
     
     // Helper function to set root background color to black
