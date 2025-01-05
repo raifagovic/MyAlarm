@@ -71,7 +71,6 @@ struct AlarmView: View {
                         Toggle(isOn: $isAlarmOn) {
                         }
                         .labelsHidden()
-                        .tint(Color(hex: "#FFD700"))
                         .onTapGesture {}
                     }
                 }
