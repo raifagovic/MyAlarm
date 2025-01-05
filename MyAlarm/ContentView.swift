@@ -74,18 +74,6 @@ struct ContentView: View {
         }
     }
     
-    func createTransparentAppearance() {
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.configureWithTransparentBackground()
-        
-        // Add a semi-transparent background for a frosted glass effect
-        navigationBarAppearance.backgroundEffect = UIBlurEffect(style: .systemMaterialDark)
-        navigationBarAppearance.backgroundColor = UIColor.clear.withAlphaComponent(0.3) // Adjust transparency level
-        
-        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-    }
-    
     // Helper function to set root background color to black
     private func setRootBackgroundColor() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
