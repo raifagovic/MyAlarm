@@ -120,6 +120,9 @@ struct AlarmEditorView: View {
                         .foregroundColor(Color(hex: "#F1F1F1"))
                 }
             }
+            .onAppear {
+                createTransparentAppearance()
+            }
         }
         .tint(Color(hex: "#FFD700"))
     }

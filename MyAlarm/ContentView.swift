@@ -52,10 +52,6 @@ struct ContentView: View {
                     }
                 )
             }
-            .onAppear {
-                setRootBackgroundColor()
-                createTransparentAppearance()
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text(alarms.isEmpty ? "No alarms set" : "Alarms Active")
@@ -70,6 +66,9 @@ struct ContentView: View {
                             .foregroundColor(Color(hex: "#F1F1F1"))
                     }
                 }
+            }
+            .onAppear {
+                createTransparentAppearance()
             }
         }
     }
