@@ -120,8 +120,6 @@ struct AlarmEditorView: View {
                         .foregroundColor(Color(hex: "#F1F1F1"))
                 }
             }
-            .toolbarBackground(Color.clear, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
         }
         .tint(Color(hex: "#FFD700"))
     }

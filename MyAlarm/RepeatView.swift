@@ -48,7 +48,6 @@ struct RepeatView: View {
         .onAppear {
             createTransparentAppearance()
         }
-
     }
     
     // Order the weekdays based on the calendar's first weekday
