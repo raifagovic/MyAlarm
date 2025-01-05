@@ -68,6 +68,7 @@ struct ContentView: View {
                 }
             }
             .onAppear {
+                setRootBackgroundColor()
                 createTransparentAppearance()
             }
         }
