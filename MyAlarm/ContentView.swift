@@ -54,10 +54,7 @@ struct ContentView: View {
             }
             .onAppear {
                 setRootBackgroundColor()
-                // Apply toolbar appearance on load
-                let navigationBarAppearance = UINavigationBar.appearance()
-                navigationBarAppearance.scrollEdgeAppearance = createTransparentAppearance()
-                navigationBarAppearance.standardAppearance = createTransparentAppearance()
+                createTransparentAppearance()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -79,11 +76,16 @@ struct ContentView: View {
         }
     }
     
-    private func createTransparentAppearance() -> UINavigationBarAppearance {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor.clear // Ensures consistency
-        return appearance
+    func createTransparentAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithTransparentBackground()
+        
+        // Add a semi-transparent background for a frosted glass effect
+        navigationBarAppearance.backgroundEffect = UIBlurEffect(style: .systemMaterialDark)
+        navigationBarAppearance.backgroundColor = UIColor.clear.withAlphaComponent(0.3) // Adjust transparency level
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
     }
     
     // Helper function to set root background color to black
