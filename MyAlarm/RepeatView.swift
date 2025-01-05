@@ -45,8 +45,6 @@ struct RepeatView: View {
                     .font(.headline)
             }
         }
-        .toolbarBackground(Color.clear, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
     }
     
     // Order the weekdays based on the calendar's first weekday
