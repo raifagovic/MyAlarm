@@ -54,6 +54,10 @@ struct ContentView: View {
             }
             .onAppear {
                 setRootBackgroundColor()
+                // Apply toolbar appearance on load
+                let navigationBarAppearance = UINavigationBar.appearance()
+                navigationBarAppearance.scrollEdgeAppearance = createTransparentAppearance()
+                navigationBarAppearance.standardAppearance = createTransparentAppearance()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -70,7 +74,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .toolbarBackground(Color.clear, for: .navigationBar)
+//            .toolbarBackground(Color.clear, for: .navigationBar)
 //            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
@@ -78,7 +82,7 @@ struct ContentView: View {
     private func createTransparentAppearance() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor.black // Ensures consistency
+        appearance.backgroundColor = UIColor.clear // Ensures consistency
         return appearance
     }
     
