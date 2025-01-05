@@ -13,7 +13,7 @@ func createTransparentAppearance() {
     
     // Add a semi-transparent background for a frosted glass effect
     navigationBarAppearance.backgroundEffect = UIBlurEffect(style: .systemMaterialDark)
-    navigationBarAppearance.backgroundColor = UIColor.clear.withAlphaComponent(0.3) // Adjust transparency level
+    navigationBarAppearance.backgroundColor = UIColor.clear.withAlphaComponent(0.3)
     
     UINavigationBar.appearance().standardAppearance = navigationBarAppearance
     UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
