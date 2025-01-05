@@ -71,8 +71,6 @@ struct ContentView: View {
                     }
                 }
             }
-//            .toolbarBackground(Color.clear, for: .navigationBar)
-//            .toolbarColorScheme(.dark, for: .navigationBar)
         }
     }
     
