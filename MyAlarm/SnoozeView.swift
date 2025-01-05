@@ -41,7 +41,8 @@ struct SnoozeView: View {
                     .font(.headline)
             }
         }
-        .toolbarBackground(Color.clear, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .onAppear {
+            createTransparentAppearance()
+        }
     }
 }
