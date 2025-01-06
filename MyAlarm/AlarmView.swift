@@ -59,7 +59,7 @@ struct AlarmView: View {
                     Text("Weekdays")
                         .font(.subheadline)
                         .bold()
-                        .foregroundColor(isAlarmOn ? Color(hex: "#FFD700") : Color(hex: "#A1A1A6")) // Change color based on toggle state
+                        .foregroundColor(isAlarmOn ? Color.green : Color(hex: "#A1A1A6")) // Change color based on toggle state
                         .padding(.trailing, 10)
                     
                     // Custom Toggle with gray background when off
