@@ -124,7 +124,7 @@ struct AlarmEditorView: View {
                 createTransparentAppearance()
             }
         }
-        .tint(Color(hex: "#FFD700"))
+        .tint(Color.orange)
     }
     
     //    Calculate the remaining time and return a formatted string
