@@ -39,40 +39,39 @@ struct AlarmView: View {
 
             // Main alarm view
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 5) {
+                    // Time
                     Text(alarm.time)
                         .font(.largeTitle)
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
                         .bold()
-                    HStack {
+                    
+                    // Label and Weekdays on the same line
+                    HStack(spacing: 4) {
                         Text("Label")
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
-                        Text("♥︎")
-                            .foregroundColor(Color(hex: "#A1A1A6"))
+                        
+                        Text("•") // Dot separator
+                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                        
+                        Text("Weekdays")
+                            .foregroundColor(isAlarmOn ? Color.green.opacity(0.7) : Color(hex: "#A1A1A6")) // Weekdays color
                     }
+                    .font(.subheadline)
                 }
                 
                 Spacer()
                 
-                // Weekdays and Toggle
-                HStack {
-                    Text("Weekdays")
-                        .font(.subheadline)
-                        .bold()
-                        .foregroundColor(isAlarmOn ? Color.green.opacity(0.7) : Color(hex: "#A1A1A6")) // Change color based on toggle state
-                        .padding(.trailing, 10)
+                // Toggle
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
+                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
                     
-                    // Custom Toggle with gray background when off
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
-                            .frame(width: 51, height: 31) // Matches the default size of the Toggle background
-                        
-                        Toggle(isOn: $isAlarmOn) {
-                        }
-                        .labelsHidden()
-                        .onTapGesture {}
+                    Toggle(isOn: $isAlarmOn) {
                     }
+                    .labelsHidden()
+                    .onTapGesture {}
                 }
             }
             .padding()
