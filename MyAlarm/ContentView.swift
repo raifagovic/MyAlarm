@@ -56,7 +56,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text(alarms.isEmpty ? "No alarms set" : "Alarms Active")
                         .font(.headline)
-                        .foregroundColor(Color(hex: "#A1A1A6"))
+                        .foregroundColor(Color.orange)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
