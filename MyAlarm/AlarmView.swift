@@ -67,6 +67,7 @@ struct AlarmView: View {
                     Text("🍋") // Mission symbol (can be dynamic)
                         .font(.title2)
                         .opacity(0.8) // Adjust opacity for subtlety
+                        .padding(.trailing, 8) // Add padding for more distance from the toggle if needed
                     
                     // Toggle with custom design
                     ZStack {
