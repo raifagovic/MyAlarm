@@ -56,8 +56,8 @@ struct AlarmView: View {
                         
                         Text("weekdays") // Weekdays
                             .font(.subheadline)
-                            .bold()
-                            .foregroundColor(isAlarmOn ? Color.green.opacity(1.0) : Color.green.opacity(0.5))
+//                            .bold()
+                            .foregroundColor(isAlarmOn ? Color.green : Color(hex: "#A1A1A6"))
                     }
                 }
                 
