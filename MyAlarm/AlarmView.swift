@@ -40,6 +40,11 @@ struct AlarmView: View {
             // Main alarm view
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
+                    // Mission symbol (lemon emoji)
+                        Text("🍋")
+                            .font(.title2)
+                            .opacity(0.8) // Adjust opacity for subtlety
+                    
                     // Time
                     Text(alarm.time)
                         .font(.largeTitle)
@@ -62,24 +67,16 @@ struct AlarmView: View {
                 
                 Spacer()
                 
-                VStack {
-                    // Toggle with custom design
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
-                            .frame(width: 51, height: 31) // Matches the default size of the Toggle background
-                        
-                        Toggle(isOn: $isAlarmOn) {
-                        }
-                        .labelsHidden()
-                        .onTapGesture {}
-                    }
+                // Toggle with custom design
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
+                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
                     
-                    // Mission symbol (lemon emoji)
-                    Text("🍋")
-                        .font(.title2)
-                        .opacity(0.8) // Adjust opacity for subtlety
-                        .padding(.top, 4) // Add some space between the toggle and the emoji
+                    Toggle(isOn: $isAlarmOn) {
+                    }
+                    .labelsHidden()
+                    .onTapGesture {}
                 }
             }
             .padding()
