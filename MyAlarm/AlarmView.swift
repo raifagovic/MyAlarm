@@ -39,27 +39,26 @@ struct AlarmView: View {
 
             // Main alarm view
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    // Weekdays
-                    Text("Weekdays")
-                        .foregroundColor(isAlarmOn ? Color.green.opacity(1.0) : Color.green.opacity(0.5)) // Adjust opacity based on toggle state
-                        .font(.subheadline)
-                        .bold()
-                    
-                    // Alarm time
+                VStack(alignment: .leading) {
+                    // Time at the top
                     Text(alarm.time)
                         .font(.largeTitle)
-                        .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
+                        .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         .bold()
                     
-                    // Symbol and Label in one line
-                    HStack(spacing: 8) {
-                        Text("🍋") // Mission symbol
-                            .font(.title2)
-                            .opacity(isAlarmOn ? 1.0 : 0.5) // Full opacity when toggle is on, 50% when off
+                    // Row below time: Symbol • Label • Weekdays
+                    HStack {
+                        Text("🍋") // Symbol
+                            .opacity(isAlarmOn ? 1.0 : 0.5)
                         
-                        Text("Label") // Label text
-                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
+                        Text("Label") // Label
+                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                        
+                        Text("Weekdays") // Weekdays
+                            .font(.subheadline)
+                            .bold()
+                            .foregroundColor(isAlarmOn ? Color.green.opacity(1.0) : Color.green.opacity(0.5))
+                            .padding(.leading, 5)
                     }
                 }
                 
