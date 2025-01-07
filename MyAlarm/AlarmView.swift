@@ -54,7 +54,7 @@ struct AlarmView: View {
                         Text("•")
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         
-                        Text("Weekdays")
+                        Text("Sun, Mon, Tue, Wed, Thu, Fri")
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                     .font(.subheadline)
@@ -62,16 +62,23 @@ struct AlarmView: View {
                 
                 Spacer()
                 
-                // Toggle
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
-                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                HStack(spacing: 8) {
+                    // Mission symbol (lemon emoji)
+                    Text("🍋") // Mission symbol (can be dynamic)
+                        .font(.title2)
+                        .opacity(0.8) // Adjust opacity for subtlety
                     
-                    Toggle(isOn: $isAlarmOn) {
+                    // Toggle with custom design
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
+                            .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                        
+                        Toggle(isOn: $isAlarmOn) {
+                        }
+                        .labelsHidden()
+                        .onTapGesture {}
                     }
-                    .labelsHidden()
-                    .onTapGesture {}
                 }
             }
             .padding()
