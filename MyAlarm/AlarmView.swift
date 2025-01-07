@@ -51,14 +51,13 @@ struct AlarmView: View {
                         Text("🍋") // Symbol
                             .opacity(isAlarmOn ? 1.0 : 0.5)
                         
-                        Text("Label") // Label
+                        Text("Label,") // Label
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         
-                        Text("Weekdays") // Weekdays
+                        Text("weekdays") // Weekdays
                             .font(.subheadline)
                             .bold()
                             .foregroundColor(isAlarmOn ? Color.green.opacity(1.0) : Color.green.opacity(0.5))
-                            .padding(.leading, 5)
                     }
                 }
                 
