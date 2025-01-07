@@ -56,7 +56,7 @@ struct AlarmView: View {
                     HStack(spacing: 8) {
                         Text("🍋") // Mission symbol
                             .font(.title2)
-                            .opacity(0.8) // Adjust opacity for subtlety
+                            .opacity(isAlarmOn ? 1.0 : 0.5) // Full opacity when toggle is on, 50% when off
                         
                         Text("Label") // Label text
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
