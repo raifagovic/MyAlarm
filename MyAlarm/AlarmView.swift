@@ -40,11 +40,6 @@ struct AlarmView: View {
             // Main alarm view
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    // Mission symbol (lemon emoji)
-                        Text("🍋")
-                            .font(.title2)
-                            .opacity(0.8) // Adjust opacity for subtlety
-                    
                     // Time
                     Text(alarm.time)
                         .font(.largeTitle)
@@ -63,6 +58,11 @@ struct AlarmView: View {
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                     .font(.subheadline)
+                    
+                    // Mission symbol (lemon emoji)
+                    Text("🍋")
+                        .font(.title2)
+                        .opacity(0.8) // Adjust opacity for subtlety
                 }
                 
                 Spacer()
