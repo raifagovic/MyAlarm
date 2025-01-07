@@ -39,30 +39,28 @@ struct AlarmView: View {
 
             // Main alarm view
             HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    // Time
+                VStack(alignment: .leading, spacing: 4) {
+                    // Weekdays
+                    Text("Weekdays")
+                        .foregroundColor(isAlarmOn ? Color.green.opacity(0.7) : Color(hex: "#A1A1A6")) // Light green for active state
+                        .font(.subheadline)
+                        .bold()
+                    
+                    // Alarm time
                     Text(alarm.time)
                         .font(.largeTitle)
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
                         .bold()
                     
-                    // Label and Weekdays on the same line
-                    HStack(spacing: 4) {
-                        Text("Label")
+                    // Symbol and Label in one line
+                    HStack(spacing: 8) {
+                        Text("🍋") // Mission symbol
+                            .font(.title2)
+                            .opacity(0.8) // Adjust opacity for subtlety
+                        
+                        Text("Label") // Label text
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6")) // Change color based on toggle state
-                        
-                        Text("•")
-                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
-                        
-                        Text("Sun, Mon, Tue, Wed, Thu, Fri")
-                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
-                    .font(.subheadline)
-                    
-                    // Mission symbol (lemon emoji)
-                    Text("🍋")
-                        .font(.title2)
-                        .opacity(0.8) // Adjust opacity for subtlety
                 }
                 
                 Spacer()
