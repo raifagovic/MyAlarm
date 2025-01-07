@@ -42,7 +42,7 @@ struct AlarmView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     // Weekdays
                     Text("Weekdays")
-                        .foregroundColor(isAlarmOn ? Color.green.opacity(0.7) : Color(hex: "#A1A1A6")) // Light green for active state
+                        .foregroundColor(isAlarmOn ? Color.green.opacity(1.0) : Color.green.opacity(0.5)) // Adjust opacity based on toggle state
                         .font(.subheadline)
                         .bold()
                     
