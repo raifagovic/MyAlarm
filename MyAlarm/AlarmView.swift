@@ -62,13 +62,7 @@ struct AlarmView: View {
                 
                 Spacer()
                 
-                HStack(spacing: 8) {
-                    // Mission symbol (lemon emoji)
-                    Text("🍋") // Mission symbol (can be dynamic)
-                        .font(.title2)
-                        .opacity(0.8) // Adjust opacity for subtlety
-                        .padding(.trailing, 8) // Add padding for more distance from the toggle if needed
-                    
+                VStack {
                     // Toggle with custom design
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
@@ -80,6 +74,12 @@ struct AlarmView: View {
                         .labelsHidden()
                         .onTapGesture {}
                     }
+                    
+                    // Mission symbol (lemon emoji)
+                    Text("🍋")
+                        .font(.title2)
+                        .opacity(0.8) // Adjust opacity for subtlety
+                        .padding(.top, 4) // Add some space between the toggle and the emoji
                 }
             }
             .padding()
