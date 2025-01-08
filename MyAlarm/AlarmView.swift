@@ -48,16 +48,12 @@ struct AlarmView: View {
                     
                     // Row below time: Symbol • Label • Weekdays
                     HStack {
-                        Text("🍋") // Symbol
-                            .opacity(isAlarmOn ? 1.0 : 0.5)
-                        
                         Text("Label,") // Label
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         
                         Text("weekdays") // Weekdays
                             .font(.subheadline)
-//                            .bold()
-                            .foregroundColor(isAlarmOn ? Color.green : Color(hex: "#A1A1A6"))
+                            .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                 }
                 

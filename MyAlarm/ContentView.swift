@@ -56,14 +56,14 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text(alarms.isEmpty ? "No alarms set" : "Alarms Active")
                         .font(.headline)
-                        .foregroundColor(Color.orange)
+                        .foregroundColor(Color(hex: "#FFD700"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         alarms.append(Alarm(time: "00:50"))
                     }) {
                         Image(systemName: "plus")
-                            .foregroundColor(Color.orange)
+                            .foregroundColor(Color(hex: "#FFD700"))
                     }
                 }
             }
