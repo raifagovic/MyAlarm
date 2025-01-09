@@ -42,7 +42,7 @@ struct AlarmView: View {
                 VStack(alignment: .leading) {
                     // Time at the top
                     Text(alarm.time)
-                        .font(.largeTitle)
+                        .font(.system(size: 64, weight: .light, design: .default))
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         .bold()
                     
