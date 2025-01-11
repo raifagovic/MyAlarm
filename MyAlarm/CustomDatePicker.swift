@@ -8,7 +8,6 @@
 import SwiftUI
 import UIKit
 
-// Custom UIViewRepresentable for UIKit DatePicker
 struct CustomDatePicker: UIViewRepresentable {
     @Binding var selectedDate: Date
     
@@ -16,14 +15,17 @@ struct CustomDatePicker: UIViewRepresentable {
         let container = UIView()
         container.backgroundColor = UIColor.clear
         
-        // UIDatePicker setup
+        // Create UIDatePicker
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.setDate(selectedDate, animated: false)
         datePicker.addTarget(context.coordinator, action: #selector(Coordinator.dateChanged(_:)), for: .valueChanged)
         
-        // Add highlight effect
+        // Remove default highlight by hiding the subview
+        removeDefaultHighlight(from: datePicker)
+        
+        // Add custom highlight view
         let highlightView = UIView()
         highlightView.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.2)
         highlightView.layer.cornerRadius = 10
@@ -71,6 +73,17 @@ struct CustomDatePicker: UIViewRepresentable {
         
         @objc func dateChanged(_ sender: UIDatePicker) {
             parent.selectedDate = sender.date
+        }
+    }
+    
+    /// Remove the default highlight view from UIDatePicker
+    private func removeDefaultHighlight(from datePicker: UIDatePicker) {
+        for subview in datePicker.subviews {
+            for deeperSubview in subview.subviews {
+                if deeperSubview.frame.height < 1 || deeperSubview.backgroundColor != nil {
+                    deeperSubview.isHidden = true // Hide the default highlight
+                }
+            }
         }
     }
 }
