@@ -75,10 +75,10 @@
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
 				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
 				DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */,
+				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
-				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
