@@ -35,7 +35,6 @@ struct RepeatView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .listRowBackground(Color(hex: "#2C2C2E"))
         .environment(\.colorScheme, .dark)
         .background(Color(hex: "#1C1C1E"))
         .toolbar {
