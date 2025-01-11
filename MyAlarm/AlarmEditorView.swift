@@ -24,15 +24,10 @@ struct AlarmEditorView: View {
             Form {
                 // Time Picker
                 Section {
-//                    DatePicker("Select Time", selection: $selectedTime, displayedComponents: .hourAndMinute)
-//                        .datePickerStyle(.wheel)
-//                        .labelsHidden()
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color(hex: "#1C1C1E")) // Custom background for full-width effect
                     CustomDatePicker(selectedDate: $selectedTime)
-                                    .frame(height: 200) // Adjust size as needed
-                                    .background(Color(hex: "#1C1C1E")) // Match background color
-                                    .cornerRadius(10)
+                        .frame(height: 200) // Adjust size as needed
+                        .background(Color(hex: "#1C1C1E")) // Match background color
+                        .cornerRadius(10)
                 }
                 .listRowBackground(Color.clear) // Remove the default rectangular background
 
