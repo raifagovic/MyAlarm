@@ -75,6 +75,7 @@ struct AlarmView: View {
             }
             .padding()
             .background(Color(hex: "#2C2C2E"))
+//            .environment(\.colorScheme, .dark)
             .cornerRadius(10)
             .offset(x: showDelete ? -150 : 0) // Add an offset when swiped
             .gesture(

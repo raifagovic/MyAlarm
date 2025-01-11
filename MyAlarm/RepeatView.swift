@@ -34,7 +34,6 @@ struct RepeatView: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
         .environment(\.colorScheme, .dark)
         .toolbar {
             ToolbarItem(placement: .principal) {
