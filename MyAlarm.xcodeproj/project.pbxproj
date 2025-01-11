@@ -18,6 +18,7 @@
 		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 		DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeView.swift */; };
 		DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */; };
+		DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B292D331B3500833F41 /* CustomDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		DC667B232D1AAC8A00833F41 /* SnoozeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeView.swift; sourceTree = "<group>"; };
 		DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHelper.swift; sourceTree = "<group>"; };
+		DC667B292D331B3500833F41 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
+				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
