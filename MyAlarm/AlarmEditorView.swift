@@ -31,7 +31,7 @@ struct AlarmEditorView: View {
                         .background(Color(hex: "#1C1C1E")) // Custom background for full-width effect
                 }
                 .listRowBackground(Color.clear) // Remove the default rectangular background
-                
+
                 // Other Settings
                 Section {
                     // Repeat row
@@ -46,8 +46,7 @@ struct AlarmEditorView: View {
                                 .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
                         }
                     }
-                    //                .listRowBackground(Color(hex: "#2C2C2E"))
-                    
+
                     // Label row
                     HStack {
                         Text("Label")
@@ -57,7 +56,7 @@ struct AlarmEditorView: View {
                             TextField("Alarm", text: $labelText)
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .multilineTextAlignment(.trailing)
-                            
+
                             if !labelText.isEmpty {
                                 Button(action: {
                                     labelText = ""
@@ -68,8 +67,7 @@ struct AlarmEditorView: View {
                             }
                         }
                     }
-                    //                .listRowBackground(Color(hex: "#2C2C2E"))
-                    
+
                     // Sound row
                     HStack {
                         Text("Sound")
@@ -78,8 +76,7 @@ struct AlarmEditorView: View {
                         Text("Radar")
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
-                    //                .listRowBackground(Color(hex: "#2C2C2E"))
-                    
+
                     // Snooze row
                     NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
                         HStack {
@@ -90,9 +87,8 @@ struct AlarmEditorView: View {
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
-//                    .listRowBackground(Color(hex: "#2C2C2E"))
                 }
-                
+
                 // Delete Button
                 Section {
                     Button(action: {
@@ -104,7 +100,6 @@ struct AlarmEditorView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
-//                .listRowBackground(Color(hex: "#2C2C2E"))
             }
             .navigationBarTitleDisplayMode(.inline)
             .environment(\.colorScheme, .dark)
