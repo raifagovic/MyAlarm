@@ -42,7 +42,7 @@ struct AlarmView: View {
                 VStack(alignment: .leading) {
                     // Time at the top
                     Text(alarm.time)
-                        .font(.system(size: 50, weight: .regular, design: .default))
+                        .font(.system(size: 50, weight: .light, design: .default))
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
                     // Row below time: Symbol • Label • Weekdays
