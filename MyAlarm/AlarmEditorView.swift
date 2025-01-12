@@ -21,7 +21,7 @@ struct AlarmEditorView: View {
     
     var body: some View {
         NavigationStack {
-           Form{
+            Form{
                 // Time Picker
                 Section{
                     CustomDatePicker(selectedDate: $selectedTime)
@@ -29,75 +29,73 @@ struct AlarmEditorView: View {
                 }
                 .listRowInsets(EdgeInsets()) // Remove default insets
                 .listRowBackground(Color.clear) // Remove the default rectangular background
-
-                    // Other Settings
-                    Section {
-                        // Repeat row
-                        NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
-                            HStack {
-                                Text("Repeat")
-                                    .foregroundColor(Color(hex: "#F1F1F1"))
-                                Spacer()
-                                Text(getAbbreviatedDays())
-                                    .foregroundColor(Color(hex: "#A1A1A6"))
-                                    .lineLimit(1)
-                                    .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
-                            }
-                        }
-                        
-                        // Label row
+                
+                // Other Settings
+                Section {
+                    // Repeat row
+                    NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
                         HStack {
-                            Text("Label")
+                            Text("Repeat")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            HStack {
-                                TextField("Alarm", text: $labelText)
-                                    .foregroundColor(Color(hex: "#A1A1A6"))
-                                    .multilineTextAlignment(.trailing)
-                                
-                                if !labelText.isEmpty {
-                                    Button(action: {
-                                        labelText = ""
-                                    }) {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .foregroundColor(Color(hex: "#A1A1A6"))
-                                    }
+                            Text(getAbbreviatedDays())
+                                .foregroundColor(Color(hex: "#A1A1A6"))
+                                .lineLimit(1)
+                                .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
+                        }
+                    }
+                    // Label row
+                    HStack {
+                        Text("Label")
+                            .foregroundColor(Color(hex: "#F1F1F1"))
+                        Spacer()
+                        HStack {
+                            TextField("Alarm", text: $labelText)
+                                .foregroundColor(Color(hex: "#A1A1A6"))
+                                .multilineTextAlignment(.trailing)
+                            
+                            if !labelText.isEmpty {
+                                Button(action: {
+                                    labelText = ""
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(Color(hex: "#A1A1A6"))
                                 }
                             }
                         }
-                        
-                        // Sound row
-                        HStack {
-                            Text("Sound")
-                                .foregroundColor(Color(hex: "#F1F1F1"))
-                            Spacer()
-                            Text("Radar")
-                                .foregroundColor(Color(hex: "#A1A1A6"))
-                        }
-                        
-                        // Snooze row
-                        NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
-                            HStack {
-                                Text("Snooze")
-                                    .foregroundColor(Color(hex: "#F1F1F1"))
-                                Spacer()
-                                Text("\(selectedSnooze) min")
-                                    .foregroundColor(Color(hex: "#A1A1A6"))
-                            }
-                        }
+                    }
+                    // Sound row
+                    HStack {
+                        Text("Sound")
+                            .foregroundColor(Color(hex: "#F1F1F1"))
+                        Spacer()
+                        Text("Radar")
+                            .foregroundColor(Color(hex: "#A1A1A6"))
                     }
                     
-                    // Delete Button
-                    Section {
-                        Button(action: {
-                            onDelete?()
-                            isPresented = false
-                        }) {
-                            Text("Delete Alarm")
-                                .foregroundColor(Color.red)
-                                .frame(maxWidth: .infinity, alignment: .center)
+                    // Snooze row
+                    NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
+                        HStack {
+                            Text("Snooze")
+                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            Spacer()
+                            Text("\(selectedSnooze) min")
+                                .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
+                }
+                
+                // Delete Button
+                Section {
+                    Button(action: {
+                        onDelete?()
+                        isPresented = false
+                    }) {
+                        Text("Delete Alarm")
+                            .foregroundColor(Color.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .environment(\.colorScheme, .dark)
@@ -123,6 +121,7 @@ struct AlarmEditorView: View {
             }
         }
         .tint(Color(hex: "#FFD700"))
+
     }
     
     //    Calculate the remaining time and return a formatted string

@@ -26,7 +26,7 @@ struct CustomDatePicker: UIViewRepresentable {
         
         // Add custom highlight view
         let highlightView = UIView()
-        highlightView.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.2)
+        highlightView.backgroundColor = UIColor.systemGray5.withAlphaComponent(0.8)
         highlightView.layer.cornerRadius = 10
         highlightView.clipsToBounds = true
         
