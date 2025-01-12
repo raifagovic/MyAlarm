@@ -13,7 +13,6 @@ struct CustomDatePicker: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIView {
         let container = UIView()
-        container.backgroundColor = UIColor.clear
         
         // Create UIDatePicker
         let datePicker = UIDatePicker()
