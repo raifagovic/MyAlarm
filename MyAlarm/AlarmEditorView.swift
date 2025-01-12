@@ -26,8 +26,6 @@ struct AlarmEditorView: View {
                 Section{
                     CustomDatePicker(selectedDate: $selectedTime)
                         .frame(height: 200) // Adjust size as needed
-                        .background(Color(hex: "#1C1C1E").ignoresSafeArea()) // Match background color
-                        .cornerRadius(10)
                 }
                 .listRowInsets(EdgeInsets()) // Remove default insets
                 .listRowBackground(Color.clear) // Remove the default rectangular background
