@@ -14,29 +14,26 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                // List of alarms
-                if alarms.isEmpty {
-                    Spacer()
-                    Text("No alarms set")
-                        .font(.headline)
-                        .foregroundColor(Color(hex: "#A1A1A6"))
-                    Spacer()
-                } else {
-                    ForEach(alarms) { alarm in
-                        AlarmView(
-                            alarms: $alarms,
-                            alarm: alarm,
-                            onEdit: {
-                                selectedAlarm = alarm
-                                isEditing = true
-                            }
-                        )
+            ZStack {
+                // Background color
+                Color(hex: "#1C1C1E").ignoresSafeArea()
+                
+                // List of alarms or empty state
+                if !alarms.isEmpty {
+                    ScrollView {
+                        ForEach(alarms) { alarm in
+                            AlarmView(
+                                alarms: $alarms,
+                                alarm: alarm,
+                                onEdit: {
+                                    selectedAlarm = alarm
+                                    isEditing = true
+                                }
+                            )
+                        }
                     }
                 }
-                Spacer()
             }
-            .background(Color(hex: "#1C1C1E"))
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
                     isPresented: $isEditing,
