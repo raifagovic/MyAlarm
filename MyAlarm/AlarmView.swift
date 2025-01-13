@@ -40,13 +40,11 @@ struct AlarmView: View {
             // Main alarm view
             HStack {
                 VStack(alignment: .leading) {
-                    // Time at the top
                     Text(alarm.time)
                         .font(.system(size: 50, weight: .light, design: .default))
                         .kerning(-1.5)
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
-                    // Row below time: Symbol • Label • Weekdays
                     HStack {
                         Text("Label,") // Label
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
@@ -56,13 +54,12 @@ struct AlarmView: View {
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                 }
-                
                 Spacer()
                 
                 // Toggle with custom design
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6")) // Gray when off, clear when on
+                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6"))
                         .frame(width: 51, height: 31) // Matches the default size of the Toggle background
                     
                     Toggle(isOn: $isAlarmOn) {
