@@ -46,10 +46,10 @@ struct AlarmView: View {
                         .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
                     HStack {
-                        Text("Label,") // Label
+                        Text("Label,")
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         
-                        Text("weekdays") // Weekdays
+                        Text("weekdays")
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                 }
