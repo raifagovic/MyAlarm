@@ -21,6 +21,7 @@ struct RepeatView: View {
                         if selectedDays.contains(day) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
+                                .bold()
                         }
                     }
                     .contentShape(Rectangle())

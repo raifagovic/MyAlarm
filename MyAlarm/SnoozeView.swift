@@ -22,6 +22,7 @@ struct SnoozeView: View {
                         if option == selectedSnooze {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
+                                .bold()
                         }
                     }
                     .contentShape(Rectangle())
