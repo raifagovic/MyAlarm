@@ -50,10 +50,10 @@ struct AlarmView: View {
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                         
                         Text("weekdays") // Weekdays
-                            .font(.subheadline)
                             .foregroundColor(isAlarmOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     }
                 }
+                
                 Spacer()
                 
                 // Toggle with custom design
