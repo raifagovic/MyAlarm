@@ -60,7 +60,6 @@ struct ContentView: View {
                         alarms.append(Alarm(time: "00:50"))
                     }) {
                         Image(systemName: "plus")
-                            .font(.headline)
                             .foregroundColor(Color(hex: "#FFD700"))
                     }
                 }

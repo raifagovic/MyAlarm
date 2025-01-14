@@ -25,7 +25,7 @@ struct AlarmEditorView: View {
                 // Time Picker
                 Section{
                     CustomDatePicker(selectedDate: $selectedTime)
-                        .frame(height: 200) // Adjust size as needed
+                        .frame(height: 200)
                 }
                 .listRowInsets(EdgeInsets()) // Remove default insets
                 .listRowBackground(Color.clear) // Remove the default rectangular background
@@ -163,7 +163,6 @@ struct AlarmEditorView: View {
     
     private func getAbbreviatedDays() -> String {
         let dayAbbreviations: [String: String] = [
-            
             "Every Monday": "Mon",
             "Every Tuesday": "Tue",
             "Every Wednesday": "Wed",
