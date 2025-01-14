@@ -109,6 +109,7 @@ struct AlarmEditorView: View {
                     Button("Save") {
                         onCancel()
                     }
+                    .bold()
                 }
                 ToolbarItem(placement: .principal) {
                     Text("Edit Alarm")
