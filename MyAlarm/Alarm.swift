@@ -10,5 +10,6 @@ import SwiftUI
 struct Alarm: Identifiable, Hashable {
     let id = UUID()
     var time: String
+    var isOn: Bool
 }
 
