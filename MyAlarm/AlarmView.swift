@@ -62,10 +62,21 @@ struct AlarmView: View {
                         .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6"))
                         .frame(width: 51, height: 31) // Matches the default size of the Toggle background
                     
+//                    Toggle(isOn: Binding(
+//                        get: { alarm.isOn },
+//                        set: { newValue in
+//                            if let index = alarms.firstIndex(of: alarm) {
+//                                alarms[index].isOn = newValue
+//                            }
+//                        }
+//                    )) {
+//                    }
+//                    .labelsHidden()
+//                    .tint(Color(hex: "#FFD700"))
                     Toggle(isOn: Binding(
-                        get: { alarm.isOn },
+                        get: { alarms.first(where: { $0.id == alarm.id })?.isOn ?? false },
                         set: { newValue in
-                            if let index = alarms.firstIndex(of: alarm) {
+                            if let index = alarms.firstIndex(where: { $0.id == alarm.id }) {
                                 alarms[index].isOn = newValue
                             }
                         }
