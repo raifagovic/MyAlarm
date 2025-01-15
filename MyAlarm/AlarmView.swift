@@ -48,9 +48,11 @@ struct AlarmView: View {
                     HStack {
                         Text("Label,")
                             .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                            .fontWeight(.medium)
                         
                         Text("weekdays")
                             .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                            .fontWeight(.medium)
                     }
                 }
                 
