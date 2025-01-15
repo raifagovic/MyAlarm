@@ -54,6 +54,7 @@ struct ContentView: View {
                     if alarms.contains(where: { $0.isOn }) {
                         Text("Alarm is active")
                             .foregroundColor(Color(hex: "#FFD700"))
+                            .bold()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
