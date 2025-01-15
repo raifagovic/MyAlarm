@@ -41,8 +41,8 @@ struct AlarmView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(alarm.time)
-                        .font(.system(size: 50, weight: .light, design: .default))
-                        .kerning(-1.5)
+                        .font(.system(size: 48, weight: .semibold, design: .rounded))
+                        .kerning(-1)
                         .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
                     HStack {
