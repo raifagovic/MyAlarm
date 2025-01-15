@@ -74,17 +74,6 @@ struct AlarmView: View {
                     .labelsHidden()
                     .tint(Color(hex: "#FFD700"))
                     .onTapGesture { }
-//                    Toggle(isOn: Binding(
-//                        get: { alarms.first(where: { $0.id == alarm.id })?.isOn ?? false },
-//                        set: { newValue in
-//                            if let index = alarms.firstIndex(where: { $0.id == alarm.id }) {
-//                                alarms[index].isOn = newValue
-//                            }
-//                        }
-//                    )) {
-//                    }
-//                    .labelsHidden()
-//                    .tint(Color(hex: "#FFD700"))
                 }
             }
             .padding()
