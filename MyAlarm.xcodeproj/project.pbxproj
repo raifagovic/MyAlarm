@@ -14,7 +14,7 @@
 		DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB22CF796910039F6CC /* Color+Extensions.swift */; };
 		DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB42CF87AB80039F6CC /* AlarmView.swift */; };
 		DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */; };
-		DC661BB92CF87E360039F6CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Models.swift */; };
+		DC661BB92CF87E360039F6CC /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BB82CF87E360039F6CC /* Alarm.swift */; };
 		DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */; };
 		DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeView.swift */; };
 		DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */; };
@@ -30,7 +30,7 @@
 		DC661BB22CF796910039F6CC /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		DC661BB42CF87AB80039F6CC /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEditorView.swift; sourceTree = "<group>"; };
-		DC661BB82CF87E360039F6CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DC661BB82CF87E360039F6CC /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatView.swift; sourceTree = "<group>"; };
 		DC667B232D1AAC8A00833F41 /* SnoozeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeView.swift; sourceTree = "<group>"; };
 		DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHelper.swift; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				DC661B852CC566E50039F6CC /* MyAlarmApp.swift */,
-				DC661BB82CF87E360039F6CC /* Models.swift */,
+				DC661BB82CF87E360039F6CC /* Alarm.swift */,
 				DC661BB42CF87AB80039F6CC /* AlarmView.swift */,
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
@@ -167,7 +167,7 @@
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
 				DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */,
-				DC661BB92CF87E360039F6CC /* Models.swift in Sources */,
+				DC661BB92CF87E360039F6CC /* Alarm.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
 				DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */,
 				DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */,
