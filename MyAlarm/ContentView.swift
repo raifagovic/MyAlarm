@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alarms = [Alarm(time: "00:50")]
+    @State private var alarms = [Alarm(time: "00:50", isOn: false)]
     @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
     
@@ -51,9 +51,14 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text(alarms.isEmpty ? "No alarms set" : "Alarms Active")
-                        .font(.headline)
-                        .foregroundColor(Color(hex: "#FFD700"))
+                    if alarms.contains(where: { $0.isOn }) {
+                        Text("Alarms Active")
+                            .font(.headline)
+                            .foregroundColor(Color(hex: "#FFD700"))
+                    }
+                    else {
+                        EmptyView() // No text shown when no alarm is on
+                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
