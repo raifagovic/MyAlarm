@@ -58,7 +58,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        alarms.append(Alarm(time: "00:50"))
+                        alarms.append(Alarm(time: "00:50", isOn: false))
                     }) {
                         Image(systemName: "plus")
                             .foregroundColor(Color(hex: "#FFD700"))
