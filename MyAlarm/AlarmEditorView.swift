@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AlarmEditorView: View {
     @Binding var isPresented: Bool
+    @Binding var selectedAlarm: Alarm
+    
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
     @State private var selectedSnooze: Int = 10
     
-    var selectedAlarm: Alarm
     var onDelete: (() -> Void)?
     var onCancel: () -> Void
     
@@ -159,6 +160,14 @@ struct AlarmEditorView: View {
         }
         
         return "Rings  in \(hours) h \(minutes) min"
+    }
+    
+    private func saveChanges() {
+        // Update the binding to reflect changes
+        selectedAlarm.time = selectedTime
+        selectedAlarm.repeatDays = selectedDays
+        selectedAlarm.label = labelText
+        selectedAlarm.snoozeDuration = selectedSnooze
     }
     
     private func getAbbreviatedDays() -> String {
