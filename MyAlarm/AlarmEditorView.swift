@@ -12,7 +12,6 @@ struct AlarmEditorView: View {
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
-    @State private var showSnoozeSelection = false
     @State private var selectedSnooze: Int = 10
     
     var selectedAlarm: Alarm
