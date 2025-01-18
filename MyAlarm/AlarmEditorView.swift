@@ -19,6 +19,20 @@ struct AlarmEditorView: View {
     var onDelete: (() -> Void)?
     var onCancel: () -> Void
     
+    init(isPresented: Binding<Bool>, selectedAlarm: Binding<Alarm>, onDelete: (() -> Void)?, onCancel: @escaping () -> Void) {
+        _isPresented = isPresented
+        _selectedAlarm = selectedAlarm
+        
+        // Initialize states with current alarm properties
+        _selectedTime = State(initialValue: selectedAlarm.wrappedValue.time)
+        _selectedDays = State(initialValue: selectedAlarm.wrappedValue.repeatDays)
+        _labelText = State(initialValue: selectedAlarm.wrappedValue.label)
+        _selectedSnooze = State(initialValue: selectedAlarm.wrappedValue.snoozeDuration)
+        
+        self.onDelete = onDelete
+        self.onCancel = onCancel
+    }
+    
     var body: some View {
         NavigationStack {
             Form{
