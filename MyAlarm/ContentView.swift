@@ -36,23 +36,22 @@ struct ContentView: View {
             }
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
-                    isPresented: $isEditing,
-                    selectedAlarm: Binding(
-                        get: { alarmToEdit },
-                        set: { updatedAlarm in
-                            if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
-                                alarms[index] = updatedAlarm
-                            }
+                    alarm: alarmToEdit, // This works because `alarmToEdit` is non-optional
+                    isPresented: $isEditing, // Optional: Control dismissal
+                    onSave: { updatedAlarm in
+                        if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
+                            alarms[index] = updatedAlarm // Update the alarm in the list
                         }
-                    ),
+                        selectedAlarm = nil // Clear selection after save
+                    },
                     onDelete: {
                         if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-                            alarms.remove(at: index)
+                            alarms.remove(at: index) // Remove the alarm
                         }
-                        selectedAlarm = nil // Clear the selected alarm when the sheet is dismissed
+                        selectedAlarm = nil // Clear selection after delete
                     },
                     onCancel: {
-                        selectedAlarm = nil // Dismiss the sheet when cancel is pressed
+                        selectedAlarm = nil // Clear selection after cancel
                     }
                 )
             }

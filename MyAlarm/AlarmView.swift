@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlarmView: View {
-    @Binding var alarms: [Alarm]
     var alarm: Alarm
     @State private var isAlarmOn = false
     @State private var showDelete = false
@@ -22,10 +21,7 @@ struct AlarmView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        // Action to delete the alarm
-                        if let index = alarms.firstIndex(of: alarm) {
-                            alarms.remove(at: index)
-                        }
+
                     }) {
                         Text("Delete")
                             .foregroundColor(.white)
@@ -67,9 +63,7 @@ struct AlarmView: View {
                     Toggle(isOn: Binding(
                         get: { alarm.isOn },
                         set: { newValue in
-                            if let index = alarms.firstIndex(of: alarm) {
-                                alarms[index].isOn = newValue
-                            }
+                            
                         }
                     )) {
                     }
