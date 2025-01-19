@@ -44,13 +44,15 @@ struct AlarmView: View {
                         .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
                     HStack {
-                        Text("Label,")
+                        Text(alarm.label)
                             .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                             .fontWeight(.medium)
                         
-                        Text("weekdays")
-                            .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
-                            .fontWeight(.medium)
+                        if !alarm.repeatDays.isEmpty {
+                            Text(alarm.repeatDays.joined(separator: ", "))
+                                .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                                .fontWeight(.medium)
+                        }
                     }
                 }
                 
