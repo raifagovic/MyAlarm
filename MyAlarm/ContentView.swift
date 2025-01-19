@@ -37,7 +37,14 @@ struct ContentView: View {
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
                     isPresented: $isEditing,
-                    selectedAlarm: alarmToEdit,
+                    selectedAlarm: Binding(
+                        get: { alarmToEdit },
+                        set: { updatedAlarm in
+                            if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
+                                alarms[index] = updatedAlarm
+                            }
+                        }
+                    ),
                     onDelete: {
                         if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
                             alarms.remove(at: index)
