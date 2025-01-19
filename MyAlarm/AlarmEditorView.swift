@@ -121,6 +121,7 @@ struct AlarmEditorView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
+                        saveChanges()
                         onCancel()
                     }
                     .bold()
