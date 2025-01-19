@@ -12,6 +12,8 @@ struct AlarmView: View {
     @State private var isAlarmOn = false
     @State private var showDelete = false
     
+    var onToggle: (Bool) -> Void       // Callback for toggling alarm
+    var onDelete: () -> Void           // Callback to delete alarm
     var onEdit: () -> Void // Callback to trigger editing
     
     var body: some View {
@@ -21,7 +23,7 @@ struct AlarmView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-
+                        onDelete() // Trigger parent-provided delete action
                     }) {
                         Text("Delete")
                             .foregroundColor(.white)
@@ -63,7 +65,7 @@ struct AlarmView: View {
                     Toggle(isOn: Binding(
                         get: { alarm.isOn },
                         set: { newValue in
-                            
+                            onToggle(newValue) // Notify parent of toggle change
                         }
                     )) {
                     }
