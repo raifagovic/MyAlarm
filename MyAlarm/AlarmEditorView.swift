@@ -24,7 +24,7 @@ struct AlarmEditorView: View {
         _selectedAlarm = selectedAlarm
         
         // Initialize states with current alarm properties
-        _selectedTime = State(initialValue: selectedAlarm.wrappedValue.time)
+        _selectedTime = State(initialValue: Self.timeStringToDate(selectedAlarm.wrappedValue.time))
         _selectedDays = State(initialValue: selectedAlarm.wrappedValue.repeatDays)
         _labelText = State(initialValue: selectedAlarm.wrappedValue.label)
         _selectedSnooze = State(initialValue: selectedAlarm.wrappedValue.snoozeDuration)
