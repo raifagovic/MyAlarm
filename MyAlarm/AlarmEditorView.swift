@@ -176,6 +176,14 @@ struct AlarmEditorView: View {
         return "Rings  in \(hours) h \(minutes) min"
     }
     
+    // Helper to convert String to Date
+    private static func timeStringToDate(_ timeString: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.timeZone = .current
+        return formatter.date(from: timeString) ?? Date()
+    }
+    
     private func saveChanges() {
         // Update the binding to reflect changes
         selectedAlarm.time = selectedTime
