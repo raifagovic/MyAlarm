@@ -23,11 +23,19 @@ struct ContentView: View {
                     ScrollView {
                         ForEach(alarms) { alarm in
                             AlarmView(
-                                alarms: $alarms,
                                 alarm: alarm,
+                                onToggle: { isOn in
+                                    if let index = alarms.firstIndex(of: alarm) {
+                                        alarms[index].isOn = isOn
+                                    }
+                                },
+                                onDelete: {
+                                    if let index = alarms.firstIndex(of: alarm) {
+                                        alarms.remove(at: index)
+                                    }
+                                },
                                 onEdit: {
                                     selectedAlarm = alarm
-                                    isEditing = true
                                 }
                             )
                         }
