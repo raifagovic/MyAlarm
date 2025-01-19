@@ -194,7 +194,7 @@ struct AlarmEditorView: View {
     
     private func saveChanges() {
         // Update the binding to reflect changes
-        selectedAlarm.time = selectedTime
+        selectedAlarm.time = Self.dateToTimeString(selectedTime)
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
