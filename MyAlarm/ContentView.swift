@@ -44,14 +44,12 @@ struct ContentView: View {
             }
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
-                    alarm: alarmToEdit, // This works because `alarmToEdit` is non-optional
                     isPresented: $isEditing, // Optional: Control dismissal
-                    onSave: { updatedAlarm in
-                        if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
-                            alarms[index] = updatedAlarm // Update the alarm in the list
-                        }
-                        selectedAlarm = nil // Clear selection after save
-                    },
+                    selectedAlarm: Binding(get: { alarmToEdit }, set: { updatedAlarm in
+                               if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
+                                   alarms[index] = updatedAlarm // Update the alarm in the list
+                               }
+                           }),
                     onDelete: {
                         if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
                             alarms.remove(at: index) // Remove the alarm
