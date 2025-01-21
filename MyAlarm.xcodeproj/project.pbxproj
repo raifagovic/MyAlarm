@@ -19,6 +19,7 @@
 		DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B232D1AAC8A00833F41 /* SnoozeView.swift */; };
 		DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */; };
 		DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B292D331B3500833F41 /* CustomDatePicker.swift */; };
+		DC667B2C2D3FEF3100833F41 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B2B2D3FEF3100833F41 /* AlarmData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DC667B232D1AAC8A00833F41 /* SnoozeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozeView.swift; sourceTree = "<group>"; };
 		DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHelper.swift; sourceTree = "<group>"; };
 		DC667B292D331B3500833F41 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		DC667B2B2D3FEF3100833F41 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				DC661BB82CF87E360039F6CC /* Alarm.swift */,
 				DC661BB42CF87AB80039F6CC /* AlarmView.swift */,
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
+				DC667B2B2D3FEF3100833F41 /* AlarmData.swift */,
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
 				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
@@ -170,6 +173,7 @@
 				DC661BB92CF87E360039F6CC /* Alarm.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
 				DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */,
+				DC667B2C2D3FEF3100833F41 /* AlarmData.swift in Sources */,
 				DC661BB32CF796910039F6CC /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
