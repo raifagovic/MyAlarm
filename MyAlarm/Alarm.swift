@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Alarm: Identifiable, Hashable {
-    let id = UUID()
+struct Alarm: Identifiable, Codable {
+    var id = UUID()
     var time: String
     var isOn: Bool
     var repeatDays: [String] = []
