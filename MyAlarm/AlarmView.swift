@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AlarmView: View {
     var alarm: Alarm
-    @State private var isAlarmOn = false
     @State private var showDelete = false
     
     var onToggle: (Bool) -> Void       // Callback for toggling alarm
@@ -61,7 +60,7 @@ struct AlarmView: View {
                 // Toggle with custom design
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(isAlarmOn ? Color.clear : Color(hex: "#A1A1A6"))
+                        .fill(alarm.isOn ? Color.clear : Color(hex: "#A1A1A6"))
                         .frame(width: 51, height: 31) // Matches the default size of the Toggle background
                     
                     Toggle(isOn: Binding(
