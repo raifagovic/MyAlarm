@@ -46,10 +46,10 @@ struct ContentView: View {
                 AlarmEditorView(
                     isPresented: $isEditing, // Optional: Control dismissal
                     selectedAlarm: Binding(get: { alarmToEdit }, set: { updatedAlarm in
-                               if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
-                                   alarms[index] = updatedAlarm // Update the alarm in the list
-                               }
-                           }),
+                        if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
+                            alarms[index] = updatedAlarm // Update the alarm in the list
+                        }
+                    }),
                     onDelete: {
                         if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
                             alarms.remove(at: index) // Remove the alarm
