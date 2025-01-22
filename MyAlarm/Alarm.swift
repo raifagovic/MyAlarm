@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Alarm: Identifiable, Codable {
     var id = UUID()
-    var time: String
+    var time: Date
     var isOn: Bool
     var repeatDays: [String] = []
     var label: String = "Alarm"

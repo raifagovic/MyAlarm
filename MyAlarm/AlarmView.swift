@@ -13,7 +13,7 @@ struct AlarmView: View {
     
     var onToggle: (Bool) -> Void       // Callback for toggling alarm
     var onDelete: () -> Void           // Callback to delete alarm
-    var onEdit: () -> Void // Callback to trigger editing
+    var onEdit: () -> Void             // Callback to trigger editing
     
     var body: some View {
         ZStack {
