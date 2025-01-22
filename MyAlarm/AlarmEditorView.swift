@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlarmEditorView: View {
-    @Binding var isPresented: Bool
     @Binding var selectedAlarm: Alarm
     
     @State private var selectedTime = Date()
@@ -16,7 +15,7 @@ struct AlarmEditorView: View {
     @State private var labelText: String = ""
     @State private var selectedSnooze: Int = 10
     
-    var onDelete: (() -> Void)?
+    var onDelete: () -> Void
     var onCancel: () -> Void
     
     var body: some View {
@@ -88,8 +87,7 @@ struct AlarmEditorView: View {
                 // Delete Button
                 Section {
                     Button(action: {
-                        onDelete?()
-                        isPresented = false
+                        onDelete()
                     }) {
                         Text("Delete Alarm")
                             .foregroundColor(Color.red)

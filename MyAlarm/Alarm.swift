@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Alarm: Identifiable, Codable {
+struct Alarm: Identifiable, Equatable, Codable {
     var id = UUID()
     var time: Date
     var isOn: Bool
