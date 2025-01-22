@@ -7,124 +7,124 @@
 
 import SwiftUI
 
-struct AlarmEditorView: View {
-    @Binding var isPresented: Bool
-    @Binding var selectedAlarm: Alarm
-    
-    @State private var selectedTime = Date()
-    @State private var selectedDays: [String] = []
-    @State private var labelText: String = ""
-    @State private var selectedSnooze: Int = 10
-    
-    var onDelete: (() -> Void)?
-    var onCancel: () -> Void
-    
-    var body: some View {
-        NavigationStack {
-            Form{
-                // Time Picker
-                Section{
-                    CustomDatePicker(selectedDate: $selectedTime)
-                        .frame(height: 200)
-                }
-                .listRowInsets(EdgeInsets()) // Remove default insets
-                .listRowBackground(Color.clear) // Remove the default rectangular background
-                
-                // Other Settings
-                Section {
-                    // Repeat row
-                    NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
-                        HStack {
-                            Text("Repeat")
-                                .foregroundColor(Color(hex: "#F1F1F1"))
-                            Spacer()
-                            Text(getAbbreviatedDays())
-                                .foregroundColor(Color(hex: "#A1A1A6"))
-                                .lineLimit(1)
-                                .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
-                        }
-                    }
-                    // Label row
-                    HStack {
-                        Text("Label")
-                            .foregroundColor(Color(hex: "#F1F1F1"))
-                        Spacer()
-                        HStack {
-                            TextField("Alarm", text: $labelText)
-                                .foregroundColor(Color(hex: "#A1A1A6"))
-                                .multilineTextAlignment(.trailing)
-                            
-                            if !labelText.isEmpty {
-                                Button(action: {
-                                    labelText = ""
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(Color(hex: "#A1A1A6"))
-                                }
-                            }
-                        }
-                    }
-                    // Sound row
-                    HStack {
-                        Text("Sound")
-                            .foregroundColor(Color(hex: "#F1F1F1"))
-                        Spacer()
-                        Text("Radar")
-                            .foregroundColor(Color(hex: "#A1A1A6"))
-                    }
-                    
-                    // Snooze row
-                    NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
-                        HStack {
-                            Text("Snooze")
-                                .foregroundColor(Color(hex: "#F1F1F1"))
-                            Spacer()
-                            Text("\(selectedSnooze) min")
-                                .foregroundColor(Color(hex: "#A1A1A6"))
-                        }
-                    }
-                }
-                
-                // Delete Button
-                Section {
-                    Button(action: {
-                        onDelete?()
-                        isPresented = false
-                    }) {
-                        Text("Delete Alarm")
-                            .foregroundColor(Color.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .environment(\.colorScheme, .dark)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        onCancel()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        saveChanges()
-                        onCancel()
-                    }
-                    .bold()
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("Edit Alarm")
-                        .font(.headline)
-                        .foregroundColor(Color(hex: "#F1F1F1"))
-                }
-            }
-            .onAppear {
-                createTransparentAppearance()
-            }
-        }
-        .tint(Color(hex: "#FFD700"))
-
-    }
+//struct AlarmEditorView: View {
+//    @Binding var isPresented: Bool
+//    @Binding var selectedAlarm: Alarm
+//    
+//    @State private var selectedTime = Date()
+//    @State private var selectedDays: [String] = []
+//    @State private var labelText: String = ""
+//    @State private var selectedSnooze: Int = 10
+//    
+//    var onDelete: (() -> Void)?
+//    var onCancel: () -> Void
+//    
+//    var body: some View {
+//        NavigationStack {
+//            Form{
+//                // Time Picker
+//                Section{
+//                    CustomDatePicker(selectedDate: $selectedTime)
+//                        .frame(height: 200)
+//                }
+//                .listRowInsets(EdgeInsets()) // Remove default insets
+//                .listRowBackground(Color.clear) // Remove the default rectangular background
+//                
+//                // Other Settings
+//                Section {
+//                    // Repeat row
+//                    NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+//                        HStack {
+//                            Text("Repeat")
+//                                .foregroundColor(Color(hex: "#F1F1F1"))
+//                            Spacer()
+//                            Text(getAbbreviatedDays())
+//                                .foregroundColor(Color(hex: "#A1A1A6"))
+//                                .lineLimit(1)
+//                                .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
+//                        }
+//                    }
+//                    // Label row
+//                    HStack {
+//                        Text("Label")
+//                            .foregroundColor(Color(hex: "#F1F1F1"))
+//                        Spacer()
+//                        HStack {
+//                            TextField("Alarm", text: $labelText)
+//                                .foregroundColor(Color(hex: "#A1A1A6"))
+//                                .multilineTextAlignment(.trailing)
+//                            
+//                            if !labelText.isEmpty {
+//                                Button(action: {
+//                                    labelText = ""
+//                                }) {
+//                                    Image(systemName: "xmark.circle.fill")
+//                                        .foregroundColor(Color(hex: "#A1A1A6"))
+//                                }
+//                            }
+//                        }
+//                    }
+//                    // Sound row
+//                    HStack {
+//                        Text("Sound")
+//                            .foregroundColor(Color(hex: "#F1F1F1"))
+//                        Spacer()
+//                        Text("Radar")
+//                            .foregroundColor(Color(hex: "#A1A1A6"))
+//                    }
+//                    
+//                    // Snooze row
+//                    NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
+//                        HStack {
+//                            Text("Snooze")
+//                                .foregroundColor(Color(hex: "#F1F1F1"))
+//                            Spacer()
+//                            Text("\(selectedSnooze) min")
+//                                .foregroundColor(Color(hex: "#A1A1A6"))
+//                        }
+//                    }
+//                }
+//                
+//                // Delete Button
+//                Section {
+//                    Button(action: {
+//                        onDelete?()
+//                        isPresented = false
+//                    }) {
+//                        Text("Delete Alarm")
+//                            .foregroundColor(Color.red)
+//                            .frame(maxWidth: .infinity, alignment: .center)
+//                    }
+//                }
+//            }
+//            .navigationBarTitleDisplayMode(.inline)
+//            .environment(\.colorScheme, .dark)
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button("Cancel") {
+//                        onCancel()
+//                    }
+//                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button("Save") {
+//                        saveChanges()
+//                        onCancel()
+//                    }
+//                    .bold()
+//                }
+//                ToolbarItem(placement: .principal) {
+//                    Text("Edit Alarm")
+//                        .font(.headline)
+//                        .foregroundColor(Color(hex: "#F1F1F1"))
+//                }
+//            }
+//            .onAppear {
+//                createTransparentAppearance()
+//            }
+//        }
+//        .tint(Color(hex: "#FFD700"))
+//
+//    }
     
     //    Calculate the remaining time and return a formatted string
     private func remainingTimeMessage() -> String {
@@ -163,21 +163,7 @@ struct AlarmEditorView: View {
         return "Rings  in \(hours) h \(minutes) min"
     }
     
-    // Helper to convert String to Date
-    private static func timeStringToDate(_ timeString: String) -> Date {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.timeZone = .current
-        return formatter.date(from: timeString) ?? Date()
-    }
-    
-    // Helper to convert Date back to String
-    private static func dateToTimeString(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.timeZone = .current
-        return formatter.string(from: date)
-    }
+
     
     private func saveChanges() {
         // Update the binding to reflect changes
