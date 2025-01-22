@@ -126,6 +126,15 @@ import SwiftUI
 //
 //    }
     
+    // Helper: Toggle repeat days
+    private func toggleDay(_ day: String) {
+        if repeatDays.contains(day) {
+            repeatDays.remove(day)
+        } else {
+            repeatDays.insert(day)
+        }
+    }
+
     //    Calculate the remaining time and return a formatted string
     private func remainingTimeMessage() -> String {
         let calendar = Calendar.current
