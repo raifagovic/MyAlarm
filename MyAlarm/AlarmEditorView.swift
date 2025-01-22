@@ -126,6 +126,93 @@ import SwiftUI
 //
 //    }
     
+struct AlarmEditorView: View {
+    @Binding var selectedAlarm: Alarm
+    var onDelete: () -> Void
+    var onCancel: () -> Void
+    
+    @State private var repeatDays = Set<String>() // For selecting repeat days dynamically
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                // Time Picker
+                Section(header: Text("Alarm Time")) {
+                    DatePicker(
+                        "Time",
+                        selection: $selectedAlarm.time,
+                        displayedComponents: .hourAndMinute
+                    )
+                    .datePickerStyle(WheelDatePickerStyle())
+                }
+                
+                // Label TextField
+                Section(header: Text("Label")) {
+                    TextField("Alarm Label", text: $selectedAlarm.label)
+                }
+                
+                // Repeat Days Picker
+                Section(header: Text("Repeat Days")) {
+                    ForEach(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], id: \.self) { day in
+                        Button(action: {
+                            toggleDay(day)
+                        }) {
+                            HStack {
+                                Text(day)
+                                Spacer()
+                                if repeatDays.contains(day) {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.blue)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // Snooze Duration Picker
+                Section(header: Text("Snooze Duration")) {
+                    Picker("Snooze Duration", selection: $selectedAlarm.snoozeDuration) {
+                        ForEach(1...30, id: \.self) { duration in
+                            Text("\(duration) minutes")
+                        }
+                    }
+                }
+                
+                // Delete Alarm Button
+                Section {
+                    Button(action: {
+                        onDelete()
+                    }) {
+                        Text("Delete Alarm")
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+            }
+            .onAppear {
+                // Initialize repeat days state from the alarm
+                repeatDays = Set(selectedAlarm.repeatDays)
+            }
+            .onDisappear {
+                // Update the alarm's repeatDays on save
+                selectedAlarm.repeatDays = Array(repeatDays)
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        onCancel()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        onCancel() // Close editor on save
+                    }
+                }
+            }
+            .navigationTitle("Edit Alarm")
+        }
+    }
+
     // Helper: Toggle repeat days
     private func toggleDay(_ day: String) {
         if repeatDays.contains(day) {
