@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alarms = [Alarm(time: "00:50", isOn: false)]
+    @State private var alarms: [Alarm] = [Alarm(time: Date(), isOn: false)]
     @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
     
