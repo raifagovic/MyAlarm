@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var alarms: [Alarm] = [Alarm(time: Date(), isOn: false)]
-    @State private var isEditing = false
     @State private var selectedAlarm: Alarm?
     
     var body: some View {
@@ -44,7 +43,6 @@ struct ContentView: View {
             }
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
-                    isPresented: $isEditing, // Optional: Control dismissal
                     selectedAlarm: Binding(get: { alarmToEdit }, set: { updatedAlarm in
                         if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
                             alarms[index] = updatedAlarm // Update the alarm in the list
