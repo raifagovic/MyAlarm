@@ -60,31 +60,22 @@ struct AlarmView: View {
                 Spacer()
                 
                 // Toggle with custom design
-                Toggle(isOn: .constant(alarm.isOn)) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(alarm.isOn ? Color.clear : Color(hex: "#A1A1A6"))
+                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                    
+                    Toggle(isOn: Binding(
+                        get: { alarm.isOn },
+                        set: { newValue in
+                            onToggle(newValue) // Notify parent of toggle change
+                        }
+                    )) {
+                    }
+                    .labelsHidden()
+                    .tint(Color(hex: "#FFD700"))
+                    .onTapGesture { }
                 }
-                .labelsHidden()
-                .tint(Color(hex: "#FFD700"))
-                .onChange(of: alarm.isOn) {
-                    onToggle(alarm.isOn)
-                }
-                .allowsHitTesting(true) // Prevents onTapGesture conflict
-                
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 16)
-//                        .fill(alarm.isOn ? Color.clear : Color(hex: "#A1A1A6"))
-//                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
-//                    
-//                    Toggle(isOn: Binding(
-//                        get: { alarm.isOn },
-//                        set: { newValue in
-//                            onToggle(newValue) // Notify parent of toggle change
-//                        }
-//                    )) {
-//                    }
-//                    .labelsHidden()
-//                    .tint(Color(hex: "#FFD700"))
-//                    .onTapGesture { }
-//                }
             }
             .padding()
             .background(Color(hex: "#2C2C2E"))
