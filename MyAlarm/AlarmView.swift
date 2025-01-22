@@ -37,11 +37,13 @@ struct AlarmView: View {
             // Main alarm view
             HStack {
                 VStack(alignment: .leading) {
+                    // Alarm Time
                     Text(DateFormatter.localizedString(from: alarm.time, dateStyle: .none, timeStyle: .short))
                         .font(.system(size: 48, weight: .semibold, design: .rounded))
                         .kerning(-1)
                         .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
+                    // Label and repeat days
                     HStack {
                         Text(alarm.label)
                             .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
