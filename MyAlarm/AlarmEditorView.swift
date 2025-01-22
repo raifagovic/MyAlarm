@@ -163,16 +163,6 @@ import SwiftUI
         return "Rings  in \(hours) h \(minutes) min"
     }
     
-
-    
-    private func saveChanges() {
-        // Update the binding to reflect changes
-        selectedAlarm.time = Self.dateToTimeString(selectedTime)
-        selectedAlarm.repeatDays = selectedDays
-        selectedAlarm.label = labelText
-        selectedAlarm.snoozeDuration = selectedSnooze
-    }
-    
     private func getAbbreviatedDays() -> String {
         let dayAbbreviations: [String: String] = [
             "Every Monday": "Mon",
