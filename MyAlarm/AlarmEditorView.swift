@@ -10,6 +10,7 @@ import SwiftUI
 struct AlarmEditorView: View {
     @Binding var selectedAlarm: Alarm
     
+    @EnvironmentObject var alarmData: AlarmData // Inject AlarmData
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
@@ -87,6 +88,7 @@ struct AlarmEditorView: View {
                 // Delete Button
                 Section {
                     Button(action: {
+                        alarmData.deleteAlarm(selectedAlarm) // Delete alarm from AlarmData
                         onDelete()
                     }) {
                         Text("Delete Alarm")
@@ -106,6 +108,7 @@ struct AlarmEditorView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         saveChanges()
+                        alarmData.saveAlarm(selectedAlarm) // Save or update the alarm
                         onCancel()
                     }
                     .bold()
