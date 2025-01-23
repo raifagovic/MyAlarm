@@ -40,4 +40,9 @@ class AlarmData: ObservableObject {
             alarms.append(alarm)
         }
     }
+    
+    // Delete an alarm
+    func deleteAlarm(_ alarm: Alarm) {
+        alarms.removeAll { $0.id == alarm.id }
+    }
 }
