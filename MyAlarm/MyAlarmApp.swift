@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MyAlarmApp: App {
+    @StateObject private var alarmData = AlarmData() // Instantiate AlarmData
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(alarmData)
         }
     }
 }
