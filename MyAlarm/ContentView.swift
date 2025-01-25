@@ -56,6 +56,7 @@ struct ContentView: View {
                         selectedAlarm = nil // Clear selection after cancel
                     }
                 )
+                .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
