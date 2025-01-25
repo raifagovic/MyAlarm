@@ -132,6 +132,9 @@ struct AlarmEditorView: View {
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
+        
+        // Save the updated alarm to AlarmData
+        alarmData.saveAlarm(selectedAlarm)
     }
 
     //    Calculate the remaining time and return a formatted string
