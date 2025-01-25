@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alarms: [Alarm] = [Alarm(time: Date(), isOn: false)]
+    @EnvironmentObject var alarmData: AlarmData
     @State private var selectedAlarm: Alarm?
     
     var body: some View {
@@ -18,19 +18,19 @@ struct ContentView: View {
                 Color(hex: "#1C1C1E").ignoresSafeArea()
                 
                 // List of alarms or empty state
-                if !alarms.isEmpty {
+                if !alarmData.alarms.isEmpty {
                     ScrollView {
-                        ForEach(alarms) { alarm in
+                        ForEach(alarmData.alarms) { alarm in
                             AlarmView(
                                 alarm: alarm,
                                 onToggle: { isOn in
-                                    if let index = alarms.firstIndex(of: alarm) {
-                                        alarms[index].isOn = isOn
+                                    if let index = alarmData.alarms.firstIndex(of: alarm) {
+                                        alarmData.alarms[index].isOn = isOn
                                     }
                                 },
                                 onDelete: {
-                                    if let index = alarms.firstIndex(of: alarm) {
-                                        alarms.remove(at: index)
+                                    if let index = alarmData.alarms.firstIndex(of: alarm) {
+                                        alarmData.alarms.remove(at: index)
                                     }
                                 },
                                 onEdit: {
@@ -44,13 +44,13 @@ struct ContentView: View {
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
                     selectedAlarm: Binding(get: { alarmToEdit }, set: { updatedAlarm in
-                        if let index = alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
-                            alarms[index] = updatedAlarm // Update the alarm in the list
+                        if let index = alarmData.alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
+                            alarmData.alarms[index] = updatedAlarm // Update the alarm in the list
                         }
                     }),
                     onDelete: {
-                        if let index = alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-                            alarms.remove(at: index) // Remove the alarm
+                        if let index = alarmData.alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
+                            alarmData.alarms.remove(at: index) // Remove the alarm
                         }
                         selectedAlarm = nil // Clear selection after delete
                     },
@@ -61,7 +61,7 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if alarms.contains(where: { $0.isOn }) {
+                    if alarmData.alarms.contains(where: { $0.isOn }) {
                         Text("Alarm is active")
                             .foregroundColor(Color(hex: "#FFD700"))
                             .bold()
@@ -69,7 +69,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        alarms.append(Alarm(time: Date(), isOn: false))
+                        alarmData.alarms.append(Alarm(time: Date(), isOn: false))
                     }) {
                         Image(systemName: "plus")
                             .foregroundColor(Color(hex: "#FFD700"))
