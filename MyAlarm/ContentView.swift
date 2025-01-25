@@ -29,9 +29,7 @@ struct ContentView: View {
                                     }
                                 },
                                 onDelete: {
-                                    if let index = alarmData.alarms.firstIndex(of: alarm) {
-                                        alarmData.alarms.remove(at: index)
-                                    }
+                                    alarmData.deleteAlarm(alarm)
                                 },
                                 onEdit: {
                                     selectedAlarm = alarm
