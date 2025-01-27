@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var alarmData: AlarmData
-    @State private var selectedAlarm: Alarm?
+    @State private var selectedAlarm: Alarm
+    @State private var isEditing: Bool = false // Controls the presentation of the editor
     
     var body: some View {
         NavigationStack {
@@ -33,26 +34,29 @@ struct ContentView: View {
                                 },
                                 onEdit: {
                                     selectedAlarm = alarm
+                                    isEditing = true
                                 }
                             )
                         }
                     }
                 }
             }
-            .sheet(item: $selectedAlarm) { alarmToEdit in
+            .sheet(isPresented: $isEditing) {
                 AlarmEditorView(
                     selectedAlarm: Binding(
-                        get: { alarmToEdit },
+                        get: { selectedAlarm },
                         set: { updatedAlarm in
-                            alarmData.saveAlarm(updatedAlarm) // Update the alarm in AlarmData
+                            if let index = alarmData.alarms.firstIndex(of: selectedAlarm) {
+                                alarmData.alarms[index] = updatedAlarm // Save changes to AlarmData
+                            }
                         }
                     ),
                     onDelete: {
-                        alarmData.deleteAlarm(alarmToEdit) // Delete the alarm
-                        selectedAlarm = nil
+                        alarmData.deleteAlarm(selectedAlarm) // Delete the alarm
+                        isEditing = false // Close the editor
                     },
                     onCancel: {
-                        selectedAlarm = nil // Cancel editing
+                        isEditing = false // Close the editor without saving
                     }
                 )
                 .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
@@ -89,6 +93,6 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
