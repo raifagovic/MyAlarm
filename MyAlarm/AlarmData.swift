@@ -26,7 +26,7 @@ class AlarmData: ObservableObject {
         return []
     }
 
-    private func saveAlarms() {
+    func saveAlarms() {
         if let encoded = try? JSONEncoder().encode(alarms) {
             UserDefaults.standard.set(encoded, forKey: "alarms")
         }

@@ -128,13 +128,16 @@ struct AlarmEditorView: View {
     }
     
     private func saveChanges() {
+//        // Update the selected alarm's properties
         selectedAlarm.time = selectedTime
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
-        
-        // Save the updated alarm to AlarmData
+
         alarmData.saveAlarm(selectedAlarm)
+
+        // Save changes to persistent storage
+        alarmData.saveAlarms()
     }
 
     //    Calculate the remaining time and return a formatted string

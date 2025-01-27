@@ -41,19 +41,18 @@ struct ContentView: View {
             }
             .sheet(item: $selectedAlarm) { alarmToEdit in
                 AlarmEditorView(
-                    selectedAlarm: Binding(get: { alarmToEdit }, set: { updatedAlarm in
-                        if let index = alarmData.alarms.firstIndex(where: { $0.id == updatedAlarm.id }) {
-                            alarmData.alarms[index] = updatedAlarm // Update the alarm in the list
+                    selectedAlarm: Binding(
+                        get: { alarmToEdit },
+                        set: { updatedAlarm in
+                            alarmData.saveAlarm(updatedAlarm) // Update the alarm in AlarmData
                         }
-                    }),
+                    ),
                     onDelete: {
-                        if let index = alarmData.alarms.firstIndex(where: { $0.id == alarmToEdit.id }) {
-                            alarmData.alarms.remove(at: index) // Remove the alarm
-                        }
-                        selectedAlarm = nil // Clear selection after delete
+                        alarmData.deleteAlarm(alarmToEdit) // Delete the alarm
+                        selectedAlarm = nil
                     },
                     onCancel: {
-                        selectedAlarm = nil // Clear selection after cancel
+                        selectedAlarm = nil // Cancel editing
                     }
                 )
                 .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
