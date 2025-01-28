@@ -128,7 +128,6 @@ struct AlarmEditorView: View {
     
     private func saveChanges() {
 //        // Update the selected alarm's properties
-        selectedAlarm.time = selectedTime
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
@@ -148,7 +147,7 @@ struct AlarmEditorView: View {
         let currentTimeInSarajevo = now
         
         // Calculate the difference
-        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
+        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedAlarm.time)
         
         // Create a new Date with today's date and selected time
         var combinedComponents = DateComponents()
