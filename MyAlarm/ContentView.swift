@@ -42,24 +42,19 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isEditing) {
-                AlarmEditorView(
-                    selectedAlarm: Binding(
-                        get: { selectedAlarm },
-                        set: { updatedAlarm in
-                            if let index = alarmData.alarms.firstIndex(of: selectedAlarm) {
-                                alarmData.alarms[index] = updatedAlarm // Save changes to AlarmData
+                    if let index = alarmData.alarms.firstIndex(of: selectedAlarm) {
+                        AlarmEditorView(
+                            selectedAlarm: $alarmData.alarms[index],
+                            onDelete: {
+                                alarmData.deleteAlarm(selectedAlarm) // Delete the alarm
+                                isEditing = false // Close the editor
+                            },
+                            onCancel: {
+                                isEditing = false // Close the editor without saving
                             }
-                        }
-                    ),
-                    onDelete: {
-                        alarmData.deleteAlarm(selectedAlarm) // Delete the alarm
-                        isEditing = false // Close the editor
-                    },
-                    onCancel: {
-                        isEditing = false // Close the editor without saving
+                        )
+                        .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
                     }
-                )
-                .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
