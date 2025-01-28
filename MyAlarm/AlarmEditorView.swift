@@ -24,7 +24,7 @@ struct AlarmEditorView: View {
             Form{
                 // Time Picker
                 Section{
-                    CustomDatePicker(selectedDate: $selectedTime)
+                    CustomDatePicker(selectedDate: $selectedAlarm.time)
                         .frame(height: 200)
                 }
                 .listRowInsets(EdgeInsets()) // Remove default insets
