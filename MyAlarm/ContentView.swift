@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var alarmData: AlarmData
-    @State private var selectedAlarm: Alarm
+    @State private var selectedAlarm = Alarm(time: Date(), isOn: false)
     @State private var isEditing: Bool = false // Controls the presentation of the editor
     
     var body: some View {
