@@ -10,12 +10,12 @@ import SwiftData
 
 @Model
 class Alarm {
-    @Attribute(.unique) var id: UUID = UUID() // Unique identifier
-    var time: Date // Alarm time
-    var isOn: Bool // Whether the alarm is active
-    var repeatDays: [String] = [] // Repeat days (e.g., ["Monday", "Wednesday"])
-    var label: String = "Alarm" // Alarm label
-    var snoozeDuration: Int = 10 // Snooze duration in minutes
+    @Attribute(.unique) var id: UUID = UUID()
+    var time: Date
+    var isOn: Bool
+    var repeatDays: [String]
+    var label: String
+    var snoozeDuration: Int
 
     init(time: Date, isOn: Bool = true, repeatDays: [String] = [], label: String = "Alarm", snoozeDuration: Int = 10) {
         self.id = UUID()
