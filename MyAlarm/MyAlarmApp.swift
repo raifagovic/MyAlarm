@@ -5,16 +5,15 @@
 //  Created by Raif Agovic on 20. 10. 2024..
 //
 
+import SwiftData
 import SwiftUI
 
 @main
 struct MyAlarmApp: App {
-    @StateObject private var alarmData = AlarmData() // Instantiate AlarmData
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(alarmData)
         }
+        .modelContainer(for: Alarm.self)
     }
 }
