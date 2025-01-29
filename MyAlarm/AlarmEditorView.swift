@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AlarmEditorView: View {
     @Binding var selectedAlarm: Alarm
+    @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
-    @State private var labelText: String = ""
+    @State private var labelText: String = "Alarm"
     @State private var selectedSnooze: Int = 10
     
     var onDelete: () -> Void
