@@ -11,6 +11,7 @@ struct AlarmEditorView: View {
     @Binding var selectedAlarm: Alarm
     
     @EnvironmentObject var alarmData: AlarmData // Inject AlarmData
+    @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
     @State private var selectedSnooze: Int = 10
@@ -23,7 +24,7 @@ struct AlarmEditorView: View {
             Form{
                 // Time Picker
                 Section{
-                    CustomDatePicker(selectedDate: $selectedAlarm.time)
+                    CustomDatePicker(selectedDate: $selectedTime)
                         .frame(height: 200)
                 }
                 .listRowInsets(EdgeInsets()) // Remove default insets
@@ -128,6 +129,7 @@ struct AlarmEditorView: View {
     
     private func saveChanges() {
 //        // Update the selected alarm's properties
+        selectedAlarm.time = selectedTime
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
@@ -147,7 +149,7 @@ struct AlarmEditorView: View {
         let currentTimeInSarajevo = now
         
         // Calculate the difference
-        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedAlarm.time)
+        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
         
         // Create a new Date with today's date and selected time
         var combinedComponents = DateComponents()
