@@ -10,7 +10,6 @@ import SwiftUI
 struct AlarmEditorView: View {
     @Binding var selectedAlarm: Alarm
     
-    @EnvironmentObject var alarmData: AlarmData // Inject AlarmData
     @State private var selectedTime = Date()
     @State private var selectedDays: [String] = []
     @State private var labelText: String = ""
