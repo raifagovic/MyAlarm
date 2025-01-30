@@ -88,7 +88,8 @@ struct AlarmEditorView: View {
                 // Delete Button
                 Section {
                     Button(action: {
-                        alarmData.deleteAlarm(selectedAlarm) // Delete alarm from AlarmData
+                        modelContext.delete(selectedAlarm)
+                        try? modelContext.save()
                         onDelete()
                     }) {
                         Text("Delete Alarm")
@@ -108,7 +109,7 @@ struct AlarmEditorView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         saveChanges()
-                        alarmData.saveAlarm(selectedAlarm) // Save or update the alarm
+                        try? modelContext.save()
                         onCancel()
                     }
                     .bold()
@@ -133,11 +134,8 @@ struct AlarmEditorView: View {
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
         selectedAlarm.snoozeDuration = selectedSnooze
-
-        alarmData.saveAlarm(selectedAlarm)
-
-        // Save changes to persistent storage
-        alarmData.saveAlarms()
+        
+        try? modelContext.save()
     }
 
     //    Calculate the remaining time and return a formatted string
