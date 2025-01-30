@@ -89,6 +89,15 @@ struct ContentView: View {
         }
     }
     
+    private func addAlarm() {
+        let newAlarm = Alarm(time: Date(), isOn: false)
+        modelContext.insert(newAlarm)
+    }
+    
+    private func deleteAlarm(_ alarm: Alarm) {
+        modelContext.delete(alarm)
+    }
+    
     private func saveContext() {
         do {
             try modelContext.save()
