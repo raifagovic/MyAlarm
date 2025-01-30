@@ -43,27 +43,17 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isEditing) {
+            .sheet(item: $selectedAlarm) { alarm in
                 AlarmEditorView(
-                    selectedAlarm: Binding(
-                        get: { selectedAlarm },
-                        set: { updatedAlarm in
-                            if let index = alarmData.alarms.firstIndex(of: selectedAlarm) {
-                                alarmData.alarms[index] = updatedAlarm // Save changes to AlarmData
-                            } else {
-                                print("Failed to update alarm: not found in alarmData.")
-                            }
-                        }
-                    ),
+                    selectedAlarm: alarm,
                     onDelete: {
-                        alarmData.deleteAlarm(selectedAlarm) // Delete the alarm
-                        isEditing = false // Close the editor
+                        deleteAlarm(alarm)
+                        isEditing = false
                     },
                     onCancel: {
-                        isEditing = false // Close the editor without saving
+                        isEditing = false
                     }
                 )
-                .environmentObject(alarmData) // Ensure AlarmEditorView gets AlarmData
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
