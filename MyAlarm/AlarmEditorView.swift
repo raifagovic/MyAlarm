@@ -53,7 +53,6 @@ struct AlarmEditorView: View {
                             TextField("Alarm", text: $labelText)
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .multilineTextAlignment(.trailing)
-                            
                             if !labelText.isEmpty {
                                 Button(action: {
                                     labelText = ""

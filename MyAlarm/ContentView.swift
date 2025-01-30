@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var alarmData: AlarmData
+    @Environment(\.modelContext) var modelContext  // Access SwiftData's database
+    @Query var alarms: [Alarm]  // Fetch all alarms from SwiftData
+    
     @State private var selectedAlarm = Alarm(time: Date(), isOn: false)
     @State private var isEditing: Bool = false // Controls the presentation of the editor
     
@@ -84,6 +86,14 @@ struct ContentView: View {
                 setRootBackgroundColor()
                 createTransparentAppearance()
             }
+        }
+    }
+    
+    private func saveContext() {
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save context: \(error)")
         }
     }
     
