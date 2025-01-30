@@ -67,16 +67,14 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if alarmData.alarms.contains(where: { $0.isOn }) {
+                    if alarms.contains(where: { $0.isOn }) {
                         Text("Alarm is active")
                             .foregroundColor(Color(hex: "#FFD700"))
                             .bold()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        alarmData.alarms.append(Alarm(time: Date(), isOn: false))
-                    }) {
+                    Button(action: addAlarm) {
                         Image(systemName: "plus")
                             .foregroundColor(Color(hex: "#FFD700"))
                     }
