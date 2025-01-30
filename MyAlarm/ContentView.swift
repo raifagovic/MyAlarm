@@ -21,18 +21,21 @@ struct ContentView: View {
                 Color(hex: "#1C1C1E").ignoresSafeArea()
                 
                 // List of alarms or empty state
-                if !alarmData.alarms.isEmpty {
+                if alarms.isEmpty {
+                    Text("No alarms set")
+                        .foregroundColor(.gray)
+                        .font(.title2)
+                } else {
                     ScrollView {
-                        ForEach(alarmData.alarms) { alarm in
+                        ForEach(alarms) { alarm in
                             AlarmView(
                                 alarm: alarm,
                                 onToggle: { isOn in
-                                    if let index = alarmData.alarms.firstIndex(of: alarm) {
-                                        alarmData.alarms[index].isOn = isOn
-                                    }
+                                    alarm.isOn = isOn
+                                    saveContext()
                                 },
                                 onDelete: {
-                                    alarmData.deleteAlarm(alarm)
+                                    deleteAlarm(alarm)
                                 },
                                 onEdit: {
                                     selectedAlarm = alarm
