@@ -47,17 +47,31 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(item: $selectedAlarm) { alarm in
-                AlarmEditorView(
-                    selectedAlarm: alarm,
-                    onDelete: {
-                        deleteAlarm(alarm)
-                        isEditing = false
-                    },
-                    onCancel: {
-                        isEditing = false
-                    }
-                )
+            .sheet(isPresented: $isEditing) {
+                if let alarm = selectedAlarm {
+                    AlarmEditorView(
+                        selectedAlarm: Binding(
+                            get: { alarm },
+                            set: { updatedAlarm in
+                                if let index = alarms.firstIndex(where: { $0.id == alarm.id }) {
+                                    alarms[index] = updatedAlarm
+                                    saveContext()
+                                }
+                            }
+                        ),
+                        onDelete: {
+                            if let alarmToDelete = selectedAlarm {
+                                deleteAlarm(alarmToDelete)
+                            }
+                            selectedAlarm = nil
+                            isEditing = false
+                        },
+                        onCancel: {
+                            selectedAlarm = nil
+                            isEditing = false
+                        }
+                    )
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -97,7 +111,7 @@ struct ContentView: View {
             print("Failed to save context: \(error)")
         }
     }
-    
+        
     // Helper function to set root background color to black
     private func setRootBackgroundColor() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {

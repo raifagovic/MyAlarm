@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlarmEditorView: View {
-    @Binding var selectedAlarm: Alarm
+    var selectedAlarm: Alarm
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     
     @State private var selectedTime = Date()
