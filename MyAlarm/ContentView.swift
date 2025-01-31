@@ -48,53 +48,39 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isEditing) {
-                if let alarm = selectedAlarm {
-                    AlarmEditorView(
-                        selectedAlarm: Binding(
-                            get: { alarm },
-                            set: { updatedAlarm in
-                                if let index = alarms.firstIndex(where: { $0.id == alarm.id }) {
-                                    alarms[index] = updatedAlarm
-                                    saveContext()
-                                }
-                            }
-                        ),
-                        onDelete: {
-                            if let alarmToDelete = selectedAlarm {
-                                deleteAlarm(alarmToDelete)
-                            }
-                            selectedAlarm = nil
-                            isEditing = false
-                        },
-                        onCancel: {
-                            selectedAlarm = nil
-                            isEditing = false
-                        }
-                    )
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if alarms.contains(where: { $0.isOn }) {
-                        Text("Alarm is active")
-                            .foregroundColor(Color(hex: "#FFD700"))
-                            .bold()
+                AlarmEditorView(
+                    selectedAlarm: selectedAlarm,
+                    onDelete: {
+                        deleteAlarm(selectedAlarm)
+                        isEditing = false
+                    },
+                    onCancel: {
+                        isEditing = false
                     }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: addAlarm) {
-                        Image(systemName: "plus")
-                            .foregroundColor(Color(hex: "#FFD700"))
-                    }
-                }
-            }
-            .onAppear {
-                setRootBackgroundColor()
-                createTransparentAppearance()
+                )
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                if alarms.contains(where: { $0.isOn }) {
+                    Text("Alarm is active")
+                        .foregroundColor(Color(hex: "#FFD700"))
+                        .bold()
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: addAlarm) {
+                    Image(systemName: "plus")
+                        .foregroundColor(Color(hex: "#FFD700"))
+                }
+            }
+        }
+        .onAppear {
+            setRootBackgroundColor()
+            createTransparentAppearance()
+        }
     }
-    
+
     private func addAlarm() {
         let newAlarm = Alarm(time: Date(), isOn: false)
         modelContext.insert(newAlarm)
