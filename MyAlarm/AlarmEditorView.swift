@@ -27,8 +27,8 @@ struct AlarmEditorView: View {
                     CustomDatePicker(selectedDate: $selectedTime)
                         .frame(height: 200)
                 }
-                .listRowInsets(EdgeInsets()) // Remove default insets
-                .listRowBackground(Color.clear) // Remove the default rectangular background
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
                 
                 // Other Settings
                 Section {
@@ -128,7 +128,6 @@ struct AlarmEditorView: View {
     }
     
     private func saveChanges() {
-//        // Update the selected alarm's properties
         selectedAlarm.time = selectedTime
         selectedAlarm.repeatDays = selectedDays
         selectedAlarm.label = labelText
