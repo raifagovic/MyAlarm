@@ -17,8 +17,8 @@ class Alarm {
     var label: String
     var snoozeDuration: Int
 
-    init(time: Date, isOn: Bool = true, repeatDays: [String] = [], label: String = "Alarm", snoozeDuration: Int = 10) {
-        self.id = UUID()
+    init(id: UUID, time: Date, isOn: Bool, repeatDays: [String], label: String, snoozeDuration: Int) {
+        self.id = id
         self.time = time
         self.isOn = isOn
         self.repeatDays = repeatDays
