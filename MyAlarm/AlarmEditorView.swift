@@ -16,7 +16,7 @@ struct AlarmEditorView: View {
     @State private var repeatDays: [String]
     @State private var label: String
     @State private var snoozeDuration: Int
-    @State private var isOn: Bool
+    @State private var isNewAlarm: Bool
     
     var body: some View {
         NavigationStack {
@@ -123,27 +123,17 @@ struct AlarmEditorView: View {
     }
     
     private func saveAlarm() {
-        if let alarm = alarm {
-            // Editing existing alarm
-            alarm.time = time
-            alarm.repeatDays = repeatDays
-            alarm.label = label
-            alarm.snoozeDuration = snoozeDuration
-        } else {
-            // Creating a new alarm
-            let newAlarm = Alarm(time: time, repeatDays: repeatDays, label: label, snoozeDuration: snoozeDuration, isOn: true)
-            modelContext.insert(newAlarm)
-        }
-        
+        alarm.time = time
+        alarm.repeatDays = repeatDays
+        alarm.label = label
+        alarm.snoozeDuration = snoozeDuration
         try? modelContext.save()
         dismiss()
     }
     
     private func deleteAlarm() {
-        if let alarm = alarm {
-            modelContext.delete(alarm)
-            try? modelContext.save()
-        }
+        modelContext.delete(alarm)
+        try? modelContext.save()
         dismiss()
     }
     
