@@ -146,7 +146,7 @@ struct AlarmEditorView: View {
         let currentTimeInSarajevo = now
         
         // Calculate the difference
-        let selectedComponents = calendar.dateComponents([.hour, .minute], from: selectedTime)
+        let selectedComponents = calendar.dateComponents([.hour, .minute], from: time)
         
         // Create a new Date with today's date and selected time
         var combinedComponents = DateComponents()
@@ -186,7 +186,7 @@ struct AlarmEditorView: View {
         ]
         
         let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        let sortedDays = selectedDays
+        let sortedDays = repeatDays
             .compactMap { dayAbbreviations[$0] }
             .sorted { daysOfWeek.firstIndex(of: $0)! < daysOfWeek.firstIndex(of: $1)! }
         
