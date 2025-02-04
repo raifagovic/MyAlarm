@@ -11,17 +11,18 @@ struct AlarmEditorView: View {
     var selectedAlarm: Alarm
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     
-    @State private var selectedTime = Date()
-    @State private var selectedDays: [String] = []
-    @State private var labelText: String = "Alarm"
-    @State private var selectedSnooze: Int = 10
+    @State private var time: Date
+    @State private var repeatDays: [String]
+    @State private var label: String
+    @State private var snoozeDuration: Int
+    @State private var isOn: Bool
     
     var body: some View {
         NavigationStack {
             Form{
                 // Time Picker
                 Section{
-                    CustomDatePicker(selectedDate: $selectedTime)
+                    CustomDatePicker(selectedDate: $time)
                         .frame(height: 200)
                 }
                 .listRowInsets(EdgeInsets())
@@ -30,7 +31,7 @@ struct AlarmEditorView: View {
                 // Other Settings
                 Section {
                     // Repeat row
-                    NavigationLink(destination: RepeatView(selectedDays: $selectedDays)) {
+                    NavigationLink(destination: RepeatView(selectedDays: $repeatDays)) {
                         HStack {
                             Text("Repeat")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
@@ -38,7 +39,7 @@ struct AlarmEditorView: View {
                             Text(getAbbreviatedDays())
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .lineLimit(1)
-                                .font(.system(size: selectedDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                .font(.system(size: $repeatDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
                         }
                     }
                     // Label row
@@ -47,12 +48,12 @@ struct AlarmEditorView: View {
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
                         HStack {
-                            TextField("Alarm", text: $labelText)
+                            TextField("Alarm", text: $label)
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .multilineTextAlignment(.trailing)
-                            if !labelText.isEmpty {
+                            if !label.isEmpty {
                                 Button(action: {
-                                    labelText = ""
+                                    label = ""
                                 }) {
                                     Image(systemName: "xmark.circle.fill")
                                         .foregroundColor(Color(hex: "#A1A1A6"))
@@ -70,12 +71,12 @@ struct AlarmEditorView: View {
                     }
                     
                     // Snooze row
-                    NavigationLink(destination: SnoozeView(selectedSnooze: $selectedSnooze)) {
+                    NavigationLink(destination: SnoozeView(selectedSnooze: $snoozeDuration)) {
                         HStack {
                             Text("Snooze")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            Text("\(selectedSnooze) min")
+                            Text("\($snoozeDuration) min")
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
