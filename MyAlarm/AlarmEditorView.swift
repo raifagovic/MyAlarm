@@ -10,6 +10,7 @@ import SwiftUI
 struct AlarmEditorView: View {
     var selectedAlarm: Alarm
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
+    @Environment(\.dismiss) var dismiss            // Dismiss view when done
     
     @State private var time: Date
     @State private var repeatDays: [String]
