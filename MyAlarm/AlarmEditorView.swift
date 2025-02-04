@@ -16,9 +16,6 @@ struct AlarmEditorView: View {
     @State private var labelText: String = "Alarm"
     @State private var selectedSnooze: Int = 10
     
-    var onDelete: () -> Void
-    var onCancel: () -> Void
-    
     var body: some View {
         NavigationStack {
             Form{
@@ -87,9 +84,7 @@ struct AlarmEditorView: View {
                 // Delete Button
                 Section {
                     Button(action: {
-                        modelContext.delete(selectedAlarm)
-                        try? modelContext.save()
-                        onDelete()
+                        deleteAlarm()
                     }) {
                         Text("Delete Alarm")
                             .foregroundColor(Color.red)
@@ -102,14 +97,12 @@ struct AlarmEditorView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
-                        onCancel()
+                        dismiss()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        saveChanges()
-                        try? modelContext.save()
-                        onCancel()
+                        saveAlarm()
                     }
                     .bold()
                 }

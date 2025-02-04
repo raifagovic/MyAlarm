@@ -11,16 +11,16 @@ import SwiftData
 @Model
 class Alarm {
     var time: Date
-    var isOn: Bool
     var label: String
     var repeatDays: [String]
     var snoozeDuration: Int
+    var isOn: Bool
 
-    init(time: Date, isOn: Bool, repeatDays: [String], label: String, snoozeDuration: Int) {
+    init(time: Date, repeatDays: [String], label: String, snoozeDuration: Int, isOn: Bool) {
         self.time = time
-        self.isOn = isOn
         self.label = label
         self.repeatDays = repeatDays
         self.snoozeDuration = snoozeDuration
+        self.isOn = isOn
     }
 }
