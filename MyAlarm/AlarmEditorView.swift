@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlarmEditorView: View {
-    var selectedAlarm: Alarm
+    var alarm: Alarm
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     @Environment(\.dismiss) var dismiss            // Dismiss view when done
     
@@ -122,13 +122,23 @@ struct AlarmEditorView: View {
 
     }
     
-    private func saveChanges() {
-        selectedAlarm.time = selectedTime
-        selectedAlarm.repeatDays = selectedDays
-        selectedAlarm.label = labelText
-        selectedAlarm.snoozeDuration = selectedSnooze
+    private func saveAlarm() {
+        if let alarm = alarm {
+            // Editing existing alarm
+            alarm.time = time
+            alarm.repeatDays = repeatDays
+            alarm.label = label
+            alarm.snoozeDuration = snoozeDuration
+        } else {
+            // Creating a new alarm
+            let newAlarm = Alarm(time: time, repeatDays: repeatDays, label: label, snoozeDuration: snoozeDuration, isOn: true)
+            modelContext.insert(newAlarm)
+        }
+        
+        try? modelContext.save()
+        dismiss()
     }
-
+    
     //    Calculate the remaining time and return a formatted string
     private func remainingTimeMessage() -> String {
         let calendar = Calendar.current
