@@ -96,6 +96,7 @@ struct AlarmEditorView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .environment(\.colorScheme, .dark)
+            .navigationTitle("Edit Alarm")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
@@ -107,11 +108,6 @@ struct AlarmEditorView: View {
                         saveAlarm()
                     }
                     .bold()
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("Edit Alarm")
-                        .font(.headline)
-                        .foregroundColor(Color(hex: "#F1F1F1"))
                 }
             }
             .onAppear {
