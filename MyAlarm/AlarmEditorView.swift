@@ -85,13 +85,10 @@ struct AlarmEditorView: View {
                 
                 // Delete Button
                 Section {
-                    Button(action: {
+                    Button("Delete Alarm", role: .destructive) {
                         deleteAlarm()
-                    }) {
-                        Text("Delete Alarm")
-                            .foregroundColor(Color.red)
-                            .frame(maxWidth: .infinity, alignment: .center)
                     }
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
