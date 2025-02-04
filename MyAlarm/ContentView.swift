@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     @Query var alarms: [Alarm]  // Fetch all alarms from SwiftData
     
-    @State private var selectedAlarm = Alarm(time: Date(), isOn: false)
+    @State private var selectedAlarm = Alarm(time: Date(), repeatDays: [], label: "Alarm", snoozeDuration: 10, isOn: false)
     @State private var isEditing: Bool = false // Controls the presentation of the editor
     
     var body: some View {
@@ -48,16 +48,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isEditing) {
-                AlarmEditorView(
-                    selectedAlarm: selectedAlarm,
-                    onDelete: {
-                        deleteAlarm(selectedAlarm)
-                        isEditing = false
-                    },
-                    onCancel: {
-                        isEditing = false
-                    }
-                )
+                AlarmEditorView(selectedAlarm: $selectedAlarm)
             }
         }
         .toolbar {
