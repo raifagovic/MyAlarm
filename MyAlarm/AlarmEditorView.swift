@@ -139,6 +139,14 @@ struct AlarmEditorView: View {
         dismiss()
     }
     
+    private func deleteAlarm() {
+        if let alarm = alarm {
+            modelContext.delete(alarm)
+            try? modelContext.save()
+        }
+        dismiss()
+    }
+    
     //    Calculate the remaining time and return a formatted string
     private func remainingTimeMessage() -> String {
         let calendar = Calendar.current
