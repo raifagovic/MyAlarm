@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct RepeatView: View {
-    @Binding var selectedDays: [String]
+    var repeatDays: [String]
+    var onUpdate: ([String]) -> Void  // Callback to update repeatDays in parent view
+    
+    @State private var localRepeatDays: [String]  // Local state to track selection
+    
+    init(repeatDays: [String], onUpdate: @escaping ([String]) -> Void) {
+        self.repeatDays = repeatDays
+        self.onUpdate = onUpdate
+        _localRepeatDays = State(initialValue: repeatDays)
+    }
     
     var body: some View {
         Form {
@@ -18,7 +27,7 @@ struct RepeatView: View {
                         Text(day)
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
-                        if selectedDays.contains(day) {
+                        if localRepeatDays.contains(day) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
                                 .bold()
@@ -26,11 +35,7 @@ struct RepeatView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        if let index = selectedDays.firstIndex(of: day) {
-                            selectedDays.remove(at: index)
-                        } else {
-                            selectedDays.append(day)
-                        }
+                        toggleDaySelection(day)
                     }
                 }
             }
@@ -45,6 +50,17 @@ struct RepeatView: View {
         }
         .onAppear {
             createTransparentAppearance()
+        }
+        .onDisappear {
+            onUpdate(localRepeatDays)  // Pass updated days back to parent view
+        }
+    }
+    
+    private func toggleDaySelection(_ day: String) {
+        if let index = localRepeatDays.firstIndex(of: day) {
+            localRepeatDays.remove(at: index)
+        } else {
+            localRepeatDays.append(day)
         }
     }
     
