@@ -48,7 +48,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isEditing) {
-                AlarmEditorView(selectedAlarm: $selectedAlarm)
+                AlarmEditorView(alarm: selectedAlarm)
             }
         }
         .toolbar {
