@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct SnoozeView: View {
-    @Binding var selectedSnooze: Int
+    var snoozeDuration: Int
+    var onUpdate: (Int) -> Void  // Callback to update selectedSnooze in parent view
+    
+    @State private var localSnoozeDuration: Int  // Local state to track selected snooze option
+    
+    init(snoozeDuration: Int, onUpdate: @escaping (Int) -> Void) {
+        self.snoozeDuration = snoozeDuration
+        self.onUpdate = onUpdate
+        _localSnoozeDuration = State(initialValue: snoozeDuration)
+    }
+    
     let snoozeOptions = [5, 10, 15, 20, 25, 30]
     
     var body: some View {
@@ -19,7 +29,7 @@ struct SnoozeView: View {
                         Text("\(option) minutes")
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
-                        if option == selectedSnooze {
+                        if option == localSnoozeDuration {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
                                 .bold()
@@ -27,7 +37,7 @@ struct SnoozeView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        selectedSnooze = option
+                        localSnoozeDuration = option
                     }
                 }
             }
@@ -42,6 +52,9 @@ struct SnoozeView: View {
         }
         .onAppear {
             createTransparentAppearance()
+        }
+        .onDisappear {
+            onUpdate(localSnoozeDuration)  // Pass the updated selected snooze value back to the parent view
         }
     }
 }
