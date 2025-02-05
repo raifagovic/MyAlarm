@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AlarmEditorView: View {
-    var alarm: Alarm
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     @Environment(\.dismiss) var dismiss            // Dismiss view when done
     
@@ -17,6 +16,17 @@ struct AlarmEditorView: View {
     @State private var label: String
     @State private var snoozeDuration: Int
     @State private var isNewAlarm: Bool
+    
+    var alarm: Alarm
+    
+    init(alarm: Alarm) {
+        self.alarm = alarm
+        _time = State(initialValue: alarm.time)
+        _repeatDays = State(initialValue: alarm.repeatDays)
+        _label = State(initialValue: alarm.label)
+        _snoozeDuration = State(initialValue: alarm.snoozeDuration)
+        _isNewAlarm = State(initialValue: false)
+    }
     
     var body: some View {
         NavigationStack {
