@@ -13,7 +13,6 @@ struct ContentView: View {
     @Query var alarms: [Alarm]  // Fetch all alarms from SwiftData
     
     @State private var selectedAlarm: Alarm?
-    @State private var isEditing: Bool = false // Controls the presentation of the editor
     
     var body: some View {
         NavigationStack {
@@ -40,15 +39,14 @@ struct ContentView: View {
                                 },
                                 onEdit: {
                                     selectedAlarm = alarm
-                                    isEditing = true
                                 }
                             )
                         }
                     }
                 }
             }
-            .sheet(isPresented: $isEditing) {
-                AlarmEditorView(alarm: selectedAlarm)
+            .sheet(item: $selectedAlarm) { alarm in
+                AlarmEditorView(alarm: alarm)
             }
         }
         .toolbar {
@@ -76,7 +74,6 @@ struct ContentView: View {
         let newAlarm = Alarm(time: Date(), repeatDays: [], label: "Alarm", snoozeDuration: 10, isOn: false)
         modelContext.insert(newAlarm)
         selectedAlarm = newAlarm
-        isEditing = true
     }
     
     private func deleteAlarm(_ alarm: Alarm) {
