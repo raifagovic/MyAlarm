@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var modelContext  // Access SwiftData's database
     @Query var alarms: [Alarm]  // Fetch all alarms from SwiftData
     
-    @State private var selectedAlarm: Alarm?
+    @State var selectedAlarm: Alarm?
     
     var body: some View {
         NavigationStack {

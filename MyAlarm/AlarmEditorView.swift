@@ -15,7 +15,6 @@ struct AlarmEditorView: View {
     @State private var repeatDays: [String]
     @State private var label: String
     @State private var snoozeDuration: Int
-    @State private var isNewAlarm: Bool
     
     var alarm: Alarm
     
@@ -25,7 +24,6 @@ struct AlarmEditorView: View {
         _repeatDays = State(initialValue: alarm.repeatDays)
         _label = State(initialValue: alarm.label)
         _snoozeDuration = State(initialValue: alarm.snoozeDuration)
-        _isNewAlarm = State(initialValue: false)
     }
     
     var body: some View {
