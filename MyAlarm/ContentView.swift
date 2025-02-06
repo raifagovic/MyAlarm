@@ -48,25 +48,25 @@ struct ContentView: View {
             .sheet(item: $selectedAlarm) { alarm in
                 AlarmEditorView(alarm: alarm)
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if alarms.contains(where: { $0.isOn }) {
-                    Text("Alarm is active")
-                        .foregroundColor(Color(hex: "#FFD700"))
-                        .bold()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if alarms.contains(where: { $0.isOn }) {
+                        Text("Alarm is active")
+                            .foregroundColor(Color(hex: "#FFD700"))
+                            .bold()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: addAlarm) {
+                        Image(systemName: "plus")
+                            .foregroundColor(Color(hex: "#FFD700"))
+                    }
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: addAlarm) {
-                    Image(systemName: "plus")
-                        .foregroundColor(Color(hex: "#FFD700"))
-                }
+            .onAppear {
+                setRootBackgroundColor()
+                createTransparentAppearance()
             }
-        }
-        .onAppear {
-            setRootBackgroundColor()
-            createTransparentAppearance()
         }
     }
 
