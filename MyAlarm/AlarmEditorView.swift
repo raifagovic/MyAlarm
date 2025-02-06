@@ -84,12 +84,14 @@ struct AlarmEditorView: View {
                     }
                     
                     // Snooze row
-                    NavigationLink(destination: SnoozeView(selectedSnooze: $snoozeDuration)) {
+                    NavigationLink(destination: SnoozeView(snoozeDuration: snoozeDuration, onUpdate: { updatedSnooze in
+                        snoozeDuration = updatedSnooze
+                    })) {
                         HStack {
                             Text("Snooze")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            Text("\($snoozeDuration) min")
+                            Text("\(snoozeDuration) min")
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
