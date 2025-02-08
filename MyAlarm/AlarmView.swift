@@ -11,9 +11,9 @@ struct AlarmView: View {
     var alarm: Alarm
     @State private var showDelete = false
     
-    var onToggle: (Bool) -> Void       // Callback for toggling alarm
-    var onDelete: () -> Void           // Callback to delete alarm
-    var onEdit: () -> Void             // Callback to trigger editing
+    var onToggle: (Bool) -> Void
+    var onDelete: () -> Void
+    var onEdit: () -> Void
     
     var body: some View {
         ZStack {

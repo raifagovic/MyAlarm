@@ -9,8 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.modelContext) var modelContext  // Access SwiftData's database
-    @Query var alarms: [Alarm]  // Fetch all alarms from SwiftData
+    @Environment(\.modelContext) var modelContext
+    @Query var alarms: [Alarm]
     
     @State var selectedAlarm: Alarm?
     

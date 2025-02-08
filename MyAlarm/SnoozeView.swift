@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SnoozeView: View {
     var snoozeDuration: Int
-    var onUpdate: (Int) -> Void  // Callback to update selectedSnooze in parent view
+    var onUpdate: (Int) -> Void  
     
-    @State private var localSnoozeDuration: Int  // Local state to track selected snooze option
+    @State private var localSnoozeDuration: Int
     
     init(snoozeDuration: Int, onUpdate: @escaping (Int) -> Void) {
         self.snoozeDuration = snoozeDuration
@@ -54,7 +54,7 @@ struct SnoozeView: View {
             createTransparentAppearance()
         }
         .onDisappear {
-            onUpdate(localSnoozeDuration)  // Pass the updated selected snooze value back to the parent view
+            onUpdate(localSnoozeDuration)
         }
     }
 }

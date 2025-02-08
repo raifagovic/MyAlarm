@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RepeatView: View {
     var repeatDays: [String]
-    var onUpdate: ([String]) -> Void  // Callback to update repeatDays in parent view
+    var onUpdate: ([String]) -> Void
     
-    @State private var localRepeatDays: [String]  // Local state to track selection
+    @State private var localRepeatDays: [String]
     
     init(repeatDays: [String], onUpdate: @escaping ([String]) -> Void) {
         self.repeatDays = repeatDays
@@ -52,7 +52,7 @@ struct RepeatView: View {
             createTransparentAppearance()
         }
         .onDisappear {
-            onUpdate(localRepeatDays)  // Pass updated days back to parent view
+            onUpdate(localRepeatDays)
         }
     }
     
