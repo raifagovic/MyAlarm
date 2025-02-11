@@ -71,7 +71,7 @@ struct ContentView: View {
     }
 
     private func addAlarm() {
-        let newAlarm = Alarm(time: Date(), repeatDays: [], label: "Alarm", snoozeDuration: 10, isOn: false)
+        let newAlarm = Alarm(time: Date(), repeatDays: [], label: "", snoozeDuration: 10, isOn: false)
         modelContext.insert(newAlarm)
         selectedAlarm = newAlarm
     }
