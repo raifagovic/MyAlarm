@@ -16,7 +16,7 @@ struct AlarmEditorView: View {
     @State private var label: String
     @State private var snoozeDuration: Int
     
-    @FocusState private var isLabelFocused: Bool  // Track focus state
+    @FocusState private var isLabelFocused: Bool
     
     var alarm: Alarm
     
@@ -64,9 +64,9 @@ struct AlarmEditorView: View {
                             TextField("Alarm", text: $label)
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .multilineTextAlignment(.trailing)
-                                .focused($isLabelFocused)  // Bind to focus state
+                                .focused($isLabelFocused)
                             
-                            if isLabelFocused && !label.isEmpty {  // Show ❌ only when typing
+                            if isLabelFocused && !label.isEmpty {
                                 Button(action: {
                                     label = ""
                                 }) {
