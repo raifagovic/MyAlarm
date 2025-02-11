@@ -43,7 +43,7 @@ private func remainingTimeMessage() -> String {
     return "Rings  in \(hours) h \(minutes) min"
 }
 
-private func getAbbreviatedDays(from repeatDays: [String]) -> String {
+ func getAbbreviatedDays(from repeatDays: [String]) -> String {
     let dayAbbreviations: [String: String] = [
         "Every Monday": "Mon",
         "Every Tuesday": "Tue",
