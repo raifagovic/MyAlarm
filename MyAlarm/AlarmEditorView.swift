@@ -71,12 +71,11 @@ struct AlarmEditorView: View {
                                     label = ""
                                 }) {
                                     Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(Color(hex: "#A1A1A6"))
+                                        .foregroundColor(Color(uiColor: .placeholderText))
                                 }
                             }
                         }
                     }
-                    
                     // Sound row
                     HStack {
                         Text("Sound")
@@ -85,7 +84,6 @@ struct AlarmEditorView: View {
                         Text("Radar")
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
-                    
                     // Snooze row
                     NavigationLink(destination: SnoozeView(snoozeDuration: snoozeDuration, onUpdate: { updatedSnooze in
                         snoozeDuration = updatedSnooze
@@ -99,7 +97,6 @@ struct AlarmEditorView: View {
                         }
                     }
                 }
-                
                 // Delete Button
                 Section {
                     Button("Delete Alarm", role: .destructive) {
