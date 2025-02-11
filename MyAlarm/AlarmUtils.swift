@@ -7,7 +7,7 @@
 
 import Foundation
 
-private func remainingTimeMessage() -> String {
+ func remainingTimeMessage(for time: Date) -> String {
     let calendar = Calendar.current
     
     // Get the current time in Sarajevo
