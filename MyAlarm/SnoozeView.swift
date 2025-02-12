@@ -9,11 +9,9 @@ import SwiftUI
 
 struct SnoozeView: View {
     @Binding var snoozeDuration: Int
-    var onUpdate: (Int) -> Void
     
     init(snoozeDuration: Binding<Int>, onUpdate: @escaping (Int) -> Void) {
         self._snoozeDuration = snoozeDuration
-        self.onUpdate = onUpdate
     }
     
     let snoozeOptions = [5, 10, 15, 20, 25, 30]
@@ -49,9 +47,6 @@ struct SnoozeView: View {
         }
         .onAppear {
             createTransparentAppearance()
-        }
-        .onDisappear {
-            onUpdate(snoozeDuration)
         }
     }
 }
