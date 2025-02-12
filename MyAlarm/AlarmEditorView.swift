@@ -85,7 +85,7 @@ struct AlarmEditorView: View {
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
                     // Snooze row
-                    NavigationLink(destination: SnoozeView(snoozeDuration: snoozeDuration, onUpdate: { updatedSnooze in
+                    NavigationLink(destination: SnoozeView(snoozeDuration: $snoozeDuration, onUpdate: { updatedSnooze in
                         snoozeDuration = updatedSnooze
                     })) {
                         HStack {
@@ -147,8 +147,5 @@ struct AlarmEditorView: View {
         try? modelContext.save()
         dismiss()
     }
-    
-    //    Calculate the remaining time and return a formatted string
-    
 }
 
