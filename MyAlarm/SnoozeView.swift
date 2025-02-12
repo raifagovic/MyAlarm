@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct SnoozeView: View {
-    var snoozeDuration: Int
-    var onUpdate: (Int) -> Void  
+    @Binding var snoozeDuration: Int
+    var onUpdate: (Int) -> Void
     
-    @State private var localSnoozeDuration: Int
-    
-    init(snoozeDuration: Int, onUpdate: @escaping (Int) -> Void) {
-        self.snoozeDuration = snoozeDuration
+    init(snoozeDuration: Binding<Int>, onUpdate: @escaping (Int) -> Void) {
+        self._snoozeDuration = snoozeDuration
         self.onUpdate = onUpdate
-        _localSnoozeDuration = State(initialValue: snoozeDuration)
     }
     
     let snoozeOptions = [5, 10, 15, 20, 25, 30]
@@ -29,7 +26,7 @@ struct SnoozeView: View {
                         Text("\(option) minutes")
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
-                        if option == localSnoozeDuration {
+                        if option == snoozeDuration {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
                                 .bold()
@@ -37,7 +34,7 @@ struct SnoozeView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        localSnoozeDuration = option
+                        snoozeDuration = option
                     }
                 }
             }
@@ -54,7 +51,7 @@ struct SnoozeView: View {
             createTransparentAppearance()
         }
         .onDisappear {
-            onUpdate(localSnoozeDuration)
+            onUpdate(snoozeDuration)
         }
     }
 }
