@@ -10,11 +10,11 @@ import SwiftUI
 struct RepeatView: View {
     @Binding var repeatDays: [String]
     
-    var onUpdate: ([String]) -> Void
+//    var onUpdate: ([String]) -> Void
     
     init(repeatDays: Binding<[String]>, onUpdate: @escaping ([String]) -> Void) {
         self._repeatDays = repeatDays
-        self.onUpdate = onUpdate
+//        self.onUpdate = onUpdate
     }
     
     var body: some View {
@@ -49,9 +49,9 @@ struct RepeatView: View {
         .onAppear {
             createTransparentAppearance()
         }
-        .onDisappear {
-            onUpdate(repeatDays)
-        }
+//        .onDisappear {
+//            onUpdate(repeatDays)
+//        }
     }
     
     private func toggleDaySelection(_ day: String) {
