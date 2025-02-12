@@ -42,14 +42,14 @@ struct AlarmEditorView: View {
                 // Other Settings
                 Section {
                     // Repeat row
-                    NavigationLink(destination: RepeatView(repeatDays: repeatDays, onUpdate: { updatedDays in
+                    NavigationLink(destination: RepeatView(repeatDays: $repeatDays, onUpdate: { updatedDays in
                         repeatDays = updatedDays
                     })) {
                         HStack {
                             Text("Repeat")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            Text(getAbbreviatedDays(from: alarm.repeatDays))
+                            Text(getAbbreviatedDays(from: repeatDays)) // Use the updated repeatDays here
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .lineLimit(1)
                                 .font(.system(size: repeatDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))

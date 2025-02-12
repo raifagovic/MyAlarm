@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct RepeatView: View {
-    var repeatDays: [String]
+    @Binding var repeatDays: [String]
+    
     var onUpdate: ([String]) -> Void
     
-    @State private var localRepeatDays: [String]
-    
-    init(repeatDays: [String], onUpdate: @escaping ([String]) -> Void) {
-        self.repeatDays = repeatDays
+    init(repeatDays: Binding<[String]>, onUpdate: @escaping ([String]) -> Void) {
+        self._repeatDays = repeatDays
         self.onUpdate = onUpdate
-        _localRepeatDays = State(initialValue: repeatDays)
     }
     
     var body: some View {
@@ -27,7 +25,7 @@ struct RepeatView: View {
                         Text(day)
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
-                        if localRepeatDays.contains(day) {
+                        if repeatDays.contains(day) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(Color(hex: "#FFD700"))
                                 .bold()
@@ -52,15 +50,15 @@ struct RepeatView: View {
             createTransparentAppearance()
         }
         .onDisappear {
-            onUpdate(localRepeatDays)
+            onUpdate(repeatDays)
         }
     }
     
     private func toggleDaySelection(_ day: String) {
-        if let index = localRepeatDays.firstIndex(of: day) {
-            localRepeatDays.remove(at: index)
+        if let index = repeatDays.firstIndex(of: day) {
+            repeatDays.remove(at: index)
         } else {
-            localRepeatDays.append(day)
+            repeatDays.append(day)
         }
     }
     
