@@ -43,47 +43,54 @@ import Foundation
     return "Rings  in \(hours) h \(minutes) min"
 }
 
- func getAbbreviatedDays(from repeatDays: [String]) -> String {
-    let dayAbbreviations: [String: String] = [
-        "Every Monday": "Mon",
-        "Every Tuesday": "Tue",
-        "Every Wednesday": "Wed",
-        "Every Thursday": "Thu",
-        "Every Friday": "Fri",
-        "Every Saturday": "Sat",
-        "Every Sunday": "Sun",
+func getAbbreviatedDays(from repeatDays: [String]) -> String {
+    let dayMappings: [String: (full: String, short: String)] = [
+        "Every Monday": ("Monday", "Mon"),
+        "Every Tuesday": ("Tuesday", "Tue"),
+        "Every Wednesday": ("Wednesday", "Wed"),
+        "Every Thursday": ("Thursday", "Thu"),
+        "Every Friday": ("Friday", "Fri"),
+        "Every Saturday": ("Saturday", "Sat"),
+        "Every Sunday": ("Sunday", "Sun"),
     ]
     
-    let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    let sortedDays = repeatDays
-        .compactMap { dayAbbreviations[$0] }
-        .sorted { daysOfWeek.firstIndex(of: $0)! < daysOfWeek.firstIndex(of: $1)! }
+    let daysOfWeekFull = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    let daysOfWeekShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    
+    // Extract full and short names for selected days
+    let selectedDays = repeatDays.compactMap { dayMappings[$0] }
     
     // If no days are selected, return "Never"
-    if sortedDays.isEmpty {
+    if selectedDays.isEmpty {
         return "Never"
     }
     
-    // If all days are selected, return "Every"
-    if sortedDays.count == daysOfWeek.count {
+    // If all days are selected, return "Every day"
+    if selectedDays.count == daysOfWeekFull.count {
         return "Every day"
     }
     
-    // If only one day is selected, return the abbreviation for that day
-    if sortedDays.count == 1 {
-        return sortedDays.first!
+    // If only one day is selected, return "Every Monday" (or the selected day)
+    if selectedDays.count == 1 {
+        return "Every \(selectedDays.first!.full)"
     }
     
+    // Sort days based on the order in daysOfWeekFull
+    let sortedDays = selectedDays
+        .map { $0.short }
+        .sorted { daysOfWeekShort.firstIndex(of: $0)! < daysOfWeekShort.firstIndex(of: $1)! }
+
+    // If weekdays (Monday-Friday) are selected, return "Weekdays"
     if sortedDays == ["Mon", "Tue", "Wed", "Thu", "Fri"] {
         return "Weekdays"
     }
-    
-    // Check if weekends are selected
+
+    // If weekends (Saturday and Sunday) are selected, return "Weekends"
     if sortedDays == ["Sat", "Sun"] {
         return "Weekends"
     }
-    
-    // For multiple selected days, format as "Mon, Tue and Wed"
+
+    // For multiple selected days, use abbreviations: "Every Mon, Tue and Wed"
     let allButLast = sortedDays.dropLast()
     let lastDay = sortedDays.last!
     return "\(allButLast.joined(separator: ", ")) and \(lastDay)"
