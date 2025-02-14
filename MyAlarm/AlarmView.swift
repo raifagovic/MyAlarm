@@ -50,9 +50,12 @@ struct AlarmView: View {
                             .fontWeight(.medium)
                         
                         if !alarm.repeatDays.isEmpty {
-                            Text(getAbbreviatedDays(from: alarm.repeatDays))
-                                    .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
-                                    .fontWeight(.medium)
+                            let message = getAbbreviatedDays(from: alarm.repeatDays)
+                            let formattedMessage = (message == "Weekdays" || message == "Weekends" || message.hasPrefix("Every")) ? message.prefix(1).lowercased() + message.dropFirst() : message
+                            
+                            Text(formattedMessage)
+                                .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                                .fontWeight(.medium)
                         }
                     }
                 }
