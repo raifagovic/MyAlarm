@@ -10,10 +10,6 @@ import SwiftUI
 struct RepeatView: View {
     @Binding var repeatDays: [String]
     
-    init(repeatDays: Binding<[String]>) {
-        self._repeatDays = repeatDays
-    }
-    
     var body: some View {
         Form {
             Section {
