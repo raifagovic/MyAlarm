@@ -83,9 +83,7 @@ struct AlarmEditorView: View {
                             .foregroundColor(Color(hex: "#A1A1A6"))
                     }
                     // Snooze row
-                    NavigationLink(destination: SnoozeView(snoozeDuration: $snoozeDuration, onUpdate: { updatedSnooze in
-                        snoozeDuration = updatedSnooze
-                    })) {
+                    NavigationLink(destination: SnoozeView(snoozeDuration: $snoozeDuration)) {
                         HStack {
                             Text("Snooze")
                                 .foregroundColor(Color(hex: "#F1F1F1"))

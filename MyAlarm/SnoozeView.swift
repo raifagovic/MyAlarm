@@ -10,7 +10,7 @@ import SwiftUI
 struct SnoozeView: View {
     @Binding var snoozeDuration: Int
     
-    init(snoozeDuration: Binding<Int>, onUpdate: @escaping (Int) -> Void) {
+    init(snoozeDuration: Binding<Int>) {
         self._snoozeDuration = snoozeDuration
     }
     
