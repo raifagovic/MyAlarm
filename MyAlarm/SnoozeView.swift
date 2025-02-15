@@ -14,14 +14,14 @@ struct SnoozeView: View {
         self._snoozeDuration = snoozeDuration
     }
     
-    let snoozeOptions = [5, 10, 15, 20, 25, 30]
+    let snoozeOptions = [0, 5, 10, 15, 20, 25, 30]
     
     var body: some View {
         Form {
             Section {
                 ForEach(snoozeOptions, id: \.self) { option in
                     HStack {
-                        Text("\(option) minutes")
+                        Text(option == 0 ? "No Snooze" : "\(option) minutes")
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
                         if option == snoozeDuration {
