@@ -48,5 +48,6 @@ struct SnoozeView: View {
         .onAppear {
             createTransparentAppearance()
         }
+
     }
 }

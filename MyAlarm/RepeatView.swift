@@ -10,7 +10,7 @@ import SwiftUI
 struct RepeatView: View {
     @Binding var repeatDays: [String]
     
-    init(repeatDays: Binding<[String]>, onUpdate: @escaping ([String]) -> Void) {
+    init(repeatDays: Binding<[String]>) {
         self._repeatDays = repeatDays
     }
     

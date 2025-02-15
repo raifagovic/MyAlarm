@@ -42,9 +42,7 @@ struct AlarmEditorView: View {
                 // Other Settings
                 Section {
                     // Repeat row
-                    NavigationLink(destination: RepeatView(repeatDays: $repeatDays, onUpdate: { updatedDays in
-                        repeatDays = updatedDays
-                    })) {
+                    NavigationLink(destination: RepeatView(repeatDays: $repeatDays)) {
                         HStack {
                             Text("Repeat")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
