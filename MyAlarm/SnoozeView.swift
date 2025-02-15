@@ -9,11 +9,7 @@ import SwiftUI
 
 struct SnoozeView: View {
     @Binding var snoozeDuration: Int
-    
-    init(snoozeDuration: Binding<Int>) {
-        self._snoozeDuration = snoozeDuration
-    }
-    
+   
     let snoozeOptions = [0, 5, 10, 15, 20, 25, 30]
     
     var body: some View {
