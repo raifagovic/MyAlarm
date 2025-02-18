@@ -75,12 +75,14 @@ struct AlarmEditorView: View {
                         }
                     }
                     // Sound row
-                    HStack {
-                        Text("Sound")
-                            .foregroundColor(Color(hex: "#F1F1F1"))
-                        Spacer()
-                        Text("Radar")
-                            .foregroundColor(Color(hex: "#A1A1A6"))
+                    NavigationLink(destination: SoundView(selectedSound: $selectedSound)) {
+                        HStack {
+                            Text("Sound")
+                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            Spacer()
+                            Text(selectedSound)
+                                .foregroundColor(Color(hex: "#A1A1A6"))
+                        }
                     }
                     // Snooze row
                     NavigationLink(destination: SnoozeView(snoozeDuration: $snoozeDuration)) {
