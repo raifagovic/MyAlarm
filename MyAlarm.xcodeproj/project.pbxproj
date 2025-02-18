@@ -20,6 +20,7 @@
 		DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */; };
 		DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B292D331B3500833F41 /* CustomDatePicker.swift */; };
 		DC667B2E2D5B77C500833F41 /* AlarmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */; };
+		DC667B302D646D7B00833F41 /* SoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B2F2D646D7B00833F41 /* SoundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHelper.swift; sourceTree = "<group>"; };
 		DC667B292D331B3500833F41 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUtils.swift; sourceTree = "<group>"; };
+		DC667B2F2D646D7B00833F41 /* SoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
+				DC667B2F2D646D7B00833F41 /* SoundView.swift */,
 				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
 				DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */,
 				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
@@ -166,6 +169,7 @@
 			files = (
 				DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
+				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
