@@ -14,6 +14,7 @@ struct AlarmEditorView: View {
     @State private var time: Date
     @State private var repeatDays: [String]
     @State private var label: String
+    @State private var selectedSound: String
     @State private var snoozeDuration: Int
     
     @FocusState private var isLabelFocused: Bool
@@ -25,6 +26,7 @@ struct AlarmEditorView: View {
         _time = State(initialValue: alarm.time)
         _repeatDays = State(initialValue: alarm.repeatDays)
         _label = State(initialValue: alarm.label)
+        _selectedSound = State(initialValue: alarm.selectedSound)
         _snoozeDuration = State(initialValue: alarm.snoozeDuration)
     }
     
