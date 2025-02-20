@@ -21,6 +21,13 @@
 		DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B292D331B3500833F41 /* CustomDatePicker.swift */; };
 		DC667B2E2D5B77C500833F41 /* AlarmUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */; };
 		DC667B302D646D7B00833F41 /* SoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B2F2D646D7B00833F41 /* SoundView.swift */; };
+		DC667B392D67DDE100833F41 /* casio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B322D67DDE100833F41 /* casio.mp3 */; };
+		DC667B3A2D67DDE100833F41 /* warning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B332D67DDE100833F41 /* warning.mp3 */; };
+		DC667B3B2D67DDE100833F41 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B342D67DDE100833F41 /* bell.mp3 */; };
+		DC667B3C2D67DDE100833F41 /* centaurus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B352D67DDE100833F41 /* centaurus.mp3 */; };
+		DC667B3D2D67DDE100833F41 /* digital.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B362D67DDE100833F41 /* digital.mp3 */; };
+		DC667B3E2D67DDE100833F41 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B372D67DDE100833F41 /* beep.mp3 */; };
+		DC667B3F2D67DDE100833F41 /* threat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B382D67DDE100833F41 /* threat.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +46,13 @@
 		DC667B292D331B3500833F41 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmUtils.swift; sourceTree = "<group>"; };
 		DC667B2F2D646D7B00833F41 /* SoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundView.swift; sourceTree = "<group>"; };
+		DC667B322D67DDE100833F41 /* casio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = casio.mp3; sourceTree = "<group>"; };
+		DC667B332D67DDE100833F41 /* warning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = warning.mp3; sourceTree = "<group>"; };
+		DC667B342D67DDE100833F41 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		DC667B352D67DDE100833F41 /* centaurus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = centaurus.mp3; sourceTree = "<group>"; };
+		DC667B362D67DDE100833F41 /* digital.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = digital.mp3; sourceTree = "<group>"; };
+		DC667B372D67DDE100833F41 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		DC667B382D67DDE100833F41 /* threat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = threat.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +98,7 @@
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
+				DC667B312D67DCB200833F41 /* AlarmSounds */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
 			);
 			path = MyAlarm;
@@ -95,6 +110,20 @@
 				DC661B8C2CC566E60039F6CC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC667B312D67DCB200833F41 /* AlarmSounds */ = {
+			isa = PBXGroup;
+			children = (
+				DC667B372D67DDE100833F41 /* beep.mp3 */,
+				DC667B342D67DDE100833F41 /* bell.mp3 */,
+				DC667B322D67DDE100833F41 /* casio.mp3 */,
+				DC667B352D67DDE100833F41 /* centaurus.mp3 */,
+				DC667B362D67DDE100833F41 /* digital.mp3 */,
+				DC667B382D67DDE100833F41 /* threat.mp3 */,
+				DC667B332D67DDE100833F41 /* warning.mp3 */,
+			);
+			path = AlarmSounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +184,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC667B3F2D67DDE100833F41 /* threat.mp3 in Resources */,
 				DC661B8D2CC566E60039F6CC /* Preview Assets.xcassets in Resources */,
+				DC667B3B2D67DDE100833F41 /* bell.mp3 in Resources */,
+				DC667B3E2D67DDE100833F41 /* beep.mp3 in Resources */,
+				DC667B3D2D67DDE100833F41 /* digital.mp3 in Resources */,
+				DC667B392D67DDE100833F41 /* casio.mp3 in Resources */,
 				DC661B8A2CC566E60039F6CC /* Assets.xcassets in Resources */,
+				DC667B3A2D67DDE100833F41 /* warning.mp3 in Resources */,
+				DC667B3C2D67DDE100833F41 /* centaurus.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
