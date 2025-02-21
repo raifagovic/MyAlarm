@@ -12,7 +12,7 @@ struct SoundView: View {
     @Binding var selectedSound: String
     @State private var audioPlayer: AVAudioPlayer?
 
-    let sounds = ["Radar", "Chimes", "Beacon", "Circuit", "Reflection"] // Add your sound names
+    let sounds = ["beep", "bell", "casio", "centaurus", "digital", "threat", "warning"] 
 
     var body: some View {
         Form {
