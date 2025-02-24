@@ -45,7 +45,7 @@ struct AlarmView: View {
                     
                     // Label and repeat days
                     HStack {
-                        Text((alarm.label.isEmpty ? "Alarm" : alarm.label) + ",")
+                        Text((alarm.label.isEmpty ? "Alarm" : alarm.label) + (alarm.repeatDays.isEmpty ? "" : ","))
                             .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                             .fontWeight(.medium)
                         
