@@ -19,7 +19,7 @@ struct SoundView: View {
             Section {
                 ForEach(sounds, id: \.self) { sound in
                     HStack {
-                        Text(sound)
+                        Text(sound.capitalized)
                             .foregroundColor(Color(hex: "#F1F1F1"))
                         Spacer()
                         if sound == selectedSound {
