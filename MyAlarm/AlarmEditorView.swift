@@ -82,7 +82,7 @@ struct AlarmEditorView: View {
                             Text("Sound")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            Text(selectedSound)
+                            Text(selectedSound.capitalized)
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
