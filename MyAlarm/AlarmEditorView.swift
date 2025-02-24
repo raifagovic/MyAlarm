@@ -136,6 +136,7 @@ struct AlarmEditorView: View {
         alarm.time = time
         alarm.repeatDays = repeatDays
         alarm.label = label
+        alarm.selectedSound = selectedSound
         alarm.snoozeDuration = snoozeDuration
         try? modelContext.save()
         dismiss()
