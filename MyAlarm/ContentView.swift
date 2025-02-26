@@ -50,8 +50,8 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if alarms.contains(where: { $0.isOn }) {
-                        Text("Alarm is active")
+                    if let nextAlarm = alarms.filter({ $0.isOn }).min(by: { $0.time < $1.time }) {
+                        Text(remainingTimeMessage(for: nextAlarm.time))
                             .foregroundColor(Color(hex: "#FFD700"))
                             .bold()
                     }
