@@ -39,6 +39,13 @@ import Foundation
         let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
         return "Rings  in \(nextDayHours) h \(nextDayMinutes) min"
     }
+     
+     // Adjust the message based on hours and minutes
+     if hours == 0 && minutes > 0 {
+         return "Rings in \(minutes) min"
+     } else if minutes == 0 && hours > 0 {
+         return "Rings in \(hours) h"
+     }
     
     return "Rings  in \(hours) h \(minutes) min"
 }
