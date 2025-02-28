@@ -7,14 +7,11 @@
 
 import Foundation
 
- func remainingTimeMessage(for time: Date) -> String {
+func remainingTimeMessage(for time: Date) -> String {
     let calendar = Calendar.current
-    
-    // Get the current time in Sarajevo
     let now = Date()
-    let currentTimeInSarajevo = now
     
-    // Calculate the difference
+    // Extract hours and minutes from the selected time
     let selectedComponents = calendar.dateComponents([.hour, .minute], from: time)
     
     // Create a new Date with today's date and selected time
@@ -25,29 +22,30 @@ import Foundation
     combinedComponents.hour = selectedComponents.hour
     combinedComponents.minute = selectedComponents.minute
     
-    let selectedDate = calendar.date(from: combinedComponents)!
+    var selectedDate = calendar.date(from: combinedComponents)!
     
-    let differenceInSeconds = selectedDate.timeIntervalSince(currentTimeInSarajevo)
+    var differenceInSeconds = selectedDate.timeIntervalSince(now)
+    
+    // If the selected time has already passed, adjust for the next day
+    if differenceInSeconds < 0 {
+        selectedDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
+        differenceInSeconds = selectedDate.timeIntervalSince(now)
+    }
+    
     let hours = Int(differenceInSeconds) / 3600
     let minutes = (Int(differenceInSeconds) % 3600) / 60
+    let seconds = Int(differenceInSeconds) % 60
     
-    if differenceInSeconds < 0 {
-        // If the selected time has already passed, show time for the next day
-        let nextDayDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
-        let nextDayDifference = nextDayDate.timeIntervalSince(currentTimeInSarajevo)
-        let nextDayHours = Int(nextDayDifference) / 3600
-        let nextDayMinutes = (Int(nextDayDifference) % 3600) / 60
-        return "Rings  in \(nextDayHours) h \(nextDayMinutes) min"
+    // Display different messages based on remaining time
+    if hours == 0 && minutes == 0 && seconds > 0 {
+        return "Rings in \(seconds) sec"
+    } else if hours == 0 && minutes > 0 {
+        return "Rings in \(minutes) min"
+    } else if minutes == 0 && hours > 0 {
+        return "Rings in \(hours) h"
     }
-     
-     // Adjust the message based on hours and minutes
-     if hours == 0 && minutes > 0 {
-         return "Rings in \(minutes) min"
-     } else if minutes == 0 && hours > 0 {
-         return "Rings in \(hours) h"
-     }
     
-    return "Rings  in \(hours) h \(minutes) min"
+    return "Rings in \(hours) h \(minutes) min"
 }
 
 func getAbbreviatedDays(from repeatDays: [String]) -> String {
