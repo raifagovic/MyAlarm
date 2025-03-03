@@ -13,6 +13,8 @@ struct ContentView: View {
     @Query var alarms: [Alarm]
     
     @State var selectedAlarm: Alarm?
+    @State private var remainingTimeMessage: String = ""
+    @State private var timer: Timer?
     
     var body: some View {
         NavigationStack {
@@ -50,8 +52,8 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if let nextAlarm = alarms.filter({ $0.isOn }).min(by: { $0.time < $1.time }) {
-                        Text(remainingTimeMessage(for: nextAlarm.time))
+                    if !remainingTimeMessage.isEmpty {
+                        Text(remainingTimeMessage)
                             .foregroundColor(Color(hex: "#FFD700"))
                             .bold()
                     }
