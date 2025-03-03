@@ -69,6 +69,7 @@ struct ContentView: View {
                 setRootBackgroundColor()
                 createTransparentAppearance()
                 updateRemainingTime()
+                startTimer()
             }
             .onDisappear {
                 stopTimer()
