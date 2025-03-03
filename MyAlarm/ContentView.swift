@@ -68,6 +68,7 @@ struct ContentView: View {
             .onAppear {
                 setRootBackgroundColor()
                 createTransparentAppearance()
+                updateRemainingTime()
             }
         }
     }
@@ -76,10 +77,12 @@ struct ContentView: View {
         let newAlarm = Alarm(time: Date(), repeatDays: [], label: "", selectedSound: "casio", snoozeDuration: 10, isOn: false)
         modelContext.insert(newAlarm)
         selectedAlarm = newAlarm
+        updateRemainingTime()
     }
     
     private func deleteAlarm(_ alarm: Alarm) {
         modelContext.delete(alarm)
+        updateRemainingTime()
     }
     
     private func saveContext() {
@@ -87,6 +90,14 @@ struct ContentView: View {
             try modelContext.save()
         } catch {
             print("Failed to save context: \(error)")
+        }
+    }
+    
+    private func updateRemainingTime() {
+        if let nextAlarm = alarms.filter({ $0.isOn }).min(by: { $0.time < $1.time }) {
+            remainingTimeMessage = remainingTimeMessage(for: nextAlarm.time)
+        } else {
+            remainingTimeMessage = ""
         }
     }
         
