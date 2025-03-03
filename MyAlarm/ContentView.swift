@@ -100,6 +100,13 @@ struct ContentView: View {
             remainingTimeMessage = ""
         }
     }
+    
+    private func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            updateRemainingTime()
+        }
+    }
         
     // Helper function to set root background color to black
     private func setRootBackgroundColor() {
