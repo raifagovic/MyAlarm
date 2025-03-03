@@ -35,9 +35,11 @@ struct ContentView: View {
                                 onToggle: { isOn in
                                     alarm.isOn = isOn
                                     saveContext()
+                                    updateRemainingTime()
                                 },
                                 onDelete: {
                                     deleteAlarm(alarm)
+                                    updateRemainingTime()
                                 },
                                 onEdit: {
                                     selectedAlarm = alarm
