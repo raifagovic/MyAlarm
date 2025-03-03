@@ -49,7 +49,7 @@ struct AlarmEditorView: View {
                             Text("Repeat")
                                 .foregroundColor(Color(hex: "#F1F1F1"))
                             Spacer()
-                            Text(getAbbreviatedDays(from: repeatDays))
+                            Text(AlarmUtils.getAbbreviatedDays(from: repeatDays))
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                                 .lineLimit(1)
                                 .font(.system(size: repeatDays.count >= 6 ? 16.5 : UIFont.preferredFont(forTextStyle: .body).pointSize))
