@@ -95,7 +95,7 @@ struct ContentView: View {
     
     private func updateRemainingTime() {
         if let nextAlarm = alarms.filter({ $0.isOn }).min(by: { $0.time < $1.time }) {
-            remainingTimeMessage = remainingTimeMessage(for: nextAlarm.time)
+            remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextAlarm.time)
         } else {
             remainingTimeMessage = ""
         }
