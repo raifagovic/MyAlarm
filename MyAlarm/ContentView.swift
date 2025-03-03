@@ -70,6 +70,9 @@ struct ContentView: View {
                 createTransparentAppearance()
                 updateRemainingTime()
             }
+            .onDisappear {
+                stopTimer()
+            }
         }
     }
 
