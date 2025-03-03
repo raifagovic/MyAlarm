@@ -9,7 +9,7 @@ import Foundation
 
 enum AlarmUtils {
     
-    func remainingTimeMessage(for time: Date) -> String {
+    static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
         
@@ -50,7 +50,7 @@ enum AlarmUtils {
         return "Rings in \(hours) h \(minutes) min"
     }
     
-    func getAbbreviatedDays(from repeatDays: [String]) -> String {
+    static func getAbbreviatedDays(from repeatDays: [String]) -> String {
         let dayMappings: [String: (full: String, short: String)] = [
             "Every Monday": ("Monday", "Mon"),
             "Every Tuesday": ("Tuesday", "Tue"),
