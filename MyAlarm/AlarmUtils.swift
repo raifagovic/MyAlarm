@@ -40,7 +40,7 @@ enum AlarmUtils {
         
         // ✅ If less than a minute remains, show a special message
         if hours == 0 && minutes == 0 {
-            return "Alarm in less than a minute"
+            return "Alarm will go off soon"
         }
         
         // ✅ Round up minutes only when minutes are not zero
