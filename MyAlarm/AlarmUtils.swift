@@ -119,4 +119,20 @@ enum AlarmUtils {
         let lastDay = sortedDays.last!
         return "\(allButLast.joined(separator: ", ")) and \(lastDay)"
     }
+    
+    static func nextOccurrence(of alarmTime: Date, calendar: Calendar, now: Date) -> Date {
+        var components = calendar.dateComponents([.hour, .minute], from: alarmTime)
+        components.year = calendar.component(.year, from: now)
+        components.month = calendar.component(.month, from: now)
+        components.day = calendar.component(.day, from: now)
+        
+        var nextAlarmDate = calendar.date(from: components)!
+        
+        // If the alarm time has already passed today, move it to tomorrow
+        if nextAlarmDate < now {
+            nextAlarmDate = calendar.date(byAdding: .day, value: 1, to: nextAlarmDate)!
+        }
+        
+        return nextAlarmDate
+    }
 }
