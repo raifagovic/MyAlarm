@@ -43,9 +43,14 @@ enum AlarmUtils {
             return "Alarm will go off soon"
         }
         
-        // Round up minutes only when minutes are not zero
-        if seconds > 0 && minutes > 0 {
-            minutes += 1
+        // Round up minutes if seconds exist
+        if seconds > 0 {
+            if minutes > 0 {
+                minutes += 1
+            } else if hours > 0 {
+                // If hours exist and minutes are zero, round up to 1 minute
+                minutes = 1
+            }
         }
         
         if minutes == 60 {
