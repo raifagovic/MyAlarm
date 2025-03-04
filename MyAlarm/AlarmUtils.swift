@@ -38,21 +38,24 @@ enum AlarmUtils {
         var minutes = (Int(differenceInSeconds) % 3600) / 60
         let seconds = Int(differenceInSeconds) % 60
         
-        // Round up if there are any remaining seconds
-        if seconds > 0 {
+        // ✅ If less than a minute remains, show a special message
+        if hours == 0 && minutes == 0 {
+            return "Alarm in less than a minute"
+        }
+        
+        // ✅ Round up minutes only when minutes are not zero
+        if seconds > 0 && minutes > 0 {
             minutes += 1
         }
         
-        // If minutes round up to 60, adjust hours
+        // ✅ If minutes round up to 60, adjust hours
         if minutes == 60 {
             minutes = 0
             hours += 1
         }
         
-        // Display different messages based on remaining time
-        if hours == 0 && minutes == 0 {
-            return "Alarm in less than a minute"
-        } else if hours == 0 {
+        // ✅ Construct the message
+        if hours == 0 {
             return "Alarm in \(minutes) min"
         } else if minutes == 0 {
             return "Alarm in \(hours) h"
