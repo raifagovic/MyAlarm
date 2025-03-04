@@ -40,14 +40,14 @@ enum AlarmUtils {
         
         // Display different messages based on remaining time
         if hours == 0 && minutes == 0 && seconds > 0 {
-            return "Rings in \(seconds) sec"
+            return "Alarm in \(seconds) sec"
         } else if hours == 0 && minutes > 0 {
-            return "Rings in \(minutes) min"
+            return "Alarm in \(minutes) min"
         } else if minutes == 0 && hours > 0 {
-            return "Rings in \(hours) h"
+            return "Alarm in \(hours) h"
         }
         
-        return "Rings in \(hours) h \(minutes) min"
+        return "Alarm in \(hours) h \(minutes) min"
     }
     
     static func getAbbreviatedDays(from repeatDays: [String]) -> String {
