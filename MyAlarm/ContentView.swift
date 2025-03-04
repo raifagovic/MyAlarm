@@ -100,7 +100,22 @@ struct ContentView: View {
     }
     
     private func updateRemainingTime() {
-        if let nextAlarm = alarms.filter({ $0.isOn }).min(by: { $0.time < $1.time }) {
+        let now = Date()
+        let calendar = Calendar.current
+        
+        // Get alarms that are turned on
+        let activeAlarms = alarms.filter { $0.isOn }
+        
+        // Find the next alarm that is later than or equal to the current time
+        if let nextAlarm = activeAlarms.min(by: {
+            let alarmTime1 = calendar.date(bySettingHour: calendar.component(.hour, from: $0.time),
+                                           minute: calendar.component(.minute, from: $0.time),
+                                           second: 0, of: now)!
+            let alarmTime2 = calendar.date(bySettingHour: calendar.component(.hour, from: $1.time),
+                                           minute: calendar.component(.minute, from: $1.time),
+                                           second: 0, of: now)!
+            return alarmTime1 < alarmTime2
+        }) {
             remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextAlarm.time)
         } else {
             remainingTimeMessage = ""
