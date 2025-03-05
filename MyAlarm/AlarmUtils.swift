@@ -13,6 +13,11 @@ enum AlarmUtils {
         return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     }
     
+    static func weekdayName(from weekday: Int) -> String? {
+        guard (1...7).contains(weekday) else { return nil }
+        return daysOfWeekFull[weekday - 1]
+    }
+    
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
