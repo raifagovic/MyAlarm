@@ -9,6 +9,10 @@ import Foundation
 
 enum AlarmUtils {
     
+    static var daysOfWeekFull: [String] {
+        return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    }
+    
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
