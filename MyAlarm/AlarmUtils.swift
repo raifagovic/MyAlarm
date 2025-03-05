@@ -18,6 +18,25 @@ enum AlarmUtils {
         return daysOfWeekFull[weekday - 1]
     }
     
+    static func findNextValidDay(from repeatDays: [String]) -> String? {
+        let calendar = Calendar.current
+        let todayIndex = calendar.component(.weekday, from: Date()) - 1 // Convert Sunday-based index to Monday-based
+        
+        // Extract "Monday", "Tuesday", etc., from "Every Monday"
+        let selectedDays = repeatDays.map { $0.replacingOccurrences(of: "Every ", with: "") }
+        
+        // Find the next valid repeat day
+        for offset in 0..<7 {
+            let nextDayIndex = (todayIndex + offset) % 7
+            let nextDayName = daysOfWeekFull[nextDayIndex]
+            
+            if selectedDays.contains(nextDayName) {
+                return nextDayName
+            }
+        }
+        return nil // No valid repeat day found
+    }
+    
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
