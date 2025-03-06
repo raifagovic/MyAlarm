@@ -31,6 +31,40 @@ enum AlarmUtils {
         return date // Fallback, should never reach here
     }
     
+    
+    static func nextOccurrence(of time: Date, calendar: Calendar, now: Date, repeatDays: [String]) -> Date {
+        let weekdayMap: [String: Int] = [
+            "Every Sunday": 1, "Every Monday": 2, "Every Tuesday": 3,
+            "Every Wednesday": 4, "Every Thursday": 5, "Every Friday": 6, "Every Saturday": 7
+        ]
+        
+        let repeatWeekdays = repeatDays.compactMap { weekdayMap[$0] }
+        guard !repeatWeekdays.isEmpty else {
+            return calendar.nextDate(after: now, matching: calendar.dateComponents([.hour, .minute], from: time), matchingPolicy: .nextTime)!
+        }
+
+        let nowComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: now)
+        let alarmTimeComponents = calendar.dateComponents([.hour, .minute], from: time)
+        
+        var closestDate: Date?
+        var minTimeInterval: TimeInterval = .greatestFiniteMagnitude
+        
+        for weekday in repeatWeekdays {
+            var nextDateComponents = nowComponents
+            nextDateComponents.weekday = weekday
+            nextDateComponents.hour = alarmTimeComponents.hour
+            nextDateComponents.minute = alarmTimeComponents.minute
+            
+            if let nextDate = calendar.nextDate(after: now, matching: nextDateComponents, matchingPolicy: .nextTimePreservingSmallerComponents),
+               nextDate.timeIntervalSince(now) < minTimeInterval {
+                closestDate = nextDate
+                minTimeInterval = nextDate.timeIntervalSince(now)
+            }
+        }
+
+        return closestDate ?? now
+    }
+    
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
@@ -141,21 +175,4 @@ enum AlarmUtils {
         let lastDay = sortedDays.last!
         return "\(allButLast.joined(separator: ", ")) and \(lastDay)"
     }
-    
-    static func nextOccurrence(of alarmTime: Date, calendar: Calendar, now: Date, repeatDays: [Int]?) -> Date {
-        var components = calendar.dateComponents([.hour, .minute], from: alarmTime)
-        components.year = calendar.component(.year, from: now)
-        components.month = calendar.component(.month, from: now)
-        components.day = calendar.component(.day, from: now)
-
-        var nextAlarmDate = calendar.date(from: components)!
-
-        if let repeatDays, !repeatDays.isEmpty {
-            return findNextValidDay(from: nextAlarmDate, calendar: calendar, now: now, repeatDays: repeatDays)
-        } else {
-            if nextAlarmDate < now {
-                nextAlarmDate = calendar.date(byAdding: .day, value: 1, to: nextAlarmDate)!
-            }
-            return nextAlarmDate
-        }
-    }}
+}
