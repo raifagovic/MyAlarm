@@ -9,11 +9,8 @@ import Foundation
 
 enum AlarmUtils {
     
-    static var daysOfWeekFull: [String] {
-        return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    }
-    
     static func weekdayName(from weekday: Int) -> String? {
+        let daysOfWeekFull = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         guard (1...7).contains(weekday) else { return nil }
         return daysOfWeekFull[weekday - 1]
     }
