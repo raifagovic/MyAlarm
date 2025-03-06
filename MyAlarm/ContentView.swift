@@ -103,24 +103,14 @@ struct ContentView: View {
         let now = Date()
         let calendar = Calendar.current
         
-        let weekdayMapping: [String: Int] = [
-            "Sunday": 1, "Monday": 2, "Tuesday": 3, "Wednesday": 4,
-            "Thursday": 5, "Friday": 6, "Saturday": 7
-        ]
-        
         let activeAlarms = alarms.filter { $0.isOn }
         
         if let nextAlarm = activeAlarms.min(by: { alarm1, alarm2 in
-            let repeatDays1 = alarm1.repeatDays.compactMap { weekdayMapping[$0] }
-            let repeatDays2 = alarm2.repeatDays.compactMap { weekdayMapping[$0] }
-            
-            let nextTime1 = AlarmUtils.nextOccurrence(of: alarm1.time, calendar: calendar, now: now, repeatDays: repeatDays1)
-            let nextTime2 = AlarmUtils.nextOccurrence(of: alarm2.time, calendar: calendar, now: now, repeatDays: repeatDays2)
-            
+            let nextTime1 = AlarmUtils.nextOccurrence(of: alarm1.time, calendar: calendar, now: now, repeatDays: alarm1.repeatDays)
+            let nextTime2 = AlarmUtils.nextOccurrence(of: alarm2.time, calendar: calendar, now: now, repeatDays: alarm2.repeatDays)
             return nextTime1 < nextTime2
         }) {
-            let repeatDays = nextAlarm.repeatDays.compactMap { weekdayMapping[$0] }
-            let nextOccurrence = AlarmUtils.nextOccurrence(of: nextAlarm.time, calendar: calendar, now: now, repeatDays: repeatDays)
+            let nextOccurrence = AlarmUtils.nextOccurrence(of: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
             remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextOccurrence)
         } else {
             remainingTimeMessage = ""
