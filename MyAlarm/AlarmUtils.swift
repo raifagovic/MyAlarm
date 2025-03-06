@@ -18,23 +18,17 @@ enum AlarmUtils {
         return daysOfWeekFull[weekday - 1]
     }
     
-    static func findNextValidDay(from repeatDays: [String]) -> String? {
-        let calendar = Calendar.current
-        let todayIndex = calendar.component(.weekday, from: Date()) - 1 // Convert Sunday-based index to Monday-based
+    static func findNextValidDay(from date: Date, calendar: Calendar, now: Date, repeatDays: [Int]) -> Date {
+        let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
         
-        // Extract "Monday", "Tuesday", etc., from "Every Monday"
-        let selectedDays = repeatDays.map { $0.replacingOccurrences(of: "Every ", with: "") }
-        
-        // Find the next valid repeat day
         for offset in 0..<7 {
-            let nextDayIndex = (todayIndex + offset) % 7
-            let nextDayName = daysOfWeekFull[nextDayIndex]
-            
-            if selectedDays.contains(nextDayName) {
-                return nextDayName
+            let nextDayIndex = (todayIndex + offset - 1) % 7 + 1  // Keep it within 1-7 range
+            if repeatDays.contains(nextDayIndex) {
+                return calendar.date(byAdding: .day, value: offset, to: now)!
             }
         }
-        return nil // No valid repeat day found
+        
+        return date // Fallback, should never reach here
     }
     
     static func remainingTimeMessage(for time: Date) -> String {
@@ -148,19 +142,20 @@ enum AlarmUtils {
         return "\(allButLast.joined(separator: ", ")) and \(lastDay)"
     }
     
-    static func nextOccurrence(of alarmTime: Date, calendar: Calendar, now: Date) -> Date {
+    static func nextOccurrence(of alarmTime: Date, calendar: Calendar, now: Date, repeatDays: [Int]?) -> Date {
         var components = calendar.dateComponents([.hour, .minute], from: alarmTime)
         components.year = calendar.component(.year, from: now)
         components.month = calendar.component(.month, from: now)
         components.day = calendar.component(.day, from: now)
-        
+
         var nextAlarmDate = calendar.date(from: components)!
-        
-        // If the alarm time has already passed today, move it to tomorrow
-        if nextAlarmDate < now {
-            nextAlarmDate = calendar.date(byAdding: .day, value: 1, to: nextAlarmDate)!
+
+        if let repeatDays, !repeatDays.isEmpty {
+            return findNextValidDay(from: nextAlarmDate, calendar: calendar, now: now, repeatDays: repeatDays)
+        } else {
+            if nextAlarmDate < now {
+                nextAlarmDate = calendar.date(byAdding: .day, value: 1, to: nextAlarmDate)!
+            }
+            return nextAlarmDate
         }
-        
-        return nextAlarmDate
-    }
-}
+    }}

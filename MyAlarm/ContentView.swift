@@ -105,11 +105,13 @@ struct ContentView: View {
         
         let activeAlarms = alarms.filter { $0.isOn }
         
-        if let nextAlarm = activeAlarms.min(by: {
-            AlarmUtils.nextOccurrence(of: $0.time, calendar: calendar, now: now) <
-            AlarmUtils.nextOccurrence(of: $1.time, calendar: calendar, now: now)
+        if let nextAlarm = activeAlarms.min(by: { alarm1, alarm2 in
+            let nextTime1 = AlarmUtils.nextOccurrence(of: alarm1.time, calendar: calendar, now: now, repeatDays: alarm1.repeatDays)
+            let nextTime2 = AlarmUtils.nextOccurrence(of: alarm2.time, calendar: calendar, now: now, repeatDays: alarm2.repeatDays)
+            return nextTime1 < nextTime2
         }) {
-            remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: AlarmUtils.nextOccurrence(of: nextAlarm.time, calendar: calendar, now: now))
+            let nextOccurrence = AlarmUtils.nextOccurrence(of: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
+            remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextOccurrence)
         } else {
             remainingTimeMessage = ""
         }
