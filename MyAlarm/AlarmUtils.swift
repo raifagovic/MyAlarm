@@ -10,7 +10,7 @@ import Foundation
 enum AlarmUtils {
     
     static func weekdayName(from weekday: Int) -> String? {
-        let daysOfWeekFull = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        let daysOfWeekFull = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         guard (1...7).contains(weekday) else { return nil }
         return daysOfWeekFull[weekday - 1]
     }
@@ -28,49 +28,46 @@ enum AlarmUtils {
         return date // Fallback, should never reach here
     }
     
-    
-
-    
     static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: Set<Int>) -> Date {
-            let nowComponents = calendar.dateComponents([.hour, .minute, .second], from: now)
-            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-            
-            var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
-            nextDateComponents.hour = timeComponents.hour
-            nextDateComponents.minute = timeComponents.minute
-            nextDateComponents.second = timeComponents.second
-            
-            if let nextDate = calendar.date(from: nextDateComponents), nextDate > now {
-                // If the alarm time is later today and today is in repeatDays, return it
-                let todayWeekday = calendar.component(.weekday, from: now)
-                if repeatDays.contains(todayWeekday) {
-                    return nextDate
-                }
-            }
-            
-            // Find the next valid repeat day
+        let nowComponents = calendar.dateComponents([.hour, .minute, .second], from: now)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+        
+        var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
+        nextDateComponents.hour = timeComponents.hour
+        nextDateComponents.minute = timeComponents.minute
+        nextDateComponents.second = timeComponents.second
+        
+        if let nextDate = calendar.date(from: nextDateComponents), nextDate > now {
+            // If the alarm time is later today and today is in repeatDays, return it
             let todayWeekday = calendar.component(.weekday, from: now)
-            let sortedRepeatDays = repeatDays.sorted()
-            
-            if let nextDay = sortedRepeatDays.first(where: { $0 > todayWeekday }) {
-                return nextDateByAddingDays(nextDay - todayWeekday, to: nextDateComponents, calendar: calendar)
+            if repeatDays.contains(todayWeekday) {
+                return nextDate
             }
-            
-            // If no future day is found, wrap around to the earliest repeat day in the next week
-            if let firstRepeatDay = sortedRepeatDays.first {
-                return nextDateByAddingDays((7 - todayWeekday) + firstRepeatDay, to: nextDateComponents, calendar: calendar)
-            }
-            
-            // If no repeat days are set, default to the next day
-            return nextDateByAddingDays(1, to: nextDateComponents, calendar: calendar)
         }
+        
+        // Find the next valid repeat day
+        let todayWeekday = calendar.component(.weekday, from: now)
+        let sortedRepeatDays = repeatDays.sorted()
+        
+        if let nextDay = sortedRepeatDays.first(where: { $0 > todayWeekday }) {
+            return nextDateByAddingDays(nextDay - todayWeekday, to: nextDateComponents, calendar: calendar)
+        }
+        
+        // If no future day is found, wrap around to the earliest repeat day in the next week
+        if let firstRepeatDay = sortedRepeatDays.first {
+            return nextDateByAddingDays((7 - todayWeekday) + firstRepeatDay, to: nextDateComponents, calendar: calendar)
+        }
+        
+        // If no repeat days are set, default to the next day
+        return nextDateByAddingDays(1, to: nextDateComponents, calendar: calendar)
+    }
     
     private static func nextDateByAddingDays(_ days: Int, to components: DateComponents, calendar: Calendar) -> Date {
-            if let date = calendar.date(from: components) {
-                return calendar.date(byAdding: .day, value: days, to: date) ?? date
-            }
-            return Date()
+        if let date = calendar.date(from: components) {
+            return calendar.date(byAdding: .day, value: days, to: date) ?? date
         }
+        return Date()
+    }
     
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
