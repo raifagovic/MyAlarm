@@ -45,6 +45,9 @@ enum AlarmUtils {
     static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
         let todayWeekday = calendar.component(.weekday, from: now) // 1 = Sunday, ..., 7 = Saturday
         
+        // Convert repeatDays from [String] to Set<Int>
+        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)
+        
         // Extract time components from the alarm
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
         
@@ -54,12 +57,13 @@ enum AlarmUtils {
         nextDateComponents.minute = timeComponents.minute
         nextDateComponents.second = timeComponents.second
         
-        if let nextDate = calendar.date(from: nextDateComponents), nextDate > now, repeatDays.contains(todayWeekday) {
+        if let nextDate = calendar.date(from: nextDateComponents), nextDate > now, repeatDaysInt.contains(todayWeekday) {
             return nextDate // Alarm rings later today
         }
         
         // Find the next valid repeat day
-        let nextValidDay = findNextValidDay(calendar: calendar, now: now, repeatDays: Array(repeatDays))
+        let nextValidDay = findNextValidDay(calendar: calendar, now: now, repeatDays: repeatDays)
+        
         return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: timeComponents.second!, of: nextValidDay)!
     }
     
