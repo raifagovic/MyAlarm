@@ -62,13 +62,6 @@ enum AlarmUtils {
         return nextDateByAddingDays(1, to: nextDateComponents, calendar: calendar)
     }
     
-    private static func nextDateByAddingDays(_ days: Int, to components: DateComponents, calendar: Calendar) -> Date {
-        if let date = calendar.date(from: components) {
-            return calendar.date(byAdding: .day, value: days, to: date) ?? date
-        }
-        return Date()
-    }
-    
     static func remainingTimeMessage(for time: Date) -> String {
         let calendar = Calendar.current
         let now = Date()
