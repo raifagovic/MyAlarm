@@ -42,7 +42,7 @@ enum AlarmUtils {
         return now // Fallback, should never reach here
     }
     
-    static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: Set<Int>) -> Date {
+    static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
         let todayWeekday = calendar.component(.weekday, from: now) // 1 = Sunday, ..., 7 = Saturday
         
         // Extract time components from the alarm
