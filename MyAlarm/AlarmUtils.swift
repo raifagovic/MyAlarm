@@ -23,22 +23,16 @@ enum AlarmUtils {
         return Set(repeatDays.compactMap { dayMappings[$0] })
     }
     
-    static func weekdayName(from weekday: Int) -> String? {
-        let daysOfWeekFull = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        guard (1...7).contains(weekday) else { return nil }
-        return daysOfWeekFull[weekday - 1]
-    }
-    
-    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [Int]) -> Date {
+    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [String]) -> Date {
         let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
+        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)  // Convert to Int set
         
         for offset in 0..<7 {
-            let nextDayIndex = (todayIndex + offset - 1) % 7 + 1  // Keep it within 1-7 range
-            if repeatDays.contains(nextDayIndex) {
+            let nextDayIndex = (todayIndex + offset - 1) % 7 + 1  // Keep within 1-7 range
+            if repeatDaysInt.contains(nextDayIndex) {
                 return calendar.date(byAdding: .day, value: offset, to: now)!
             }
         }
-        
         return now // Fallback, should never reach here
     }
     
