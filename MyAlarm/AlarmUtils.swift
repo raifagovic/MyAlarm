@@ -15,7 +15,7 @@ enum AlarmUtils {
         return daysOfWeekFull[weekday - 1]
     }
     
-    static func findNextValidDay(from date: Date, calendar: Calendar, now: Date, repeatDays: [Int]) -> Date {
+    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [Int]) -> Date {
         let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
         
         for offset in 0..<7 {
@@ -25,7 +25,7 @@ enum AlarmUtils {
             }
         }
         
-        return date // Fallback, should never reach here
+        return now // Fallback, should never reach here
     }
     
     static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: Set<Int>) -> Date {
