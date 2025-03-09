@@ -9,6 +9,20 @@ import Foundation
 
 enum AlarmUtils {
     
+    static func convertRepeatDaysToInt(_ repeatDays: [String]) -> Set<Int> {
+        let dayMappings: [String: Int] = [
+            "Every Sunday": 1,
+            "Every Monday": 2,
+            "Every Tuesday": 3,
+            "Every Wednesday": 4,
+            "Every Thursday": 5,
+            "Every Friday": 6,
+            "Every Saturday": 7
+        ]
+        
+        return Set(repeatDays.compactMap { dayMappings[$0] })
+    }
+    
     static func weekdayName(from weekday: Int) -> String? {
         let daysOfWeekFull = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         guard (1...7).contains(weekday) else { return nil }
