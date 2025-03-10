@@ -61,32 +61,17 @@ enum AlarmUtils {
         return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: timeComponents.second!, of: nextValidDay)!
     }
     
-    static func remainingTimeMessage(for time: Date) -> String {
+    static func remainingTimeMessage(for time: Date, repeatDays: [String] = []) -> String {
         let calendar = Calendar.current
         let now = Date()
         
-        // Extract hours and minutes from the selected time
-        let selectedComponents = calendar.dateComponents([.hour, .minute], from: time)
+        // Get the next valid alarm time
+        let selectedDate = nextOccurrence(of: time, calendar: calendar, now: now, repeatDays: repeatDays)
         
-        // Create a new Date with today's date and selected time
-        var combinedComponents = DateComponents()
-        combinedComponents.year = calendar.component(.year, from: now)
-        combinedComponents.month = calendar.component(.month, from: now)
-        combinedComponents.day = calendar.component(.day, from: now)
-        combinedComponents.hour = selectedComponents.hour
-        combinedComponents.minute = selectedComponents.minute
+        // Calculate the difference in seconds
+        let differenceInSeconds = selectedDate.timeIntervalSince(now)
         
-        var selectedDate = calendar.date(from: combinedComponents)!
-        
-        var differenceInSeconds = selectedDate.timeIntervalSince(now)
-        
-        // If the selected time has already passed, adjust for the next day
-        if differenceInSeconds < 0 {
-            selectedDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
-            differenceInSeconds = selectedDate.timeIntervalSince(now)
-        }
-        
-        var hours = Int(differenceInSeconds) / 3600
+        let hours = Int(differenceInSeconds) / 3600
         var minutes = (Int(differenceInSeconds) % 3600) / 60
         let seconds = Int(differenceInSeconds) % 60
         
@@ -100,14 +85,13 @@ enum AlarmUtils {
             if minutes > 0 {
                 minutes += 1
             } else if hours > 0 {
-                // If hours exist and minutes are zero, round up to 1 minute
                 minutes = 1
             }
         }
         
         if minutes == 60 {
             minutes = 0
-            hours += 1
+            return "Alarm in \(hours + 1) h"
         }
         
         if hours == 0 {

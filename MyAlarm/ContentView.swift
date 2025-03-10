@@ -109,9 +109,15 @@ struct ContentView: View {
             let nextTime1 = AlarmUtils.nextOccurrence(of: alarm1.time, calendar: calendar, now: now, repeatDays: alarm1.repeatDays)
             let nextTime2 = AlarmUtils.nextOccurrence(of: alarm2.time, calendar: calendar, now: now, repeatDays: alarm2.repeatDays)
             
+            print("Next occurrence for Alarm 1:", nextTime1)
+            print("Next occurrence for Alarm 2:", nextTime2)
+            
             return nextTime1 < nextTime2
         }) {
             let nextOccurrence = AlarmUtils.nextOccurrence(of: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
+            
+            print("Final chosen next occurrence:", nextOccurrence)
+            
             remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextOccurrence)
         } else {
             remainingTimeMessage = ""
