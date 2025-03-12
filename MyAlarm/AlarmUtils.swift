@@ -9,19 +9,19 @@ import Foundation
 
 enum AlarmUtils {
     
-    static func convertRepeatDaysToInt(_ repeatDays: [String]) -> Set<Int> {
-        let dayMappings: [String: Int] = [
-            "Every Sunday": 1,
-            "Every Monday": 2,
-            "Every Tuesday": 3,
-            "Every Wednesday": 4,
-            "Every Thursday": 5,
-            "Every Friday": 6,
-            "Every Saturday": 7
-        ]
-        
-        return Set(repeatDays.compactMap { dayMappings[$0] })
-    }
+//    static func convertRepeatDaysToInt(_ repeatDays: [String]) -> Set<Int> {
+//        let dayMappings: [String: Int] = [
+//            "Every Sunday": 1,
+//            "Every Monday": 2,
+//            "Every Tuesday": 3,
+//            "Every Wednesday": 4,
+//            "Every Thursday": 5,
+//            "Every Friday": 6,
+//            "Every Saturday": 7
+//        ]
+//        
+//        return Set(repeatDays.compactMap { dayMappings[$0] })
+//    }
     
 //    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [String]) -> Date {
 //        let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
@@ -61,33 +61,34 @@ enum AlarmUtils {
 //        return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: timeComponents.second!, of: nextValidDay)!
 //    }
 //    
-    static func nextAlarm(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
-        let todayWeekday = calendar.component(.weekday, from: now) // 1 = Sunday, ..., 7 = Saturday
-        let repeatDaysInt = convertRepeatDaysToInt(repeatDays) // Convert to Set<Int>
-
-        // Extract time components from the alarm
-        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-
+    static func nextAlarm(time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
+        let dayMappings: [String: Int] = [
+            "Every Sunday": 1, "Every Monday": 2, "Every Tuesday": 3, "Every Wednesday": 4,
+            "Every Thursday": 5, "Every Friday": 6, "Every Saturday": 7
+        ]
+        
+        let repeatDaysInt = Set(repeatDays.compactMap { dayMappings[$0] })
+        let todayWeekday = calendar.component(.weekday, from: now)
+        
+        // Extract hour and minute from the alarm time
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+        
         // Set the alarm time for today
-        var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
-        nextDateComponents.hour = timeComponents.hour
-        nextDateComponents.minute = timeComponents.minute
-        nextDateComponents.second = timeComponents.second
-
-        if let todayAlarm = calendar.date(from: nextDateComponents),
+        if let todayAlarm = calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: now),
            todayAlarm > now, repeatDaysInt.contains(todayWeekday) {
             return todayAlarm // Alarm rings later today
         }
-
-        // Find the next available repeat day
-        for offset in 1...7 { // Check up to 7 days ahead
-            let nextDayIndex = (todayWeekday + offset - 1) % 7 + 1 // Keep within 1-7 range
-            if repeatDaysInt.contains(nextDayIndex) {
-                return calendar.date(byAdding: .day, value: offset, to: todayAlarm)!
+        
+        // Find the next available alarm day
+        for offset in 1...7 {
+            let nextDayIndex = (todayWeekday + offset - 1) % 7 + 1
+            if repeatDaysInt.contains(nextDayIndex),
+               let nextAlarmDate = calendar.date(byAdding: .day, value: offset, to: now) {
+                return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: nextAlarmDate)!
             }
         }
-
-        return now // Fallback (should never reach here)
+        
+        return now // Fallback, should never reach here
     }
     
     static func remainingTimeMessage(for time: Date) -> String {
