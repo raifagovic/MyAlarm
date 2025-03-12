@@ -23,42 +23,71 @@ enum AlarmUtils {
         return Set(repeatDays.compactMap { dayMappings[$0] })
     }
     
-    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [String]) -> Date {
-        let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
-        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)  // Convert to Int set
-        
-        for offset in 0..<7 {
-            let nextDayIndex = (todayIndex + offset - 1) % 7 + 1  // Keep within 1-7 range
-            if repeatDaysInt.contains(nextDayIndex) {
-                return calendar.date(byAdding: .day, value: offset, to: now)!
-            }
-        }
-        return now // Fallback, should never reach here
-    }
-    
-    static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
+//    static func findNextValidDay(calendar: Calendar, now: Date, repeatDays: [String]) -> Date {
+//        let todayIndex = calendar.component(.weekday, from: now) // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
+//        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)  // Convert to Int set
+//        
+//        for offset in 0..<7 {
+//            let nextDayIndex = (todayIndex + offset - 1) % 7 + 1  // Keep within 1-7 range
+//            if repeatDaysInt.contains(nextDayIndex) {
+//                return calendar.date(byAdding: .day, value: offset, to: now)!
+//            }
+//        }
+//        return now // Fallback, should never reach here
+//    }
+//    
+//    static func nextOccurrence(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
+//        let todayWeekday = calendar.component(.weekday, from: now) // 1 = Sunday, ..., 7 = Saturday
+//        
+//        // Convert repeatDays from [String] to Set<Int>
+//        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)
+//        
+//        // Extract time components from the alarm
+//        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+//        
+//        // Set the next alarm time today
+//        var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
+//        nextDateComponents.hour = timeComponents.hour
+//        nextDateComponents.minute = timeComponents.minute
+//        nextDateComponents.second = timeComponents.second
+//        
+//        if let nextDate = calendar.date(from: nextDateComponents), nextDate > now, repeatDaysInt.contains(todayWeekday) {
+//            return nextDate // Alarm rings later today
+//        }
+//        
+//        // Find the next valid repeat day
+//        let nextValidDay = findNextValidDay(calendar: calendar, now: now, repeatDays: repeatDays)
+//        
+//        return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: timeComponents.second!, of: nextValidDay)!
+//    }
+//    
+    static func nextAlarm(of time: Date, calendar: Calendar, now: Date = Date(), repeatDays: [String]) -> Date {
         let todayWeekday = calendar.component(.weekday, from: now) // 1 = Sunday, ..., 7 = Saturday
-        
-        // Convert repeatDays from [String] to Set<Int>
-        let repeatDaysInt = convertRepeatDaysToInt(repeatDays)
-        
+        let repeatDaysInt = convertRepeatDaysToInt(repeatDays) // Convert to Set<Int>
+
         // Extract time components from the alarm
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-        
-        // Set the next alarm time today
+
+        // Set the alarm time for today
         var nextDateComponents = calendar.dateComponents([.year, .month, .day], from: now)
         nextDateComponents.hour = timeComponents.hour
         nextDateComponents.minute = timeComponents.minute
         nextDateComponents.second = timeComponents.second
-        
-        if let nextDate = calendar.date(from: nextDateComponents), nextDate > now, repeatDaysInt.contains(todayWeekday) {
-            return nextDate // Alarm rings later today
+
+        if let todayAlarm = calendar.date(from: nextDateComponents),
+           todayAlarm > now, repeatDaysInt.contains(todayWeekday) {
+            return todayAlarm // Alarm rings later today
         }
-        
-        // Find the next valid repeat day
-        let nextValidDay = findNextValidDay(calendar: calendar, now: now, repeatDays: repeatDays)
-        
-        return calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: timeComponents.second!, of: nextValidDay)!
+
+        // Find the next available repeat day
+        for offset in 1...7 { // Check up to 7 days ahead
+            let nextDayIndex = (todayWeekday + offset - 1) % 7 + 1 // Keep within 1-7 range
+            if repeatDaysInt.contains(nextDayIndex) {
+                return calendar.date(byAdding: .day, value: offset, to: todayAlarm)!
+            }
+        }
+
+        return now // Fallback (should never reach here)
     }
     
     static func remainingTimeMessage(for time: Date) -> String {
