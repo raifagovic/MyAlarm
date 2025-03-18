@@ -16,10 +16,13 @@ enum AlarmUtils {
         ]
         
         let repeatDaysInt = Set(repeatDays.compactMap { dayMappings[$0] })
+        print("Repeat days int: \(repeatDaysInt)")
         let todayWeekday = calendar.component(.weekday, from: now)
+        print(todayWeekday)
         
         // Extract hour and minute from the alarm time
         let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+        print(timeComponents)
         
         // Set the alarm time for today
         if let todayAlarm = calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: now),
@@ -39,53 +42,88 @@ enum AlarmUtils {
         return now // Fallback, should never reach here
     }
     
+//    static func remainingTimeMessage(for time: Date) -> String {
+//        let calendar = Calendar.current
+//        let now = Date()
+//        
+//        // Extract hours and minutes from the selected time
+//        let selectedComponents = calendar.dateComponents([.hour, .minute], from: time)
+//        
+//        // Create a new Date with today's date and selected time
+//        var combinedComponents = DateComponents()
+//        combinedComponents.year = calendar.component(.year, from: now)
+//        combinedComponents.month = calendar.component(.month, from: now)
+//        combinedComponents.day = calendar.component(.day, from: now)
+//        combinedComponents.hour = selectedComponents.hour
+//        combinedComponents.minute = selectedComponents.minute
+//        
+//        var selectedDate = calendar.date(from: combinedComponents)!
+//        
+//        var differenceInSeconds = selectedDate.timeIntervalSince(now)
+//        
+//        // If the selected time has already passed, adjust for the next day
+//        if differenceInSeconds < 0 {
+//            selectedDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
+//            differenceInSeconds = selectedDate.timeIntervalSince(now)
+//        }
+//        
+//        var hours = Int(differenceInSeconds) / 3600
+//        var minutes = (Int(differenceInSeconds) % 3600) / 60
+//        let seconds = Int(differenceInSeconds) % 60
+//        
+//        // If less than a minute remains, show a special message
+//        if hours == 0 && minutes == 0 {
+//            return "Alarm will go off soon"
+//        }
+//        
+//        // Round up minutes if seconds exist
+//        if seconds > 0 {
+//            if minutes > 0 {
+//                minutes += 1
+//            } else if hours > 0 {
+//                // If hours exist and minutes are zero, round up to 1 minute
+//                minutes = 1
+//            }
+//        }
+//        
+//        if minutes == 60 {
+//            minutes = 0
+//            hours += 1
+//        }
+//        
+//        if hours == 0 {
+//            return "Alarm in \(minutes) min"
+//        } else if minutes == 0 {
+//            return "Alarm in \(hours) h"
+//        }
+//        
+//        return "Alarm in \(hours) h \(minutes) min"
+//    }
+    
     static func remainingTimeMessage(for time: Date) -> String {
-        let calendar = Calendar.current
         let now = Date()
         
-        // Extract hours and minutes from the selected time
-        let selectedComponents = calendar.dateComponents([.hour, .minute], from: time)
+        // Ensure 'time' is a future date
+        guard time > now else { return "Alarm will go off soon" }
         
-        // Create a new Date with today's date and selected time
-        var combinedComponents = DateComponents()
-        combinedComponents.year = calendar.component(.year, from: now)
-        combinedComponents.month = calendar.component(.month, from: now)
-        combinedComponents.day = calendar.component(.day, from: now)
-        combinedComponents.hour = selectedComponents.hour
-        combinedComponents.minute = selectedComponents.minute
-        
-        var selectedDate = calendar.date(from: combinedComponents)!
-        
-        var differenceInSeconds = selectedDate.timeIntervalSince(now)
-        
-        // If the selected time has already passed, adjust for the next day
-        if differenceInSeconds < 0 {
-            selectedDate = calendar.date(byAdding: .day, value: 1, to: selectedDate)!
-            differenceInSeconds = selectedDate.timeIntervalSince(now)
-        }
+        let differenceInSeconds = time.timeIntervalSince(now)
         
         var hours = Int(differenceInSeconds) / 3600
         var minutes = (Int(differenceInSeconds) % 3600) / 60
         let seconds = Int(differenceInSeconds) % 60
         
-        // If less than a minute remains, show a special message
+        // If less than a minute remains
         if hours == 0 && minutes == 0 {
             return "Alarm will go off soon"
         }
         
-        // Round up minutes if seconds exist
+        // Round up minutes if there are remaining seconds
         if seconds > 0 {
-            if minutes > 0 {
-                minutes += 1
-            } else if hours > 0 {
-                // If hours exist and minutes are zero, round up to 1 minute
-                minutes = 1
+            minutes += 1
+            if minutes == 60 {
+                minutes = 0
+                hours += 1
             }
-        }
-        
-        if minutes == 60 {
-            minutes = 0
-            hours += 1
         }
         
         if hours == 0 {
