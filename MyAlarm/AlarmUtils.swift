@@ -100,6 +100,11 @@ enum AlarmUtils {
 
         let totalHours = totalMinutes / 60
         let minutes = totalMinutes % 60
+        
+        // If no remaining hours or minutes, show "Alarm will go off soon"
+        if totalHours == 0 && minutes == 0 {
+            return "Alarm will go off soon"
+        }
 
         // If remaining time is less than 24 hours, show precise time
         if totalHours < 24 {
