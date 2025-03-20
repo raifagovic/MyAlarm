@@ -16,13 +16,10 @@ enum AlarmUtils {
         ]
         
         let repeatDaysInt = Set(repeatDays.compactMap { dayMappings[$0] })
-        print("Repeat days int: \(repeatDaysInt)")
         let todayWeekday = calendar.component(.weekday, from: now)
-        print(todayWeekday)
         
         // Extract hour and minute from the alarm time
         let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-        print(timeComponents)
         
         // Set the alarm time for today
         if let todayAlarm = calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: now),
