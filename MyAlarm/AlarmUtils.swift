@@ -46,8 +46,15 @@ enum AlarmUtils {
         guard time > now else { return "Alarm will go off soon" }
         
         let differenceInSeconds = time.timeIntervalSince(now)
+        let totalHours = Int(differenceInSeconds) / 3600
+        let totalDays = totalHours / 24
         
-        var hours = Int(differenceInSeconds) / 3600
+        // If there is at least 1 full day, return "Alarm in X days"
+        if totalDays > 0 {
+            return "Alarm in \(totalDays) day" + (totalDays > 1 ? "s" : "")
+        }
+        
+        var hours = totalHours
         var minutes = (Int(differenceInSeconds) % 3600) / 60
         let seconds = Int(differenceInSeconds) % 60
         
