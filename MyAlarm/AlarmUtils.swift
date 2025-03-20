@@ -94,7 +94,7 @@ enum AlarmUtils {
         let seconds = Int(differenceInSeconds) % 60
 
         // Round up minutes if there are remaining seconds
-        if seconds > 0 {
+        if seconds > 0 && totalMinutes > 0 {
             totalMinutes += 1
         }
 
