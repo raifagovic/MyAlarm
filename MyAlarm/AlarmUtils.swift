@@ -39,49 +39,6 @@ enum AlarmUtils {
         return now // Fallback, should never reach here
     }
     
-//    static func remainingTimeMessage(for time: Date) -> String {
-//        let now = Date()
-//        let calendar = Calendar.current
-//        
-//        // Ensure 'time' is a future date
-//        guard time > now else { return "Alarm will go off soon" }
-//        
-//        let differenceInSeconds = time.timeIntervalSince(now)
-//        let totalHours = Int(differenceInSeconds) / 3600
-//        let totalDays = totalHours / 24
-//        
-//        // If there is at least 1 full day, return "Alarm in X days"
-//        if totalDays > 0 {
-//            return "Alarm in \(totalDays) day" + (totalDays > 1 ? "s" : "")
-//        }
-//        
-//        var hours = totalHours
-//        var minutes = (Int(differenceInSeconds) % 3600) / 60
-//        let seconds = Int(differenceInSeconds) % 60
-//        
-//        // If less than a minute remains
-//        if hours == 0 && minutes == 0 {
-//            return "Alarm will go off soon"
-//        }
-//        
-//        // Round up minutes if there are remaining seconds
-//        if seconds > 0 {
-//            minutes += 1
-//            if minutes == 60 {
-//                minutes = 0
-//                hours += 1
-//            }
-//        }
-//        
-//        if hours == 0 {
-//            return "Alarm in \(minutes) min"
-//        } else if minutes == 0 {
-//            return "Alarm in \(hours) h"
-//        }
-//        
-//        return "Alarm in \(hours) h \(minutes) min"
-//    }
-    
     static func remainingTimeMessage(for time: Date) -> String {
         let now = Date()
         let calendar = Calendar.current
