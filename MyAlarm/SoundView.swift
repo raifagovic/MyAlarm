@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 struct SoundView: View {
     @Binding var selectedSound: String
-    @State private var audioPlayer: AVAudioPlayer?
 
-    let sounds = ["beep", "bell", "casio", "centaurus", "digital", "threat", "warning"] 
+    let sounds = ["beep", "bell", "casio", "centaurus", "digital", "threat", "warning"]
 
     var body: some View {
         Form {
@@ -47,16 +45,6 @@ struct SoundView: View {
 
     private func selectSound(_ sound: String) {
         selectedSound = sound
-        playSound(named: sound)
-    }
-
-    private func playSound(named sound: String) {
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-        } catch {
-            print("Error playing sound: \(error.localizedDescription)")
-        }
+        SoundManager.shared.playSound(named: sound)
     }
 }
