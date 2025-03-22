@@ -28,6 +28,7 @@
 		DC667B3D2D67DDE100833F41 /* digital.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B362D67DDE100833F41 /* digital.mp3 */; };
 		DC667B3E2D67DDE100833F41 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B372D67DDE100833F41 /* beep.mp3 */; };
 		DC667B3F2D67DDE100833F41 /* threat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B382D67DDE100833F41 /* threat.mp3 */; };
+		DC667B412D8EF11F00833F41 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B402D8EF11F00833F41 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		DC667B362D67DDE100833F41 /* digital.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = digital.mp3; sourceTree = "<group>"; };
 		DC667B372D67DDE100833F41 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		DC667B382D67DDE100833F41 /* threat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = threat.mp3; sourceTree = "<group>"; };
+		DC667B402D8EF11F00833F41 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */,
+				DC667B402D8EF11F00833F41 /* SoundManager.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
 				DC667B312D67DCB200833F41 /* AlarmSounds */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
@@ -207,6 +210,7 @@
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
+				DC667B412D8EF11F00833F41 /* SoundManager.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
 				DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */,
