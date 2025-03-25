@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct AlarmRingingView: View {
-    @ObservedObject var alarmManager = AlarmManager.shared
+    @Binding var isAlarmRinging: Bool
+    var stopAlarm: () -> Void
+    var snoozeAlarm: () -> Void
 
     var body: some View {
         VStack {
@@ -22,9 +24,7 @@ struct AlarmRingingView: View {
             Spacer()
 
             HStack {
-                Button(action: {
-                    alarmManager.snoozeAlarm()
-                }) {
+                Button(action: snoozeAlarm) {
                     Text("Snooze")
                         .font(.title)
                         .padding()
@@ -34,9 +34,7 @@ struct AlarmRingingView: View {
                         .cornerRadius(10)
                 }
 
-                Button(action: {
-                    alarmManager.stopAlarm()
-                }) {
+                Button(action: stopAlarm) {
                     Text("Stop")
                         .font(.title)
                         .padding()
