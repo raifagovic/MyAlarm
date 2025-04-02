@@ -44,6 +44,9 @@ struct SoundView: View {
                     .font(.headline)
             }
         }
+        .onDisappear {
+            stopAlarm() // Ensure sound stops when leaving the screen
+        }
     }
 
     private func selectSound(_ sound: String) {
