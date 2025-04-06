@@ -12,7 +12,6 @@ class NotificationManager {
     
     private init() {} // Prevents creating multiple instances
 
-    // 1️⃣ Request Notification Permission
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -27,11 +26,10 @@ class NotificationManager {
         }
     }
 
-    // 2️⃣ Schedule an Alarm Notification
     func scheduleAlarmNotification(at date: Date) {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "⏰ Alarm"
+        content.title = "Alarm"
         content.body = "Your alarm is ringing!"
         content.sound = UNNotificationSound.default
 
@@ -44,7 +42,7 @@ class NotificationManager {
             if let error = error {
                 print("Error scheduling notification: \(error)")
             } else {
-                print("✅ Alarm scheduled for \(date)")
+                print("Alarm scheduled for \(date)")
             }
         }
     }
