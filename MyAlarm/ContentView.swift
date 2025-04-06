@@ -117,6 +117,9 @@ struct ContentView: View {
             
             if nextTime <= now {
                 ringingAlarm = nextAlarm
+            } else {
+                let nextAlarmTime = AlarmUtils.nextAlarm(time: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
+                NotificationManager.shared.scheduleAlarmNotification(at: nextAlarmTime)
             }
         } else {
             remainingTimeMessage = ""
