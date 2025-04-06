@@ -29,6 +29,7 @@
 		DC667B3E2D67DDE100833F41 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B372D67DDE100833F41 /* beep.mp3 */; };
 		DC667B3F2D67DDE100833F41 /* threat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC667B382D67DDE100833F41 /* threat.mp3 */; };
 		DC667B432D91C41D00833F41 /* AlarmRingingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B422D91C41D00833F41 /* AlarmRingingView.swift */; };
+		DC667B452DA2AA4400833F41 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B442DA2AA4300833F41 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		DC667B372D67DDE100833F41 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		DC667B382D67DDE100833F41 /* threat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = threat.mp3; sourceTree = "<group>"; };
 		DC667B422D91C41D00833F41 /* AlarmRingingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRingingView.swift; sourceTree = "<group>"; };
+		DC667B442DA2AA4300833F41 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				DC667B312D67DCB200833F41 /* AlarmSounds */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
 				DC667B422D91C41D00833F41 /* AlarmRingingView.swift */,
+				DC667B442DA2AA4300833F41 /* NotificationManager.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
+				DC667B452DA2AA4400833F41 /* NotificationManager.swift in Sources */,
 				DC667B432D91C41D00833F41 /* AlarmRingingView.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
