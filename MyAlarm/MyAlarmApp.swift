@@ -7,9 +7,14 @@
 
 import SwiftData
 import SwiftUI
+import UserNotifications
 
 @main
 struct MyAlarmApp: App {
+    init() {
+            NotificationManager.shared.requestNotificationPermission() // Request permission when app starts
+        }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
