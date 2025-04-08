@@ -75,7 +75,6 @@ struct ContentView: View {
                 createTransparentAppearance()
                 updateRemainingTime()
                 startTimer()
-                ringingAlarm = alarms.first
             }
             .onDisappear {
                 stopTimer()
@@ -116,7 +115,7 @@ struct ContentView: View {
             let nextTime = AlarmUtils.nextAlarm(time: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
             remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: nextTime)
             
-            if nextTime.timeIntervalSince(now) <= 1 { 
+            if nextTime.timeIntervalSince(now) <= 1 {
                 ringingAlarm = nextAlarm
             } else {
                 let nextAlarmTime = AlarmUtils.nextAlarm(time: nextAlarm.time, calendar: calendar, now: now, repeatDays: nextAlarm.repeatDays)
