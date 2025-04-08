@@ -44,14 +44,33 @@ struct AlarmView: View {
                         .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
                     
                     // Label and repeat days
+//                    HStack {
+//                        Text((alarm.label.isEmpty ? "Alarm" : alarm.label) + (alarm.repeatDays.isEmpty ? "" : ","))
+//                            .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+//                            .fontWeight(.medium)
+//                        
+//                        if !alarm.repeatDays.isEmpty {
+//                            let message = AlarmUtils.getAbbreviatedDays(from: alarm.repeatDays)
+//                            let formattedMessage = (message == "Weekdays" || message == "Weekends" || message.hasPrefix("Every")) ? message.prefix(1).lowercased() + message.dropFirst() : message
+//                            
+//                            Text(formattedMessage)
+//                                .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+//                                .fontWeight(.medium)
+//                        }
+//                    }
                     HStack {
-                        Text((alarm.label.isEmpty ? "Alarm" : alarm.label) + (alarm.repeatDays.isEmpty ? "" : ","))
-                            .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
-                            .fontWeight(.medium)
+                        let hasLabel = !alarm.label.isEmpty
+                        let hasRepeatDays = !alarm.repeatDays.isEmpty
+                        let repeatMessage = hasRepeatDays ? AlarmUtils.getAbbreviatedDays(from: alarm.repeatDays) : ""
                         
-                        if !alarm.repeatDays.isEmpty {
-                            let message = AlarmUtils.getAbbreviatedDays(from: alarm.repeatDays)
-                            let formattedMessage = (message == "Weekdays" || message == "Weekends" || message.hasPrefix("Every")) ? message.prefix(1).lowercased() + message.dropFirst() : message
+                        if hasLabel {
+                            Text(alarm.label + (hasRepeatDays ? "," : ""))
+                                .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
+                                .fontWeight(.medium)
+                        }
+                        
+                        if hasRepeatDays {
+                            let formattedMessage = (repeatMessage == "Weekdays" || repeatMessage == "Weekends" || repeatMessage.hasPrefix("Every")) ? repeatMessage.prefix(1).lowercased() + repeatMessage.dropFirst() : repeatMessage
                             
                             Text(formattedMessage)
                                 .foregroundColor(alarm.isOn ? Color(hex: "#F1F1F1") : Color(hex: "#A1A1A6"))
