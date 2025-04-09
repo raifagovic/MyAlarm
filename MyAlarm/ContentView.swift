@@ -48,12 +48,15 @@ struct ContentView: View {
                         }
                     }
                 }
+                // 🔹 Show small banner instead of full screen when unlocked
+                if let ringingAlarm = ringingAlarm {
+                    AlarmRingingView(alarm: ringingAlarm)
+                        .transition(.move(edge: .top)) // Smooth animation from the top
+                        .zIndex(1) // Ensure it appears on top
+                }
             }
             .sheet(item: $selectedAlarm) { alarm in
                 AlarmEditorView(alarm: alarm)
-            }
-            .fullScreenCover(item: $ringingAlarm) { alarm in
-                AlarmRingingView(alarm: alarm)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
