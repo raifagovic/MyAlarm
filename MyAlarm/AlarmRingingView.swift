@@ -46,29 +46,39 @@ struct AlarmRingingView: View {
                 stopAlarm()
             }
         } else {
-            // 📱 Small Alarm Banner When Phone is Unlocked
+            // 📱 Small Alarm Banner When Phone is Unlocked (Updated)
             VStack {
                 HStack {
-                    Text("⏰") // You can replace this with an icon
-                    Text("Alarm")
-                        .font(.headline)
-                        .foregroundColor(.white)
+                    Text("⏰") // Placeholder for icon/logo
+                    VStack(alignment: .leading) {
+                        Text("Alarm")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        Text(alarm.label.isEmpty ? "Wake Up!" : alarm.label)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
                     
                     Spacer()
                     
                     Button(action: stopAlarm) {
                         Text("Stop")
-                            .foregroundColor(.yellow)
+                            .font(.headline)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
                     }
                 }
                 .padding()
-                .background(Color.black)
+                .background(.thinMaterial) // Changed to blur effect
                 .cornerRadius(12)
                 .shadow(radius: 5)
+                .padding(.top, 50) // Keeps it at the top
                 
                 Spacer()
             }
-            .padding(.top, 20)
             .onAppear {
                 checkPhoneState()
                 playSound(named: alarm.selectedSound)
