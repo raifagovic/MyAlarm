@@ -11,7 +11,7 @@ import AVFoundation
 struct AlarmRingingView: View {
     let alarm: Alarm
     @State private var audioPlayer: AVAudioPlayer?
-    @Environment(\.dismiss) private var dismiss
+    var onStop: () -> Void // 🔹 Closure to notify ContentView
     @State private var isPhoneLocked: Bool = false
     
     var body: some View {
@@ -92,7 +92,7 @@ struct AlarmRingingView: View {
     private func stopAlarm() {
         audioPlayer?.stop()
         audioPlayer = nil
-        dismiss()
+        onStop() // Notify ContentView to remove the banner
     }
     
     private func playSound(named sound: String) {
