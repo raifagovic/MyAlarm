@@ -13,13 +13,14 @@ struct AlarmRingingView: View {
     @State private var audioPlayer: AVAudioPlayer?
     var onStop: () -> Void // 🔹 Closure to notify ContentView
     @State private var isPhoneLocked: Bool = false
-    
+
     var body: some View {
-        if isPhoneLocked {
-            // 🔒 Full-Screen Alarm When Phone is Locked
-            ZStack {
-                Color.black.ignoresSafeArea()
-                
+        ZStack {
+            // Main content of the view
+            Color.black.ignoresSafeArea()
+
+            if isPhoneLocked {
+                // 🔒 Full-Screen Alarm When Phone is Locked
                 VStack {
                     Text(currentTimeString())
                         .font(.system(size: 80, weight: .bold, design: .rounded))
@@ -37,52 +38,45 @@ struct AlarmRingingView: View {
                     }
                     .padding(.bottom, 100)
                 }
-            }
-            .onAppear {
-                checkPhoneState()
-                playSound(named: alarm.selectedSound)
-            }
-            .onDisappear {
-                stopAlarm()
-            }
-        } else {
-            // 📱 Small Alarm Banner When Phone is Unlocked (Updated)
-            VStack {
-                HStack {
-                    Text("⏰") // Placeholder for icon/logo
-                    VStack(alignment: .leading) {
-                        Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
-                            .font(.headline)
-                            .foregroundColor(.white)
+            } else {
+                // 📱 Small Alarm Banner When Phone is Unlocked
+                VStack {
+                    HStack {
+                        Text("⏰") // Placeholder for icon/logo
+                        VStack(alignment: .leading) {
+                            Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: stopAlarm) {
+                            Text("Stop")
+                                .font(.headline)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
                     }
-                    
-                    Spacer()
-                    
-                    Button(action: stopAlarm) {
-                        Text("Stop")
-                            .font(.headline)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
+                    .padding()
+                    .background(.thinMaterial) // Changed to blur effect
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+                    .padding(.top, 0) // Ensure it's at the very top
                 }
-                .padding()
-                .background(.thinMaterial) // Changed to blur effect
-                .cornerRadius(12)
-                .shadow(radius: 5)
-                .padding(.top, 0) // Adjust this value to move the banner to the top
-                
-                Spacer()
+                .frame(maxWidth: .infinity) // Ensure the banner stretches across
+                .offset(y: 0) // Ensure the banner stays at the top
             }
-            .onAppear {
-                checkPhoneState()
-                playSound(named: alarm.selectedSound)
-            }
-            .onDisappear {
-                stopAlarm()
-            }
+        }
+        .onAppear {
+            checkPhoneState()
+            playSound(named: alarm.selectedSound)
+        }
+        .onDisappear {
+            stopAlarm()
         }
     }
     
