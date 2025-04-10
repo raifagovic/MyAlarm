@@ -11,7 +11,7 @@ import AVFoundation
 struct AlarmRingingView: View {
     let alarm: Alarm
     @State private var audioPlayer: AVAudioPlayer?
-    var onStop: () -> Void // 🔹 Closure to notify ContentView
+    var onStop: () -> Void
     @State private var isPhoneLocked: Bool = false
     
     var body: some View {
@@ -19,14 +19,11 @@ struct AlarmRingingView: View {
             // 🔒 Full-Screen Alarm When Phone is Locked
             ZStack {
                 Color.black.ignoresSafeArea()
-                
                 VStack {
                     Text(currentTimeString())
                         .font(.system(size: 80, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
-                    
                     Spacer()
-                    
                     Button(action: stopAlarm) {
                         Text("Stop")
                             .font(.system(size: 24, weight: .bold))
@@ -47,34 +44,17 @@ struct AlarmRingingView: View {
             }
         } else {
             // 📱 Small Alarm Banner When Phone is Unlocked
-            ZStack {
-                VStack {
-                    HStack {
-                        Text("⏰") // Placeholder for icon/logo
-                        VStack(alignment: .leading) {
-                            Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                        }
-                        
+            GeometryReader { geometry in
+                ZStack {
+                    VStack {
                         Spacer()
-                        
-                        Button(action: stopAlarm) {
-                            Text("Stop")
-                                .font(.headline)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 16)
-                                .background(Color.red)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
                     }
-                    .padding()
-                    .background(.thinMaterial) // Changed to blur effect
-                    .cornerRadius(12)
-                    .shadow(radius: 5)
-                    
-                    Spacer()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .overlay(
+                        bannerView
+                            .offset(y: geometry.safeAreaInsets.top) // 👈 Place it below Dynamic Island
+                            .animation(.easeInOut, value: isPhoneLocked) // Smooth transition
+                    )
                 }
             }
             .onAppear {
@@ -87,17 +67,45 @@ struct AlarmRingingView: View {
         }
     }
     
+    // 🔹 Extracted banner view
+    private var bannerView: some View {
+        HStack {
+            Text("⏰") // Placeholder for icon/logo
+            VStack(alignment: .leading) {
+                Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
+                    .font(.headline)
+                    .foregroundColor(.white)
+            }
+            Spacer()
+            Button(action: stopAlarm) {
+                Text("Stop")
+                    .font(.headline)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+        }
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(12)
+        .shadow(radius: 5)
+        .frame(maxWidth: .infinity)
+        .padding(.top, 5) // Small padding to mimic system notifications
+    }
+    
     private func stopAlarm() {
         audioPlayer?.stop()
         audioPlayer = nil
-        onStop() // Notify ContentView to remove the banner
+        onStop()
     }
     
     private func playSound(named sound: String) {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.numberOfLoops = -1 // Loop the sound until stopped
+            audioPlayer?.numberOfLoops = -1
             audioPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
