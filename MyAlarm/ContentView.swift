@@ -49,10 +49,12 @@ struct ContentView: View {
                     }
                 }
                 // 🔹 Show small banner instead of full screen when unlocked
-                if let ringingAlarm = ringingAlarm {
-                    AlarmRingingView(alarm: ringingAlarm)
-                        .transition(.move(edge: .top)) // Smooth animation from the top
-                        .zIndex(1) // Ensure it appears on top
+                if ringingAlarm != nil {
+                    AlarmRingingView(alarm: ringingAlarm!, onStop: {
+                        ringingAlarm = nil // 🔹 Hide the banner when alarm stops
+                    })
+                    .transition(.move(edge: .top))
+                    .zIndex(1)
                 }
             }
             .sheet(item: $selectedAlarm) { alarm in
