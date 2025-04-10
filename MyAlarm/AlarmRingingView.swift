@@ -72,7 +72,7 @@ struct AlarmRingingView: View {
                 .background(.thinMaterial) // Changed to blur effect
                 .cornerRadius(12)
                 .shadow(radius: 5)
-                .padding(.top, 50) // Keeps it at the top
+                .edgesIgnoringSafeArea(.top) // Ensures it reaches the very top
                 
                 Spacer()
             }
