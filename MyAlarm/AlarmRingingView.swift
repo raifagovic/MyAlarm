@@ -54,9 +54,6 @@ struct AlarmRingingView: View {
                         Text("Alarm")
                             .font(.headline)
                             .foregroundColor(.white)
-                        Text(alarm.label.isEmpty ? "Wake Up!" : alarm.label)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
                     }
                     
                     Spacer()
