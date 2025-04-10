@@ -51,7 +51,7 @@ struct AlarmRingingView: View {
                 HStack {
                     Text("⏰") // Placeholder for icon/logo
                     VStack(alignment: .leading) {
-                        Text("Alarm")
+                        Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
                             .font(.headline)
                             .foregroundColor(.white)
                     }
