@@ -11,19 +11,22 @@ import AVFoundation
 struct AlarmRingingView: View {
     let alarm: Alarm
     @State private var audioPlayer: AVAudioPlayer?
-    var onStop: () -> Void
+    var onStop: () -> Void // Closure to notify ContentView
     @State private var isPhoneLocked: Bool = false
-    
+
     var body: some View {
         if isPhoneLocked {
             // 🔒 Full-Screen Alarm When Phone is Locked
             ZStack {
                 Color.black.ignoresSafeArea()
+                
                 VStack {
                     Text(currentTimeString())
                         .font(.system(size: 80, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
+                    
                     Spacer()
+                    
                     Button(action: stopAlarm) {
                         Text("Stop")
                             .font(.system(size: 24, weight: .bold))
@@ -44,19 +47,47 @@ struct AlarmRingingView: View {
             }
         } else {
             // 📱 Small Alarm Banner When Phone is Unlocked
-            GeometryReader { geometry in
-                ZStack {
-                    VStack {
-                        Spacer()
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .overlay(
-                        bannerView
-                            .offset(y: geometry.safeAreaInsets.top) // 👈 Place it below Dynamic Island
-                            .animation(.easeInOut, value: isPhoneLocked) // Smooth transition
-                    )
+            ZStack {
+                VStack {
+                    Spacer() // Push content below the banner
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                VStack {
+                    HStack {
+                        Text("⏰") // Placeholder for icon/logo
+                        VStack(alignment: .leading) {
+                            Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        Spacer()
+                        Button(action: stopAlarm) {
+                            Text("Stop")
+                                .font(.headline)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .padding()
+                    .background(.thinMaterial)
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.top, 5) // Adjust to be closer to Dynamic Island
+                .overlay(
+                    Color.clear.frame(height: UIApplication.shared.connectedScenes
+                        .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                        .first?.safeAreaInsets.top ?? 0),
+                    alignment: .top
+                )
+                .zIndex(1) // Ensure it appears above other content
             }
+            .ignoresSafeArea(edges: .top) // Allows the banner to go above the safe area
             .onAppear {
                 checkPhoneState()
                 playSound(named: alarm.selectedSound)
@@ -67,45 +98,17 @@ struct AlarmRingingView: View {
         }
     }
     
-    // 🔹 Extracted banner view
-    private var bannerView: some View {
-        HStack {
-            Text("⏰") // Placeholder for icon/logo
-            VStack(alignment: .leading) {
-                Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
-                    .font(.headline)
-                    .foregroundColor(.white)
-            }
-            Spacer()
-            Button(action: stopAlarm) {
-                Text("Stop")
-                    .font(.headline)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 16)
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-        }
-        .padding()
-        .background(.thinMaterial)
-        .cornerRadius(12)
-        .shadow(radius: 5)
-        .frame(maxWidth: .infinity)
-        .padding(.top, 5) // Small padding to mimic system notifications
-    }
-    
     private func stopAlarm() {
         audioPlayer?.stop()
         audioPlayer = nil
-        onStop()
+        onStop() // Notify ContentView to remove the banner
     }
     
     private func playSound(named sound: String) {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.numberOfLoops = -1
+            audioPlayer?.numberOfLoops = -1 // Loop the sound until stopped
             audioPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
