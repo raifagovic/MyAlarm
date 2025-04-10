@@ -13,14 +13,13 @@ struct AlarmRingingView: View {
     @State private var audioPlayer: AVAudioPlayer?
     var onStop: () -> Void // 🔹 Closure to notify ContentView
     @State private var isPhoneLocked: Bool = false
-
+    
     var body: some View {
-        ZStack {
-            // Main content of the view
-            Color.black.ignoresSafeArea()
-
-            if isPhoneLocked {
-                // 🔒 Full-Screen Alarm When Phone is Locked
+        if isPhoneLocked {
+            // 🔒 Full-Screen Alarm When Phone is Locked
+            ZStack {
+                Color.black.ignoresSafeArea()
+                
                 VStack {
                     Text(currentTimeString())
                         .font(.system(size: 80, weight: .bold, design: .rounded))
@@ -38,8 +37,17 @@ struct AlarmRingingView: View {
                     }
                     .padding(.bottom, 100)
                 }
-            } else {
-                // 📱 Small Alarm Banner When Phone is Unlocked
+            }
+            .onAppear {
+                checkPhoneState()
+                playSound(named: alarm.selectedSound)
+            }
+            .onDisappear {
+                stopAlarm()
+            }
+        } else {
+            // 📱 Small Alarm Banner When Phone is Unlocked
+            ZStack {
                 VStack {
                     HStack {
                         Text("⏰") // Placeholder for icon/logo
@@ -65,18 +73,17 @@ struct AlarmRingingView: View {
                     .background(.thinMaterial) // Changed to blur effect
                     .cornerRadius(12)
                     .shadow(radius: 5)
-                    .padding(.top, 0) // Ensure it's at the very top
+                    
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity) // Ensure the banner stretches across
-                .offset(y: 0) // Ensure the banner stays at the top
             }
-        }
-        .onAppear {
-            checkPhoneState()
-            playSound(named: alarm.selectedSound)
-        }
-        .onDisappear {
-            stopAlarm()
+            .onAppear {
+                checkPhoneState()
+                playSound(named: alarm.selectedSound)
+            }
+            .onDisappear {
+                stopAlarm()
+            }
         }
     }
     
