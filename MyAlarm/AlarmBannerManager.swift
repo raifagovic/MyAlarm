@@ -45,31 +45,36 @@ struct AlarmBannerView: View {
     var onStop: () -> Void
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("⏰")
-                Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                Spacer()
-                Button(action: onStop) {
-                    Text("Stop")
+        GeometryReader { geometry in
+            VStack {
+                HStack {
+                    Text("⏰")
+                    Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
                         .font(.headline)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 16)
-                        .background(Color.red)
                         .foregroundColor(.white)
-                        .cornerRadius(8)
+                    Spacer()
+                    Button(action: onStop) {
+                        Text("Stop")
+                            .font(.headline)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
                 }
+                .padding()
+                .background(.thinMaterial)
+                .cornerRadius(12)
+                .shadow(radius: 5)
+                .frame(maxWidth: .infinity)
+                .padding(.top, geometry.safeAreaInsets.top)
+                
+                Spacer()
             }
-            .padding()
-            .background(.thinMaterial)
-            .cornerRadius(12)
-            .shadow(radius: 5)
-            .padding(.top, 50) // Adjust for notch
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
-        .frame(maxWidth: .infinity)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
