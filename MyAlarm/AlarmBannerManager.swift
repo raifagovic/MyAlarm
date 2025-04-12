@@ -43,38 +43,46 @@ class AlarmBannerManager {
 struct AlarmBannerView: View {
     let alarm: Alarm
     var onStop: () -> Void
-    
+
+    // Get top inset manually from UIKit
+    private var topInset: CGFloat {
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first?.windows
+            .first?.safeAreaInsets.top ?? 44
+    }
+
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                HStack {
-                    Text("⏰")
-                    Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    Spacer()
-                    Button(action: onStop) {
-                        Text("Stop")
-                            .font(.headline)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                }
-                .padding()
-                .background(.thinMaterial)
-                .cornerRadius(12)
-                .shadow(radius: 5)
-                .frame(maxWidth: .infinity)
-                .padding(.top, geometry.safeAreaInsets.top)
-                
+        VStack {
+            HStack {
+                Text("⏰")
+                Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
+                    .font(.headline)
+                    .foregroundColor(.white)
                 Spacer()
+                Button(action: onStop) {
+                    Text("Stop")
+                        .font(.headline)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 16)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .padding()
+            .background(.thinMaterial)
+            .cornerRadius(12)
+            .shadow(radius: 5)
+            .frame(maxWidth: .infinity)
+            .padding(.top, topInset + 8) // Respect notch/Dynamic Island
+            .padding(.horizontal)
+
+            Spacer()
         }
-        .edgesIgnoringSafeArea(.all)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .background(Color.clear)
+        .ignoresSafeArea() // Let it flow behind if needed
     }
 }
 
