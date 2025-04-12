@@ -8,7 +8,6 @@
 import SwiftUI
 import UIKit
 
-// MARK: - Alarm Banner Manager
 class AlarmBannerManager {
     static let shared = AlarmBannerManager()
     private var window: UIWindow?
@@ -41,7 +40,6 @@ class AlarmBannerManager {
     }
 }
 
-// MARK: - Alarm Banner View
 struct AlarmBannerView: View {
     let alarm: Alarm
     var onStop: () -> Void
@@ -75,7 +73,6 @@ struct AlarmBannerView: View {
     }
 }
 
-// MARK: - Usage Example
 func triggerAlarmBanner(alarm: Alarm) {
     AlarmBannerManager.shared.showBanner(alarm: alarm) {
         print("Alarm Stopped")
