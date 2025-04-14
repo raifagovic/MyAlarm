@@ -12,8 +12,8 @@ class NotificationManager {
     
     private init() {
         registerCategories()
-    } // Prevents creating multiple instances
-
+    }
+    
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
