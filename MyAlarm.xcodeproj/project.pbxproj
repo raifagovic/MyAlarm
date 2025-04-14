@@ -31,6 +31,7 @@
 		DC667B432D91C41D00833F41 /* AlarmRingingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B422D91C41D00833F41 /* AlarmRingingView.swift */; };
 		DC667B452DA2AA4400833F41 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B442DA2AA4300833F41 /* NotificationManager.swift */; };
 		DC667B472DA8303900833F41 /* AlarmBannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B462DA8303900833F41 /* AlarmBannerManager.swift */; };
+		DC667B492DADC85B00833F41 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B482DADC85B00833F41 /* NotificationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		DC667B422D91C41D00833F41 /* AlarmRingingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRingingView.swift; sourceTree = "<group>"; };
 		DC667B442DA2AA4300833F41 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		DC667B462DA8303900833F41 /* AlarmBannerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmBannerManager.swift; sourceTree = "<group>"; };
+		DC667B482DADC85B00833F41 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				DC667B422D91C41D00833F41 /* AlarmRingingView.swift */,
 				DC667B442DA2AA4300833F41 /* NotificationManager.swift */,
 				DC667B462DA8303900833F41 /* AlarmBannerManager.swift */,
+				DC667B482DADC85B00833F41 /* NotificationDelegate.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				DC667B452DA2AA4400833F41 /* NotificationManager.swift in Sources */,
 				DC667B432D91C41D00833F41 /* AlarmRingingView.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
+				DC667B492DADC85B00833F41 /* NotificationDelegate.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
 				DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */,
 				DC661BB92CF87E360039F6CC /* Alarm.swift in Sources */,
