@@ -10,10 +10,8 @@ import UserNotifications
 class NotificationManager {
     static let shared = NotificationManager()
     
-    private init() {
-        registerCategories()
-    }
-    
+    private init() {} // Prevents creating multiple instances
+
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -27,31 +25,13 @@ class NotificationManager {
             }
         }
     }
-    
-    private func registerCategories() {
-        let stopAction = UNNotificationAction(
-            identifier: "STOP_ALARM_ACTION",
-            title: "Stop",
-            options: [.authenticationRequired]
-        )
-        
-        let alarmCategory = UNNotificationCategory(
-            identifier: "ALARM_CATEGORY",
-            actions: [stopAction],
-            intentIdentifiers: [],
-            options: []
-        )
-        
-        UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
-    }
-    
+
     func scheduleAlarmNotification(at date: Date) {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         content.title = "Alarm"
         content.body = "Your alarm is ringing!"
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "ALARM_CATEGORY"
 
         let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
