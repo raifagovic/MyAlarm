@@ -48,10 +48,11 @@ struct AlarmBannerView: View {
     private var topInset: CGFloat {
         UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
-            .first?.windows
-            .first?.safeAreaInsets.top ?? 44
+            .flatMap { $0.windows }
+            .first(where: \.isKeyWindow)?
+            .safeAreaInsets.top ?? 44
     }
-
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
