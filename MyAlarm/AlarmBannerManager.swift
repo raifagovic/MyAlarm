@@ -44,7 +44,7 @@ struct AlarmBannerView: View {
     let alarm: Alarm
     var onStop: () -> Void
 
-    // Get top inset manually from UIKit
+    // Dynamically fetch top safe area inset from active window
     private var topInset: CGFloat {
         UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
