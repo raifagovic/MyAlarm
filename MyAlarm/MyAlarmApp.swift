@@ -12,7 +12,8 @@ import UserNotifications
 @main
 struct MyAlarmApp: App {
     init() {
-            NotificationManager.shared.requestNotificationPermission() // Request permission when app starts
+            UNUserNotificationCenter.current().delegate = NotificationDelegate.shared
+            NotificationManager.shared.requestNotificationPermission()
         }
     
     var body: some Scene {
