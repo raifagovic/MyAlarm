@@ -25,7 +25,24 @@ class NotificationManager {
             }
         }
     }
-
+    
+    private func registerCategories() {
+        let stopAction = UNNotificationAction(
+            identifier: "STOP_ALARM_ACTION",
+            title: "Stop",
+            options: [.authenticationRequired]
+        )
+        
+        let alarmCategory = UNNotificationCategory(
+            identifier: "ALARM_CATEGORY",
+            actions: [stopAction],
+            intentIdentifiers: [],
+            options: []
+        )
+        
+        UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
+    }
+    
     func scheduleAlarmNotification(at date: Date) {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
