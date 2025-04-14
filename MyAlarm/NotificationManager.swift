@@ -10,7 +10,9 @@ import UserNotifications
 class NotificationManager {
     static let shared = NotificationManager()
     
-    private init() {} // Prevents creating multiple instances
+    private init() {
+        registerCategories()
+    } // Prevents creating multiple instances
 
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
