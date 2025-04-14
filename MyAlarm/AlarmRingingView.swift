@@ -59,6 +59,7 @@ struct AlarmRingingView: View {
         .onDisappear {
             stopAlarm()
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private func stopAlarm() {
