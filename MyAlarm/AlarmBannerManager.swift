@@ -74,12 +74,11 @@ struct AlarmBannerView: View {
             .background(.thinMaterial)
             .cornerRadius(12)
             .shadow(radius: 5)
-            .frame(maxWidth: .infinity)
-            .padding(.top, topInset + 8) // Respect notch/Dynamic Island
             .padding(.horizontal)
 
             Spacer()
         }
+        .padding(.top, topInset + 8) // Respect notch/Dynamic Island
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color.clear)
         .ignoresSafeArea() // Let it flow behind if needed
