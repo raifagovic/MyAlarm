@@ -49,6 +49,7 @@ class NotificationManager {
         content.title = "Alarm"
         content.body = "Your alarm is ringing!"
         content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "ALARM_CATEGORY"
 
         let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
