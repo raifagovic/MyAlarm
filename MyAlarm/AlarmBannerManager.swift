@@ -53,7 +53,7 @@ struct AlarmBannerView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
                 Text("⏰")
                 Text(alarm.label.isEmpty ? "Alarm" : alarm.label)
