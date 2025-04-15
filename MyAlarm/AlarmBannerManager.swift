@@ -12,7 +12,7 @@ class AlarmBannerManager {
     static let shared = AlarmBannerManager()
     private var window: UIWindow?
     
-    func showBanner(alarm: Alarm, onStop: @escaping () -> Void) {
+    func showBanner(alarm: Alarm, onStop: @escaping () -> Void, onSnooze: @escaping () -> Void) {
         guard window == nil else { return } // Prevent multiple banners
         
         let bannerView = AlarmBannerView(
