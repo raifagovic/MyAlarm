@@ -15,10 +15,17 @@ class AlarmBannerManager {
     func showBanner(alarm: Alarm, onStop: @escaping () -> Void) {
         guard window == nil else { return } // Prevent multiple banners
         
-        let bannerView = AlarmBannerView(alarm: alarm, onStop: {
-            self.dismissBanner()
-            onStop()
-        })
+        let bannerView = AlarmBannerView(
+            alarm: alarm,
+            onStop: {
+                self.dismissBanner()
+                onStop()
+            },
+            onSnooze: {
+                self.dismissBanner()
+                onSnooze()
+            }
+        )
         
         let hostingController = UIHostingController(rootView: bannerView)
         hostingController.view.backgroundColor = .clear
@@ -43,7 +50,7 @@ class AlarmBannerManager {
 struct AlarmBannerView: View {
     let alarm: Alarm
     var onStop: () -> Void
-    var onSnooze: () -> Void 
+    var onSnooze: () -> Void
 
     // Dynamically fetch top safe area inset from active window
     private var topInset: CGFloat {
