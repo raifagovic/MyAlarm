@@ -74,6 +74,19 @@ struct AlarmRingingView: View {
         .toolbar(.hidden, for: .navigationBar)
     }
 
+    private func snoozeAlarm() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+        AlarmBannerManager.shared.dismissBanner()
+
+        // Reschedule alarm
+        let newDate = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
+        NotificationManager.shared.scheduleAlarmNotification(at: newDate)
+
+        print("Alarm snoozed until \(newDate)")
+        onStop()
+    }
+    
     private func stopAlarm() {
         audioPlayer?.stop()
         audioPlayer = nil
