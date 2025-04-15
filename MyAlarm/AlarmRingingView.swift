@@ -63,9 +63,15 @@ struct AlarmRingingView: View {
 
             if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
-                AlarmBannerManager.shared.showBanner(alarm: alarm) {
-                    stopAlarm()
-                }
+                AlarmBannerManager.shared.showBanner(
+                    alarm: alarm,
+                    onStop: {
+                        stopAlarm()
+                    },
+                    onSnooze: {
+                        snoozeAlarm()
+                    }
+                )
             }
         }
         .onDisappear {
