@@ -108,8 +108,15 @@ struct AlarmBannerView: View {
 }
 
 func triggerAlarmBanner(alarm: Alarm) {
-    AlarmBannerManager.shared.showBanner(alarm: alarm) {
-        print("Alarm Stopped")
-    }
+    AlarmBannerManager.shared.showBanner(
+        alarm: alarm,
+        onStop: {
+            print("Alarm Stopped")
+        },
+        onSnooze: {
+            print("Alarm Snoozed")
+            // 💤 Add your snoozing logic here
+        }
+    )
 }
 
