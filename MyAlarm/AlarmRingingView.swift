@@ -37,7 +37,19 @@ struct AlarmRingingView: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(30)
                         }
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 20)
+                        
+                        if alarm.snoozeDuration > 0 {
+                            Button(action: snoozeAlarm) {
+                                Text("Snooze (\(alarm.snoozeDuration) min)")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .frame(width: 200, height: 50)
+                                    .background(Color.gray)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(25)
+                            }
+                            .padding(.bottom, 100)
+                        }
                     }
                 }
             } else {
