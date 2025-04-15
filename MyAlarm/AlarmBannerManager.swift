@@ -43,6 +43,7 @@ class AlarmBannerManager {
 struct AlarmBannerView: View {
     let alarm: Alarm
     var onStop: () -> Void
+    var onSnooze: () -> Void 
 
     // Dynamically fetch top safe area inset from active window
     private var topInset: CGFloat {
@@ -61,6 +62,19 @@ struct AlarmBannerView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                 Spacer()
+                
+                if alarm.snoozeDuration > 0 {
+                    Button(action: onSnooze) {
+                        Text("Snooze")
+                            .font(.headline)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                }
+                
                 Button(action: onStop) {
                     Text("Stop")
                         .font(.headline)
