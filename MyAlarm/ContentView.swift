@@ -35,6 +35,21 @@ struct ContentView: View {
                                 onToggle: { isOn in
                                     alarm.isOn = isOn
                                     saveContext()
+                                    
+                                    if !isOn {
+                                        // 🔴 If the alarm is turned off, clear snooze if it's the same alarm
+                                        if SnoozedAlarmManager.shared.snoozedAlarm?.id == alarm.id {
+                                            SnoozedAlarmManager.shared.snoozedAlarm = nil
+                                            SnoozedAlarmManager.shared.snoozedUntil = nil
+                                            NotificationManager.shared.cancelAllNotifications()
+                                        }
+                                        
+                                        // 🔴 Also reset ringing alarm if it’s the one turned off
+                                        if ringingAlarm?.id == alarm.id {
+                                            ringingAlarm = nil
+                                        }
+                                    }
+                                    
                                     updateRemainingTime()
                                 },
                                 onDelete: {
@@ -129,7 +144,8 @@ struct ContentView: View {
             }
             
             return
-                
+        }
+        
         if let nextAlarm = activeAlarms.min(by: { alarm1, alarm2 in
             let nextTime1 = AlarmUtils.nextAlarm(time: alarm1.time, calendar: calendar, now: now, repeatDays: alarm1.repeatDays)
             let nextTime2 = AlarmUtils.nextAlarm(time: alarm2.time, calendar: calendar, now: now, repeatDays: alarm2.repeatDays)

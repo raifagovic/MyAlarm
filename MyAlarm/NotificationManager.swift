@@ -46,4 +46,11 @@ class NotificationManager {
             }
         }
     }
+    
+    func cancelAllNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        center.removeAllDeliveredNotifications()
+        print("🔕 All notifications canceled.")
+    }
 }
