@@ -41,7 +41,7 @@ struct AlarmRingingView: View {
                         
                         if alarm.snoozeDuration > 0 {
                             Button(action: snoozeAlarm) {
-                                Text("Snooze (\(alarm.snoozeDuration) min)")
+                                Text("Snooze")
                                     .font(.system(size: 18, weight: .bold))
                                     .frame(width: 200, height: 50)
                                     .background(Color.gray)
