@@ -85,11 +85,17 @@ struct AlarmRingingView: View {
         audioPlayer = nil
         AlarmBannerManager.shared.dismissBanner()
 
-        // Reschedule alarm
-        let newDate = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
-        NotificationManager.shared.scheduleAlarmNotification(at: newDate)
+        // Calculate new snoozed time
+        let snoozedUntil = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
 
-        print("Alarm snoozed until \(newDate)")
+        // 💤 Store snooze info globally
+        SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
+        SnoozedAlarmManager.shared.snoozedAlarm = alarm
+
+        // Reschedule notification
+        NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
+
+        print("Alarm snoozed until \(snoozedUntil)")
         onStop()
     }
     
