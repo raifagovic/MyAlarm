@@ -111,7 +111,25 @@ struct ContentView: View {
         let now = Date()
         let calendar = Calendar.current
         let activeAlarms = alarms.filter { $0.isOn }
-
+        
+        // 💤 Check for a snoozed alarm
+        if let snoozedAlarm = SnoozedAlarmManager.shared.snoozedAlarm,
+           let snoozedUntil = SnoozedAlarmManager.shared.snoozedUntil,
+           snoozedUntil > now {
+            
+            // Use snoozed alarm time for remaining time message
+            remainingTimeMessage = AlarmUtils.remainingTimeMessage(for: snoozedUntil)
+            
+            // Optional: trigger ringing if snoozed time is here
+            if snoozedUntil.timeIntervalSince(now) <= 1 {
+                ringingAlarm = snoozedAlarm
+                // Clear snooze state after ringing
+                SnoozedAlarmManager.shared.snoozedAlarm = nil
+                SnoozedAlarmManager.shared.snoozedUntil = nil
+            }
+            
+            return
+                
         if let nextAlarm = activeAlarms.min(by: { alarm1, alarm2 in
             let nextTime1 = AlarmUtils.nextAlarm(time: alarm1.time, calendar: calendar, now: now, repeatDays: alarm1.repeatDays)
             let nextTime2 = AlarmUtils.nextAlarm(time: alarm2.time, calendar: calendar, now: now, repeatDays: alarm2.repeatDays)
