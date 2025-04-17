@@ -150,6 +150,7 @@ struct AlarmEditorView: View {
         alarm.label = label
         alarm.selectedSound = selectedSound
         alarm.snoozeDuration = snoozeDuration
+        alarm.mission = selectedMission
         try? modelContext.save()
         dismiss()
     }
