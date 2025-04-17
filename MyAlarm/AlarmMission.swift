@@ -7,20 +7,22 @@
 
 import Foundation
 
-enum AlarmMission: String, Codable, CaseIterable {
+enum AlarmMission: String, CaseIterable, Identifiable {
     case none
-    case recognizeLemon
-    case recognizeToothbrush
-    case recognizeSpoon
-    case recognizeMug
+    case lemon
+    case toothbrush
+    case spoon
+    case mug
+
+    var id: String { rawValue }
 
     var displayName: String {
         switch self {
         case .none: return "No Mission"
-        case .recognizeLemon: return "Recognize Lemon"
-        case .recognizeToothbrush: return "Recognize Toothbrush"
-        case .recognizeSpoon: return "Recognize Spoon"
-        case .recognizeMug: return "Recognize Mug"
+        case .lemon: return "Recognize Lemon"
+        case .toothbrush: return "Recognize Toothbrush"
+        case .spoon: return "Recognize Spoon"
+        case .mug: return "Recognize Mug"
         }
     }
 }
