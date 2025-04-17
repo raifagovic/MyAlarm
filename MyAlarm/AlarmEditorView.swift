@@ -98,6 +98,16 @@ struct AlarmEditorView: View {
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
+                    // Mission row
+                    NavigationLink(destination: MissionView(selectedMission: $selectedMission)) {
+                        HStack {
+                            Text("Mission")
+                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            Spacer()
+                            Text(selectedMission.displayName)
+                                .foregroundColor(Color(hex: "#A1A1A6"))
+                        }
+                    }
                 }
                 // Delete Button
                 Section {
