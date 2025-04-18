@@ -109,7 +109,7 @@ struct ContentView: View {
             selectedSound: "casio",
             snoozeDuration: 10,
             isOn: false,
-            mission: .none
+            selectedMission: AlarmMission.none.rawValue
         )
         modelContext.insert(newAlarm)
         selectedAlarm = newAlarm
