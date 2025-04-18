@@ -16,15 +16,7 @@ class Alarm {
     var selectedSound: String
     var snoozeDuration: Int
     var isOn: Bool
-
-    // New mission selection stored as a raw string for SwiftData compatibility
     var selectedMission: String
-
-    // Computed property for using the enum in code safely
-    var mission: AlarmMission {
-        get { AlarmMission(rawValue: selectedMission) ?? .none }
-        set { selectedMission = newValue.rawValue }
-    }
 
     init(
         time: Date,
@@ -33,7 +25,7 @@ class Alarm {
         selectedSound: String,
         snoozeDuration: Int,
         isOn: Bool,
-        selectedMission: String = AlarmMission.none.rawValue // default to "none"
+        selectedMission: String
     ) {
         self.time = time
         self.label = label
