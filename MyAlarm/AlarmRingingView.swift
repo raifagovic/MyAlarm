@@ -88,10 +88,19 @@ struct AlarmRingingView: View {
         SnoozedAlarmManager.shared.snoozedAlarm = alarm
 
         NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
-        print("🔁 Alarm snoozed until \(snoozedUntil)")
+
+        // 👉 Format local time for debugging
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        formatter.timeZone = TimeZone.current
+        let localTime = formatter.string(from: snoozedUntil)
+
+        print("🔁 Alarm snoozed until \(localTime)")
+        
         onStop()
     }
-
+    
     private func stopAlarm() {
         if !hasStopped {
             hasStopped = true
