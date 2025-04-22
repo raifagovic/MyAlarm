@@ -19,6 +19,7 @@ class AlarmBannerManager {
             alarm: alarm,
             onStop: {
                 self.dismissBanner()
+                print("Stop tapped")
                 onStop()
             },
             onSnooze: {
@@ -42,8 +43,16 @@ class AlarmBannerManager {
     }
     
     func dismissBanner() {
-        window?.isHidden = true
-        window = nil
+        print("🔧 AlarmBannerManager: dismissBanner() called")
+        
+        if let window = window {
+            // Explicitly remove the rootViewController
+            window.rootViewController = nil
+            window.isHidden = true
+            
+            // Remove strong reference
+            self.window = nil
+        }
     }
 }
 
@@ -106,17 +115,3 @@ struct AlarmBannerView: View {
         .ignoresSafeArea() // Let it flow behind if needed
     }
 }
-
-func triggerAlarmBanner(alarm: Alarm) {
-    AlarmBannerManager.shared.showBanner(
-        alarm: alarm,
-        onStop: {
-            print("Alarm Stopped")
-        },
-        onSnooze: {
-            print("Alarm Snoozed")
-            // 💤 Add your snoozing logic here
-        }
-    )
-}
-

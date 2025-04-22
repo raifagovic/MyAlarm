@@ -103,7 +103,14 @@ struct ContentView: View {
     }
 
     private func addAlarm() {
-        let newAlarm = Alarm(time: Date(), repeatDays: [], label: "", selectedSound: "casio", snoozeDuration: 10, isOn: false)
+        let newAlarm = Alarm(
+            time: Date(),
+            repeatDays: [], label: "",
+            selectedSound: "casio",
+            snoozeDuration: 10,
+            isOn: false,
+            selectedMission: "none"
+        )
         modelContext.insert(newAlarm)
         selectedAlarm = newAlarm
         updateRemainingTime()
@@ -183,3 +190,4 @@ struct ContentView: View {
         }
     }
 }
+

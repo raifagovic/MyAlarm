@@ -11,7 +11,6 @@ import AVFoundation
 struct SoundView: View {
     @Binding var selectedSound: String
     @State private var audioPlayer: AVAudioPlayer?
-    @State private var isAlarmRinging = false
 
     let sounds = ["beep", "bell", "casio", "centaurus", "digital", "threat", "warning"]
 
@@ -45,7 +44,7 @@ struct SoundView: View {
             }
         }
         .onDisappear {
-            stopAlarm() // Ensure sound stops when leaving the screen
+            audioPlayer?.stop() // Stop preview if user leaves screen
         }
     }
 
@@ -58,20 +57,11 @@ struct SoundView: View {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.numberOfLoops = isAlarmRinging ? -1 : 0 // Loop only for alarm ringing
+            audioPlayer?.numberOfLoops = 0
             audioPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
     }
-
-    func startAlarmRinging() {
-        isAlarmRinging = true
-        playSound(named: selectedSound)
-    }
-
-    func stopAlarm() {
-        isAlarmRinging = false
-        audioPlayer?.stop()
-    }
 }
+

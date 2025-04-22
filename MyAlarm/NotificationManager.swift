@@ -54,3 +54,4 @@ class NotificationManager {
         print("🔕 All notifications canceled.")
     }
 }
+

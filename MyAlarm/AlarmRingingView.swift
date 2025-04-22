@@ -10,10 +10,12 @@ import AVFoundation
 
 struct AlarmRingingView: View {
     let alarm: Alarm
-    @State private var audioPlayer: AVAudioPlayer?
     var onStop: () -> Void
+    
+    @State private var audioPlayer: AVAudioPlayer?
     @State private var isPhoneLocked: Bool = false
     @State private var hasShownBanner = false
+    @State private var hasStopped = false
 
     var body: some View {
         Group {
@@ -53,11 +55,10 @@ struct AlarmRingingView: View {
                     }
                 }
             } else {
-                // 📱 No UI here – banner is shown using UIKit
-                Color.clear
+                Color.clear // UIKit banner handles UI
             }
         }
-        .onAppear {
+        .task {
             checkPhoneState()
             playSound(named: alarm.selectedSound)
 
@@ -66,46 +67,56 @@ struct AlarmRingingView: View {
                 AlarmBannerManager.shared.showBanner(
                     alarm: alarm,
                     onStop: {
+                        AlarmBannerManager.shared.dismissBanner() // ✅ Make sure it's gone
                         stopAlarm()
                     },
                     onSnooze: {
+                        AlarmBannerManager.shared.dismissBanner() // ✅ Just to be safe
                         snoozeAlarm()
                     }
                 )
             }
         }
         .onDisappear {
+            print("Stopping alarm...")
             stopAlarm()
         }
         .toolbar(.hidden, for: .navigationBar)
     }
 
     private func snoozeAlarm() {
-        audioPlayer?.stop()
-        audioPlayer = nil
+        guard !hasStopped else { return }
+        hasStopped = true
+        stopAudio()
+        
         AlarmBannerManager.shared.dismissBanner()
-
-        // Calculate new snoozed time
+        
         let snoozedUntil = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
-
-        // 💤 Store snooze info globally
+        
         SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
         SnoozedAlarmManager.shared.snoozedAlarm = alarm
-
-        // Reschedule notification
+        
         NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
-
         print("Alarm snoozed until \(snoozedUntil)")
         onStop()
     }
     
     private func stopAlarm() {
+        if !hasStopped {
+            hasStopped = true
+            stopAudio()
+            print("Alarm stopped")
+            onStop()
+        }
+        
+        AlarmBannerManager.shared.dismissBanner() // 👈 Always try to dismiss
+    }
+    
+    private func stopAudio() {
         audioPlayer?.stop()
         audioPlayer = nil
-        onStop()
-        AlarmBannerManager.shared.dismissBanner()
     }
-
+    
     private func playSound(named sound: String) {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
@@ -128,3 +139,4 @@ struct AlarmRingingView: View {
         return formatter.string(from: Date())
     }
 }
+

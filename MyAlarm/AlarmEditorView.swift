@@ -16,6 +16,7 @@ struct AlarmEditorView: View {
     @State private var label: String
     @State private var selectedSound: String
     @State private var snoozeDuration: Int
+    @State private var selectedMission: String
     
     @FocusState private var isLabelFocused: Bool
     
@@ -28,6 +29,7 @@ struct AlarmEditorView: View {
         _label = State(initialValue: alarm.label)
         _selectedSound = State(initialValue: alarm.selectedSound)
         _snoozeDuration = State(initialValue: alarm.snoozeDuration)
+        _selectedMission = State(initialValue: alarm.selectedMission)
     }
     
     var body: some View {
@@ -96,6 +98,16 @@ struct AlarmEditorView: View {
                                 .foregroundColor(Color(hex: "#A1A1A6"))
                         }
                     }
+                    // Mission row
+                    NavigationLink(destination: MissionView(selectedMission: $selectedMission)) {
+                        HStack {
+                            Text("Mission")
+                                .foregroundColor(Color(hex: "#F1F1F1"))
+                            Spacer()
+                            Text(selectedMission.capitalized)
+                                .foregroundColor(Color(hex: "#A1A1A6"))
+                        }
+                    }
                 }
                 // Delete Button
                 Section {
@@ -138,6 +150,7 @@ struct AlarmEditorView: View {
         alarm.label = label
         alarm.selectedSound = selectedSound
         alarm.snoozeDuration = snoozeDuration
+        alarm.selectedMission = selectedMission
         try? modelContext.save()
         dismiss()
     }
@@ -147,4 +160,5 @@ struct AlarmEditorView: View {
         dismiss()
     }
 }
+
 

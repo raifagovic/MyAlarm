@@ -16,13 +16,23 @@ class Alarm {
     var selectedSound: String
     var snoozeDuration: Int
     var isOn: Bool
+    var selectedMission: String
 
-    init(time: Date, repeatDays: [String], label: String, selectedSound: String, snoozeDuration: Int, isOn: Bool) {
+    init(
+        time: Date,
+        repeatDays: [String],
+        label: String,
+        selectedSound: String,
+        snoozeDuration: Int,
+        isOn: Bool,
+        selectedMission: String
+    ) {
         self.time = time
         self.label = label
         self.repeatDays = repeatDays
         self.selectedSound = selectedSound
         self.snoozeDuration = snoozeDuration
         self.isOn = isOn
+        self.selectedMission = selectedMission
     }
 }
