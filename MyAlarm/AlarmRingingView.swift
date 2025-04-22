@@ -11,19 +11,17 @@ import AVFoundation
 struct AlarmRingingView: View {
     let alarm: Alarm
     var onStop: () -> Void
-    
+
     @State private var audioPlayer: AVAudioPlayer?
-    @State private var isPhoneLocked: Bool = false
-    @State private var hasShownBanner = false
+    @State private var isPhoneLocked = false
     @State private var hasStopped = false
+    @State private var hasShownBanner = false
 
     var body: some View {
         Group {
             if isPhoneLocked {
-                // 🔒 Full-Screen Alarm When Phone is Locked
                 ZStack {
                     Color.black.ignoresSafeArea()
-
                     VStack {
                         Text(currentTimeString())
                             .font(.system(size: 80, weight: .bold, design: .rounded))
@@ -40,7 +38,7 @@ struct AlarmRingingView: View {
                                 .cornerRadius(30)
                         }
                         .padding(.bottom, 20)
-                        
+
                         if alarm.snoozeDuration > 0 {
                             Button(action: snoozeAlarm) {
                                 Text("Snooze")
@@ -55,7 +53,7 @@ struct AlarmRingingView: View {
                     }
                 }
             } else {
-                Color.clear // UIKit banner handles UI
+                Color.clear
             }
         }
         .task {
@@ -67,19 +65,15 @@ struct AlarmRingingView: View {
                 AlarmBannerManager.shared.showBanner(
                     alarm: alarm,
                     onStop: {
-                        AlarmBannerManager.shared.dismissBanner() // ✅ Make sure it's gone
+                        AlarmBannerManager.shared.dismissBanner()
                         stopAlarm()
                     },
                     onSnooze: {
-                        AlarmBannerManager.shared.dismissBanner() // ✅ Just to be safe
+                        AlarmBannerManager.shared.dismissBanner()
                         snoozeAlarm()
                     }
                 )
             }
-        }
-        .onDisappear {
-            print("Stopping alarm...")
-            stopAlarm()
         }
         .toolbar(.hidden, for: .navigationBar)
     }
@@ -88,35 +82,32 @@ struct AlarmRingingView: View {
         guard !hasStopped else { return }
         hasStopped = true
         stopAudio()
-        
-        AlarmBannerManager.shared.dismissBanner()
-        
+
         let snoozedUntil = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
-        
         SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
         SnoozedAlarmManager.shared.snoozedAlarm = alarm
-        
+
         NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
-        print("Alarm snoozed until \(snoozedUntil)")
+        print("🔁 Alarm snoozed until \(snoozedUntil)")
         onStop()
     }
-    
+
     private func stopAlarm() {
         if !hasStopped {
             hasStopped = true
             stopAudio()
-            print("Alarm stopped")
+            NotificationManager.shared.cancelAllNotifications()
+            AlarmBannerManager.shared.dismissBanner()
             onStop()
+            print("🛑 Alarm stopped")
         }
-        
-        AlarmBannerManager.shared.dismissBanner() // 👈 Always try to dismiss
     }
-    
+
     private func stopAudio() {
         audioPlayer?.stop()
         audioPlayer = nil
     }
-    
+
     private func playSound(named sound: String) {
         guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
         do {
@@ -124,7 +115,7 @@ struct AlarmRingingView: View {
             audioPlayer?.numberOfLoops = -1
             audioPlayer?.play()
         } catch {
-            print("Error playing sound: \(error.localizedDescription)")
+            print("⚠️ Error playing sound: \(error.localizedDescription)")
         }
     }
 

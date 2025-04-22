@@ -11,7 +11,7 @@ class SnoozedAlarmManager {
     static let shared = SnoozedAlarmManager()
     
     var snoozedUntil: Date?
-    weak var snoozedAlarm: Alarm? // 👈 use a weak reference to avoid retain cycles
+    var snoozedAlarm: Alarm?
 
     private init() {}
 
