@@ -21,6 +21,18 @@ enum AlarmUtils {
         // Extract hour and minute from the alarm time
         let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
         
+        // 🔸 If no repeat days selected → treat it as a one-time alarm
+        if repeatDaysInt.isEmpty {
+            if let todayAlarm = calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: now) {
+                if todayAlarm > now {
+                    return todayAlarm // later today
+                } else {
+                    // same time tomorrow
+                    return calendar.date(byAdding: .day, value: 1, to: todayAlarm)!
+                }
+            }
+        }
+        
         // Set the alarm time for today
         if let todayAlarm = calendar.date(bySettingHour: timeComponents.hour!, minute: timeComponents.minute!, second: 0, of: now),
            todayAlarm > now, repeatDaysInt.contains(todayWeekday) {
