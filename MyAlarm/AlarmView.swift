@@ -103,9 +103,8 @@ struct AlarmView: View {
                         }
                     }
             )
-            .frame(maxWidth: .infinity, maxHeight: 100)
+            .frame(maxWidth: .infinity)
             .padding([.leading, .trailing])
-            .padding([.top, .bottom], 4)
             .onTapGesture {
                 onEdit() // Notify parent view (ContentView) to start editing
             }
