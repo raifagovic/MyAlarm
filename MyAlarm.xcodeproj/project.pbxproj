@@ -34,6 +34,7 @@
 		DC667B4B2DAF95CC00833F41 /* SnoozedAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */; };
 		DC667B512DB7C58A00833F41 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B502DB7C58A00833F41 /* MissionView.swift */; };
 		DC667B532DC0C86400833F41 /* MissionCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B522DC0C86400833F41 /* MissionCameraView.swift */; };
+		DC667B552DC0C9BE00833F41 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozedAlarmManager.swift; sourceTree = "<group>"; };
 		DC667B502DB7C58A00833F41 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		DC667B522DC0C86400833F41 /* MissionCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraView.swift; sourceTree = "<group>"; };
+		DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */,
 				DC667B502DB7C58A00833F41 /* MissionView.swift */,
 				DC667B522DC0C86400833F41 /* MissionCameraView.swift */,
+				DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */,
+				DC667B552DC0C9BE00833F41 /* CameraViewModel.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
