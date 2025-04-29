@@ -35,6 +35,7 @@
 		DC667B512DB7C58A00833F41 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B502DB7C58A00833F41 /* MissionView.swift */; };
 		DC667B532DC0C86400833F41 /* MissionCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B522DC0C86400833F41 /* MissionCameraView.swift */; };
 		DC667B552DC0C9BE00833F41 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */; };
+		DC667B572DC0CB4E00833F41 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		DC667B502DB7C58A00833F41 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		DC667B522DC0C86400833F41 /* MissionCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraView.swift; sourceTree = "<group>"; };
 		DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				DC667B502DB7C58A00833F41 /* MissionView.swift */,
 				DC667B522DC0C86400833F41 /* MissionCameraView.swift */,
 				DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */,
+				DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				DC667B242D1AAC8A00833F41 /* SnoozeView.swift in Sources */,
 				DC661BB92CF87E360039F6CC /* Alarm.swift in Sources */,
 				DC667B532DC0C86400833F41 /* MissionCameraView.swift in Sources */,
+				DC667B572DC0CB4E00833F41 /* CameraPreviewView.swift in Sources */,
 				DC661BB52CF87AB80039F6CC /* AlarmView.swift in Sources */,
 				DC667B282D2AB65200833F41 /* NavigationBarHelper.swift in Sources */,
 				DC667B2E2D5B77C500833F41 /* AlarmUtils.swift in Sources */,
