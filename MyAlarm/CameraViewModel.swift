@@ -23,7 +23,7 @@ class CameraViewModel: NSObject, ObservableObject {
 
     override init() {
         // Load the MobileNetV2 model
-        guard let visionModel = try? VNCoreMLModel(for: MobileNetV2(configuration: MLModelConfiguration()).model) else {
+        guard let visionModel = try? VNCoreMLModel(for: MobileNetV2FP16(configuration: MLModelConfiguration()).model) else {
             fatalError("Failed to load MobileNetV2 model")
         }
         self.model = visionModel
