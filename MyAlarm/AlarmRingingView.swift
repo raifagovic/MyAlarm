@@ -16,6 +16,7 @@ struct AlarmRingingView: View {
     @State private var isPhoneLocked = false
     @State private var hasStopped = false
     @State private var hasShownBanner = false
+    @State private var showMission = false
 
     var body: some View {
         Group {
