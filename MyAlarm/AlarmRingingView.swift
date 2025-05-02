@@ -61,7 +61,9 @@ struct AlarmRingingView: View {
             checkPhoneState()
             playSound(named: alarm.selectedSound)
 
-            if !isPhoneLocked && !hasShownBanner {
+            if !alarm.selectedMission.isEmpty {
+                showMission = true
+            } else if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
                 AlarmBannerManager.shared.showBanner(
                     alarm: alarm,
