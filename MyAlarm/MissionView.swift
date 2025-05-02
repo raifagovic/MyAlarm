@@ -10,7 +10,6 @@ import SwiftUI
 struct MissionView: View {
     @Binding var selectedMission: String
 
-    // List of available missions as simple strings
     let allMissions = ["none", "lemon", "toothbrush", "spoon", "mug"]
 
     var body: some View {
