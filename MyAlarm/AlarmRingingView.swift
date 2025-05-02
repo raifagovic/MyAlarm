@@ -79,6 +79,11 @@ struct AlarmRingingView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .sheet(isPresented: $showMission) {
+            MissionCameraView(requiredObject: alarm.selectedMission) {
+                stopAlarm()
+            }
+        }
     }
 
     private func snoozeAlarm() {
