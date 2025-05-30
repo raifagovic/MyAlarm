@@ -37,14 +37,14 @@ struct ContentView: View {
                                     saveContext()
                                     
                                     if !isOn {
-                                        // 🔴 If the alarm is turned off, clear snooze if it's the same alarm
+                                        // If the alarm is turned off, clear snooze if it's the same alarm
                                         if SnoozedAlarmManager.shared.snoozedAlarm?.id == alarm.id {
                                             SnoozedAlarmManager.shared.snoozedAlarm = nil
                                             SnoozedAlarmManager.shared.snoozedUntil = nil
                                             NotificationManager.shared.cancelAllNotifications()
                                         }
                                         
-                                        // 🔴 Also reset ringing alarm if it’s the one turned off
+                                        // Also reset ringing alarm if it’s the one turned off
                                         if ringingAlarm?.id == alarm.id {
                                             ringingAlarm = nil
                                         }
@@ -63,10 +63,10 @@ struct ContentView: View {
                         }
                     }
                 }
-                // 🔹 Show small banner instead of full screen when unlocked
+                // Show small banner instead of full screen when unlocked
                 if ringingAlarm != nil {
                     AlarmRingingView(alarm: ringingAlarm!, onStop: {
-                        ringingAlarm = nil // 🔹 Hide the banner when alarm stops
+                        ringingAlarm = nil // Hide the banner when alarm stops
                     })
                     .transition(.move(edge: .top))
                     .zIndex(1)
@@ -134,7 +134,7 @@ struct ContentView: View {
         let calendar = Calendar.current
         let activeAlarms = alarms.filter { $0.isOn }
         
-        // 💤 Check for a snoozed alarm
+        // Check for a snoozed alarm
         if let snoozedAlarm = SnoozedAlarmManager.shared.snoozedAlarm,
            let snoozedUntil = SnoozedAlarmManager.shared.snoozedUntil,
            snoozedUntil > now {
