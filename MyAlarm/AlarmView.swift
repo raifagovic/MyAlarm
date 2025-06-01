@@ -22,7 +22,7 @@ struct AlarmView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        onDelete() // Trigger parent-provided delete action
+                        onDelete()
                     }) {
                         Text("Delete")
                             .foregroundColor(.white)
@@ -71,12 +71,12 @@ struct AlarmView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(alarm.isOn ? Color.clear : Color(hex: "#A1A1A6"))
-                        .frame(width: 51, height: 31) // Matches the default size of the Toggle background
+                        .frame(width: 51, height: 31)
                     
                     Toggle(isOn: Binding(
                         get: { alarm.isOn },
                         set: { newValue in
-                            onToggle(newValue) // Notify parent of toggle change
+                            onToggle(newValue)
                         }
                     )) {
                     }
@@ -88,15 +88,15 @@ struct AlarmView: View {
             .padding()
             .background(Color(hex: "#2C2C2E"))
             .cornerRadius(10)
-            .offset(x: showDelete ? -150 : 0) // Add an offset when swiped
+            .offset(x: showDelete ? -150 : 0)
             .gesture(
                 DragGesture()
                     .onEnded { value in
-                        if value.translation.width < -100 { // Swipe left to show delete
+                        if value.translation.width < -100 {
                             withAnimation {
                                 showDelete = true
                             }
-                        } else if value.translation.width > 100 { // Swipe right to hide delete
+                        } else if value.translation.width > 100 {
                             withAnimation {
                                 showDelete = false
                             }
@@ -106,7 +106,7 @@ struct AlarmView: View {
             .frame(maxWidth: .infinity)
             .padding([.leading, .trailing])
             .onTapGesture {
-                onEdit() // Notify parent view (ContentView) to start editing
+                onEdit()
             }
         }
     }
