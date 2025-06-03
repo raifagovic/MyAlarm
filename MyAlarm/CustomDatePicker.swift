@@ -75,12 +75,11 @@ struct CustomDatePicker: UIViewRepresentable {
         }
     }
     
-    // Remove the default highlight view from UIDatePicker
     private func removeDefaultHighlight(from datePicker: UIDatePicker) {
         for subview in datePicker.subviews {
             for deeperSubview in subview.subviews {
                 if deeperSubview.frame.height < 1 || deeperSubview.backgroundColor != nil {
-                    deeperSubview.isHidden = true // Hide the default highlight
+                    deeperSubview.isHidden = true
                 }
             }
         }

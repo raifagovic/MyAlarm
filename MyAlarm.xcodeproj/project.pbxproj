@@ -34,7 +34,6 @@
 		DC667B4B2DAF95CC00833F41 /* SnoozedAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */; };
 		DC667B512DB7C58A00833F41 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B502DB7C58A00833F41 /* MissionView.swift */; };
 		DC667B532DC0C86400833F41 /* MissionCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B522DC0C86400833F41 /* MissionCameraView.swift */; };
-		DC667B552DC0C9BE00833F41 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */; };
 		DC667B572DC0CB4E00833F41 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */; };
 		DC85FA6E2DC268C000CE78DB /* MobileNetV2FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DC85FA6D2DC268C000CE78DB /* MobileNetV2FP16.mlmodel */; };
 /* End PBXBuildFile section */
@@ -68,7 +67,6 @@
 		DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnoozedAlarmManager.swift; sourceTree = "<group>"; };
 		DC667B502DB7C58A00833F41 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		DC667B522DC0C86400833F41 /* MissionCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraView.swift; sourceTree = "<group>"; };
-		DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		DC85FA6D2DC268C000CE78DB /* MobileNetV2FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2FP16.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,12 +107,10 @@
 				DC661BB62CF87C490039F6CC /* AlarmEditorView.swift */,
 				DC661B872CC566E50039F6CC /* ContentView.swift */,
 				DC661BBA2CF88E1D0039F6CC /* RepeatView.swift */,
-				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
-				DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */,
-				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
-				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
-				DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */,
 				DC667B2F2D646D7B00833F41 /* SoundView.swift */,
+				DC667B232D1AAC8A00833F41 /* SnoozeView.swift */,
+				DC667B502DB7C58A00833F41 /* MissionView.swift */,
+				DC667B2D2D5B77C500833F41 /* AlarmUtils.swift */,
 				DC661B892CC566E60039F6CC /* Assets.xcassets */,
 				DC667B312D67DCB200833F41 /* AlarmSounds */,
 				DC661B8B2CC566E60039F6CC /* Preview Content */,
@@ -122,10 +118,11 @@
 				DC667B442DA2AA4300833F41 /* NotificationManager.swift */,
 				DC667B462DA8303900833F41 /* AlarmBannerManager.swift */,
 				DC667B4A2DAF95CC00833F41 /* SnoozedAlarmManager.swift */,
-				DC667B502DB7C58A00833F41 /* MissionView.swift */,
 				DC667B522DC0C86400833F41 /* MissionCameraView.swift */,
-				DC667B542DC0C9BE00833F41 /* CameraViewModel.swift */,
 				DC667B562DC0CB4D00833F41 /* CameraPreviewView.swift */,
+				DC667B292D331B3500833F41 /* CustomDatePicker.swift */,
+				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
+				DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */,
 				DC85FA6D2DC268C000CE78DB /* MobileNetV2FP16.mlmodel */,
 			);
 			path = MyAlarm;
@@ -231,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */,
-				DC667B552DC0C9BE00833F41 /* CameraViewModel.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
 				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
 				DC85FA6E2DC268C000CE78DB /* MobileNetV2FP16.mlmodel in Sources */,
