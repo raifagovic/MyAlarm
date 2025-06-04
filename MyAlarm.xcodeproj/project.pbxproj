@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC5FDDF22DF04C7800FAB44F /* silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC5FDDF12DF04C7800FAB44F /* silent.mp3 */; };
 		DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B852CC566E50039F6CC /* MyAlarmApp.swift */; };
 		DC661B882CC566E50039F6CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B872CC566E50039F6CC /* ContentView.swift */; };
 		DC661B8A2CC566E60039F6CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC661B892CC566E60039F6CC /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC5FDDF12DF04C7800FAB44F /* silent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silent.mp3; sourceTree = "<group>"; };
 		DC661B822CC566E50039F6CC /* MyAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC661B852CC566E50039F6CC /* MyAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmApp.swift; sourceTree = "<group>"; };
 		DC661B872CC566E50039F6CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				DC667B362D67DDE100833F41 /* digital.mp3 */,
 				DC667B382D67DDE100833F41 /* threat.mp3 */,
 				DC667B332D67DDE100833F41 /* warning.mp3 */,
+				DC5FDDF12DF04C7800FAB44F /* silent.mp3 */,
 			);
 			path = AlarmSounds;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				DC667B3F2D67DDE100833F41 /* threat.mp3 in Resources */,
 				DC661B8D2CC566E60039F6CC /* Preview Assets.xcassets in Resources */,
 				DC667B3B2D67DDE100833F41 /* bell.mp3 in Resources */,
+				DC5FDDF22DF04C7800FAB44F /* silent.mp3 in Resources */,
 				DC667B3E2D67DDE100833F41 /* beep.mp3 in Resources */,
 				DC667B3D2D67DDE100833F41 /* digital.mp3 in Resources */,
 				DC667B392D67DDE100833F41 /* casio.mp3 in Resources */,
