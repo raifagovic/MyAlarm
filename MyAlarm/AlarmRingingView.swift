@@ -87,7 +87,7 @@ struct AlarmRingingView: View {
         SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
         SnoozedAlarmManager.shared.snoozedAlarm = alarm
 
-        NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
+        NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil, label: alarm.label)
 
         let formatter = DateFormatter()
         formatter.timeStyle = .short

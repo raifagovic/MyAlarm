@@ -26,10 +26,10 @@ class NotificationManager {
         }
     }
 
-    func scheduleAlarmNotification(at date: Date) {
+    func scheduleAlarmNotification(at date: Date, label: String) {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
-        content.title = "Alarm"
+        content.title = label.isEmpty ? "Alarm" : label
         content.body = "Your alarm is ringing!"
         content.sound = UNNotificationSound.default
 
