@@ -16,7 +16,6 @@ struct AlarmRingingView: View {
     @State private var isPhoneLocked = false
     @State private var hasStopped = false
     @State private var hasShownBanner = false
-    @State private var showMission = false
 
     var body: some View {
         Group {
@@ -61,9 +60,7 @@ struct AlarmRingingView: View {
             checkPhoneState()
             playSound(named: alarm.selectedSound)
 
-            if !alarm.selectedMission.isEmpty {
-                showMission = true
-            } else if !isPhoneLocked && !hasShownBanner {
+            if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
                 AlarmBannerManager.shared.showBanner(
                     alarm: alarm,
@@ -79,11 +76,6 @@ struct AlarmRingingView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
-        .sheet(isPresented: $showMission) {
-            MissionCameraView(requiredObject: alarm.selectedMission) {
-                stopAlarm()
-            }
-        }
     }
 
     private func snoozeAlarm() {
@@ -97,7 +89,6 @@ struct AlarmRingingView: View {
 
         NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil)
 
-        // 👉 Format local time for debugging
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .short
@@ -147,4 +138,3 @@ struct AlarmRingingView: View {
         return formatter.string(from: Date())
     }
 }
-
