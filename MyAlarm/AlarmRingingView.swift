@@ -22,10 +22,35 @@ struct AlarmRingingView: View {
             if isPhoneLocked {
                 ZStack {
                     Color.black.ignoresSafeArea()
+
                     VStack {
+                        Spacer()
+
+                        // Label at the top (centered)
+                        if !alarm.label.trimmingCharacters(in: .whitespaces).isEmpty {
+                            Text(alarm.label)
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 40)
+                        }
+
+                        // Snooze button under the label
+                        if alarm.snoozeDuration > 0 {
+                            Button(action: snoozeAlarm) {
+                                Text("Snooze")
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .frame(width: 200, height: 50)
+                                    .background(Color.gray)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(25)
+                            }
+                            .padding(.top, 20)
+                        }
 
                         Spacer()
 
+                        // Stop button fixed at the bottom
                         Button(action: stopAlarm) {
                             Text("Stop")
                                 .font(.system(size: 24, weight: .bold))
@@ -34,19 +59,7 @@ struct AlarmRingingView: View {
                                 .foregroundColor(.black)
                                 .cornerRadius(30)
                         }
-                        .padding(.bottom, 20)
-
-                        if alarm.snoozeDuration > 0 {
-                            Button(action: snoozeAlarm) {
-                                Text("Snooze")
-                                    .font(.system(size: 18, weight: .bold))
-                                    .frame(width: 200, height: 50)
-                                    .background(Color.gray)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(25)
-                            }
-                            .padding(.bottom, 100)
-                        }
+                        .padding(.bottom, 40)
                     }
                 }
             } else {
@@ -86,17 +99,10 @@ struct AlarmRingingView: View {
 
         NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil, label: alarm.label)
 
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .short
-        formatter.timeZone = TimeZone.current
-        let localTime = formatter.string(from: snoozedUntil)
-
-        print("🔁 Alarm snoozed until \(localTime)")
-        
+        print("🔁 Alarm snoozed until \(snoozedUntil)")
         onStop()
     }
-    
+
     private func stopAlarm() {
         if !hasStopped {
             hasStopped = true
