@@ -23,9 +23,6 @@ struct AlarmRingingView: View {
                 ZStack {
                     Color.black.ignoresSafeArea()
                     VStack {
-                        Text(currentTimeString())
-                            .font(.system(size: 80, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
 
                         Spacer()
 
@@ -130,11 +127,5 @@ struct AlarmRingingView: View {
     private func checkPhoneState() {
         let appState = UIApplication.shared.applicationState
         isPhoneLocked = (appState != .active)
-    }
-
-    private func currentTimeString() -> String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: Date())
     }
 }
