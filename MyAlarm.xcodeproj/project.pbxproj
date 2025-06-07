@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC5FDDF22DF04C7800FAB44F /* silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC5FDDF12DF04C7800FAB44F /* silent.mp3 */; };
+		DC5FDDF42DF4839500FAB44F /* MissionCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */; };
 		DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B852CC566E50039F6CC /* MyAlarmApp.swift */; };
 		DC661B882CC566E50039F6CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B872CC566E50039F6CC /* ContentView.swift */; };
 		DC661B8A2CC566E60039F6CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC661B892CC566E60039F6CC /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		DC5FDDF12DF04C7800FAB44F /* silent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silent.mp3; sourceTree = "<group>"; };
+		DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraView.swift; sourceTree = "<group>"; };
 		DC661B822CC566E50039F6CC /* MyAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC661B852CC566E50039F6CC /* MyAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmApp.swift; sourceTree = "<group>"; };
 		DC661B872CC566E50039F6CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				DC661BB22CF796910039F6CC /* Color+Extensions.swift */,
 				DC667B272D2AB65200833F41 /* NavigationBarHelper.swift */,
 				DC85FA6D2DC268C000CE78DB /* MobileNetV2FP16.mlmodel */,
+				DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				DC85FA6E2DC268C000CE78DB /* MobileNetV2FP16.mlmodel in Sources */,
 				DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */,
 				DC667B452DA2AA4400833F41 /* NotificationManager.swift in Sources */,
+				DC5FDDF42DF4839500FAB44F /* MissionCameraView.swift in Sources */,
 				DC667B432D91C41D00833F41 /* AlarmRingingView.swift in Sources */,
 				DC661BBB2CF88E1D0039F6CC /* RepeatView.swift in Sources */,
 				DC661BB72CF87C490039F6CC /* AlarmEditorView.swift in Sources */,
