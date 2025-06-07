@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import Combine
+import UIKit
 
 class MissionCameraViewModel: NSObject, ObservableObject {
     let session = AVCaptureSession()

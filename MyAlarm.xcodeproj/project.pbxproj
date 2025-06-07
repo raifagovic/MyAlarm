@@ -89,7 +89,6 @@
 		DC661B792CC566E50039F6CC = {
 			isa = PBXGroup;
 			children = (
-				DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */,
 				DC661B842CC566E50039F6CC /* MyAlarm */,
 				DC661B832CC566E50039F6CC /* Products */,
 			);
@@ -129,6 +128,7 @@
 				DC85FA6D2DC268C000CE78DB /* MobileNetV2FP16.mlmodel */,
 				DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */,
 				DC5FDDF52DF4861800FAB44F /* MissionCameraViewModel.swift */,
+				DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
