@@ -89,6 +89,11 @@ struct AlarmRingingView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .fullScreenCover(isPresented: $showMissionCamera) {
+            MissionCameraView(targetObject: "lemon") {
+                stopAlarm()
+            }
+        }
     }
 
     private func snoozeAlarm() {
