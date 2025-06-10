@@ -67,6 +67,7 @@ struct MissionCameraView: View {
         }
         .onAppear {
             viewModel.startSession()
+            viewModel.onSuccess = onSuccess
         }
         .onDisappear {
             viewModel.stopSession()
