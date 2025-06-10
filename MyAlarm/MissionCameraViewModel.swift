@@ -110,7 +110,7 @@ extension MissionCameraViewModel: AVCapturePhotoCaptureDelegate {
             if matchesTarget {
                 // Call onSuccess on the main thread
                 DispatchQueue.main.async {
-                    self.onSuccess()
+                    self.onSuccess?()
                 }
             } else {
                 // You can show an error/toast here if needed
