@@ -74,6 +74,18 @@ class MissionCameraViewModel: NSObject, ObservableObject {
         secondsRemaining = totalSeconds
         progress = 0.0
     }
+    
+    func detectObject(in image: UIImage, completion: @escaping (Bool) -> Void) {
+        // Use your VNCoreMLRequest + VNImageRequestHandler here
+        // Call `completion(true)` if it matches the target object
+        // Call `completion(false)` otherwise
+
+        // Example placeholder:
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            let result = Bool.random() // replace with real result
+            completion(result)
+        }
+    }
 
     func capturePhoto(targetObject: String) {
         let settings = AVCapturePhotoSettings()
