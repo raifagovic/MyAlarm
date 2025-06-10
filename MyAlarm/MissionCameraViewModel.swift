@@ -90,8 +90,19 @@ extension MissionCameraViewModel: AVCapturePhotoCaptureDelegate {
         guard let imageData = photo.fileDataRepresentation(),
               let image = UIImage(data: imageData) else { return }
 
-        // Use CoreML to check if image matches the `targetObject`
-        // If match is found -> dismiss alarm
-        // If not -> do nothing or show a message
+        // Run image through ML model (you'll already have this logic)
+        detectObject(in: image) { [weak self] matchesTarget in
+            guard let self = self else { return }
+
+            if matchesTarget {
+                // Call onSuccess on the main thread
+                DispatchQueue.main.async {
+                    self.onSuccess()
+                }
+            } else {
+                // You can show an error/toast here if needed
+                print("❌ Object does not match target")
+            }
+        }
     }
 }
