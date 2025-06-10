@@ -23,6 +23,7 @@ class MissionCameraViewModel: NSObject, ObservableObject {
     private let totalSeconds: Int = 30
 
     var timerPublisher = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    var onSuccess: (() -> Void)?
 
     override init() {
         super.init()
