@@ -12,6 +12,7 @@ struct MissionCameraView: View {
     @StateObject private var viewModel = MissionCameraViewModel()
     
     let targetObject: String  // e.g., "lemon"
+    let onSuccess: () -> Void
 
     var body: some View {
         ZStack {
