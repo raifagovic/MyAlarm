@@ -16,6 +16,7 @@ struct AlarmRingingView: View {
     @State private var isPhoneLocked = false
     @State private var hasStopped = false
     @State private var hasShownBanner = false
+    @State private var showMissionCamera = false
 
     var body: some View {
         Group {
@@ -51,7 +52,9 @@ struct AlarmRingingView: View {
                         Spacer()
 
                         // Stop button fixed at the bottom
-                        Button(action: stopAlarm) {
+                        Button(action: {
+                            showMissionCamera = true
+                        }) {
                             Text("Stop")
                                 .font(.system(size: 24, weight: .bold))
                                 .frame(width: 200, height: 60)
