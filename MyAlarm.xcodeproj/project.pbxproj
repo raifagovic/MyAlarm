@@ -45,6 +45,7 @@
 		DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraView.swift; sourceTree = "<group>"; };
 		DC5FDDF52DF4861800FAB44F /* MissionCameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraViewModel.swift; sourceTree = "<group>"; };
 		DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		DC5FDDF92DF9D79C00FAB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC661B822CC566E50039F6CC /* MyAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC661B852CC566E50039F6CC /* MyAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmApp.swift; sourceTree = "<group>"; };
 		DC661B872CC566E50039F6CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		DC661B842CC566E50039F6CC /* MyAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				DC5FDDF92DF9D79C00FAB44F /* Info.plist */,
 				DC661B852CC566E50039F6CC /* MyAlarmApp.swift */,
 				DC661BB82CF87E360039F6CC /* Alarm.swift */,
 				DC661BB42CF87AB80039F6CC /* AlarmView.swift */,
@@ -391,6 +393,7 @@
 				DEVELOPMENT_TEAM = D2B56D3PCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyAlarm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -420,6 +423,7 @@
 				DEVELOPMENT_TEAM = D2B56D3PCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyAlarm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
