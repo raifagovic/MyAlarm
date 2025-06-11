@@ -11,6 +11,7 @@
 		DC5FDDF42DF4839500FAB44F /* MissionCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */; };
 		DC5FDDF62DF4861800FAB44F /* MissionCameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FDDF52DF4861800FAB44F /* MissionCameraViewModel.swift */; };
 		DC5FDDF82DF4869000FAB44F /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */; };
+		DC5FDDFB2DF9F1EA00FAB44F /* AlarmSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FDDFA2DF9F1EA00FAB44F /* AlarmSoundPlayer.swift */; };
 		DC661B862CC566E50039F6CC /* MyAlarmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B852CC566E50039F6CC /* MyAlarmApp.swift */; };
 		DC661B882CC566E50039F6CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC661B872CC566E50039F6CC /* ContentView.swift */; };
 		DC661B8A2CC566E60039F6CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC661B892CC566E60039F6CC /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		DC5FDDF52DF4861800FAB44F /* MissionCameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCameraViewModel.swift; sourceTree = "<group>"; };
 		DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		DC5FDDF92DF9D79C00FAB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DC5FDDFA2DF9F1EA00FAB44F /* AlarmSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSoundPlayer.swift; sourceTree = "<group>"; };
 		DC661B822CC566E50039F6CC /* MyAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC661B852CC566E50039F6CC /* MyAlarmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlarmApp.swift; sourceTree = "<group>"; };
 		DC661B872CC566E50039F6CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				DC5FDDF32DF4839500FAB44F /* MissionCameraView.swift */,
 				DC5FDDF52DF4861800FAB44F /* MissionCameraViewModel.swift */,
 				DC5FDDF72DF4869000FAB44F /* CameraPreview.swift */,
+				DC5FDDFA2DF9F1EA00FAB44F /* AlarmSoundPlayer.swift */,
 			);
 			path = MyAlarm;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				DC667B2A2D331B3500833F41 /* CustomDatePicker.swift in Sources */,
 				DC661B882CC566E50039F6CC /* ContentView.swift in Sources */,
+				DC5FDDFB2DF9F1EA00FAB44F /* AlarmSoundPlayer.swift in Sources */,
 				DC5FDDF62DF4861800FAB44F /* MissionCameraViewModel.swift in Sources */,
 				DC5FDDF82DF4869000FAB44F /* CameraPreview.swift in Sources */,
 				DC667B302D646D7B00833F41 /* SoundView.swift in Sources */,
