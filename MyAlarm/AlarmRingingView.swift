@@ -98,7 +98,7 @@ struct AlarmRingingView: View {
     private func snoozeAlarm() {
         guard !hasStopped else { return }
         hasStopped = true
-        stopAudio()
+        stopAlarmSound()
 
         let snoozedUntil = Calendar.current.date(byAdding: .minute, value: alarm.snoozeDuration, to: Date()) ?? Date()
         SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
@@ -113,7 +113,7 @@ struct AlarmRingingView: View {
     private func stopAlarm() {
         if !hasStopped {
             hasStopped = true
-            stopAudio()
+            stopAlarmSound()
             NotificationManager.shared.cancelAllNotifications()
             AlarmBannerManager.shared.dismissBanner()
             onStop()
@@ -121,7 +121,7 @@ struct AlarmRingingView: View {
         }
     }
 
-    private func stopAudio() {
+    private func stopAlarmSound() {
         audioPlayer?.stop()
         audioPlayer = nil
     }
