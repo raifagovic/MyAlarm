@@ -12,7 +12,6 @@ struct AlarmRingingView: View {
     let alarm: Alarm
     var onStop: () -> Void
 
-    @State private var audioPlayer: AVAudioPlayer?
     @State private var isPhoneLocked = false
     @State private var hasStopped = false
     @State private var hasShownBanner = false
