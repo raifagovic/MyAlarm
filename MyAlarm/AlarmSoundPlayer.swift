@@ -9,9 +9,9 @@ import AVFoundation
 
 var audioPlayer: AVAudioPlayer?
 
-func startAlarmSound() {
-    guard let url = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else {
-        print("Alarm sound file not found.")
+func startAlarmSound(named sound: String) {
+    guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
+        print("Alarm sound file not found: \(sound)")
         return
     }
 
@@ -20,7 +20,7 @@ func startAlarmSound() {
         try AVAudioSession.sharedInstance().setActive(true)
 
         audioPlayer = try AVAudioPlayer(contentsOf: url)
-        audioPlayer?.numberOfLoops = -1 // Infinite loop
+        audioPlayer?.numberOfLoops = -1
         audioPlayer?.play()
     } catch {
         print("Failed to play sound: \(error)")

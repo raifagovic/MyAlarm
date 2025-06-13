@@ -70,7 +70,7 @@ struct AlarmRingingView: View {
         }
         .task {
             checkPhoneState()
-            playSound(named: alarm.selectedSound)
+            startAlarmSound(named: alarm.selectedSound)
 
             if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
