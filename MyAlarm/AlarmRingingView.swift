@@ -70,8 +70,16 @@ struct AlarmRingingView: View {
         }
         .task {
             checkPhoneState()
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print("⚠️ Could not activate audio session: \(error)")
+            }
+            
             startAlarmSound(named: alarm.selectedSound)
-
+            
             if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
                 AlarmBannerManager.shared.showBanner(
