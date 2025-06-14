@@ -121,22 +121,6 @@ struct AlarmRingingView: View {
         }
     }
 
-    private func stopAlarmSound() {
-        audioPlayer?.stop()
-        audioPlayer = nil
-    }
-
-    private func playSound(named sound: String) {
-        guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else { return }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.numberOfLoops = -1
-            audioPlayer?.play()
-        } catch {
-            print("⚠️ Error playing sound: \(error.localizedDescription)")
-        }
-    }
-
     private func checkPhoneState() {
         let appState = UIApplication.shared.applicationState
         isPhoneLocked = (appState != .active)
