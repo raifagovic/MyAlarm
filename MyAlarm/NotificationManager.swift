@@ -10,7 +10,7 @@ import UserNotifications
 class NotificationManager {
     static let shared = NotificationManager()
     
-    private init() {} // Prevents creating multiple instances
+    private init() {} // Singleton
 
     func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
@@ -26,19 +26,18 @@ class NotificationManager {
         }
     }
 
-    func scheduleRepeatingAlarmNotifications(startingAt date: Date, label: String) {
+    func scheduleRepeatingAlarmNotifications(
+        startingAt date: Date,
+        label: String,
+        soundFileName: String = "beep.caf" // Default sound
+    ) {
         let center = UNUserNotificationCenter.current()
-        cancelAllNotifications() // Clear previous ones
+        cancelAllNotifications()
 
-        guard let soundURL = Bundle.main.url(forResource: "alarmSound", withExtension: "caf") else {
-            print("❌ Alarm sound not found in bundle.")
-            return
-        }
-
-        let soundName = UNNotificationSoundName("alarmSound.caf")
+        let soundName = UNNotificationSoundName(rawValue: soundFileName)
 
         for i in 0..<30 {
-            let fireDate = Calendar.current.date(byAdding: .minute, value: i, to: date)!
+            guard let fireDate = Calendar.current.date(byAdding: .minute, value: i, to: date) else { continue }
             let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
 
             let content = UNMutableNotificationContent()
@@ -46,12 +45,10 @@ class NotificationManager {
             content.body = "Your alarm is ringing!"
             content.sound = UNNotificationSound(named: soundName)
 
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-
             let request = UNNotificationRequest(
                 identifier: "alarmNotification_\(i)",
                 content: content,
-                trigger: trigger
+                trigger: UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
             )
 
             center.add(request) { error in
@@ -63,7 +60,7 @@ class NotificationManager {
             }
         }
     }
-    
+
     func cancelAllNotifications() {
         let center = UNUserNotificationCenter.current()
         center.removeAllPendingNotificationRequests()
@@ -71,4 +68,3 @@ class NotificationManager {
         print("🔕 All notifications canceled.")
     }
 }
-
