@@ -112,7 +112,11 @@ struct AlarmRingingView: View {
         SnoozedAlarmManager.shared.snoozedUntil = snoozedUntil
         SnoozedAlarmManager.shared.snoozedAlarm = alarm
 
-        NotificationManager.shared.scheduleAlarmNotification(at: snoozedUntil, label: alarm.label)
+        NotificationManager.shared.scheduleAlarmNotification(
+            at: snoozedUntil,
+            label: alarm.label,
+            selectedSound: alarm.selectedSound
+        )
 
         print("🔁 Alarm snoozed until \(snoozedUntil)")
         onStop()

@@ -25,6 +25,32 @@ class NotificationManager {
             }
         }
     }
+    
+    func scheduleAlarmNotification(at date: Date, label: String, selectedSound: String) {
+        let content = UNMutableNotificationContent()
+        content.title = label.isEmpty ? "Alarm" : label
+        content.body = "Your alarm is ringing!"
+
+        let soundName = UNNotificationSoundName("\(selectedSound).caf")
+        content.sound = UNNotificationSound(named: soundName)
+
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let request = UNNotificationRequest(
+            identifier: "alarmNotification_snoozed",
+            content: content,
+            trigger: trigger
+        )
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("❌ Error scheduling snoozed notification: \(error)")
+            } else {
+                print("🔔 Scheduled snoozed alarm at \(date)")
+            }
+        }
+    }
 
     func scheduleRepeatingAlarmNotifications(
         startingAt date: Date,
