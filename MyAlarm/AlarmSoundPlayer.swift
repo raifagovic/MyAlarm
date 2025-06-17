@@ -10,7 +10,7 @@ import AVFoundation
 var audioPlayer: AVAudioPlayer?
 
 func startAlarmSound(named sound: String) {
-    guard let url = Bundle.main.url(forResource: sound, withExtension: "mp3") else {
+    guard let url = Bundle.main.url(forResource: sound, withExtension: "caf") else {
         print("Alarm sound file not found: \(sound)")
         return
     }
