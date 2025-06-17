@@ -164,7 +164,11 @@ struct ContentView: View {
             if nextTime.timeIntervalSince(now) <= 1 {
                 ringingAlarm = nextAlarm
             } else {
-                NotificationManager.shared.scheduleAlarmNotification(at: nextTime, label: nextAlarm.label)
+                NotificationManager.shared.scheduleRepeatingAlarmNotifications(
+                    startingAt: nextTime,
+                    label: nextAlarm.label,
+                    soundFileName: "\(nextAlarm.selectedSound).caff"
+                )
             }
         } else {
             remainingTimeMessage = ""
