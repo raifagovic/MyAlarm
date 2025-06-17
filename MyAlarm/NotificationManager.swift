@@ -26,23 +26,40 @@ class NotificationManager {
         }
     }
 
-    func scheduleAlarmNotification(at date: Date, label: String) {
+    func scheduleRepeatingAlarmNotifications(startingAt date: Date, label: String) {
         let center = UNUserNotificationCenter.current()
-        let content = UNMutableNotificationContent()
-        content.title = label.isEmpty ? "Alarm" : label
-        content.body = "Your alarm is ringing!"
-        content.sound = UNNotificationSound.default
+        cancelAllNotifications() // Clear previous ones
 
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        guard let soundURL = Bundle.main.url(forResource: "alarmSound", withExtension: "caf") else {
+            print("❌ Alarm sound not found in bundle.")
+            return
+        }
 
-        let request = UNNotificationRequest(identifier: "alarmNotification", content: content, trigger: trigger)
+        let soundName = UNNotificationSoundName("alarmSound.caf")
 
-        center.add(request) { error in
-            if let error = error {
-                print("Error scheduling notification: \(error)")
-            } else {
-                print("Alarm scheduled for \(date)")
+        for i in 0..<30 {
+            let fireDate = Calendar.current.date(byAdding: .minute, value: i, to: date)!
+            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
+
+            let content = UNMutableNotificationContent()
+            content.title = label.isEmpty ? "Alarm" : label
+            content.body = "Your alarm is ringing!"
+            content.sound = UNNotificationSound(named: soundName)
+
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+            let request = UNNotificationRequest(
+                identifier: "alarmNotification_\(i)",
+                content: content,
+                trigger: trigger
+            )
+
+            center.add(request) { error in
+                if let error = error {
+                    print("❌ Error scheduling notification #\(i): \(error)")
+                } else {
+                    print("🔔 Scheduled notification #\(i) at \(fireDate)")
+                }
             }
         }
     }
