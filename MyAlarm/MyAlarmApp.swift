@@ -52,7 +52,8 @@ import AVFoundation
 //}
 
 @main
-struct MyAlarmApp: App {
+@MainActor
+final class MyAlarmApp: App {
     @State private var showAlarmRingingView = false
     @State private var triggeredAlarm: Alarm?
     
@@ -62,12 +63,9 @@ struct MyAlarmApp: App {
         NotificationManager.shared.requestNotificationPermission()
         prepareAudioSession()
 
-        // Safely set tap handler
-        Task { @MainActor in
-            TapHandler.shared.onTap = { alarm in
-                triggeredAlarm = alarm
-                showAlarmRingingView = true
-            }
+        TapHandler.shared.onTap = { alarm in
+            self.triggeredAlarm = alarm
+            self.showAlarmRingingView = true
         }
     }
 
@@ -75,7 +73,7 @@ struct MyAlarmApp: App {
         WindowGroup {
             if showAlarmRingingView, let alarm = triggeredAlarm {
                 AlarmRingingView(alarm: alarm) {
-                    showAlarmRingingView = false
+                    self.showAlarmRingingView = false
                 }
             } else {
                 ContentView()
