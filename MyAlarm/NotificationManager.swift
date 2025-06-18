@@ -72,8 +72,10 @@ class NotificationManager {
             content.body = "Your alarm is ringing!"
             content.sound = UNNotificationSound(named: soundName)
 
+            content.userInfo = ["label": label, "selectedSound": soundFileName]
+
             let request = UNNotificationRequest(
-                identifier: "alarmNotification_\(i)",
+                identifier: "alarmNotification_\(i)_\(UUID().uuidString)",
                 content: content,
                 trigger: UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
             )
