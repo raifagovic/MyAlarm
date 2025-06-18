@@ -37,12 +37,13 @@ class NotificationManager {
         let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
 
+        content.userInfo = ["label": label, "selectedSound": selectedSound]
+
         let request = UNNotificationRequest(
-            identifier: "alarmNotification_snoozed",
+            identifier: "alarmNotification_snoozed_\(UUID().uuidString)",
             content: content,
             trigger: trigger
         )
-
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("❌ Error scheduling snoozed notification: \(error)")
