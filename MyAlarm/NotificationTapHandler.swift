@@ -20,17 +20,20 @@ class NotificationTapHandler: NSObject, UNUserNotificationCenterDelegate {
                                  didReceive response: UNNotificationResponse,
                                  withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        let label = response.notification.request.content.title
+        let userInfo = response.notification.request.content.userInfo
 
-        // Create dummy alarm object. You can improve this with decoding real data.
+        let label = userInfo["label"] as? String ?? "Alarm"
+        let selectedSound = userInfo["selectedSound"] as? String ?? "Default"
+
+        // You can enhance this part later to include other fields if needed
         let alarm = Alarm(
             time: Date(),
             repeatDays: [],
             label: label,
-            selectedSound: "Default", // Use a real sound name from your app if possible
+            selectedSound: selectedSound,
             snoozeDuration: 5,
             isOn: true,
-            selectedMission: "lemon" // or any default you want
+            selectedMission: "lemon"
         )
 
         print("🔔 Notification tapped: launching alarm \(label)")
