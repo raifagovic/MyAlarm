@@ -16,17 +16,7 @@ final class MyAlarmApp: App {
     @State private var showAlarmRingingView = false
     @State private var triggeredAlarm: Alarm?
     
-    private let tapHandler: NotificationTapHandler
-
-    init() {
-        NotificationManager.shared.requestNotificationPermission()
-        prepareAudioSession()
-
-        tapHandler = NotificationTapHandler(onTap: { alarm in
-            self.triggeredAlarm = alarm
-            self.showAlarmRingingView = true
-        })
-    }
+    private var tapHandler: NotificationTapHandler
 
     var body: some Scene {
         WindowGroup {
