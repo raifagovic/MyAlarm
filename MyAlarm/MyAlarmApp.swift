@@ -20,12 +20,24 @@ final class MyAlarmApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if showAlarmRingingView, let alarm = triggeredAlarm {
-                AlarmRingingView(alarm: alarm) {
-                    self.showAlarmRingingView = false
+            Group {
+                if showAlarmRingingView, let alarm = triggeredAlarm {
+                    AlarmRingingView(alarm: alarm) {
+                        self.showAlarmRingingView = false
+                    }
+                } else {
+                    ContentView()
                 }
-            } else {
-                ContentView()
+            }
+            .onAppear {
+                NotificationManager.shared.requestNotificationPermission()
+                prepareAudioSession()
+
+                // Register tap handler
+                _ = NotificationTapHandler(onTap: { alarm in
+                    self.triggeredAlarm = alarm
+                    self.showAlarmRingingView = true
+                })
             }
         }
         .modelContainer(for: Alarm.self)
