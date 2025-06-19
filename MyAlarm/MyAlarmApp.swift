@@ -15,34 +15,30 @@ import AVFoundation
 final class MyAlarmApp: App {
     @State private var showAlarmRingingView = false
     @State private var triggeredAlarm: Alarm?
-    
-    private var tapHandler: NotificationTapHandler
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                if showAlarmRingingView, let alarm = triggeredAlarm {
-                    AlarmRingingView(alarm: alarm) {
-                        self.showAlarmRingingView = false
-                    }
-                } else {
-                    ContentView()
+            if showAlarmRingingView, let alarm = triggeredAlarm {
+                AlarmRingingView(alarm: alarm) {
+                    self.showAlarmRingingView = false
                 }
-            }
-            .onAppear {
-                NotificationManager.shared.requestNotificationPermission()
-                self.prepareAudioSession()
-
-                // Register tap handler
-                _ = NotificationTapHandler(onTap: { alarm in
-                    self.triggeredAlarm = alarm
-                    self.showAlarmRingingView = true
-                })
+            } else {
+                ContentView()
+                    .onAppear {
+                        self.prepareAudioSession()
+                        
+                        NotificationManager.shared.requestNotificationPermission()
+                        
+                        UNUserNotificationCenter.current().delegate = NotificationTapHandler { alarm in
+                            self.triggeredAlarm = alarm
+                            self.showAlarmRingingView = true
+                        }
+                    }
             }
         }
         .modelContainer(for: Alarm.self)
     }
-
+    
     private func prepareAudioSession() {
         guard let url = Bundle.main.url(forResource: "silent", withExtension: "mp3") else {
             print("🔇 Silent audio file not found")
