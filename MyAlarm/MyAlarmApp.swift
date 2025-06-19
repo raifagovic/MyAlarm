@@ -31,7 +31,7 @@ final class MyAlarmApp: App {
             }
             .onAppear {
                 NotificationManager.shared.requestNotificationPermission()
-                prepareAudioSession()
+                self.prepareAudioSession()
 
                 // Register tap handler
                 _ = NotificationTapHandler(onTap: { alarm in
