@@ -61,7 +61,7 @@ class NotificationManager {
         let center = UNUserNotificationCenter.current()
         cancelAllNotifications()
 
-        let soundName = UNNotificationSoundName(rawValue: soundFileName)
+        let soundName = UNNotificationSoundName(rawValue: "\(soundFileName).caf")
 
         for i in 0..<30 {
             guard let fireDate = Calendar.current.date(byAdding: .minute, value: i, to: date) else { continue }
