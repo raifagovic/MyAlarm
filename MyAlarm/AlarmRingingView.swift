@@ -78,7 +78,9 @@ struct AlarmRingingView: View {
                 print("⚠️ Could not activate audio session: \(error)")
             }
             
-            startAlarmSound(named: alarm.selectedSound)
+            if UIApplication.shared.applicationState == .active {
+                startAlarmSound(named: alarm.selectedSound)
+            }
             
             if !isPhoneLocked && !hasShownBanner {
                 hasShownBanner = true
