@@ -56,7 +56,7 @@ class NotificationManager {
     func scheduleRepeatingAlarmNotifications(
         startingAt date: Date,
         label: String,
-        soundFileName: String = "beep.caf" // Default sound
+        soundFileName: String = "casio.caf" // Default sound
     ) {
         let center = UNUserNotificationCenter.current()
         cancelAllNotifications()
