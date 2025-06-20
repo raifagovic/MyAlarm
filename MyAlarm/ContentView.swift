@@ -167,7 +167,7 @@ struct ContentView: View {
                 NotificationManager.shared.scheduleRepeatingAlarmNotifications(
                     startingAt: nextTime,
                     label: nextAlarm.label,
-                    soundFileName: "\(nextAlarm.selectedSound).caff"
+                    soundFileName: "\(nextAlarm.selectedSound)"
                 )
             }
         } else {
