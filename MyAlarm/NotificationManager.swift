@@ -6,6 +6,7 @@
 //
 
 import UserNotifications
+import UIKit
 
 class NotificationManager {
     static let shared = NotificationManager()
@@ -20,6 +21,10 @@ class NotificationManager {
             }
             if granted {
                 print("✅ Notification permission granted")
+
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             } else {
                 print("❌ User denied notifications")
             }
