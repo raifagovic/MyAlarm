@@ -94,6 +94,30 @@ class NotificationManager {
             }
         }
     }
+    
+    func setupNotificationCategory() {
+        let stopAction = UNNotificationAction(
+            identifier: "STOP_ACTION",
+            title: "Stop",
+            options: [.authenticationRequired]
+        )
+
+        let snoozeAction = UNNotificationAction(
+            identifier: "SNOOZE_ACTION",
+            title: "Snooze",
+            options: []
+        )
+
+        let category = UNNotificationCategory(
+            identifier: "ALARM_CATEGORY",
+            actions: [snoozeAction, stopAction],
+            intentIdentifiers: [],
+            options: [.customDismissAction]
+        )
+
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        print("✅ Notification category registered.")
+    }
 
     func cancelAllNotifications() {
         let center = UNUserNotificationCenter.current()
