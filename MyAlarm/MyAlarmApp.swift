@@ -28,7 +28,7 @@ final class MyAlarmApp: App {
                         NotificationManager.shared.setupNotificationCategory()
                         NotificationManager.shared.requestNotificationPermission()
 
-                        UNUserNotificationCenter.current().delegate = NotificationTapHandler { alarm in
+                        self.notificationDelegate.onTap = { alarm in
                             self.triggeredAlarm = alarm
                             self.showAlarmRingingView = true
                         }
