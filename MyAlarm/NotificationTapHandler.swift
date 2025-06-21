@@ -13,7 +13,6 @@ class NotificationTapHandler: NSObject, UNUserNotificationCenterDelegate, Observ
     init(onTap: ((Alarm) -> Void)? = nil) {
         self.onTap = onTap
         super.init()
-        UNUserNotificationCenter.current().delegate = self
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
