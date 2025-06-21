@@ -32,6 +32,8 @@ final class MyAlarmApp: App {
                             self.triggeredAlarm = alarm
                             self.showAlarmRingingView = true
                         }
+                        
+                        UNUserNotificationCenter.current().delegate = self.notificationDelegate
                     }
             }
         }
