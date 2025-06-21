@@ -7,7 +7,7 @@
 
 import UserNotifications
 
-class NotificationTapHandler: NSObject, UNUserNotificationCenterDelegate {
+class NotificationTapHandler: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     var onTap: ((Alarm) -> Void)?
 
     init(onTap: ((Alarm) -> Void)? = nil) {

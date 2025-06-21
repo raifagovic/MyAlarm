@@ -14,6 +14,7 @@ import UserNotifications
 final class MyAlarmApp: App {
     @State private var showAlarmRingingView = false
     @State private var triggeredAlarm: Alarm?
+    @StateObject private var notificationDelegate = NotificationTapHandler()
 
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ final class MyAlarmApp: App {
             } else {
                 ContentView()
                     .onAppear {
+                        NotificationManager.shared.setupNotificationCategory()
                         NotificationManager.shared.requestNotificationPermission()
 
                         UNUserNotificationCenter.current().delegate = NotificationTapHandler { alarm in
