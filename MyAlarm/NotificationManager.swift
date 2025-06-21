@@ -39,16 +39,20 @@ class NotificationManager {
         let soundName = UNNotificationSoundName("\(selectedSound).caf")
         content.sound = UNNotificationSound(named: soundName)
 
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        // 🔁 Add category to support custom actions (Stop/Snooze)
+        content.categoryIdentifier = "ALARM_CATEGORY"
 
         content.userInfo = ["label": label, "selectedSound": selectedSound]
+
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
 
         let request = UNNotificationRequest(
             identifier: "alarmNotification_snoozed_\(UUID().uuidString)",
             content: content,
             trigger: trigger
         )
+
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("❌ Error scheduling snoozed notification: \(error)")
@@ -61,7 +65,7 @@ class NotificationManager {
     func scheduleRepeatingAlarmNotifications(
         startingAt date: Date,
         label: String,
-        soundFileName: String = "casio.caf" // Default sound
+        soundFileName: String = "casio.caf"
     ) {
         let center = UNUserNotificationCenter.current()
         cancelAllNotifications()
@@ -76,6 +80,9 @@ class NotificationManager {
             content.title = label.isEmpty ? "Alarm" : label
             content.body = "Your alarm is ringing!"
             content.sound = UNNotificationSound(named: soundName)
+
+            // 🔁 Add category identifier for actions
+            content.categoryIdentifier = "ALARM_CATEGORY"
 
             content.userInfo = ["label": label, "selectedSound": soundFileName]
 
